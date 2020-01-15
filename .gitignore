@@ -11,6 +11,7 @@ typings/
 *.userosscache
 *.sln.docstates
 *.userprefs
+*.exe
 mono_crash.*
 [Dd]ebug/
 [Dd]ebugPublic/
