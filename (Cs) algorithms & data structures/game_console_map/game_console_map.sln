@@ -1,0 +1,25 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio Version 16
+VisualStudioVersion = 16.0.29709.97
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "game_console_map", "game_console_map.csproj", "{A81F2E8A-5416-4EF4-834D-956B75ADD778}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{A81F2E8A-5416-4EF4-834D-956B75ADD778}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{A81F2E8A-5416-4EF4-834D-956B75ADD778}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{A81F2E8A-5416-4EF4-834D-956B75ADD778}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{A81F2E8A-5416-4EF4-834D-956B75ADD778}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+		SolutionGuid = {71A7E2CF-01AA-4BAE-9782-CEDDD9A650F2}
+	EndGlobalSection
+EndGlobal
