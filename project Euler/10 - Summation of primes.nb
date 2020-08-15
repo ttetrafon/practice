@@ -1,0 +1,93 @@
+(* Content-type: application/vnd.wolfram.mathematica *)
+
+(*** Wolfram Notebook File ***)
+(* http://www.wolfram.com/nb *)
+
+(* CreatedBy='Mathematica 9.0' *)
+
+(*CacheID: 234*)
+(* Internal cache information:
+NotebookFileLineBreakTest
+NotebookFileLineBreakTest
+NotebookDataPosition[       157,          7]
+NotebookDataLength[      2349,         84]
+NotebookOptionsPosition[      1912,         63]
+NotebookOutlinePosition[      2272,         79]
+CellTagsIndexPosition[      2229,         76]
+WindowFrame->Normal*)
+
+(* Beginning of Notebook Content *)
+Notebook[{
+
+Cell[CellGroupData[{
+Cell["10 - Summation of primes", "BOOK TITLE",
+ CellChangeTimes->{{3.648401920870206*^9, 3.6484019252724576`*^9}}],
+
+Cell["\<\
+The sum of the primes below 10 is 2 + 3 + 5 + 7 = 17.
+Find the sum of all the primes below two million.\
+\>", "Text",
+ CellChangeTimes->{{3.648401927800602*^9, 3.6484019294366956`*^9}}],
+
+Cell[CellGroupData[{
+
+Cell[BoxData[{
+ RowBox[{
+  RowBox[{"Solve", "[", 
+   RowBox[{
+    RowBox[{
+     RowBox[{"Prime", "[", "n", "]"}], "\[GreaterEqual]", "2000000"}], ",", 
+    "n"}], "]"}], ";"}], "\[IndentingNewLine]", 
+ RowBox[{
+  RowBox[{"%", "[", 
+   RowBox[{"[", 
+    RowBox[{"1", ",", "1", ",", "2", ",", "2", ",", "2", ",", "2"}], "]"}], 
+   "]"}], ";"}], "\[IndentingNewLine]", 
+ RowBox[{
+  RowBox[{"Table", "[", 
+   RowBox[{
+    RowBox[{"Prime", "[", "i", "]"}], ",", 
+    RowBox[{"{", 
+     RowBox[{"i", ",", "1", ",", 
+      RowBox[{"%", "-", "1"}]}], "}"}]}], "]"}], ";"}], "\[IndentingNewLine]", 
+ RowBox[{"Total", "[", "%", "]"}]}], "Input",
+ CellChangeTimes->{{3.6484019561472235`*^9, 3.648402048537508*^9}, {
+  3.648402084924589*^9, 3.6484022392994184`*^9}}],
+
+Cell[BoxData["142913828922"], "Output",
+ CellChangeTimes->{{3.6484019921202807`*^9, 3.6484020488895283`*^9}, {
+  3.648402098599371*^9, 3.6484021478871903`*^9}, {3.6484021782189255`*^9, 
+  3.648402240143467*^9}}]
+}, Open  ]]
+}, Open  ]]
+},
+WindowSize->{826, 644},
+WindowMargins->{{Automatic, 26}, {Automatic, 8}},
+ShowSelection->True,
+FrontEndVersion->"10.2 for Microsoft Windows (64-bit) (July 7, 2015)",
+StyleDefinitions->"MyBook.nb"
+]
+(* End of Notebook Content *)
+
+(* Internal cache information *)
+(*CellTagsOutline
+CellTagsIndex->{}
+*)
+(*CellTagsIndex
+CellTagsIndex->{}
+*)
+(*NotebookFileOutline
+Notebook[{
+Cell[CellGroupData[{
+Cell[579, 22, 114, 1, 80, "BOOK TITLE"],
+Cell[696, 25, 195, 4, 38, "Text"],
+Cell[CellGroupData[{
+Cell[916, 33, 754, 21, 92, "Input"],
+Cell[1673, 56, 211, 3, 31, "Output"]
+}, Open  ]]
+}, Open  ]]
+}
+]
+*)
+
+(* End of internal cache information *)

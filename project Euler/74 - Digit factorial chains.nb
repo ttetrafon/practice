@@ -1,0 +1,347 @@
+(* Content-type: application/vnd.wolfram.mathematica *)
+
+(*** Wolfram Notebook File ***)
+(* http://www.wolfram.com/nb *)
+
+(* CreatedBy='Mathematica 9.0' *)
+
+(*CacheID: 234*)
+(* Internal cache information:
+NotebookFileLineBreakTest
+NotebookFileLineBreakTest
+NotebookDataPosition[       157,          7]
+NotebookDataLength[     11241,        338]
+NotebookOptionsPosition[     10004,        295]
+NotebookOutlinePosition[     10365,        311]
+CellTagsIndexPosition[     10322,        308]
+WindowFrame->Normal*)
+
+(* Beginning of Notebook Content *)
+Notebook[{
+
+Cell[CellGroupData[{
+Cell["74 - Digit factorial chains", "BOOK TITLE",
+ CellChangeTimes->{{3.6500799081985445`*^9, 3.6500799160219917`*^9}}],
+
+Cell["\<\
+The number 145 is well known for the property that the sum of the factorial \
+of its digits is equal to 145:
+
+1! + 4! + 5! = 1 + 24 + 120 = 145
+
+Perhaps less well known is 169, in that it produces the longest chain of \
+numbers that link back to 169; it turns out that there are only three such \
+loops that exist:
+
+169 \[RightArrow] 363601 \[RightArrow] 1454 \[RightArrow] 169
+871 \[RightArrow] 45361 \[RightArrow] 871
+872 \[RightArrow] 45362 \[RightArrow] 872
+
+It is not difficult to prove that EVERY starting number will eventually get \
+stuck in a loop. For example,
+
+69 \[RightArrow] 363600 \[RightArrow] 1454 \[RightArrow] 169 \[RightArrow] \
+363601 (\[RightArrow] 1454)
+78 \[RightArrow] 45360 \[RightArrow] 871 \[RightArrow] 45361 (\[RightArrow] \
+871)
+540 \[RightArrow] 145 (\[RightArrow] 145)
+
+Starting with 69 produces a chain of five non-repeating terms, but the \
+longest non-repeating chain with a starting number below one million is sixty \
+terms.
+
+How many chains, with a starting number below one million, contain exactly \
+sixty non-repeating terms?
+\
+\>", "Text",
+ CellChangeTimes->{{3.6500799177380896`*^9, 3.650079921799322*^9}}],
+
+Cell[CellGroupData[{
+
+Cell[BoxData[{
+ RowBox[{"ClearAll", "[", "\"\<Global`*\>\"", "]"}], "\[IndentingNewLine]", 
+ RowBox[{
+  RowBox[{
+   RowBox[{"f", "[", "n_", "]"}], ":=", 
+   RowBox[{"Total", "[", 
+    RowBox[{"Map", "[", 
+     RowBox[{
+      RowBox[{
+       RowBox[{"#", "!"}], "&"}], ",", 
+      RowBox[{"IntegerDigits", "[", "n", "]"}]}], "]"}], "]"}]}], 
+  ";"}], "\[IndentingNewLine]", 
+ RowBox[{
+  RowBox[{
+   RowBox[{"circlef", "[", "num_", "]"}], ":=", 
+   RowBox[{"Module", "[", 
+    RowBox[{
+     RowBox[{"{", 
+      RowBox[{
+       RowBox[{"list", "=", 
+        RowBox[{"{", "num", "}"}]}], ",", 
+       RowBox[{"newNum", "=", "num"}]}], "}"}], ",", "\[IndentingNewLine]", 
+     RowBox[{
+      RowBox[{"While", "[", 
+       RowBox[{
+        RowBox[{
+         RowBox[{"Count", "[", 
+          RowBox[{"list", ",", "newNum"}], "]"}], "\[NotEqual]", "2"}], ",", 
+        "\[IndentingNewLine]", 
+        RowBox[{
+         RowBox[{"newNum", "=", 
+          RowBox[{"f", "[", "newNum", "]"}]}], ";", "\[IndentingNewLine]", 
+         RowBox[{"AppendTo", "[", 
+          RowBox[{"list", ",", "newNum"}], "]"}], ";"}]}], 
+       "\[IndentingNewLine]", "]"}], ";", "\[IndentingNewLine]", "list"}]}], 
+    "\[IndentingNewLine]", "]"}]}], ";"}], "\[IndentingNewLine]", 
+ RowBox[{
+  RowBox[{"limit", "=", "1000000"}], ";"}], "\[IndentingNewLine]", 
+ RowBox[{
+  RowBox[{"numList", "=", 
+   RowBox[{"{", "}"}]}], ";"}], "\[IndentingNewLine]", 
+ RowBox[{
+  RowBox[{"For", "[", 
+   RowBox[{
+    RowBox[{"i", "=", "1"}], ",", 
+    RowBox[{"i", "\[LessEqual]", "limit"}], ",", 
+    RowBox[{"i", "++"}], ",", "\[IndentingNewLine]", 
+    RowBox[{
+     RowBox[{"If", "[", 
+      RowBox[{
+       RowBox[{
+        RowBox[{"Mod", "[", 
+         RowBox[{"i", ",", "50000"}], "]"}], "\[Equal]", "0"}], ",", 
+       RowBox[{"Print", "[", 
+        RowBox[{"\"\<progress \[Rule] \>\"", ",", "i"}], "]"}]}], "]"}], ";", 
+     "\[IndentingNewLine]", 
+     RowBox[{"If", "[", "\[IndentingNewLine]", 
+      RowBox[{
+       RowBox[{
+        RowBox[{
+         RowBox[{"Length", "[", 
+          RowBox[{"circlef", "[", "i", "]"}], "]"}], "-", "1"}], "\[Equal]", 
+        "60"}], "\[IndentingNewLine]", ",", "\[IndentingNewLine]", 
+       RowBox[{
+        RowBox[{"AppendTo", "[", 
+         RowBox[{"numList", ",", "i"}], "]"}], ";"}]}], "\[IndentingNewLine]",
+       "]"}], ";"}]}], "\[IndentingNewLine]", "]"}], 
+  ";"}], "\[IndentingNewLine]", 
+ RowBox[{"Print", "[", 
+  RowBox[{"\"\<Total numbers: \>\"", ",", 
+   RowBox[{"Length", "[", "numList", "]"}]}], "]"}]}], "Input",
+ CellChangeTimes->{{3.650079954577197*^9, 3.6500799607745514`*^9}, 
+   3.650080275208536*^9, {3.650080336408036*^9, 3.6500803396232204`*^9}, {
+   3.6500804585980253`*^9, 3.6500805169843645`*^9}, {3.6500805845202274`*^9, 
+   3.650080610855734*^9}, 3.6500806467417865`*^9, {3.650080678327593*^9, 
+   3.6500807456064415`*^9}, {3.650080900470299*^9, 3.6500809703112936`*^9}, {
+   3.650081007415416*^9, 3.650081074182235*^9}, {3.650081111255355*^9, 
+   3.650081163846363*^9}, {3.650081199366395*^9, 3.650081199527404*^9}, {
+   3.6500812589988055`*^9, 3.650081296085927*^9}, {3.6500813593025427`*^9, 
+   3.6500813807747707`*^9}, {3.6500814236232214`*^9, 
+   3.6500814938632393`*^9}, {3.6500815517035475`*^9, 
+   3.6500816715434017`*^9}, {3.6518922096433086`*^9, 3.6518922136373477`*^9}}],
+
+Cell[CellGroupData[{
+
+Cell[BoxData[
+ InterpretationBox[
+  RowBox[{"\<\"progress \[Rule] \"\>", "\[InvisibleSpace]", "50000"}],
+  SequenceForm["progress \[Rule] ", 50000],
+  Editable->False]], "Print",
+ CellChangeTimes->{3.6500817184430847`*^9}],
+
+Cell[BoxData[
+ InterpretationBox[
+  RowBox[{"\<\"progress \[Rule] \"\>", "\[InvisibleSpace]", "100000"}],
+  SequenceForm["progress \[Rule] ", 100000],
+  Editable->False]], "Print",
+ CellChangeTimes->{3.650081750919942*^9}],
+
+Cell[BoxData[
+ InterpretationBox[
+  RowBox[{"\<\"progress \[Rule] \"\>", "\[InvisibleSpace]", "150000"}],
+  SequenceForm["progress \[Rule] ", 150000],
+  Editable->False]], "Print",
+ CellChangeTimes->{3.650081781632698*^9}],
+
+Cell[BoxData[
+ InterpretationBox[
+  RowBox[{"\<\"progress \[Rule] \"\>", "\[InvisibleSpace]", "200000"}],
+  SequenceForm["progress \[Rule] ", 200000],
+  Editable->False]], "Print",
+ CellChangeTimes->{3.650081816931718*^9}],
+
+Cell[BoxData[
+ InterpretationBox[
+  RowBox[{"\<\"progress \[Rule] \"\>", "\[InvisibleSpace]", "250000"}],
+  SequenceForm["progress \[Rule] ", 250000],
+  Editable->False]], "Print",
+ CellChangeTimes->{3.6500818481945057`*^9}],
+
+Cell[BoxData[
+ InterpretationBox[
+  RowBox[{"\<\"progress \[Rule] \"\>", "\[InvisibleSpace]", "300000"}],
+  SequenceForm["progress \[Rule] ", 300000],
+  Editable->False]], "Print",
+ CellChangeTimes->{3.6500818804483504`*^9}],
+
+Cell[BoxData[
+ InterpretationBox[
+  RowBox[{"\<\"progress \[Rule] \"\>", "\[InvisibleSpace]", "350000"}],
+  SequenceForm["progress \[Rule] ", 350000],
+  Editable->False]], "Print",
+ CellChangeTimes->{3.650081910313059*^9}],
+
+Cell[BoxData[
+ InterpretationBox[
+  RowBox[{"\<\"progress \[Rule] \"\>", "\[InvisibleSpace]", "400000"}],
+  SequenceForm["progress \[Rule] ", 400000],
+  Editable->False]], "Print",
+ CellChangeTimes->{3.6500819415088425`*^9}],
+
+Cell[BoxData[
+ InterpretationBox[
+  RowBox[{"\<\"progress \[Rule] \"\>", "\[InvisibleSpace]", "450000"}],
+  SequenceForm["progress \[Rule] ", 450000],
+  Editable->False]], "Print",
+ CellChangeTimes->{3.6500819712405434`*^9}],
+
+Cell[BoxData[
+ InterpretationBox[
+  RowBox[{"\<\"progress \[Rule] \"\>", "\[InvisibleSpace]", "500000"}],
+  SequenceForm["progress \[Rule] ", 500000],
+  Editable->False]], "Print",
+ CellChangeTimes->{3.650082001637282*^9}],
+
+Cell[BoxData[
+ InterpretationBox[
+  RowBox[{"\<\"progress \[Rule] \"\>", "\[InvisibleSpace]", "550000"}],
+  SequenceForm["progress \[Rule] ", 550000],
+  Editable->False]], "Print",
+ CellChangeTimes->{3.6500820302769203`*^9}],
+
+Cell[BoxData[
+ InterpretationBox[
+  RowBox[{"\<\"progress \[Rule] \"\>", "\[InvisibleSpace]", "600000"}],
+  SequenceForm["progress \[Rule] ", 600000],
+  Editable->False]], "Print",
+ CellChangeTimes->{3.6500820612586923`*^9}],
+
+Cell[BoxData[
+ InterpretationBox[
+  RowBox[{"\<\"progress \[Rule] \"\>", "\[InvisibleSpace]", "650000"}],
+  SequenceForm["progress \[Rule] ", 650000],
+  Editable->False]], "Print",
+ CellChangeTimes->{3.6500821008429565`*^9}],
+
+Cell[BoxData[
+ InterpretationBox[
+  RowBox[{"\<\"progress \[Rule] \"\>", "\[InvisibleSpace]", "700000"}],
+  SequenceForm["progress \[Rule] ", 700000],
+  Editable->False]], "Print",
+ CellChangeTimes->{3.6500821357029505`*^9}],
+
+Cell[BoxData[
+ InterpretationBox[
+  RowBox[{"\<\"progress \[Rule] \"\>", "\[InvisibleSpace]", "750000"}],
+  SequenceForm["progress \[Rule] ", 750000],
+  Editable->False]], "Print",
+ CellChangeTimes->{3.650082166898734*^9}],
+
+Cell[BoxData[
+ InterpretationBox[
+  RowBox[{"\<\"progress \[Rule] \"\>", "\[InvisibleSpace]", "800000"}],
+  SequenceForm["progress \[Rule] ", 800000],
+  Editable->False]], "Print",
+ CellChangeTimes->{3.650082198935567*^9}],
+
+Cell[BoxData[
+ InterpretationBox[
+  RowBox[{"\<\"progress \[Rule] \"\>", "\[InvisibleSpace]", "850000"}],
+  SequenceForm["progress \[Rule] ", 850000],
+  Editable->False]], "Print",
+ CellChangeTimes->{3.6500822308513927`*^9}],
+
+Cell[BoxData[
+ InterpretationBox[
+  RowBox[{"\<\"progress \[Rule] \"\>", "\[InvisibleSpace]", "900000"}],
+  SequenceForm["progress \[Rule] ", 900000],
+  Editable->False]], "Print",
+ CellChangeTimes->{3.6500822643553085`*^9}],
+
+Cell[BoxData[
+ InterpretationBox[
+  RowBox[{"\<\"progress \[Rule] \"\>", "\[InvisibleSpace]", "950000"}],
+  SequenceForm["progress \[Rule] ", 950000],
+  Editable->False]], "Print",
+ CellChangeTimes->{3.6500822979802322`*^9}],
+
+Cell[BoxData[
+ InterpretationBox[
+  RowBox[{"\<\"progress \[Rule] \"\>", "\[InvisibleSpace]", "1000000"}],
+  SequenceForm["progress \[Rule] ", 1000000],
+  Editable->False]], "Print",
+ CellChangeTimes->{3.6500823315541525`*^9}],
+
+Cell[BoxData[
+ InterpretationBox[
+  RowBox[{"\<\"Total numbers: \"\>", "\[InvisibleSpace]", "402"}],
+  SequenceForm["Total numbers: ", 402],
+  Editable->False]], "Print",
+ CellChangeTimes->{3.650082331571153*^9}]
+}, Open  ]]
+}, Open  ]]
+}, Open  ]]
+},
+WindowSize->{826, 644},
+WindowMargins->{{Automatic, 16}, {Automatic, 15}},
+ShowSelection->True,
+FrontEndVersion->"10.2 for Microsoft Windows (64-bit) (July 7, 2015)",
+StyleDefinitions->"MyBook.nb"
+]
+(* End of Notebook Content *)
+
+(* Internal cache information *)
+(*CellTagsOutline
+CellTagsIndex->{}
+*)
+(*CellTagsIndex
+CellTagsIndex->{}
+*)
+(*NotebookFileOutline
+Notebook[{
+Cell[CellGroupData[{
+Cell[579, 22, 119, 1, 80, "BOOK TITLE"],
+Cell[701, 25, 1160, 31, 418, "Text"],
+Cell[CellGroupData[{
+Cell[1886, 60, 3315, 81, 412, "Input"],
+Cell[CellGroupData[{
+Cell[5226, 145, 222, 5, 23, "Print"],
+Cell[5451, 152, 222, 5, 23, "Print"],
+Cell[5676, 159, 222, 5, 23, "Print"],
+Cell[5901, 166, 222, 5, 23, "Print"],
+Cell[6126, 173, 224, 5, 23, "Print"],
+Cell[6353, 180, 224, 5, 23, "Print"],
+Cell[6580, 187, 222, 5, 23, "Print"],
+Cell[6805, 194, 224, 5, 23, "Print"],
+Cell[7032, 201, 224, 5, 23, "Print"],
+Cell[7259, 208, 222, 5, 23, "Print"],
+Cell[7484, 215, 224, 5, 23, "Print"],
+Cell[7711, 222, 224, 5, 23, "Print"],
+Cell[7938, 229, 224, 5, 23, "Print"],
+Cell[8165, 236, 224, 5, 23, "Print"],
+Cell[8392, 243, 222, 5, 23, "Print"],
+Cell[8617, 250, 222, 5, 23, "Print"],
+Cell[8842, 257, 224, 5, 23, "Print"],
+Cell[9069, 264, 224, 5, 23, "Print"],
+Cell[9296, 271, 224, 5, 23, "Print"],
+Cell[9523, 278, 226, 5, 23, "Print"],
+Cell[9752, 285, 212, 5, 23, "Print"]
+}, Open  ]]
+}, Open  ]]
+}, Open  ]]
+}
+]
+*)
+
+(* End of internal cache information *)

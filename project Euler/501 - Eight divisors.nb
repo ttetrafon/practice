@@ -1,0 +1,120 @@
+(* Content-type: application/vnd.wolfram.mathematica *)
+
+(*** Wolfram Notebook File ***)
+(* http://www.wolfram.com/nb *)
+
+(* CreatedBy='Mathematica 9.0' *)
+
+(*CacheID: 234*)
+(* Internal cache information:
+NotebookFileLineBreakTest
+NotebookFileLineBreakTest
+NotebookDataPosition[       157,          7]
+NotebookDataLength[      3507,        111]
+NotebookOptionsPosition[      2951,         87]
+NotebookOutlinePosition[      3312,        103]
+CellTagsIndexPosition[      3269,        100]
+WindowFrame->Normal*)
+
+(* Beginning of Notebook Content *)
+Notebook[{
+
+Cell[CellGroupData[{
+Cell["501 - Eight divisors", "BOOK TITLE",
+ CellChangeTimes->{{3.6504467161544385`*^9, 3.650446720938712*^9}}],
+
+Cell["\<\
+The eight divisors of 24 are 1, 2, 3, 4, 6, 8, 12 and 24. The ten numbers not \
+exceeding 100 having exactly eight divisors are 24, 30, 40, 42, 54, 56, 66, \
+70, 78 and 88. Let f(n) be the count of numbers not exceeding n with exactly \
+eight divisors.
+You are given f(100) = 10, f(1000) = 180 and f(10^6) = 224427.
+Find f(10^12).\
+\>", "Text",
+ CellChangeTimes->{{3.650446727404082*^9, 3.6504467389867444`*^9}}],
+
+Cell["brute force solution", "comment",
+ CellChangeTimes->{{3.6528986436392517`*^9, 3.652898647141694*^9}}],
+
+Cell[CellGroupData[{
+
+Cell[BoxData[{
+ RowBox[{"ClearAll", "[", "\"\<Global`*\>\"", "]"}], "\[IndentingNewLine]", 
+ RowBox[{"StringForm", "[", 
+  RowBox[{"\"\<current number: ``, current count: ``\>\"", ",", 
+   RowBox[{"Dynamic", "[", "i", "]"}], ",", 
+   RowBox[{"Dynamic", "[", "count", "]"}]}], "]"}], "\[IndentingNewLine]", 
+ RowBox[{
+  RowBox[{"count", "=", "224427"}], ";"}], "\[IndentingNewLine]", 
+ RowBox[{
+  RowBox[{"For", "[", 
+   RowBox[{
+    RowBox[{"i", "=", 
+     RowBox[{
+      SuperscriptBox["10", "6"], "+", "1"}]}], ",", 
+    RowBox[{"i", "\[LessEqual]", 
+     SuperscriptBox["10", "12"]}], ",", 
+    RowBox[{"i", "++"}], ",", "\[IndentingNewLine]", 
+    RowBox[{"If", "[", 
+     RowBox[{
+      RowBox[{
+       RowBox[{"Length", "[", 
+        RowBox[{"Divisors", "[", "i", "]"}], "]"}], "\[Equal]", "8"}], ",", 
+      RowBox[{"count", "=", 
+       RowBox[{"count", "+", "1"}]}]}], "]"}]}], "\[IndentingNewLine]", "]"}],
+   ";"}]}], "Input",
+ CellChangeTimes->{{3.6504467420839214`*^9, 3.650446829972967*^9}, {
+  3.651752329887912*^9, 3.6517523326849084`*^9}, {3.6528982290151725`*^9, 
+  3.652898231533965*^9}}],
+
+Cell[BoxData[
+ InterpretationBox["\<\"current number: \\!\\(\\*DynamicBox[ToBoxes[i, \
+StandardForm]]\\), current count: \\!\\(\\*DynamicBox[ToBoxes[count, \
+StandardForm]]\\)\"\>",
+  StringForm["current number: ``, current count: ``", 
+   Dynamic[$CellContext`i], 
+   Dynamic[$CellContext`count]],
+  Editable->False]], "Output",
+ CellChangeTimes->{3.6528982472914505`*^9}],
+
+Cell[BoxData["$Aborted"], "Output",
+ CellChangeTimes->{3.652898635801852*^9}]
+}, Open  ]],
+
+Cell["mathematical solution", "comment",
+ CellChangeTimes->{{3.6528986505821548`*^9, 3.652898653546263*^9}}]
+}, Open  ]]
+},
+WindowSize->{826, 625},
+WindowMargins->{{Automatic, 46}, {Automatic, 14}},
+ShowSelection->True,
+FrontEndVersion->"10.2 for Microsoft Windows (64-bit) (July 7, 2015)",
+StyleDefinitions->"MyBook.nb"
+]
+(* End of Notebook Content *)
+
+(* Internal cache information *)
+(*CellTagsOutline
+CellTagsIndex->{}
+*)
+(*CellTagsIndex
+CellTagsIndex->{}
+*)
+(*NotebookFileOutline
+Notebook[{
+Cell[CellGroupData[{
+Cell[579, 22, 110, 1, 80, "BOOK TITLE"],
+Cell[692, 25, 422, 8, 76, "Text"],
+Cell[1117, 35, 107, 1, 44, "comment"],
+Cell[CellGroupData[{
+Cell[1249, 40, 1107, 27, 137, "Input"],
+Cell[2359, 69, 373, 8, 31, "Output"],
+Cell[2735, 79, 77, 1, 31, "Output"]
+}, Open  ]],
+Cell[2827, 83, 108, 1, 44, "comment"]
+}, Open  ]]
+}
+]
+*)
+
+(* End of internal cache information *)

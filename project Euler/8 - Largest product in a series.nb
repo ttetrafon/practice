@@ -1,0 +1,152 @@
+(* Content-type: application/vnd.wolfram.mathematica *)
+
+(*** Wolfram Notebook File ***)
+(* http://www.wolfram.com/nb *)
+
+(* CreatedBy='Mathematica 9.0' *)
+
+(*CacheID: 234*)
+(* Internal cache information:
+NotebookFileLineBreakTest
+NotebookFileLineBreakTest
+NotebookDataPosition[       157,          7]
+NotebookDataLength[      5318,        143]
+NotebookOptionsPosition[      4835,        121]
+NotebookOutlinePosition[      5195,        137]
+CellTagsIndexPosition[      5152,        134]
+WindowFrame->Normal*)
+
+(* Beginning of Notebook Content *)
+Notebook[{
+
+Cell[CellGroupData[{
+Cell["8 - Largest product in a series", "BOOK TITLE",
+ CellChangeTimes->{{3.6487163199817495`*^9, 3.6487163288712583`*^9}}],
+
+Cell["\<\
+
+
+The four adjacent digits in the 1000-digit number that have the greatest \
+product are 9 \[Times] 9 \[Times] 8 \[Times] 9 = 5832.
+
+73167176531330624919225119674426574742355349194934
+96983520312774506326239578318016984801869478851843
+85861560789112949495459501737958331952853208805511
+12540698747158523863050715693290963295227443043557
+66896648950445244523161731856403098711121722383113
+62229893423380308135336276614282806444486645238749
+30358907296290491560440772390713810515859307960866
+70172427121883998797908792274921901699720888093776
+65727333001053367881220235421809751254540594752243
+52584907711670556013604839586446706324415722155397
+53697817977846174064955149290862569321978468622482
+83972241375657056057490261407972968652414535100474
+82166370484403199890008895243450658541227588666881
+16427171479924442928230863465674813919123162824586
+17866458359124566529476545682848912883142607690042
+24219022671055626321111109370544217506941658960408
+07198403850962455444362981230987879927244284909188
+84580156166097919133875499200524063689912560717606
+05886116467109405077541002256983155200055935729725
+71636269561882670428252483600823257530420752963450
+
+Find the thirteen adjacent digits in the 1000-digit number that have the \
+greatest product. What is the value of this product?
+\
+\>", "Text",
+ CellChangeTimes->{3.6487163793321447`*^9}],
+
+Cell[CellGroupData[{
+
+Cell[BoxData[{
+ RowBox[{"ClearAll", "[", "\"\<Global`*\>\"", "]"}], "\[IndentingNewLine]", 
+ RowBox[{
+  RowBox[{
+  "number", "=", 
+   "73167176531330624919225119674426574742355349194934969835203127745063262395\
+783180169848018694788518438586156078911294949545950173795833195285320880551112\
+540698747158523863050715693290963295227443043557668966489504452445231617318564\
+030987111217223831136222989342338030813533627661428280644448664523874930358907\
+296290491560440772390713810515859307960866701724271218839987979087922749219016\
+997208880937766572733300105336788122023542180975125454059475224352584907711670\
+556013604839586446706324415722155397536978179778461740649551492908625693219784\
+686224828397224137565705605749026140797296865241453510047482166370484403199890\
+008895243450658541227588666881164271714799244429282308634656748139191231628245\
+861786645835912456652947654568284891288314260769004224219022671055626321111109\
+370544217506941658960408071984038509624554443629812309878799272442849091888458\
+015616609791913387549920052406368991256071760605886116467109405077541002256983\
+15520005593572972571636269561882670428252483600823257530420752963450"}], 
+  ";"}], "\[IndentingNewLine]", 
+ RowBox[{
+  RowBox[{"digits", "=", 
+   RowBox[{"IntegerDigits", "[", "number", "]"}]}], 
+  ";"}], "\[IndentingNewLine]", 
+ RowBox[{
+  RowBox[{"len", "=", 
+   RowBox[{"Length", "[", "digits", "]"}]}], ";"}], "\[IndentingNewLine]", 
+ RowBox[{
+  RowBox[{"subdigits", "=", 
+   RowBox[{"Partition", "[", 
+    RowBox[{"digits", ",", "13", ",", "1"}], "]"}]}], 
+  ";"}], "\[IndentingNewLine]", 
+ RowBox[{
+  RowBox[{"products", "=", 
+   RowBox[{"Apply", "[", 
+    RowBox[{"Times", ",", "subdigits", ",", "1"}], "]"}]}], 
+  ";"}], "\[IndentingNewLine]", 
+ RowBox[{"FromDigits", "[", 
+  RowBox[{"subdigits", "[", 
+   RowBox[{"[", 
+    RowBox[{"Part", "[", 
+     RowBox[{
+      RowBox[{"Position", "[", 
+       RowBox[{"products", ",", 
+        RowBox[{"Max", "[", "products", "]"}]}], "]"}], ",", "1", ",", "1"}], 
+     "]"}], "]"}], "]"}], "]"}], "\[IndentingNewLine]", 
+ RowBox[{"Max", "[", "products", "]"}]}], "Input",
+ CellChangeTimes->{{3.64871633431857*^9, 3.648716435610363*^9}, {
+   3.6487164724964733`*^9, 3.6487166629123645`*^9}, {3.648716722875794*^9, 
+   3.648716741376852*^9}, {3.6487168766085873`*^9, 3.6487168809718366`*^9}, {
+   3.6487169762072835`*^9, 3.64871702615114*^9}, {3.648717105253665*^9, 
+   3.6487172673759375`*^9}, 3.648717590969446*^9, {3.64871762408434*^9, 
+   3.6487177733478775`*^9}}],
+
+Cell[BoxData["5576689664895"], "Output",
+ CellChangeTimes->{{3.6487176984805956`*^9, 3.648717774025916*^9}}],
+
+Cell[BoxData["23514624000"], "Output",
+ CellChangeTimes->{{3.6487176984805956`*^9, 3.6487177740279164`*^9}}]
+}, Open  ]]
+}, Open  ]]
+},
+WindowSize->{826, 644},
+WindowMargins->{{Automatic, 26}, {Automatic, 8}},
+ShowSelection->True,
+FrontEndVersion->"10.2 for Microsoft Windows (64-bit) (July 7, 2015)",
+StyleDefinitions->"MyBook.nb"
+]
+(* End of Notebook Content *)
+
+(* Internal cache information *)
+(*CellTagsOutline
+CellTagsIndex->{}
+*)
+(*CellTagsIndex
+CellTagsIndex->{}
+*)
+(*NotebookFileOutline
+Notebook[{
+Cell[CellGroupData[{
+Cell[579, 22, 123, 1, 80, "BOOK TITLE"],
+Cell[705, 25, 1350, 31, 532, "Text"],
+Cell[CellGroupData[{
+Cell[2080, 60, 2505, 51, 452, "Input"],
+Cell[4588, 113, 108, 1, 31, "Output"],
+Cell[4699, 116, 108, 1, 31, "Output"]
+}, Open  ]]
+}, Open  ]]
+}
+]
+*)
+
+(* End of internal cache information *)

@@ -1,0 +1,86 @@
+(* Content-type: application/vnd.wolfram.mathematica *)
+
+(*** Wolfram Notebook File ***)
+(* http://www.wolfram.com/nb *)
+
+(* CreatedBy='Mathematica 10.2' *)
+
+(*CacheID: 234*)
+(* Internal cache information:
+NotebookFileLineBreakTest
+NotebookFileLineBreakTest
+NotebookDataPosition[       158,          7]
+NotebookDataLength[      2213,         77]
+NotebookOptionsPosition[      1865,         60]
+NotebookOutlinePosition[      2206,         75]
+CellTagsIndexPosition[      2163,         72]
+WindowFrame->Normal*)
+
+(* Beginning of Notebook Content *)
+Notebook[{
+
+Cell[CellGroupData[{
+Cell["27 - Quadratic primes", "BOOK TITLE",
+ CellChangeTimes->{{3.651891461826709*^9, 3.651891466667985*^9}}],
+
+Cell["\<\
+Euler discovered the remarkable quadratic formula:
+
+n\.b2 + n + 41
+
+It turns out that the formula will produce 40 primes for the consecutive \
+values n = 0 to 39. However, when n = 40, 402 + 40 + 41 = 40(40 + 1) + 41 is \
+divisible by 41, and certainly when n = 41, 41\.b2 + 41 + 41 is clearly \
+divisible by 41.
+
+The incredible formula  n\.b2 \[Minus] 79n + 1601 was discovered, which \
+produces 80 primes for the consecutive values n = 0 to 79. The product of the \
+coefficients, \[Minus]79 and 1601, is \[Minus]126479.
+
+Considering quadratics of the form:
+
+    n\.b2 + an + b, where |a| < 1000 and |b| < 1000
+
+    where |n| is the modulus/absolute value of n
+    e.g. |11| = 11 and |\[Minus]4| = 4
+
+Find the product of the coefficients, a and b, for the quadratic expression \
+that produces the maximum number of primes for consecutive values of n, \
+starting with n = 0.
+\
+\>", "Text",
+ CellChangeTimes->{{3.6517579688504314`*^9, 3.6517579706407013`*^9}}],
+
+Cell[BoxData[
+ RowBox[{
+  RowBox[{"ClearAll", "[", "\"\<Global`*\>\"", "]"}], 
+  "\[IndentingNewLine]"}]], "Input",
+ CellChangeTimes->{{3.6517579727387056`*^9, 3.6517579854206123`*^9}}]
+}, Open  ]]
+},
+WindowSize->{775, 561},
+WindowMargins->{{287, Automatic}, {Automatic, 54}},
+FrontEndVersion->"10.2 for Microsoft Windows (64-bit) (July 7, 2015)",
+StyleDefinitions->"MyBook.nb"
+]
+(* End of Notebook Content *)
+
+(* Internal cache information *)
+(*CellTagsOutline
+CellTagsIndex->{}
+*)
+(*CellTagsIndex
+CellTagsIndex->{}
+*)
+(*NotebookFileOutline
+Notebook[{
+Cell[CellGroupData[{
+Cell[580, 22, 109, 1, 80, "BOOK TITLE"],
+Cell[692, 25, 969, 26, 399, "Text"],
+Cell[1664, 53, 185, 4, 52, "Input"]
+}, Open  ]]
+}
+]
+*)
+
+(* End of internal cache information *)

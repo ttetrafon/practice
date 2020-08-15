@@ -1,0 +1,94 @@
+(* Content-type: application/vnd.wolfram.mathematica *)
+
+(*** Wolfram Notebook File ***)
+(* http://www.wolfram.com/nb *)
+
+(* CreatedBy='Mathematica 9.0' *)
+
+(*CacheID: 234*)
+(* Internal cache information:
+NotebookFileLineBreakTest
+NotebookFileLineBreakTest
+NotebookDataPosition[       157,          7]
+NotebookDataLength[      2472,         85]
+NotebookOptionsPosition[      2031,         64]
+NotebookOutlinePosition[      2392,         80]
+CellTagsIndexPosition[      2349,         77]
+WindowFrame->Normal*)
+
+(* Beginning of Notebook Content *)
+Notebook[{
+
+Cell[CellGroupData[{
+Cell["31 - Coin sums", "BOOK TITLE",
+ CellChangeTimes->{{3.649124313009254*^9, 3.649124318446565*^9}}],
+
+Cell["\<\
+In England the currency is made up of pound, \[Sterling], and pence, p, and \
+there are eight coins in general circulation:
+
+    1p, 2p, 5p, 10p, 20p, 50p, \[Sterling]1 (100p) and \[Sterling]2 (200p).
+
+It is possible to make \[Sterling]2 in the following way:
+
+    1\[Times]\[Sterling]1 + 1\[Times]50p + 2\[Times]20p + 1\[Times]5p + 1\
+\[Times]2p + 3\[Times]1p
+
+How many different ways can \[Sterling]2 be made using any number of coins?
+\
+\>", "Text",
+ CellChangeTimes->{{3.649268604209236*^9, 3.6492686060023384`*^9}}],
+
+Cell[CellGroupData[{
+
+Cell[BoxData[{
+ RowBox[{"ClearAll", "[", "\"\<Global`*\>\"", "]"}], "\[IndentingNewLine]", 
+ RowBox[{
+  RowBox[{"FrobeniusSolve", "[", 
+   RowBox[{
+    RowBox[{"{", 
+     RowBox[{
+     "1", ",", "2", ",", "5", ",", "10", ",", "20", ",", "50", ",", "100", 
+      ",", "200"}], "}"}], ",", "200"}], "]"}], ";"}], "\[IndentingNewLine]", 
+ RowBox[{"Length", "[", "%", "]"}]}], "Input",
+ CellChangeTimes->{{3.6491243479832544`*^9, 3.6491244338221645`*^9}, {
+  3.6491244672670774`*^9, 3.6491244679031134`*^9}, {3.6492686514969406`*^9, 
+  3.6492686516349487`*^9}}],
+
+Cell[BoxData["73682"], "Output",
+ CellChangeTimes->{{3.649124422085493*^9, 3.6491244468569098`*^9}, 
+   3.6491244862791643`*^9, {3.649268649118805*^9, 3.6492686537310686`*^9}, 
+   3.6517578311679173`*^9}]
+}, Open  ]]
+}, Open  ]]
+},
+WindowSize->{826, 644},
+WindowMargins->{{Automatic, 16}, {10, Automatic}},
+ShowSelection->True,
+FrontEndVersion->"10.2 for Microsoft Windows (64-bit) (July 7, 2015)",
+StyleDefinitions->"MyBook.nb"
+]
+(* End of Notebook Content *)
+
+(* Internal cache information *)
+(*CellTagsOutline
+CellTagsIndex->{}
+*)
+(*CellTagsIndex
+CellTagsIndex->{}
+*)
+(*NotebookFileOutline
+Notebook[{
+Cell[CellGroupData[{
+Cell[579, 22, 102, 1, 80, "BOOK TITLE"],
+Cell[684, 25, 530, 14, 190, "Text"],
+Cell[CellGroupData[{
+Cell[1239, 43, 557, 12, 72, "Input"],
+Cell[1799, 57, 204, 3, 31, "Output"]
+}, Open  ]]
+}, Open  ]]
+}
+]
+*)
+
+(* End of internal cache information *)

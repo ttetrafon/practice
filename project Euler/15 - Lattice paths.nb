@@ -1,0 +1,142 @@
+(* Content-type: application/vnd.wolfram.mathematica *)
+
+(*** Wolfram Notebook File ***)
+(* http://www.wolfram.com/nb *)
+
+(* CreatedBy='Mathematica 9.0' *)
+
+(*CacheID: 234*)
+(* Internal cache information:
+NotebookFileLineBreakTest
+NotebookFileLineBreakTest
+NotebookDataPosition[       157,          7]
+NotebookDataLength[      4843,        133]
+NotebookOptionsPosition[      4365,        111]
+NotebookOutlinePosition[      4725,        127]
+CellTagsIndexPosition[      4682,        124]
+WindowFrame->Normal*)
+
+(* Beginning of Notebook Content *)
+Notebook[{
+
+Cell[CellGroupData[{
+Cell["15 - Lattice paths", "BOOK TITLE",
+ CellChangeTimes->{{3.6489863901618795`*^9, 3.6489863934730687`*^9}}],
+
+Cell[TextData[{
+ "Starting in the top left corner of a 2\[Times]2 grid, and only being able \
+to move to the right and down, there are exactly 6 routes to the bottom right \
+corner.\n",
+ Cell[BoxData[
+  GraphicsBox[
+   TagBox[RasterBox[CompressedData["
+1:eJztnFGKHVUURR+aD6fhUHQIcQQJ6K8QBcmEMjWHUT5pKEI63V3vnL3r7lt3
+LYhEsBZn910Ef/Tnj3++/+OH2+3210/3v7z/8M8vnz59+Pzbu/vf/Pr5798/
+/nj/zZf7r3/vv/7//QYAAAAAAAAAAAAAAAAAK3GTMnrN91lh4xPapVqSZwpv
+U7HCxifkS4VcfqZwYOzGmyH+0YPeIHam5KS+5Bth2sbNMHMj2nGHCdftwrSN
+my3aNJX857aJbsuPViIh2pqHaEcJibbsIdpRQqIte4h2lJBoyx6iHSUk2rKH
+aEcJibbsIdpRQqIte4h2lJBoyx6iHSUk2rKHaEcJibbsIdpRQqIte4h2lJBo
+yx6iHSUk2rKHaEcJibbsIdpRQqIte4h2lJBoyx6iHSUk2rKHaEcJibbsIdpR
+QqIte4h2lJBoyx6iHSUk2rKHaEcJibbsyY9WQv+kb86TSIi25iHa2nkSyRTR
+pr2C41m1M1Wo1pk2qq6SeHzOzJ/blvon7SIb+1c9PzLNttSDJm/s27ZJ/qSV
+SDIfVKiK3Ui0ZUnmgwpVsRuJtizJfFChKnYj0ZYlmQ8qVMVuJNqyJPNBharY
+jUR75J+v4T5MqJprI9Ee/GSWBy2rJtpItAc/cb9m7TChaqKNRHv8qyketKOa
+ZSPRHv/K+prlw4SqWTYS7UMf5j9oUzXFRqJ96EPfa3YOE6qm2Ei0j34b/qB9
+Vf5Gon30W9NrNg8TqvI3Em3h8+QHlajCNxJt4XPHa/YPE6rCNxJt4fPkB5Wo
+wje+ck/tyMtHu73wpgmHCVXJG9+M9tFriXbgYUJV8saD0R6/eYVot2c/nL5w
+C4t2C974ULRHjifajlPiUaliNxaifX3CItFuX/18JLYtL9otdWM52pe2EG1H
+mKbK3NiM9vmHq0UrUe3CNFXmxuNlHkzXFG0sK8xkI4AEooXpoFi4BuQK00Gu
+MB3kCtNBrjAd5ArTQa4wHeQK00GuAAAAAAAAAAAAAAAAAAAAAAAAAAAAAPAQ
+R/6L4IGsMHOFjTfb/69MJZR45CrhTDYOtxFtwdaXOFSZGx02oi3Y+hKHKnOj
+w0a0BVtf4lBlbnTYiLZg60scqsyNDhvRFmx9iUOVudFhI9qCrS9xqDI3OmxE
+W7D1JQ5V5kaHjWgLtr7Eocrc6LARbcHWlzhUmRsdNqIt2PoShypzo8NGtAVb
+X+JQZW502Ii2YOtLHKrMjQ4b0RZsfYlDlbnRYSPagq0vcagyNzpsRFuw9SUO
+VeZGh41oC7a+xKHK3OiwEW3B1pc4VJkbHTaiLdj6Eocqc6PDRrQFW1/iUGVu
+dNiItmDrSxyqzI0OG9EWbH2JQ5W50WEj2oKtL3GoMjc6bERbsPUlDlXmRoct
+mfCZksP6kl2VeZjDlkz4TMlhfcmuSlv39W1aWz7Xntlf93yjXJgzU36YidiZ
+ksP6kl0lPGxL/Vd3k1OeWd+2OyUSoh2oMjkD29idEgnRDlSZnIFt7E6JhGgH
+qkzOwDZ2p0RCtANVJmdgG7tTIiHagSqT81HbrYr7sDevldj6kl1FtGfaiFai
+ItozbScUWzvs9VMltr5kVxHtyTai7auI9mSbu9jyYa/cKbH1JbuKaM+3EW1T
+RbTn26zFdg576UiJrS/ZVUQ7xEa0HRXRDrH5im0e9t0LJba+ZFcR7Sgb0ZZV
+RDvKZiq2f9jz8yS2vmRXEe0o26TR1i6cLtrhM01OSV3yYiWHbW9F++ipk0Y7
+cKbJSbTHD5462iEzTU55G9ZXKEgORnvk8gtEe/JMk5Noj7/pZaI9babJKfyh
+CZ9gGxrtS0MuFu0JM01Ooj3+ppeM1jrT5NRGK1HtQolEgvAk7WFa5DPD9z5x
++ZnXXrejmgllAl9TeJID1UwoE/iUqpMcCGdCmdh37B+mxTQTJCzyjovMXIRF
+nnKRmYuwyDsuMnMRFnnHRWYuwiLvuMjMRVjkKReZuQiLvOMiMxdhkXdcZCYA
+AAAAAAAAAICK/wBb1PDq
+     "], {{0, 166}, {231, 0}}, {0, 255},
+     ColorFunction->RGBColor],
+    BoxForm`ImageTag["Byte", ColorSpace -> "RGB", Interleaving -> True],
+    Selectable->False],
+   BaseStyle->"ImageGraphics",
+   ImageSize->Automatic,
+   ImageSizeRaw->{231, 166},
+   PlotRange->{{0, 231}, {0, 166}}]], "Input"],
+ "\nHow many such routes are there through a 20\[Times]20 grid?\n"
+}], "Text",
+ CellChangeTimes->{{3.6489863991723948`*^9, 3.6489864359534984`*^9}}],
+
+Cell[TextData[{
+ "The number of lattice paths of this type are given by ",
+ Cell[BoxData[
+  FormBox[
+   RowBox[{"(", GridBox[{
+      {
+       RowBox[{"n", "+", "k"}]},
+      {"n"}
+     }], ")"}], TraditionalForm]]],
+ ", where ",
+ Cell[BoxData[
+  FormBox[
+   RowBox[{"(", 
+    RowBox[{"n", ",", "k"}], ")"}], TraditionalForm]]],
+ " is the finishing point."
+}], "Text",
+ CellChangeTimes->{{3.6493366993841953`*^9, 3.6493367699122295`*^9}}],
+
+Cell[CellGroupData[{
+
+Cell[BoxData[{
+ RowBox[{"ClearAll", "[", "\"\<Global`*\>\"", "]"}], "\[IndentingNewLine]", 
+ RowBox[{"Binomial", "[", 
+  RowBox[{"40", ",", "20"}], "]"}]}], "Input",
+ CellChangeTimes->{{3.648986438748658*^9, 3.6489864479541845`*^9}, {
+  3.649336772008349*^9, 3.649336810264537*^9}, {3.649336851719908*^9, 
+  3.649336871433036*^9}}],
+
+Cell[BoxData["137846528820"], "Output",
+ CellChangeTimes->{{3.649336863610588*^9, 3.6493368722040796`*^9}}]
+}, Open  ]]
+}, Open  ]]
+},
+WindowSize->{826, 644},
+WindowMargins->{{Automatic, 26}, {Automatic, 8}},
+ShowSelection->True,
+FrontEndVersion->"10.2 for Microsoft Windows (64-bit) (July 7, 2015)",
+StyleDefinitions->"MyBook.nb"
+]
+(* End of Notebook Content *)
+
+(* Internal cache information *)
+(*CellTagsOutline
+CellTagsIndex->{}
+*)
+(*CellTagsIndex
+CellTagsIndex->{}
+*)
+(*NotebookFileOutline
+Notebook[{
+Cell[CellGroupData[{
+Cell[579, 22, 110, 1, 80, "BOOK TITLE"],
+Cell[692, 25, 2739, 51, 242, "Text"],
+Cell[3434, 78, 437, 16, 37, "Text"],
+Cell[CellGroupData[{
+Cell[3896, 98, 331, 6, 52, "Input"],
+Cell[4230, 106, 107, 1, 31, "Output"]
+}, Open  ]]
+}, Open  ]]
+}
+]
+*)
+
+(* End of internal cache information *)

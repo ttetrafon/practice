@@ -1,0 +1,188 @@
+(* Content-type: application/vnd.wolfram.mathematica *)
+
+(*** Wolfram Notebook File ***)
+(* http://www.wolfram.com/nb *)
+
+(* CreatedBy='Mathematica 9.0' *)
+
+(*CacheID: 234*)
+(* Internal cache information:
+NotebookFileLineBreakTest
+NotebookFileLineBreakTest
+NotebookDataPosition[       157,          7]
+NotebookDataLength[      6593,        179]
+NotebookOptionsPosition[      5979,        153]
+NotebookOutlinePosition[      6508,        174]
+CellTagsIndexPosition[      6465,        171]
+WindowFrame->Normal*)
+
+(* Beginning of Notebook Content *)
+Notebook[{
+
+Cell[CellGroupData[{
+Cell["55 - Lychrel numbers", "BOOK TITLE",
+ CellChangeTimes->{{3.650702693327217*^9, 3.650702700942305*^9}, {
+  3.6507040609597044`*^9, 3.6507040623992023`*^9}}],
+
+Cell["\<\
+If we take 47, reverse and add, 47 + 74 = 121, which is palindromic.
+
+Not all numbers produce palindromes so quickly. For example,
+
+349 + 943 = 1292,
+1292 + 2921 = 4213
+4213 + 3124 = 7337
+
+That is, 349 took three iterations to arrive at a palindrome.
+
+Although no one has proved it yet, it is thought that some numbers, like 196, \
+never produce a palindrome. A number that never forms a palindrome through \
+the reverse and add process is called a Lychrel number. Due to the \
+theoretical nature of these numbers, and for the purpose of this problem, we \
+shall assume that a number is Lychrel until proven otherwise. In addition you \
+are given that for every number below ten-thousand, it will either (i) become \
+a palindrome in less than fifty iterations, or, (ii) no one, with all the \
+computing power that exists, has managed so far to map it to a palindrome. In \
+fact, 10677 is the first number to be shown to require over fifty iterations \
+before producing a palindrome: 4668731596684224866951378664 (53 iterations, \
+28-digits).
+
+Surprisingly, there are palindromic numbers that are themselves Lychrel \
+numbers; the first example is 4994.
+
+How many Lychrel numbers are there below ten-thousand?
+
+NOTE: Wording was modified slightly on 24 April 2007 to emphasise the \
+theoretical nature of Lychrel numbers.
+\
+\>", "Text",
+ CellChangeTimes->{{3.65070270741591*^9, 3.6507027098236227`*^9}}],
+
+Cell[CellGroupData[{
+
+Cell[BoxData[{
+ RowBox[{"ClearAll", "[", "\"\<Global`*\>\"", "]"}], "\[IndentingNewLine]", 
+ RowBox[{"StringForm", "[", 
+  RowBox[{
+  "\"\<Progress: `1`/`2` \[Rule] current counter: `3`\>\"", ",", 
+   "\[IndentingNewLine]", 
+   RowBox[{"Dynamic", "[", "i", "]"}], ",", "\[IndentingNewLine]", 
+   RowBox[{"Dynamic", "[", "limit", "]"}], ",", "\[IndentingNewLine]", 
+   RowBox[{"Dynamic", "[", "counter", "]"}]}], "\[IndentingNewLine]", 
+  "]"}], "\[IndentingNewLine]", 
+ RowBox[{
+  RowBox[{"limit", "=", "10000"}], ";"}], "\[IndentingNewLine]", 
+ RowBox[{
+  RowBox[{
+   RowBox[{"isPalindrome", "[", "num_", "]"}], ":=", 
+   RowBox[{"If", "[", 
+    RowBox[{
+     RowBox[{"num", "\[Equal]", 
+      RowBox[{"FromDigits", "[", 
+       RowBox[{"Reverse", "[", 
+        RowBox[{"IntegerDigits", "[", "num", "]"}], "]"}], "]"}]}], ",", 
+     "True", ",", "False"}], "]"}]}], ";"}], "\[IndentingNewLine]", 
+ RowBox[{
+  RowBox[{"isLychrel", "[", "num_", "]"}], ":=", 
+  RowBox[{"Module", "[", 
+   RowBox[{
+    RowBox[{"{", 
+     RowBox[{"iter", ",", 
+      RowBox[{"maxIter", "=", "50"}], ",", "i", ",", "addedNum", ",", 
+      RowBox[{"newNum", "=", "num"}], ",", "reverseNum", ",", 
+      RowBox[{"result", "=", "False"}]}], "}"}], ",", "\[IndentingNewLine]", 
+    RowBox[{
+     RowBox[{"For", "[", 
+      RowBox[{
+       RowBox[{"iter", "=", "1"}], ",", 
+       RowBox[{"iter", "\[LessEqual]", "maxIter"}], ",", 
+       RowBox[{"iter", "++"}], ",", "\[IndentingNewLine]", 
+       RowBox[{
+        RowBox[{"reverseNum", "=", 
+         RowBox[{"FromDigits", "[", 
+          RowBox[{"Reverse", "[", 
+           RowBox[{"IntegerDigits", "[", "newNum", "]"}], "]"}], "]"}]}], ";",
+         "\[IndentingNewLine]", 
+        RowBox[{"newNum", "=", 
+         RowBox[{"newNum", "+", "reverseNum"}]}], ";", "\[IndentingNewLine]", 
+        RowBox[{"If", "[", 
+         RowBox[{
+          RowBox[{"isPalindrome", "[", "newNum", "]"}], ",", 
+          RowBox[{
+           RowBox[{"result", "=", "True"}], ";", 
+           RowBox[{"Break", "[", "]"}]}]}], "]"}], ";"}]}], 
+      "\[IndentingNewLine]", "]"}], ";", "\[IndentingNewLine]", "result"}]}], 
+   "\[IndentingNewLine]", "]"}]}], "\[IndentingNewLine]", 
+ RowBox[{
+  RowBox[{"counter", "=", "0"}], ";"}], "\[IndentingNewLine]", 
+ RowBox[{"For", "[", 
+  RowBox[{
+   RowBox[{"i", "=", "1"}], ",", 
+   RowBox[{"i", "\[LessEqual]", "limit"}], ",", 
+   RowBox[{"i", "++"}], ",", "\[IndentingNewLine]", 
+   RowBox[{"If", "[", 
+    RowBox[{
+     RowBox[{
+      RowBox[{"isLychrel", "[", "i", "]"}], "\[Equal]", "False"}], ",", 
+     RowBox[{"counter", "++"}]}], "]"}]}], "\[IndentingNewLine]", 
+  "]"}]}], "Input",
+ CellChangeTimes->{{3.650702713417178*^9, 3.650702762718855*^9}, {
+  3.650702816590363*^9, 3.650702971167218*^9}, {3.650703027839461*^9, 
+  3.6507032528278575`*^9}, {3.6507032944792128`*^9, 3.6507033722071247`*^9}, {
+  3.6507034348321085`*^9, 3.6507035303680325`*^9}, {3.6507036034407234`*^9, 
+  3.6507036934834647`*^9}, {3.650703819328458*^9, 3.6507038416005173`*^9}, {
+  3.6507038951050835`*^9, 3.6507039620015144`*^9}}],
+
+Cell[BoxData[
+ InterpretationBox["\<\"Progress: \\!\\(\\*DynamicBox[ToBoxes[i, \
+StandardForm]]\\)/\\!\\(\\*DynamicBox[ToBoxes[limit, StandardForm]]\\) \
+\[Rule] current counter: \\!\\(\\*DynamicBox[ToBoxes[counter, \
+StandardForm]]\\)\"\>",
+  StringForm["Progress: `1`/`2` \[Rule] current counter: `3`", 
+   Dynamic[$CellContext`i], 
+   Dynamic[$CellContext`limit], 
+   Dynamic[$CellContext`counter]],
+  Editable->False]], "Output",
+ CellChangeTimes->{
+  3.650703535430631*^9, {3.650703611239149*^9, 3.6507036448086853`*^9}, 
+   3.6507036947623744`*^9, 3.6507037709076967`*^9, 3.6507038430635405`*^9, 
+   3.650703890100526*^9, {3.650703941348062*^9, 3.6507039630552635`*^9}, 
+   3.6518920489809785`*^9}]
+}, Open  ]]
+}, Open  ]]
+},
+WindowSize->{826, 644},
+WindowMargins->{{Automatic, 16}, {10, Automatic}},
+PrintingCopies->1,
+PrintingPageRange->{32000, 32000},
+PrintingOptions->{"Magnification"->1.,
+"PaperOrientation"->"Portrait",
+"PaperSize"->{595.1999999999999, 841.68}},
+ShowSelection->True,
+FrontEndVersion->"10.2 for Microsoft Windows (64-bit) (July 7, 2015)",
+StyleDefinitions->"MyBook.nb"
+]
+(* End of Notebook Content *)
+
+(* Internal cache information *)
+(*CellTagsOutline
+CellTagsIndex->{}
+*)
+(*CellTagsIndex
+CellTagsIndex->{}
+*)
+(*NotebookFileOutline
+Notebook[{
+Cell[CellGroupData[{
+Cell[579, 22, 161, 2, 80, "BOOK TITLE"],
+Cell[743, 26, 1412, 32, 456, "Text"],
+Cell[CellGroupData[{
+Cell[2180, 62, 3064, 71, 432, "Input"],
+Cell[5247, 135, 704, 14, 31, "Output"]
+}, Open  ]]
+}, Open  ]]
+}
+]
+*)
+
+(* End of internal cache information *)

@@ -1,0 +1,333 @@
+(* Content-type: application/vnd.wolfram.mathematica *)
+
+(*** Wolfram Notebook File ***)
+(* http://www.wolfram.com/nb *)
+
+(* CreatedBy='Mathematica 10.2' *)
+
+(*CacheID: 234*)
+(* Internal cache information:
+NotebookFileLineBreakTest
+NotebookFileLineBreakTest
+NotebookDataPosition[       158,          7]
+NotebookDataLength[     11944,        324]
+NotebookOptionsPosition[     11219,        294]
+NotebookOutlinePosition[     11560,        309]
+CellTagsIndexPosition[     11517,        306]
+WindowFrame->Normal*)
+
+(* Beginning of Notebook Content *)
+Notebook[{
+
+Cell[CellGroupData[{
+Cell["231 - The prime factorisation of binomial coefficients", "BOOK TITLE",
+ CellChangeTimes->{{3.6520728215780463`*^9, 3.652072824024784*^9}}],
+
+Cell["\<\
+Find the unique positive integer whose square has the form 1_2_3_4_5_6_7_8_9_0,
+where each \[OpenCurlyDoubleQuote]_\[CloseCurlyDoubleQuote] is a single digit.\
+\>", "Text",
+ CellChangeTimes->{{3.6520728307229204`*^9, 3.6520728413693113`*^9}, {
+  3.6571404317469225`*^9, 3.657140433387566*^9}}],
+
+Cell[CellGroupData[{
+
+Cell[BoxData[{
+ RowBox[{"ClearAll", "[", "\"\<Global`*\>\"", "]"}], "\[IndentingNewLine]", 
+ RowBox[{
+  RowBox[{"min", "=", 
+   RowBox[{
+    RowBox[{
+     SqrtBox["1020304050607080900"], "//", "N"}], "//", "Floor"}]}], 
+  ";"}], "\[IndentingNewLine]", 
+ RowBox[{
+  RowBox[{"max", "=", 
+   RowBox[{
+    RowBox[{
+     SqrtBox["1929394959697989990"], "//", "N"}], "//", "Floor"}]}], 
+  ";"}], "\[IndentingNewLine]", 
+ RowBox[{"StringForm", "[", 
+  RowBox[{"\"\<progress \[Rule] ``\>\"", ",", 
+   RowBox[{"Dynamic", "[", "i", "]"}]}], "]"}], "\[IndentingNewLine]", 
+ RowBox[{
+  RowBox[{"For", "[", 
+   RowBox[{
+    RowBox[{"i", "=", "min"}], ",", 
+    RowBox[{"i", "<", "max"}], ",", 
+    RowBox[{"i", "=", 
+     RowBox[{"i", "+", "10"}]}], ",", "\[IndentingNewLine]", 
+    RowBox[{
+     RowBox[{"list", "=", 
+      RowBox[{"IntegerDigits", "[", 
+       SuperscriptBox["i", "2"], "]"}]}], ";", "\[IndentingNewLine]", 
+     RowBox[{"If", "[", "\[IndentingNewLine]", 
+      RowBox[{
+       RowBox[{"And", "[", 
+        RowBox[{
+         RowBox[{
+          RowBox[{"list", "[", 
+           RowBox[{"[", "1", "]"}], "]"}], "\[Equal]", "1"}], ",", 
+         "\[IndentingNewLine]", 
+         RowBox[{
+          RowBox[{"list", "[", 
+           RowBox[{"[", "3", "]"}], "]"}], "\[Equal]", "2"}], ",", 
+         "\[IndentingNewLine]", 
+         RowBox[{
+          RowBox[{"list", "[", 
+           RowBox[{"[", "5", "]"}], "]"}], "\[Equal]", "3"}], ",", 
+         "\[IndentingNewLine]", 
+         RowBox[{
+          RowBox[{"list", "[", 
+           RowBox[{"[", "7", "]"}], "]"}], "\[Equal]", "4"}], ",", 
+         "\[IndentingNewLine]", 
+         RowBox[{
+          RowBox[{"list", "[", 
+           RowBox[{"[", "9", "]"}], "]"}], "\[Equal]", "5"}], ",", 
+         "\[IndentingNewLine]", 
+         RowBox[{
+          RowBox[{"list", "[", 
+           RowBox[{"[", "11", "]"}], "]"}], "\[Equal]", "6"}], ",", 
+         "\[IndentingNewLine]", 
+         RowBox[{
+          RowBox[{"list", "[", 
+           RowBox[{"[", "13", "]"}], "]"}], "\[Equal]", "7"}], ",", 
+         "\[IndentingNewLine]", 
+         RowBox[{
+          RowBox[{"list", "[", 
+           RowBox[{"[", "15", "]"}], "]"}], "\[Equal]", "8"}], ",", 
+         "\[IndentingNewLine]", 
+         RowBox[{
+          RowBox[{"list", "[", 
+           RowBox[{"[", "17", "]"}], "]"}], "\[Equal]", "9"}], ",", 
+         "\[IndentingNewLine]", 
+         RowBox[{
+          RowBox[{"list", "[", 
+           RowBox[{"[", "19", "]"}], "]"}], "\[Equal]", "0"}]}], 
+        "\[IndentingNewLine]", "]"}], "\[IndentingNewLine]", ",", 
+       "\[IndentingNewLine]", 
+       RowBox[{"Break", "[", "]"}]}], "]"}]}]}], "\[IndentingNewLine]", "]"}],
+   ";"}]}], "Input",
+ CellChangeTimes->{{3.6520728383114395`*^9, 3.6520731894332466`*^9}, {
+   3.652073243657304*^9, 3.65207331748201*^9}, 3.6520741898357177`*^9, {
+   3.6571404402000065`*^9, 3.6571407143930635`*^9}, {3.6571408314458647`*^9, 
+   3.6571409940988684`*^9}, {3.6571410262907095`*^9, 3.657141035009468*^9}, {
+   3.657141096709838*^9, 3.657141097881668*^9}}],
+
+Cell[BoxData["1010101010"], "Output",
+ CellChangeTimes->{3.657141035946968*^9}],
+
+Cell[BoxData["1389026623"], "Output",
+ CellChangeTimes->{3.657141035946968*^9}],
+
+Cell[BoxData[
+ InterpretationBox["\<\"progress \[Rule] \\!\\(\\*DynamicBox[ToBoxes[i, \
+StandardForm]]\\)\"\>",
+  StringForm["progress \[Rule] ``", 
+   Dynamic[$CellContext`i]],
+  Editable->False]], "Output",
+ CellChangeTimes->{3.6571410359625835`*^9}]
+}, Open  ]],
+
+Cell[CellGroupData[{
+
+Cell[BoxData[{
+ RowBox[{"ClearAll", "[", "\"\<Global`*\>\"", "]"}], "\[IndentingNewLine]", 
+ RowBox[{"StringForm", "[", 
+  RowBox[{"\"\<progress \[Rule] ``\>\"", ",", 
+   RowBox[{"Dynamic", "[", "number", "]"}]}], "]"}], "\[IndentingNewLine]", 
+ RowBox[{
+  RowBox[{
+   RowBox[{"list", "[", 
+    RowBox[{
+    "i1_", ",", "i2_", ",", "i3_", ",", "i4_", ",", "i5_", ",", "i6_", ",", 
+     "i7_", ",", "i8_", ",", "i9_"}], "]"}], ":=", 
+   RowBox[{"{", 
+    RowBox[{
+    "1", ",", "i1", ",", "2", ",", "i2", ",", "3", ",", "i3", ",", "4", ",", 
+     "i4", ",", "5", ",", "i5", ",", "6", ",", "i6", ",", "7", ",", "i7", ",",
+      "8", ",", "i8", ",", "9", ",", "i9", ",", "0"}], "}"}]}], 
+  ";"}], "\[IndentingNewLine]", 
+ RowBox[{
+  RowBox[{"For", "[", 
+   RowBox[{
+    RowBox[{"k9", "=", "0"}], ",", 
+    RowBox[{"k9", "\[LessEqual]", "9"}], ",", 
+    RowBox[{"k9", "++"}], ",", "\[IndentingNewLine]", 
+    RowBox[{
+     RowBox[{"For", "[", 
+      RowBox[{
+       RowBox[{"k8", "=", "0"}], ",", 
+       RowBox[{"k8", "\[LessEqual]", "9"}], ",", 
+       RowBox[{"k8", "++"}], ",", "\[IndentingNewLine]", 
+       RowBox[{
+        RowBox[{"For", "[", 
+         RowBox[{
+          RowBox[{"k7", "=", "0"}], ",", 
+          RowBox[{"k7", "\[LessEqual]", "9"}], ",", 
+          RowBox[{"k7", "++"}], ",", "\[IndentingNewLine]", 
+          RowBox[{
+           RowBox[{"For", "[", 
+            RowBox[{
+             RowBox[{"k6", "=", "0"}], ",", 
+             RowBox[{"k6", "\[LessEqual]", "9"}], ",", 
+             RowBox[{"k6", "++"}], ",", "\[IndentingNewLine]", 
+             RowBox[{
+              RowBox[{"For", "[", 
+               RowBox[{
+                RowBox[{"k5", "=", "0"}], ",", 
+                RowBox[{"k5", "\[LessEqual]", "9"}], ",", 
+                RowBox[{"k5", "++"}], ",", "\[IndentingNewLine]", 
+                RowBox[{
+                 RowBox[{"For", "[", 
+                  RowBox[{
+                   RowBox[{"k4", "=", "0"}], ",", 
+                   RowBox[{"k4", "\[LessEqual]", "9"}], ",", 
+                   RowBox[{"k4", "++"}], ",", "\[IndentingNewLine]", 
+                   RowBox[{
+                    RowBox[{"For", "[", 
+                    RowBox[{
+                    RowBox[{"k3", "=", "0"}], ",", 
+                    RowBox[{"k3", "\[LessEqual]", "9"}], ",", 
+                    RowBox[{"k3", "++"}], ",", "\[IndentingNewLine]", 
+                    RowBox[{
+                    RowBox[{"For", "[", 
+                    RowBox[{
+                    RowBox[{"k2", "=", "0"}], ",", 
+                    RowBox[{"k2", "\[LessEqual]", "9"}], ",", 
+                    RowBox[{"k2", "++"}], ",", "\[IndentingNewLine]", 
+                    RowBox[{
+                    RowBox[{"For", "[", 
+                    RowBox[{
+                    RowBox[{"k1", "=", "0"}], ",", 
+                    RowBox[{"k1", "\[LessEqual]", "9"}], ",", 
+                    RowBox[{"k1", "++"}], ",", "\[IndentingNewLine]", 
+                    RowBox[{
+                    RowBox[{"number", "=", 
+                    RowBox[{"FromDigits", "[", 
+                    RowBox[{"list", "[", 
+                    RowBox[{
+                    "k1", ",", "k2", ",", "k3", ",", "k4", ",", "k5", ",", 
+                    "k6", ",", "k7", ",", "k8", ",", "k9"}], "]"}], "]"}]}], 
+                    ";", "\[IndentingNewLine]", 
+                    RowBox[{"If", "[", 
+                    RowBox[{
+                    RowBox[{"IntegerQ", "[", "number", "]"}], ",", 
+                    RowBox[{"Break", "[", "]"}]}], "]"}]}]}], 
+                    "\[IndentingNewLine]", "]"}], ";"}]}], 
+                    "\[IndentingNewLine]", "]"}], ";"}]}], 
+                    "\[IndentingNewLine]", "]"}], ";"}]}], 
+                  "\[IndentingNewLine]", "]"}], ";"}]}], 
+               "\[IndentingNewLine]", "]"}], ";"}]}], "\[IndentingNewLine]", 
+            "]"}], ";"}]}], "\[IndentingNewLine]", "]"}], ";"}]}], 
+      "\[IndentingNewLine]", "]"}], ";"}]}], "\[IndentingNewLine]", "]"}], 
+  ";"}]}], "Input",
+ CellChangeTimes->{{3.6571411564256554`*^9, 3.6571414982370186`*^9}, {
+   3.6571415362838745`*^9, 3.657141576677104*^9}, 3.6571416468019567`*^9}],
+
+Cell[BoxData[
+ InterpretationBox["\<\"progress \[Rule] \\!\\(\\*DynamicBox[ToBoxes[number, \
+StandardForm]]\\)\"\>",
+  StringForm["progress \[Rule] ``", 
+   Dynamic[$CellContext`number]],
+  Editable->False]], "Output",
+ CellChangeTimes->{{3.657141566286482*^9, 3.657141577177038*^9}, 
+   3.6571418275403595`*^9}]
+}, Open  ]],
+
+Cell[CellGroupData[{
+
+Cell[BoxData[{
+ RowBox[{"ClearAll", "[", "\"\<Global`*\>\"", "]"}], "\[IndentingNewLine]", 
+ RowBox[{"StringForm", "[", 
+  RowBox[{"\"\<progress \[Rule] ``\>\"", ",", 
+   RowBox[{"Dynamic", "[", "number", "]"}]}], "]"}], "\[IndentingNewLine]", 
+ RowBox[{
+  RowBox[{
+   RowBox[{"list", "[", 
+    RowBox[{"i1_", ",", "i2_"}], "]"}], ":=", 
+   RowBox[{"{", 
+    RowBox[{"i1", ",", "i2"}], "}"}]}], ";"}], "\[IndentingNewLine]", 
+ RowBox[{
+  RowBox[{"For", "[", 
+   RowBox[{
+    RowBox[{"i", "=", "0"}], ",", 
+    RowBox[{"i", "\[LessEqual]", "9"}], ",", 
+    RowBox[{"i", "++"}], ",", "\[IndentingNewLine]", 
+    RowBox[{
+     RowBox[{"For", "[", 
+      RowBox[{
+       RowBox[{"j", "=", "0"}], ",", 
+       RowBox[{"j", "\[LessEqual]", "9"}], ",", 
+       RowBox[{"j", "++"}], ",", "\[IndentingNewLine]", 
+       RowBox[{
+        RowBox[{"digits", "=", 
+         RowBox[{"list", "[", 
+          RowBox[{"i", ",", "j"}], "]"}]}], ";", "\[IndentingNewLine]", 
+        RowBox[{"Print", "[", "digits", "]"}], ";", "\[IndentingNewLine]", 
+        RowBox[{"number", "=", 
+         RowBox[{"FromDigits", "[", "digits", "]"}]}], ";"}]}], 
+      "\[IndentingNewLine]", 
+      RowBox[{"(*", 
+       RowBox[{
+        RowBox[{"If", "[", 
+         RowBox[{
+          RowBox[{"IntegerQ", "[", "number", "]"}], ",", 
+          RowBox[{"Break", "[", "]"}]}], "]"}], ";"}], "*)"}], 
+      "\[IndentingNewLine]", "]"}], ";"}]}], "\[IndentingNewLine]", "]"}], 
+  ";"}]}], "Input",
+ CellChangeTimes->{{3.657141661072875*^9, 3.6571417320130067`*^9}, {
+   3.657141770247323*^9, 3.657141780743531*^9}, 3.65714187967787*^9, {
+   3.6571419418056374`*^9, 3.6571420121286097`*^9}}],
+
+Cell[BoxData[
+ InterpretationBox["\<\"progress \[Rule] \\!\\(\\*DynamicBox[ToBoxes[number, \
+StandardForm]]\\)\"\>",
+  StringForm["progress \[Rule] ``", 
+   Dynamic[$CellContext`number]],
+  Editable->False]], "Output",
+ CellChangeTimes->{{3.657141687744689*^9, 3.657141693697817*^9}, {
+   3.6571417292004423`*^9, 3.6571417877278395`*^9}, 3.6571418365091114`*^9, 
+   3.6571418805059414`*^9, 3.6571419466962795`*^9, {3.6571419781911016`*^9, 
+   3.657142012909865*^9}}]
+}, Open  ]]
+}, Open  ]]
+},
+WindowSize->{775, 561},
+WindowMargins->{{287, Automatic}, {Automatic, 54}},
+FrontEndVersion->"10.2 for Microsoft Windows (64-bit) (July 7, 2015)",
+StyleDefinitions->"MyBook.nb"
+]
+(* End of Notebook Content *)
+
+(* Internal cache information *)
+(*CellTagsOutline
+CellTagsIndex->{}
+*)
+(*CellTagsIndex
+CellTagsIndex->{}
+*)
+(*NotebookFileOutline
+Notebook[{
+Cell[CellGroupData[{
+Cell[580, 22, 144, 1, 116, "BOOK TITLE"],
+Cell[727, 25, 303, 5, 38, "Text"],
+Cell[CellGroupData[{
+Cell[1055, 34, 3047, 79, 445, "Input"],
+Cell[4105, 115, 79, 1, 31, "Output"],
+Cell[4187, 118, 79, 1, 31, "Output"],
+Cell[4269, 121, 252, 6, 31, "Output"]
+}, Open  ]],
+Cell[CellGroupData[{
+Cell[4558, 132, 4160, 92, 492, "Input"],
+Cell[8721, 226, 312, 7, 31, "Output"]
+}, Open  ]],
+Cell[CellGroupData[{
+Cell[9070, 238, 1652, 41, 232, "Input"],
+Cell[10725, 281, 466, 9, 31, "Output"]
+}, Open  ]]
+}, Open  ]]
+}
+]
+*)
+
+(* End of internal cache information *)

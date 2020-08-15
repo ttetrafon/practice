@@ -1,0 +1,109 @@
+(* Content-type: application/vnd.wolfram.mathematica *)
+
+(*** Wolfram Notebook File ***)
+(* http://www.wolfram.com/nb *)
+
+(* CreatedBy='Mathematica 9.0' *)
+
+(*CacheID: 234*)
+(* Internal cache information:
+NotebookFileLineBreakTest
+NotebookFileLineBreakTest
+NotebookDataPosition[       157,          7]
+NotebookDataLength[      3446,        101]
+NotebookOptionsPosition[      2909,         83]
+NotebookOutlinePosition[      3276,         99]
+CellTagsIndexPosition[      3233,         96]
+WindowFrame->Normal*)
+
+(* Beginning of Notebook Content *)
+Notebook[{
+Cell["\<\
+A palindromic number reads the same both ways. The largest palindrome made \
+from the product of two 2-digit numbers is 9009 = 91 \[Times] 99.
+Find the largest palindrome made from the product of two 3-digit numbers.\
+\>", "Text",
+ CellChangeTimes->{{3.648377567546944*^9, 
+  3.648377574582347*^9}},ExpressionUUID->"19928b27-323d-400a-90ce-\
+e5a39effc3d7"],
+
+Cell[CellGroupData[{
+
+Cell[BoxData[{
+ RowBox[{"ClearAll", "[", "\"\<Global`*\>\"", "]"}], "\[IndentingNewLine]", 
+ RowBox[{
+  RowBox[{"isPalindrome", "[", "x_", "]"}], ":=", "\[IndentingNewLine]", 
+  RowBox[{"Module", "[", 
+   RowBox[{
+    RowBox[{"{", 
+     RowBox[{"y", ",", "digits"}], "}"}], ",", "\[IndentingNewLine]", 
+    RowBox[{
+     RowBox[{"digits", "=", 
+      RowBox[{"IntegerDigits", "[", "x", "]"}]}], ";", "\[IndentingNewLine]", 
+     RowBox[{"y", "=", 
+      RowBox[{"FromDigits", "[", 
+       RowBox[{"Reverse", "[", "digits", "]"}], "]"}]}], ";", 
+     "\[IndentingNewLine]", 
+     RowBox[{"If", "[", 
+      RowBox[{
+       RowBox[{"x", "\[Equal]", "y"}], ",", "True", ",", "False"}], "]"}]}]}],
+    "\[IndentingNewLine]", "]"}]}], "\[IndentingNewLine]", 
+ RowBox[{
+  RowBox[{"Flatten", "[", 
+   RowBox[{"Table", "[", 
+    RowBox[{
+     RowBox[{"i", " ", "j"}], ",", 
+     RowBox[{"{", 
+      RowBox[{"i", ",", "100", ",", "999"}], "}"}], ",", 
+     RowBox[{"{", 
+      RowBox[{"j", ",", "100", ",", "999"}], "}"}]}], "]"}], "]"}], 
+  ";"}], "\[IndentingNewLine]", 
+ RowBox[{
+  RowBox[{"Select", "[", 
+   RowBox[{"%", ",", 
+    RowBox[{
+     RowBox[{"isPalindrome", "[", "#", "]"}], "&"}]}], "]"}], 
+  ";"}], "\[IndentingNewLine]", 
+ RowBox[{"Max", "[", "%", "]"}]}], "Input",
+ CellChangeTimes->{{3.6483775931884108`*^9, 3.648377658421142*^9}, {
+  3.6483777948389444`*^9, 3.6483778067276244`*^9}, {3.648378215814023*^9, 
+  3.6483782744713783`*^9}, {3.6483783613623476`*^9, 3.6483783971413946`*^9}, {
+  3.648378492230833*^9, 3.6483785549584208`*^9}, {3.7348003721761417`*^9, 
+  3.734800396522129*^9}, {3.734800441166359*^9, 
+  3.734800441677413*^9}},ExpressionUUID->"9848c9f8-a617-4438-942c-\
+ce9784c37a4f"],
+
+Cell[BoxData["906609"], "Output",
+ CellChangeTimes->{
+  3.6483784254170113`*^9, 3.6483785004053006`*^9, 3.648378569313242*^9, {
+   3.734800386009793*^9, 
+   3.7348004138478875`*^9}},ExpressionUUID->"2124e3c8-2d51-4c76-9a64-\
+8c8526e953f2"]
+}, Open  ]]
+},
+WindowSize->{826, 625},
+WindowMargins->{{Automatic, 46}, {Automatic, 14}},
+ShowSelection->True,
+FrontEndVersion->"11.2 for Microsoft Windows (64-bit) (September 10, 2017)",
+StyleDefinitions->"MyBook.nb"
+]
+(* End of Notebook Content *)
+
+(* Internal cache information *)
+(*CellTagsOutline
+CellTagsIndex->{}
+*)
+(*CellTagsIndex
+CellTagsIndex->{}
+*)
+(*NotebookFileOutline
+Notebook[{
+Cell[557, 20, 366, 7, 62, "Text",ExpressionUUID->"19928b27-323d-400a-90ce-e5a39effc3d7"],
+Cell[CellGroupData[{
+Cell[948, 31, 1703, 42, 200, "Input",ExpressionUUID->"9848c9f8-a617-4438-942c-ce9784c37a4f"],
+Cell[2654, 75, 239, 5, 32, "Output",ExpressionUUID->"2124e3c8-2d51-4c76-9a64-8c8526e953f2"]
+}, Open  ]]
+}
+]
+*)
+

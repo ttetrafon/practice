@@ -1,0 +1,82 @@
+(* Content-type: application/vnd.wolfram.mathematica *)
+
+(*** Wolfram Notebook File ***)
+(* http://www.wolfram.com/nb *)
+
+(* CreatedBy='Mathematica 9.0' *)
+
+(*CacheID: 234*)
+(* Internal cache information:
+NotebookFileLineBreakTest
+NotebookFileLineBreakTest
+NotebookDataPosition[       157,          7]
+NotebookDataLength[      1963,         73]
+NotebookOptionsPosition[      1525,         52]
+NotebookOutlinePosition[      1885,         68]
+CellTagsIndexPosition[      1842,         65]
+WindowFrame->Normal*)
+
+(* Beginning of Notebook Content *)
+Notebook[{
+
+Cell[CellGroupData[{
+Cell["20 - Factorial digit sum", "BOOK TITLE",
+ CellChangeTimes->{{3.648889980670219*^9, 3.6488899854684935`*^9}}],
+
+Cell["\<\
+n! means n \[Times] (n \[Minus] 1) \[Times] ... \[Times] 3 \[Times] 2 \
+\[Times] 1
+
+For example, 10! = 10 \[Times] 9 \[Times] ... \[Times] 3 \[Times] 2 \[Times] \
+1 = 3628800,
+and the sum of the digits in the number 10! is 3 + 6 + 2 + 8 + 8 + 0 + 0 = 27.
+
+Find the sum of the digits in the number 100!
+\
+\>", "Text",
+ CellChangeTimes->{{3.648889991404833*^9, 3.648889993323943*^9}}],
+
+Cell[CellGroupData[{
+
+Cell[BoxData[{
+ RowBox[{"ClearAll", "[", "\"\<Global`*\>\"", "]"}], "\[IndentingNewLine]", 
+ RowBox[{"Total", "[", 
+  RowBox[{"IntegerDigits", "[", 
+   RowBox[{"Factorial", "[", "100", "]"}], "]"}], "]"}]}], "Input",
+ CellChangeTimes->{{3.6488899951620483`*^9, 3.6488900210865307`*^9}}],
+
+Cell[BoxData["648"], "Output",
+ CellChangeTimes->{{3.648890007475752*^9, 3.64889002159956*^9}}]
+}, Open  ]]
+}, Open  ]]
+},
+WindowSize->{826, 644},
+WindowMargins->{{Automatic, 26}, {Automatic, 8}},
+ShowSelection->True,
+FrontEndVersion->"10.2 for Microsoft Windows (64-bit) (July 7, 2015)",
+StyleDefinitions->"MyBook.nb"
+]
+(* End of Notebook Content *)
+
+(* Internal cache information *)
+(*CellTagsOutline
+CellTagsIndex->{}
+*)
+(*CellTagsIndex
+CellTagsIndex->{}
+*)
+(*NotebookFileOutline
+Notebook[{
+Cell[CellGroupData[{
+Cell[579, 22, 114, 1, 80, "BOOK TITLE"],
+Cell[696, 25, 392, 11, 133, "Text"],
+Cell[CellGroupData[{
+Cell[1113, 40, 286, 5, 52, "Input"],
+Cell[1402, 47, 95, 1, 31, "Output"]
+}, Open  ]]
+}, Open  ]]
+}
+]
+*)
+
+(* End of internal cache information *)

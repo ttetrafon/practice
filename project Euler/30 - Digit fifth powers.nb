@@ -1,0 +1,148 @@
+(* Content-type: application/vnd.wolfram.mathematica *)
+
+(*** Wolfram Notebook File ***)
+(* http://www.wolfram.com/nb *)
+
+(* CreatedBy='Mathematica 9.0' *)
+
+(*CacheID: 234*)
+(* Internal cache information:
+NotebookFileLineBreakTest
+NotebookFileLineBreakTest
+NotebookDataPosition[       157,          7]
+NotebookDataLength[      3960,        139]
+NotebookOptionsPosition[      3268,        110]
+NotebookOutlinePosition[      3629,        126]
+CellTagsIndexPosition[      3586,        123]
+WindowFrame->Normal*)
+
+(* Beginning of Notebook Content *)
+Notebook[{
+
+Cell[CellGroupData[{
+Cell["30 - Digit fifth powers", "BOOK TITLE",
+ CellChangeTimes->{{3.649060683900316*^9, 3.649060691551754*^9}}],
+
+Cell["\<\
+Surprisingly there are only three numbers that can be written as the sum of \
+fourth powers of their digits:
+
+    1634 = 1^4 + 6^4 + 3^4 + 4^4
+    8208 = 8^4 + 2^4 + 0^4 + 8^4
+    9474 = 9^4 + 4^4 + 7^4 + 4^4
+
+As 1 = 1^4 is not a sum it is not included.
+
+The sum of these numbers is 1634 + 8208 + 9474 = 19316.
+
+Find the sum of all the numbers that can be written as the sum of fifth \
+powers of their digits.
+\
+\>", "Text",
+ CellChangeTimes->{{3.649060720957436*^9, 3.64906074620088*^9}}],
+
+Cell[CellGroupData[{
+
+Cell[BoxData[{
+ RowBox[{"ClearAll", "[", "\"\<Gloabl`*\>\"", "]"}], "\[IndentingNewLine]", 
+ RowBox[{
+  RowBox[{"Digit5PowerSum", "[", "n_Integer", "]"}], ":=", 
+  RowBox[{"Total", "[", 
+   RowBox[{"Map", "[", 
+    RowBox[{
+     RowBox[{
+      SuperscriptBox["#", "5"], "&"}], ",", 
+     RowBox[{"IntegerDigits", "[", "n", "]"}]}], "]"}], 
+   "]"}]}], "\[IndentingNewLine]", 
+ RowBox[{
+  RowBox[{"limit", "=", "999999"}], ";"}], "\[IndentingNewLine]", 
+ RowBox[{
+  RowBox[{"total", "=", "0"}], ";"}], "\[IndentingNewLine]", 
+ RowBox[{"For", "[", 
+  RowBox[{
+   RowBox[{"i", "=", "10"}], ",", 
+   RowBox[{"i", "\[LessEqual]", "limit"}], ",", 
+   RowBox[{"i", "++"}], ",", "\[IndentingNewLine]", 
+   RowBox[{"If", "[", 
+    RowBox[{
+     RowBox[{"i", "\[Equal]", 
+      RowBox[{"Digit5PowerSum", "[", "i", "]"}]}], ",", 
+     RowBox[{
+      RowBox[{"Print", "[", "i", "]"}], ";", 
+      RowBox[{"total", "=", 
+       RowBox[{"total", "+", "i"}]}]}]}], "]"}]}], "\[IndentingNewLine]", 
+  "]"}], "\[IndentingNewLine]", 
+ RowBox[{"Print", "[", 
+  RowBox[{"\"\<Total = \>\"", ",", "total"}], "]"}]}], "Input",
+ CellChangeTimes->{{3.649060751293171*^9, 3.649060794425638*^9}, {
+  3.649060857424241*^9, 3.6490608765823374`*^9}, {3.6490610343283596`*^9, 
+  3.649061089870537*^9}, {3.6490613292782297`*^9, 3.649061404265519*^9}}],
+
+Cell[CellGroupData[{
+
+Cell[BoxData["4150"], "Print",
+ CellChangeTimes->{3.649061412976017*^9}],
+
+Cell[BoxData["4151"], "Print",
+ CellChangeTimes->{3.649061412978017*^9}],
+
+Cell[BoxData["54748"], "Print",
+ CellChangeTimes->{3.6490614138860693`*^9}],
+
+Cell[BoxData["92727"], "Print",
+ CellChangeTimes->{3.6490614145661077`*^9}],
+
+Cell[BoxData["93084"], "Print",
+ CellChangeTimes->{3.649061414577109*^9}],
+
+Cell[BoxData["194979"], "Print",
+ CellChangeTimes->{3.6490614165072193`*^9}],
+
+Cell[BoxData[
+ InterpretationBox[
+  RowBox[{"\<\"Total = \"\>", "\[InvisibleSpace]", "443839"}],
+  SequenceForm["Total = ", 443839],
+  Editable->False]], "Print",
+ CellChangeTimes->{3.6490614319451017`*^9}]
+}, Open  ]]
+}, Open  ]]
+}, Open  ]]
+},
+WindowSize->{826, 644},
+WindowMargins->{{Automatic, 16}, {Automatic, 15}},
+ShowSelection->True,
+FrontEndVersion->"10.2 for Microsoft Windows (64-bit) (July 7, 2015)",
+StyleDefinitions->"MyBook.nb"
+]
+(* End of Notebook Content *)
+
+(* Internal cache information *)
+(*CellTagsOutline
+CellTagsIndex->{}
+*)
+(*CellTagsIndex
+CellTagsIndex->{}
+*)
+(*NotebookFileOutline
+Notebook[{
+Cell[CellGroupData[{
+Cell[579, 22, 111, 1, 80, "BOOK TITLE"],
+Cell[693, 25, 499, 16, 228, "Text"],
+Cell[CellGroupData[{
+Cell[1217, 45, 1319, 33, 175, "Input"],
+Cell[CellGroupData[{
+Cell[2561, 82, 72, 1, 23, "Print"],
+Cell[2636, 85, 72, 1, 23, "Print"],
+Cell[2711, 88, 75, 1, 23, "Print"],
+Cell[2789, 91, 75, 1, 23, "Print"],
+Cell[2867, 94, 73, 1, 23, "Print"],
+Cell[2943, 97, 76, 1, 23, "Print"],
+Cell[3022, 100, 206, 5, 23, "Print"]
+}, Open  ]]
+}, Open  ]]
+}, Open  ]]
+}
+]
+*)
+
+(* End of internal cache information *)

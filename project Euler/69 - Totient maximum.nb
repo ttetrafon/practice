@@ -1,0 +1,227 @@
+(* Content-type: application/vnd.wolfram.mathematica *)
+
+(*** Wolfram Notebook File ***)
+(* http://www.wolfram.com/nb *)
+
+(* CreatedBy='Mathematica 9.0' *)
+
+(*CacheID: 234*)
+(* Internal cache information:
+NotebookFileLineBreakTest
+NotebookFileLineBreakTest
+NotebookDataPosition[       157,          7]
+NotebookDataLength[      7022,        218]
+NotebookOptionsPosition[      6167,        185]
+NotebookOutlinePosition[      6528,        201]
+CellTagsIndexPosition[      6485,        198]
+WindowFrame->Normal*)
+
+(* Beginning of Notebook Content *)
+Notebook[{
+
+Cell[CellGroupData[{
+Cell["69 - Totient maximum", "BOOK TITLE",
+ CellChangeTimes->{{3.6518921395322027`*^9, 3.6518921438477545`*^9}}],
+
+Cell["\<\
+
+
+Euler\[CloseCurlyQuote]s Totient function, \[CurlyPhi](n) [sometimes called \
+the phi function], is used to determine the number of numbers less than n \
+which are relatively prime to n. For example, as 1, 2, 4, 5, 7, and 8, are \
+all less than nine and relatively prime to nine, \[CurlyPhi](9)=6.
+
+It can be seen that n=6 produces a maximum n/\[CurlyPhi](n) for n \
+\[LessEqual] 10.
+
+Find the value of n \[LessEqual] 1,000,000 for which n/\[CurlyPhi](n) is a \
+maximum.
+\
+\>", "Text",
+ CellChangeTimes->{{3.6500532882752266`*^9, 3.6500533141347055`*^9}, {
+  3.6518268215073867`*^9, 3.651826821716888*^9}}],
+
+Cell[CellGroupData[{
+
+Cell[BoxData[{
+ RowBox[{"ClearAll", "[", "\"\<Global`*\>\"", "]"}], "\[IndentingNewLine]", 
+ RowBox[{
+  RowBox[{"maxN", "=", 
+   RowBox[{"{", 
+    RowBox[{"0", ",", "0"}], "}"}]}], ";"}], "\[IndentingNewLine]", 
+ RowBox[{
+  RowBox[{"For", "[", 
+   RowBox[{
+    RowBox[{"i", "=", "1"}], ",", 
+    RowBox[{"i", "\[LessEqual]", "1000000"}], ",", 
+    RowBox[{"i", "++"}], ",", "\[IndentingNewLine]", 
+    RowBox[{
+     RowBox[{"If", "[", 
+      RowBox[{
+       RowBox[{
+        RowBox[{"Mod", "[", 
+         RowBox[{"i", ",", "100000"}], "]"}], "\[Equal]", "0"}], ",", 
+       RowBox[{"Print", "[", 
+        RowBox[{"\"\<progress \[Rule] \>\"", ",", "i"}], "]"}]}], "]"}], ";", 
+     "\[IndentingNewLine]", 
+     RowBox[{"psi", "=", 
+      RowBox[{"i", "/", 
+       RowBox[{"EulerPhi", "[", "i", "]"}]}]}], ";", "\[IndentingNewLine]", 
+     RowBox[{"If", "[", 
+      RowBox[{
+       RowBox[{"psi", ">", 
+        RowBox[{"maxN", "[", 
+         RowBox[{"[", "2", "]"}], "]"}]}], ",", 
+       RowBox[{"maxN", "=", 
+        RowBox[{"{", 
+         RowBox[{"i", ",", "psi"}], "}"}]}]}], "]"}], ";"}]}], 
+   "\[IndentingNewLine]", "]"}], ";"}], "\[IndentingNewLine]", 
+ RowBox[{"Print", "[", 
+  RowBox[{"\"\<The maximum n/\[Phi](n) of \>\"", ",", 
+   RowBox[{"maxN", "[", 
+    RowBox[{"[", "2", "]"}], "]"}], ",", "\"\< had been produced by \>\"", 
+   ",", 
+   RowBox[{"maxN", "[", 
+    RowBox[{"[", "1", "]"}], "]"}]}], "]"}]}], "Input",
+ CellChangeTimes->{{3.650053315052758*^9, 3.6500535303170705`*^9}, {
+  3.650053639495315*^9, 3.6500536864660015`*^9}}],
+
+Cell[CellGroupData[{
+
+Cell[BoxData[
+ InterpretationBox[
+  RowBox[{"\<\"progress \[Rule] \"\>", "\[InvisibleSpace]", "100000"}],
+  SequenceForm["progress \[Rule] ", 100000],
+  Editable->False]], "Print",
+ CellChangeTimes->{3.6500535346033154`*^9, 3.650053653767131*^9, 
+  3.6500536893081636`*^9}],
+
+Cell[BoxData[
+ InterpretationBox[
+  RowBox[{"\<\"progress \[Rule] \"\>", "\[InvisibleSpace]", "200000"}],
+  SequenceForm["progress \[Rule] ", 200000],
+  Editable->False]], "Print",
+ CellChangeTimes->{3.6500535346033154`*^9, 3.650053653767131*^9, 
+  3.6500536907122116`*^9}],
+
+Cell[BoxData[
+ InterpretationBox[
+  RowBox[{"\<\"progress \[Rule] \"\>", "\[InvisibleSpace]", "300000"}],
+  SequenceForm["progress \[Rule] ", 300000],
+  Editable->False]], "Print",
+ CellChangeTimes->{3.6500535346033154`*^9, 3.650053653767131*^9, 
+  3.650053692112213*^9}],
+
+Cell[BoxData[
+ InterpretationBox[
+  RowBox[{"\<\"progress \[Rule] \"\>", "\[InvisibleSpace]", "400000"}],
+  SequenceForm["progress \[Rule] ", 400000],
+  Editable->False]], "Print",
+ CellChangeTimes->{3.6500535346033154`*^9, 3.650053653767131*^9, 
+  3.650053693492215*^9}],
+
+Cell[BoxData[
+ InterpretationBox[
+  RowBox[{"\<\"progress \[Rule] \"\>", "\[InvisibleSpace]", "500000"}],
+  SequenceForm["progress \[Rule] ", 500000],
+  Editable->False]], "Print",
+ CellChangeTimes->{3.6500535346033154`*^9, 3.650053653767131*^9, 
+  3.650053694902217*^9}],
+
+Cell[BoxData[
+ InterpretationBox[
+  RowBox[{"\<\"progress \[Rule] \"\>", "\[InvisibleSpace]", "600000"}],
+  SequenceForm["progress \[Rule] ", 600000],
+  Editable->False]], "Print",
+ CellChangeTimes->{3.6500535346033154`*^9, 3.650053653767131*^9, 
+  3.6500536962622194`*^9}],
+
+Cell[BoxData[
+ InterpretationBox[
+  RowBox[{"\<\"progress \[Rule] \"\>", "\[InvisibleSpace]", "700000"}],
+  SequenceForm["progress \[Rule] ", 700000],
+  Editable->False]], "Print",
+ CellChangeTimes->{3.6500535346033154`*^9, 3.650053653767131*^9, 
+  3.6500536976822214`*^9}],
+
+Cell[BoxData[
+ InterpretationBox[
+  RowBox[{"\<\"progress \[Rule] \"\>", "\[InvisibleSpace]", "800000"}],
+  SequenceForm["progress \[Rule] ", 800000],
+  Editable->False]], "Print",
+ CellChangeTimes->{3.6500535346033154`*^9, 3.650053653767131*^9, 
+  3.6500536991022234`*^9}],
+
+Cell[BoxData[
+ InterpretationBox[
+  RowBox[{"\<\"progress \[Rule] \"\>", "\[InvisibleSpace]", "900000"}],
+  SequenceForm["progress \[Rule] ", 900000],
+  Editable->False]], "Print",
+ CellChangeTimes->{3.6500535346033154`*^9, 3.650053653767131*^9, 
+  3.650053700532225*^9}],
+
+Cell[BoxData[
+ InterpretationBox[
+  RowBox[{"\<\"progress \[Rule] \"\>", "\[InvisibleSpace]", "1000000"}],
+  SequenceForm["progress \[Rule] ", 1000000],
+  Editable->False]], "Print",
+ CellChangeTimes->{3.6500535346033154`*^9, 3.650053653767131*^9, 
+  3.6500537019822273`*^9}],
+
+Cell[BoxData[
+ InterpretationBox[
+  RowBox[{"\<\"The maximum n/\[Phi](n) of \"\>", "\[InvisibleSpace]", 
+   FractionBox["17017", "3072"], 
+   "\[InvisibleSpace]", "\<\" had been produced by \"\>", "\[InvisibleSpace]",
+    "510510"}],
+  SequenceForm["The maximum n/\[Phi](n) of ", 
+   Rational[17017, 3072], " had been produced by ", 510510],
+  Editable->False]], "Print",
+ CellChangeTimes->{3.6500535346033154`*^9, 3.650053653767131*^9, 
+  3.6500537019922276`*^9}]
+}, Open  ]]
+}, Open  ]]
+}, Open  ]]
+},
+WindowSize->{826, 644},
+WindowMargins->{{Automatic, 16}, {10, Automatic}},
+ShowSelection->True,
+FrontEndVersion->"10.2 for Microsoft Windows (64-bit) (July 7, 2015)",
+StyleDefinitions->"MyBook.nb"
+]
+(* End of Notebook Content *)
+
+(* Internal cache information *)
+(*CellTagsOutline
+CellTagsIndex->{}
+*)
+(*CellTagsIndex
+CellTagsIndex->{}
+*)
+(*NotebookFileOutline
+Notebook[{
+Cell[CellGroupData[{
+Cell[579, 22, 112, 1, 80, "BOOK TITLE"],
+Cell[694, 25, 618, 16, 190, "Text"],
+Cell[CellGroupData[{
+Cell[1337, 45, 1547, 41, 172, "Input"],
+Cell[CellGroupData[{
+Cell[2909, 90, 273, 6, 23, "Print"],
+Cell[3185, 98, 273, 6, 23, "Print"],
+Cell[3461, 106, 271, 6, 23, "Print"],
+Cell[3735, 114, 271, 6, 23, "Print"],
+Cell[4009, 122, 271, 6, 23, "Print"],
+Cell[4283, 130, 273, 6, 23, "Print"],
+Cell[4559, 138, 273, 6, 23, "Print"],
+Cell[4835, 146, 273, 6, 23, "Print"],
+Cell[5111, 154, 271, 6, 23, "Print"],
+Cell[5385, 162, 275, 6, 23, "Print"],
+Cell[5663, 170, 464, 10, 40, "Print"]
+}, Open  ]]
+}, Open  ]]
+}, Open  ]]
+}
+]
+*)
+
+(* End of internal cache information *)

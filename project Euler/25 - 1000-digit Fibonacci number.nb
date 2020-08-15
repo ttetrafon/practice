@@ -1,0 +1,108 @@
+(* Content-type: application/vnd.wolfram.mathematica *)
+
+(*** Wolfram Notebook File ***)
+(* http://www.wolfram.com/nb *)
+
+(* CreatedBy='Mathematica 9.0' *)
+
+(*CacheID: 234*)
+(* Internal cache information:
+NotebookFileLineBreakTest
+NotebookFileLineBreakTest
+NotebookDataPosition[       157,          7]
+NotebookDataLength[      2478,         99]
+NotebookOptionsPosition[      2040,         78]
+NotebookOutlinePosition[      2400,         94]
+CellTagsIndexPosition[      2357,         91]
+WindowFrame->Normal*)
+
+(* Beginning of Notebook Content *)
+Notebook[{
+
+Cell[CellGroupData[{
+Cell["25 - 1000-digit Fibonacci number", "BOOK TITLE",
+ CellChangeTimes->{{3.6489799010207214`*^9, 3.648979910390258*^9}}],
+
+Cell["\<\
+The Fibonacci sequence is defined by the recurrence relation:
+
+    Fn = Fn\[Minus]1 + Fn\[Minus]2, where F1 = 1 and F2 = 1.
+
+Hence the first 12 terms will be:
+
+    F1 = 1
+    F2 = 1
+    F3 = 2
+    F4 = 3
+    F5 = 5
+    F6 = 8
+    F7 = 13
+    F8 = 21
+    F9 = 34
+    F10 = 55
+    F11 = 89
+    F12 = 144
+
+The 12th term, F12, is the first term to contain three digits.
+
+What is the index of the first term in the Fibonacci sequence to contain 1000 \
+digits?\
+\>", "Text",
+ CellChangeTimes->{{3.648979920066811*^9, 3.648979920487835*^9}}],
+
+Cell[CellGroupData[{
+
+Cell[BoxData[{
+ RowBox[{"ClearAll", "[", "\"\<Global`*\>\"", "]"}], "\[IndentingNewLine]", 
+ RowBox[{"For", "[", 
+  RowBox[{
+   RowBox[{"i", "=", "1"}], ",", "True", ",", 
+   RowBox[{"i", "++"}], ",", "\[IndentingNewLine]", 
+   RowBox[{"If", "[", 
+    RowBox[{
+     RowBox[{
+      RowBox[{"Length", "[", 
+       RowBox[{"IntegerDigits", "[", 
+        RowBox[{"Fibonacci", "[", "i", "]"}], "]"}], "]"}], "\[GreaterEqual]",
+       "1000"}], ",", 
+     RowBox[{
+      RowBox[{"Print", "[", "i", "]"}], ";", 
+      RowBox[{"Break", "[", "]"}]}]}], "]"}]}], "\[IndentingNewLine]", 
+  "]"}]}], "Input",
+ CellChangeTimes->{{3.648979923950033*^9, 3.6489800239137506`*^9}}],
+
+Cell[BoxData["4782"], "Print",
+ CellChangeTimes->{3.648980025959868*^9}]
+}, Open  ]]
+}, Open  ]]
+},
+WindowSize->{826, 644},
+WindowMargins->{{Automatic, 26}, {Automatic, 8}},
+ShowSelection->True,
+FrontEndVersion->"10.2 for Microsoft Windows (64-bit) (July 7, 2015)",
+StyleDefinitions->"MyBook.nb"
+]
+(* End of Notebook Content *)
+
+(* Internal cache information *)
+(*CellTagsOutline
+CellTagsIndex->{}
+*)
+(*CellTagsIndex
+CellTagsIndex->{}
+*)
+(*NotebookFileOutline
+Notebook[{
+Cell[CellGroupData[{
+Cell[579, 22, 122, 1, 80, "BOOK TITLE"],
+Cell[704, 25, 544, 25, 418, "Text"],
+Cell[CellGroupData[{
+Cell[1273, 54, 664, 17, 92, "Input"],
+Cell[1940, 73, 72, 1, 23, "Print"]
+}, Open  ]]
+}, Open  ]]
+}
+]
+*)
+
+(* End of internal cache information *)

@@ -1,0 +1,76 @@
+(* Content-type: application/vnd.wolfram.mathematica *)
+
+(*** Wolfram Notebook File ***)
+(* http://www.wolfram.com/nb *)
+
+(* CreatedBy='Mathematica 9.0' *)
+
+(*CacheID: 234*)
+(* Internal cache information:
+NotebookFileLineBreakTest
+NotebookFileLineBreakTest
+NotebookDataPosition[       157,          7]
+NotebookDataLength[      2096,         68]
+NotebookOptionsPosition[      1721,         50]
+NotebookOutlinePosition[      2088,         66]
+CellTagsIndexPosition[      2045,         63]
+WindowFrame->Normal*)
+
+(* Beginning of Notebook Content *)
+Notebook[{
+
+Cell[CellGroupData[{
+Cell["259 - Reachable Numbers", "BOOK TITLE",
+ CellChangeTimes->{{3.6504467161544385`*^9, 3.650446720938712*^9}, {
+  3.7069541186990795`*^9, 3.7069541239170895`*^9}}],
+
+Cell["\<\
+A positive integer will be called reachable if it can result from an \
+arithmetic expression obeying the following rules:
+
+Uses the digits 1 through 9, in that order and exactly once each.
+Any successive digits can be concatenated (for example, using the digits 2, 3 \
+and 4 we obtain the number 234).
+Only the four usual binary arithmetic operations (addition, subtraction, \
+multiplication and division) are allowed.
+Each operation can be used any number of times, or not at all.
+Unary minus is not allowed.
+Any number of (possibly nested) parentheses may be used to define the order \
+of operations.
+For example, 42 is reachable, since (1/23) * ((4*5)-6) * (78-9) = 42.
+
+What is the sum of all positive reachable integers?\
+\>", "Text",
+ CellChangeTimes->{{3.650446727404082*^9, 3.6504467389867444`*^9}, {
+  3.706954127150088*^9, 3.706954131258084*^9}}],
+
+Cell["", "Titlos",
+ CellChangeTimes->{{3.7069542868579507`*^9, 3.7069542884649525`*^9}}]
+}, Open  ]]
+},
+WindowSize->{826, 625},
+WindowMargins->{{Automatic, 46}, {Automatic, 14}},
+ShowSelection->True,
+FrontEndVersion->"11.0 for Microsoft Windows (64-bit) (September 21, 2016)",
+StyleDefinitions->"MyBook.nb"
+]
+(* End of Notebook Content *)
+
+(* Internal cache information *)
+(*CellTagsOutline
+CellTagsIndex->{}
+*)
+(*CellTagsIndex
+CellTagsIndex->{}
+*)
+(*NotebookFileOutline
+Notebook[{
+Cell[CellGroupData[{
+Cell[579, 22, 166, 2, 81, "BOOK TITLE"],
+Cell[748, 26, 866, 18, 285, "Text"],
+Cell[1617, 46, 88, 1, 36, "Titlos"]
+}, Open  ]]
+}
+]
+*)
+

@@ -1,0 +1,266 @@
+(* Content-type: application/vnd.wolfram.mathematica *)
+
+(*** Wolfram Notebook File ***)
+(* http://www.wolfram.com/nb *)
+
+(* CreatedBy='Mathematica 9.0' *)
+
+(*CacheID: 234*)
+(* Internal cache information:
+NotebookFileLineBreakTest
+NotebookFileLineBreakTest
+NotebookDataPosition[       157,          7]
+NotebookDataLength[      8581,        257]
+NotebookOptionsPosition[      7881,        228]
+NotebookOutlinePosition[      8242,        244]
+CellTagsIndexPosition[      8199,        241]
+WindowFrame->Normal*)
+
+(* Beginning of Notebook Content *)
+Notebook[{
+
+Cell[CellGroupData[{
+Cell["43 - Sub-string divisibility", "BOOK TITLE",
+ CellChangeTimes->{{3.6490615529030204`*^9, 3.649061562383563*^9}, {
+  3.6490978932841573`*^9, 3.649097896019314*^9}, {3.6494308956447067`*^9, 
+  3.6494308973408036`*^9}}],
+
+Cell["\<\
+The number, 1406357289, is a 0 to 9 pandigital number because it is made up \
+of each of the digits 0 to 9 in some order, but it also has a rather \
+interesting sub-string divisibility property.
+
+Let d1 be the 1st digit, d2 be the 2nd digit, and so on. In this way, we note \
+the following:
+
+    d2d3d4=406 is divisible by 2
+    d3d4d5=063 is divisible by 3
+    d4d5d6=635 is divisible by 5
+    d5d6d7=357 is divisible by 7
+    d6d7d8=572 is divisible by 11
+    d7d8d9=728 is divisible by 13
+    d8d9d10=289 is divisible by 17
+
+Find the sum of all 0 to 9 pandigital numbers with this property.
+\
+\>", "Text",
+ CellChangeTimes->{{3.6490615708950496`*^9, 3.649061575358305*^9}}],
+
+Cell[CellGroupData[{
+
+Cell[BoxData[{
+ RowBox[{"ClearAll", "[", "\"\<Global`*\>\"", "]"}], "\[IndentingNewLine]", 
+ RowBox[{
+  RowBox[{"numbers", "=", 
+   RowBox[{"Map", "[", 
+    RowBox[{"FromDigits", ",", 
+     RowBox[{"Permutations", "[", 
+      RowBox[{"IntegerDigits", "[", "1234567890", "]"}], "]"}]}], "]"}]}], 
+  ";"}], "\[IndentingNewLine]", 
+ RowBox[{
+  RowBox[{"numbersUpdated", "=", 
+   RowBox[{"Select", "[", 
+    RowBox[{"numbers", ",", 
+     RowBox[{
+      RowBox[{"#", ">", "1000000000"}], "&"}]}], "]"}]}], 
+  ";"}], "\[IndentingNewLine]", 
+ RowBox[{
+  RowBox[{"IsOk", "[", "n_Integer", "]"}], ":=", 
+  RowBox[{"Module", "[", 
+   RowBox[{
+    RowBox[{"{", "d", "}"}], ",", "\[IndentingNewLine]", 
+    RowBox[{
+     RowBox[{"d", "=", 
+      RowBox[{"IntegerDigits", "[", "n", "]"}]}], ";", "\[IndentingNewLine]", 
+     RowBox[{"And", "[", "\[IndentingNewLine]", 
+      RowBox[{
+       RowBox[{
+        RowBox[{"Mod", "[", 
+         RowBox[{
+          RowBox[{"FromDigits", "[", 
+           RowBox[{"{", 
+            RowBox[{
+             RowBox[{"d", "[", 
+              RowBox[{"[", "2", "]"}], "]"}], ",", 
+             RowBox[{"d", "[", 
+              RowBox[{"[", "3", "]"}], "]"}], ",", 
+             RowBox[{"d", "[", 
+              RowBox[{"[", "4", "]"}], "]"}]}], "}"}], "]"}], ",", "2"}], 
+         "]"}], "\[Equal]", "0"}], ",", "\[IndentingNewLine]", 
+       RowBox[{
+        RowBox[{"Mod", "[", 
+         RowBox[{
+          RowBox[{"FromDigits", "[", 
+           RowBox[{"{", 
+            RowBox[{
+             RowBox[{"d", "[", 
+              RowBox[{"[", "3", "]"}], "]"}], ",", 
+             RowBox[{"d", "[", 
+              RowBox[{"[", "4", "]"}], "]"}], ",", 
+             RowBox[{"d", "[", 
+              RowBox[{"[", "5", "]"}], "]"}]}], "}"}], "]"}], ",", "3"}], 
+         "]"}], "\[Equal]", "0"}], ",", "\[IndentingNewLine]", 
+       RowBox[{
+        RowBox[{"Mod", "[", 
+         RowBox[{
+          RowBox[{"FromDigits", "[", 
+           RowBox[{"{", 
+            RowBox[{
+             RowBox[{"d", "[", 
+              RowBox[{"[", "4", "]"}], "]"}], ",", 
+             RowBox[{"d", "[", 
+              RowBox[{"[", "5", "]"}], "]"}], ",", 
+             RowBox[{"d", "[", 
+              RowBox[{"[", "6", "]"}], "]"}]}], "}"}], "]"}], ",", "5"}], 
+         "]"}], "\[Equal]", "0"}], ",", "\[IndentingNewLine]", 
+       RowBox[{
+        RowBox[{"Mod", "[", 
+         RowBox[{
+          RowBox[{"FromDigits", "[", 
+           RowBox[{"{", 
+            RowBox[{
+             RowBox[{"d", "[", 
+              RowBox[{"[", "5", "]"}], "]"}], ",", 
+             RowBox[{"d", "[", 
+              RowBox[{"[", "6", "]"}], "]"}], ",", 
+             RowBox[{"d", "[", 
+              RowBox[{"[", "7", "]"}], "]"}]}], "}"}], "]"}], ",", "7"}], 
+         "]"}], "\[Equal]", "0"}], ",", "\[IndentingNewLine]", 
+       RowBox[{
+        RowBox[{"Mod", "[", 
+         RowBox[{
+          RowBox[{"FromDigits", "[", 
+           RowBox[{"{", 
+            RowBox[{
+             RowBox[{"d", "[", 
+              RowBox[{"[", "6", "]"}], "]"}], ",", 
+             RowBox[{"d", "[", 
+              RowBox[{"[", "7", "]"}], "]"}], ",", 
+             RowBox[{"d", "[", 
+              RowBox[{"[", "8", "]"}], "]"}]}], "}"}], "]"}], ",", "11"}], 
+         "]"}], "\[Equal]", "0"}], ",", "\[IndentingNewLine]", 
+       RowBox[{
+        RowBox[{"Mod", "[", 
+         RowBox[{
+          RowBox[{"FromDigits", "[", 
+           RowBox[{"{", 
+            RowBox[{
+             RowBox[{"d", "[", 
+              RowBox[{"[", "7", "]"}], "]"}], ",", 
+             RowBox[{"d", "[", 
+              RowBox[{"[", "8", "]"}], "]"}], ",", 
+             RowBox[{"d", "[", 
+              RowBox[{"[", "9", "]"}], "]"}]}], "}"}], "]"}], ",", "13"}], 
+         "]"}], "\[Equal]", "0"}], ",", "\[IndentingNewLine]", 
+       RowBox[{
+        RowBox[{"Mod", "[", 
+         RowBox[{
+          RowBox[{"FromDigits", "[", 
+           RowBox[{"{", 
+            RowBox[{
+             RowBox[{"d", "[", 
+              RowBox[{"[", "8", "]"}], "]"}], ",", 
+             RowBox[{"d", "[", 
+              RowBox[{"[", "9", "]"}], "]"}], ",", 
+             RowBox[{"d", "[", 
+              RowBox[{"[", "10", "]"}], "]"}]}], "}"}], "]"}], ",", "17"}], 
+         "]"}], "\[Equal]", "0"}]}], "\[IndentingNewLine]", "]"}]}]}], 
+   "\[IndentingNewLine]", "]"}]}], "\[IndentingNewLine]", 
+ RowBox[{
+  RowBox[{"total", "=", "0"}], ";"}], "\[IndentingNewLine]", 
+ RowBox[{"For", "[", 
+  RowBox[{
+   RowBox[{"i", "=", "1"}], ",", 
+   RowBox[{"i", "\[LessEqual]", 
+    RowBox[{"Length", "[", "numbersUpdated", "]"}]}], ",", 
+   RowBox[{
+    RowBox[{"i", "++"}], "\[IndentingNewLine]", 
+    RowBox[{"If", "[", 
+     RowBox[{
+      RowBox[{"IsOk", "[", 
+       RowBox[{"numbersUpdated", "[", 
+        RowBox[{"[", "i", "]"}], "]"}], "]"}], ",", 
+      RowBox[{
+       RowBox[{"Print", "[", 
+        RowBox[{"numbersUpdated", "[", 
+         RowBox[{"[", "i", "]"}], "]"}], "]"}], ";", 
+       RowBox[{"total", "=", 
+        RowBox[{"total", "+", 
+         RowBox[{"numbersUpdated", "[", 
+          RowBox[{"[", "i", "]"}], "]"}]}]}]}]}], "]"}]}]}], 
+  "\[IndentingNewLine]", "]"}], "\[IndentingNewLine]", 
+ RowBox[{"StringForm", "[", 
+  RowBox[{"\"\<Total = ``\>\"", ",", "total"}], "]"}]}], "Input",
+ CellChangeTimes->{{3.6490615868559628`*^9, 3.649061645157297*^9}, {
+  3.6490617566216726`*^9, 3.6490617840452414`*^9}, {3.649061950419757*^9, 
+  3.6490619568621254`*^9}, {3.6490621802119007`*^9, 3.64906226045049*^9}, {
+  3.649062423821834*^9, 3.6490624282800894`*^9}, {3.6490972346274843`*^9, 
+  3.649097293246837*^9}, {3.6490974567771907`*^9, 3.6490974574692297`*^9}}],
+
+Cell[CellGroupData[{
+
+Cell[BoxData["1430952867"], "Print",
+ CellChangeTimes->{3.6490973124629364`*^9}],
+
+Cell[BoxData["1460357289"], "Print",
+ CellChangeTimes->{3.6490973127669535`*^9}],
+
+Cell[BoxData["1406357289"], "Print",
+ CellChangeTimes->{3.6490973133649883`*^9}],
+
+Cell[BoxData["4130952867"], "Print",
+ CellChangeTimes->{3.6490973506191187`*^9}],
+
+Cell[BoxData["4160357289"], "Print",
+ CellChangeTimes->{3.649097350934137*^9}],
+
+Cell[BoxData["4106357289"], "Print",
+ CellChangeTimes->{3.649097351554172*^9}]
+}, Open  ]],
+
+Cell[BoxData[
+ InterpretationBox["\<\"Total = \\!\\(16695334890\\)\"\>",
+  StringForm["Total = ``", 16695334890],
+  Editable->False]], "Output",
+ CellChangeTimes->{3.6490974412343016`*^9}]
+}, Open  ]]
+}, Open  ]]
+},
+WindowSize->{826, 644},
+WindowMargins->{{Automatic, 16}, {Automatic, 15}},
+ShowSelection->True,
+FrontEndVersion->"10.2 for Microsoft Windows (64-bit) (July 7, 2015)",
+StyleDefinitions->"MyBook.nb"
+]
+(* End of Notebook Content *)
+
+(* Internal cache information *)
+(*CellTagsOutline
+CellTagsIndex->{}
+*)
+(*CellTagsIndex
+CellTagsIndex->{}
+*)
+(*NotebookFileOutline
+Notebook[{
+Cell[CellGroupData[{
+Cell[579, 22, 222, 3, 80, "BOOK TITLE"],
+Cell[804, 27, 686, 19, 285, "Text"],
+Cell[CellGroupData[{
+Cell[1515, 50, 5619, 147, 432, "Input"],
+Cell[CellGroupData[{
+Cell[7159, 201, 80, 1, 23, "Print"],
+Cell[7242, 204, 80, 1, 23, "Print"],
+Cell[7325, 207, 80, 1, 23, "Print"],
+Cell[7408, 210, 80, 1, 23, "Print"],
+Cell[7491, 213, 78, 1, 23, "Print"],
+Cell[7572, 216, 78, 1, 23, "Print"]
+}, Open  ]],
+Cell[7665, 220, 188, 4, 31, "Output"]
+}, Open  ]]
+}, Open  ]]
+}
+]
+*)
+
+(* End of internal cache information *)

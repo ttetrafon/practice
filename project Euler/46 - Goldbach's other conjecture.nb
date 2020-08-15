@@ -1,0 +1,201 @@
+(* Content-type: application/vnd.wolfram.mathematica *)
+
+(*** Wolfram Notebook File ***)
+(* http://www.wolfram.com/nb *)
+
+(* CreatedBy='Mathematica 10.2' *)
+
+(*CacheID: 234*)
+(* Internal cache information:
+NotebookFileLineBreakTest
+NotebookFileLineBreakTest
+NotebookDataPosition[       158,          7]
+NotebookDataLength[      6354,        192]
+NotebookOptionsPosition[      5798,        169]
+NotebookOutlinePosition[      6307,        189]
+CellTagsIndexPosition[      6264,        186]
+WindowFrame->Normal*)
+
+(* Beginning of Notebook Content *)
+Notebook[{
+Cell["\<\
+
+
+It was proposed by Christian Goldbach that every odd composite number can be \
+written as the sum of a prime and twice a square.
+
+9 = 7 + 2\[Times]1^2
+15 = 7 + 2\[Times]2^2
+21 = 3 + 2\[Times]3^2
+25 = 7 + 2\[Times]3^2
+27 = 19 + 2\[Times]2^2
+33 = 31 + 2\[Times]1^2
+
+It turns out that the conjecture was false.
+
+What is the smallest odd composite that cannot be written as the sum of a \
+prime and twice a square?
+\
+\>", "Text",
+ CellChangeTimes->{{3.6517622515645924`*^9, 3.651762257370217*^9}}],
+
+Cell[CellGroupData[{
+
+Cell[BoxData[{
+ RowBox[{"ClearAll", "[", "\"\<Global`*\>\"", "]"}], "\[IndentingNewLine]", 
+ RowBox[{
+  RowBox[{
+   RowBox[{"isOddComposite", "[", "n_", "]"}], ":=", 
+   RowBox[{
+    RowBox[{"OddQ", "[", "n", "]"}], "&&", 
+    RowBox[{"Not", "[", 
+     RowBox[{"PrimeQ", "[", "n", "]"}], "]"}]}]}], 
+  ";"}], "\[IndentingNewLine]", 
+ RowBox[{
+  RowBox[{
+   RowBox[{
+    RowBox[{"goldbach", "[", 
+     RowBox[{"a_", ",", "b_"}], "]"}], ":=", 
+    RowBox[{"a", "+", 
+     RowBox[{"2", 
+      SuperscriptBox["b", "2"]}]}]}], ";"}], "\[IndentingNewLine]", 
+  "\[IndentingNewLine]", 
+  RowBox[{"(*", 
+   RowBox[{
+    RowBox[{"limit", "=", "1000"}], ";", "\[IndentingNewLine]", 
+    RowBox[{"allNumbers", "=", 
+     RowBox[{"DeleteCases", "[", 
+      RowBox[{
+       RowBox[{"Table", "[", 
+        RowBox[{
+         RowBox[{"If", "[", 
+          RowBox[{
+           RowBox[{
+            RowBox[{"isOddComposite", "[", "i", "]"}], "\[Equal]", "True"}], 
+           ",", "i", ",", "0"}], "]"}], ",", 
+         RowBox[{"{", 
+          RowBox[{"i", ",", "1", ",", "limit"}], "}"}]}], "]"}], ",", "0"}], 
+      "]"}]}], ";"}], "*)"}], "\[IndentingNewLine]"}], "\[IndentingNewLine]", 
+ RowBox[{
+  RowBox[{
+   RowBox[{
+    RowBox[{"checkGoldbach", "[", "n_", "]"}], ":=", 
+    RowBox[{"Module", "[", 
+     RowBox[{
+      RowBox[{"{", 
+       RowBox[{"i", ",", "a", ",", "b", ",", 
+        RowBox[{"test", "=", "False"}], ",", "b2"}], "}"}], ",", 
+      "\[IndentingNewLine]", 
+      RowBox[{
+       RowBox[{"For", "[", 
+        RowBox[{
+         RowBox[{"i", "=", "1"}], ",", 
+         RowBox[{
+          RowBox[{"Prime", "[", "i", "]"}], "\[LessEqual]", "n"}], ",", 
+         RowBox[{"i", "++"}], ",", "\[IndentingNewLine]", 
+         RowBox[{
+          RowBox[{"a", "=", 
+           RowBox[{"Prime", "[", "i", "]"}]}], ";", "\[IndentingNewLine]", 
+          RowBox[{"b2", "=", 
+           FractionBox[
+            RowBox[{"n", "-", "a"}], "2"]}], ";", "\[IndentingNewLine]", 
+          RowBox[{"If", "[", 
+           RowBox[{
+            RowBox[{
+             SqrtBox["b2"], "\[Element]", "Integers"}], ",", 
+            RowBox[{
+             RowBox[{"test", "=", "True"}], ";", 
+             RowBox[{"Break", "[", "]"}]}]}], "]"}], ";"}]}], 
+        "\[IndentingNewLine]", "]"}], ";", "\[IndentingNewLine]", "test"}]}], 
+     "\[IndentingNewLine]", "]"}]}], ";"}], 
+  "\[IndentingNewLine]"}], "\[IndentingNewLine]", 
+ RowBox[{
+  RowBox[{"StringForm", "[", 
+   RowBox[{"\"\<progress \[Rule] ``\>\"", ",", 
+    RowBox[{"Dynamic", "[", "num", "]"}]}], "]"}], 
+  "\[IndentingNewLine]"}], "\[IndentingNewLine]", 
+ RowBox[{
+  RowBox[{"For", "[", 
+   RowBox[{
+    RowBox[{"num", "=", "2"}], ",", "True", ",", 
+    RowBox[{"num", "++"}], ",", "\[IndentingNewLine]", 
+    RowBox[{
+     RowBox[{"If", "[", 
+      RowBox[{
+       RowBox[{
+        RowBox[{"isOddComposite", "[", "num", "]"}], "\[Equal]", "False"}], 
+       ",", 
+       RowBox[{"Continue", "[", "]"}]}], "]"}], ";", "\[IndentingNewLine]", 
+     RowBox[{"If", "[", 
+      RowBox[{
+       RowBox[{
+        RowBox[{"checkGoldbach", "[", "num", "]"}], "\[Equal]", "False"}], 
+       ",", 
+       RowBox[{
+        RowBox[{"Print", "[", 
+         RowBox[{"\"\<the 1st number to not obey is \>\"", ",", "num"}], 
+         "]"}], ";", 
+        RowBox[{"Break", "[", "]"}]}]}], "]"}], ";"}]}], 
+   "\[IndentingNewLine]", "]"}], ";"}]}], "Input",
+ CellChangeTimes->{{3.651762260873705*^9, 3.6517622695276985`*^9}, {
+  3.65176232005523*^9, 3.65176241752831*^9}, {3.651762449305338*^9, 
+  3.651762811575061*^9}, {3.651762863910901*^9, 3.6517629084396324`*^9}, {
+  3.651762962054899*^9, 3.6517630483441596`*^9}, {3.651763087703574*^9, 
+  3.651763100262289*^9}, {3.651763140391207*^9, 3.651763210231192*^9}, {
+  3.651763363323992*^9, 3.651763460440553*^9}, {3.651763508122998*^9, 
+  3.6517635258398924`*^9}, {3.65176360262224*^9, 3.6517636146302414`*^9}, {
+  3.651763675096465*^9, 3.6517637501707773`*^9}, {3.651763796711503*^9, 
+  3.6517640335904217`*^9}, {3.6517652123580294`*^9, 3.6517652841165457`*^9}}],
+
+Cell[BoxData[
+ InterpretationBox["\<\"progress \[Rule] \\!\\(\\*DynamicBox[ToBoxes[num, \
+StandardForm]]\\)\"\>",
+  StringForm["progress \[Rule] ``", 
+   Dynamic[$CellContext`num]],
+  Editable->False]], "Output",
+ CellChangeTimes->{
+  3.651764037543227*^9, {3.651765219909749*^9, 3.6517652432820024`*^9}, 
+   3.6517652847990165`*^9, 3.651892034831605*^9}],
+
+Cell[BoxData[
+ InterpretationBox[
+  RowBox[{"\<\"the 1st number to not obey is \"\>", "\[InvisibleSpace]", 
+   "5777"}],
+  SequenceForm["the 1st number to not obey is ", 5777],
+  Editable->False]], "Print",
+ CellChangeTimes->{3.651765243286004*^9, 3.651765288981228*^9, 
+  3.651892038394151*^9}]
+}, Open  ]]
+},
+WindowSize->{775, 561},
+WindowMargins->{{Automatic, 178}, {Automatic, 28}},
+PrintingCopies->1,
+PrintingPageRange->{32000, 32000},
+PrintingOptions->{"Magnification"->1.,
+"PaperOrientation"->"Portrait",
+"PaperSize"->{595.1999999999999, 841.68}},
+FrontEndVersion->"10.2 for Microsoft Windows (64-bit) (July 7, 2015)",
+StyleDefinitions->"MyBook.nb"
+]
+(* End of Notebook Content *)
+
+(* Internal cache information *)
+(*CellTagsOutline
+CellTagsIndex->{}
+*)
+(*CellTagsIndex
+CellTagsIndex->{}
+*)
+(*NotebookFileOutline
+Notebook[{
+Cell[558, 20, 505, 19, 304, "Text"],
+Cell[CellGroupData[{
+Cell[1088, 43, 4038, 104, 526, "Input"],
+Cell[5129, 149, 355, 8, 31, "Output"],
+Cell[5487, 159, 295, 7, 23, "Print"]
+}, Open  ]]
+}
+]
+*)
+
+(* End of internal cache information *)

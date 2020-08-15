@@ -1,0 +1,205 @@
+(* Content-type: application/vnd.wolfram.mathematica *)
+
+(*** Wolfram Notebook File ***)
+(* http://www.wolfram.com/nb *)
+
+(* CreatedBy='Mathematica 9.0' *)
+
+(*CacheID: 234*)
+(* Internal cache information:
+NotebookFileLineBreakTest
+NotebookFileLineBreakTest
+NotebookDataPosition[       157,          7]
+NotebookDataLength[      6661,        196]
+NotebookOptionsPosition[      6218,        175]
+NotebookOutlinePosition[      6578,        191]
+CellTagsIndexPosition[      6535,        188]
+WindowFrame->Normal*)
+
+(* Beginning of Notebook Content *)
+Notebook[{
+
+Cell[CellGroupData[{
+Cell["22 - Names scores", "BOOK TITLE",
+ CellChangeTimes->{{3.648890197052595*^9, 3.64889020045979*^9}}],
+
+Cell["\<\
+Using names.txt (right click and \[OpenCurlyQuote]Save Link/Target As...\
+\[CloseCurlyQuote]), a 46K text file containing over five-thousand first \
+names, begin by sorting it into alphabetical order. Then working out the \
+alphabetical value for each name, multiply this value by its alphabetical \
+position in the list to obtain a name score.
+
+For example, when the list is sorted into alphabetical order, COLIN, which is \
+worth 3 + 15 + 12 + 9 + 14 = 53, is the 938th name in the list. So, COLIN \
+would obtain a score of 938 \[Times] 53 = 49714.
+
+What is the total of all the name scores in the file?
+\
+\>", "Text",
+ CellChangeTimes->{{3.6488902022238913`*^9, 3.648890209341298*^9}}],
+
+Cell[CellGroupData[{
+
+Cell[BoxData[{
+ RowBox[{"ClearAll", "[", "\"\<Global`*\>\"", "]"}], "\[IndentingNewLine]", 
+ RowBox[{
+  RowBox[{"data1", "=", 
+   RowBox[{"ReadList", "[", 
+    RowBox[{
+    "\"\<C:\\\\Users\\\\Nakis\\\\Documents\\\\Project Euler\\\\22.txt\>\"", 
+     ",", "String"}], "]"}]}], ";"}], "\[IndentingNewLine]", 
+ RowBox[{
+  RowBox[{"data2", "=", 
+   RowBox[{"Flatten", "[", 
+    RowBox[{"StringSplit", "[", 
+     RowBox[{"data1", ",", "\"\<,\>\""}], "]"}], "]"}]}], 
+  ";"}], "\[IndentingNewLine]", 
+ RowBox[{
+  RowBox[{"orderedData", "=", 
+   RowBox[{"Sort", "[", "data2", "]"}]}], ";"}], "\[IndentingNewLine]", 
+ RowBox[{
+  RowBox[{"letterValues", "=", 
+   RowBox[{"{", 
+    RowBox[{
+     RowBox[{"{", 
+      RowBox[{"\"\<A\>\"", ",", "1"}], "}"}], ",", 
+     RowBox[{"{", 
+      RowBox[{"\"\<B\>\"", ",", "2"}], "}"}], ",", 
+     RowBox[{"{", 
+      RowBox[{"\"\<C\>\"", ",", "3"}], "}"}], ",", 
+     RowBox[{"{", 
+      RowBox[{"\"\<D\>\"", ",", "4"}], "}"}], ",", 
+     RowBox[{"{", 
+      RowBox[{"\"\<E\>\"", ",", "5"}], "}"}], ",", 
+     RowBox[{"{", 
+      RowBox[{"\"\<F\>\"", ",", "6"}], "}"}], ",", 
+     RowBox[{"{", 
+      RowBox[{"\"\<G\>\"", ",", "7"}], "}"}], ",", 
+     RowBox[{"{", 
+      RowBox[{"\"\<H\>\"", ",", "8"}], "}"}], ",", 
+     RowBox[{"{", 
+      RowBox[{"\"\<I\>\"", ",", "9"}], "}"}], ",", 
+     RowBox[{"{", 
+      RowBox[{"\"\<J\>\"", ",", "10"}], "}"}], ",", 
+     RowBox[{"{", 
+      RowBox[{"\"\<K\>\"", ",", "11"}], "}"}], ",", 
+     RowBox[{"{", 
+      RowBox[{"\"\<L\>\"", ",", "12"}], "}"}], ",", 
+     RowBox[{"{", 
+      RowBox[{"\"\<M\>\"", ",", "13"}], "}"}], ",", 
+     RowBox[{"{", 
+      RowBox[{"\"\<N\>\"", ",", "14"}], "}"}], ",", 
+     RowBox[{"{", 
+      RowBox[{"\"\<O\>\"", ",", "15"}], "}"}], ",", 
+     RowBox[{"{", 
+      RowBox[{"\"\<P\>\"", ",", "16"}], "}"}], ",", 
+     RowBox[{"{", 
+      RowBox[{"\"\<Q\>\"", ",", "17"}], "}"}], ",", 
+     RowBox[{"{", 
+      RowBox[{"\"\<R\>\"", ",", "18"}], "}"}], ",", 
+     RowBox[{"{", 
+      RowBox[{"\"\<S\>\"", ",", "19"}], "}"}], ",", 
+     RowBox[{"{", 
+      RowBox[{"\"\<T\>\"", ",", "20"}], "}"}], ",", 
+     RowBox[{"{", 
+      RowBox[{"\"\<U\>\"", ",", "21"}], "}"}], ",", 
+     RowBox[{"{", 
+      RowBox[{"\"\<V\>\"", ",", "22"}], "}"}], ",", 
+     RowBox[{"{", 
+      RowBox[{"\"\<W\>\"", ",", "23"}], "}"}], ",", 
+     RowBox[{"{", 
+      RowBox[{"\"\<X\>\"", ",", "24"}], "}"}], ",", 
+     RowBox[{"{", 
+      RowBox[{"\"\<Y\>\"", ",", "25"}], "}"}], ",", 
+     RowBox[{"{", 
+      RowBox[{"\"\<Z\>\"", ",", "26"}], "}"}]}], "}"}]}], 
+  ";"}], "\[IndentingNewLine]", 
+ RowBox[{
+  RowBox[{"NameValue", "[", "name_", "]"}], ":=", 
+  RowBox[{"Module", "[", 
+   RowBox[{
+    RowBox[{"{", 
+     RowBox[{"letters", ",", "chars", ",", "sum"}], "}"}], ",", 
+    "\[IndentingNewLine]", 
+    RowBox[{
+     RowBox[{"chars", "=", 
+      RowBox[{"Characters", "[", "name", "]"}]}], ";", "\[IndentingNewLine]", 
+     RowBox[{"letters", "=", 
+      RowBox[{"Delete", "[", 
+       RowBox[{"chars", ",", 
+        RowBox[{"{", 
+         RowBox[{
+          RowBox[{"{", "1", "}"}], ",", 
+          RowBox[{"{", 
+           RowBox[{"-", "1"}], "}"}]}], "}"}]}], "]"}]}], ";", 
+     "\[IndentingNewLine]", 
+     RowBox[{"Total", "[", 
+      RowBox[{"LetterNumber", "[", "letters", "]"}], "]"}]}]}], 
+   "\[IndentingNewLine]", "]"}]}], "\[IndentingNewLine]", 
+ RowBox[{
+  RowBox[{"total", "=", "0"}], ";"}], "\[IndentingNewLine]", 
+ RowBox[{"For", "[", 
+  RowBox[{
+   RowBox[{"j", "=", "1"}], ",", 
+   RowBox[{"j", "\[LessEqual]", 
+    RowBox[{"Length", "[", "orderedData", "]"}]}], ",", 
+   RowBox[{"j", "++"}], ",", "\[IndentingNewLine]", 
+   RowBox[{"total", "=", 
+    RowBox[{"total", "+", 
+     RowBox[{
+      RowBox[{"Position", "[", 
+       RowBox[{"orderedData", ",", 
+        RowBox[{"orderedData", "[", 
+         RowBox[{"[", "j", "]"}], "]"}]}], "]"}], "*", 
+      RowBox[{"NameValue", "[", 
+       RowBox[{"orderedData", "[", 
+        RowBox[{"[", "j", "]"}], "]"}], "]"}]}]}]}]}], "\[IndentingNewLine]", 
+  "]"}], "\[IndentingNewLine]", 
+ RowBox[{"total", "[", 
+  RowBox[{"[", 
+   RowBox[{"1", ",", "1"}], "]"}], "]"}]}], "Input",
+ CellChangeTimes->{{3.648890215084627*^9, 3.648890446902886*^9}, {
+  3.648890480109785*^9, 3.6488906831693993`*^9}, {3.648890768739294*^9, 
+  3.6488908560322866`*^9}, {3.648891579873688*^9, 3.64889170560588*^9}, {
+  3.648891750123426*^9, 3.6488917513964987`*^9}, {3.6492692826120386`*^9, 
+  3.6492693269535747`*^9}, {3.649269536997588*^9, 3.6492695411488256`*^9}, {
+  3.649269622180461*^9, 3.6492696750804863`*^9}, {3.64926984892443*^9, 
+  3.649269868445546*^9}, {3.6492699444418926`*^9, 3.6492699672982006`*^9}, {
+  3.649270150778695*^9, 3.649270156304011*^9}}],
+
+Cell[BoxData["871198282"], "Output",
+ CellChangeTimes->{3.649270163091399*^9}]
+}, Open  ]]
+}, Open  ]]
+},
+WindowSize->{826, 644},
+WindowMargins->{{Automatic, 26}, {Automatic, 8}},
+ShowSelection->True,
+FrontEndVersion->"10.2 for Microsoft Windows (64-bit) (July 7, 2015)",
+StyleDefinitions->"MyBook.nb"
+]
+(* End of Notebook Content *)
+
+(* Internal cache information *)
+(*CellTagsOutline
+CellTagsIndex->{}
+*)
+(*CellTagsIndex
+CellTagsIndex->{}
+*)
+(*NotebookFileOutline
+Notebook[{
+Cell[CellGroupData[{
+Cell[579, 22, 104, 1, 80, "BOOK TITLE"],
+Cell[686, 25, 698, 14, 171, "Text"],
+Cell[CellGroupData[{
+Cell[1409, 43, 4700, 125, 372, "Input"],
+Cell[6112, 170, 78, 1, 31, "Output"]
+}, Open  ]]
+}, Open  ]]
+}
+]
+*)
+
+(* End of internal cache information *)

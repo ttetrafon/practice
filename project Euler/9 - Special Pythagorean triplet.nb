@@ -1,0 +1,136 @@
+(* Content-type: application/vnd.wolfram.mathematica *)
+
+(*** Wolfram Notebook File ***)
+(* http://www.wolfram.com/nb *)
+
+(* CreatedBy='Mathematica 9.0' *)
+
+(*CacheID: 234*)
+(* Internal cache information:
+NotebookFileLineBreakTest
+NotebookFileLineBreakTest
+NotebookDataPosition[       157,          7]
+NotebookDataLength[      4034,        127]
+NotebookOptionsPosition[      3594,        106]
+NotebookOutlinePosition[      3954,        122]
+CellTagsIndexPosition[      3911,        119]
+WindowFrame->Normal*)
+
+(* Beginning of Notebook Content *)
+Notebook[{
+
+Cell[CellGroupData[{
+Cell["9 - Special Pythagorean triplet", "BOOK TITLE",
+ CellChangeTimes->{{3.648399731888651*^9, 3.6483997414902*^9}}],
+
+Cell[TextData[{
+ "A Pythagorean triplet is a set of three natural numbers, a < b < c, for \
+which, ",
+ Cell[BoxData[
+  FormBox[
+   RowBox[{
+    RowBox[{
+     SuperscriptBox["a", "2"], "+", 
+     SuperscriptBox["b", "2"]}], "=", 
+    SuperscriptBox["c", "2"]}], TraditionalForm]]],
+ ".\nThere exists exactly one Pythagorean triplet for which ",
+ Cell[BoxData[
+  FormBox[
+   RowBox[{
+    RowBox[{"a", "+", "b", "+", "c"}], "=", "1000"}], TraditionalForm]]],
+ ".\nFind the product ",
+ Cell[BoxData[
+  FormBox[
+   RowBox[{"a", " ", "b", " ", "c"}], TraditionalForm]]],
+ "."
+}], "Text",
+ CellChangeTimes->{{3.648399748881623*^9, 3.6483997936671844`*^9}, {
+   3.6483998607540216`*^9, 3.648399862686132*^9}, 3.6483998987441945`*^9}],
+
+Cell[CellGroupData[{
+
+Cell[BoxData[{
+ RowBox[{"ClearAll", "[", "\"\<Global`*\>\"", "]"}], "\[IndentingNewLine]", 
+ RowBox[{"For", "[", 
+  RowBox[{
+   RowBox[{"i", "=", "1"}], ",", 
+   RowBox[{"i", "<", "1001"}], ",", 
+   RowBox[{"i", "++"}], ",", "\[IndentingNewLine]", 
+   RowBox[{"For", "[", 
+    RowBox[{
+     RowBox[{"j", "=", "1"}], ",", 
+     RowBox[{"j", "<", "i"}], ",", 
+     RowBox[{"j", "++"}], ",", "\[IndentingNewLine]", 
+     RowBox[{"For", "[", 
+      RowBox[{
+       RowBox[{"k", "=", "1"}], ",", 
+       RowBox[{"k", "<", "j"}], ",", 
+       RowBox[{"k", "++"}], ",", "\[IndentingNewLine]", 
+       RowBox[{"If", "[", 
+        RowBox[{
+         RowBox[{
+          RowBox[{"i", "+", "j", "+", "k"}], "\[Equal]", "1000"}], ",", 
+         "\[IndentingNewLine]", 
+         RowBox[{"If", "[", 
+          RowBox[{
+           RowBox[{
+            SuperscriptBox["i", "2"], "\[Equal]", 
+            RowBox[{
+             SuperscriptBox["j", "2"], "+", 
+             SuperscriptBox["k", "2"]}]}], ",", 
+           RowBox[{
+            RowBox[{"Print", "[", 
+             RowBox[{
+             "i", ",", "\"\<, \>\"", ",", "j", ",", "\"\<, \>\"", ",", "k", 
+              ",", "\"\<, product = \>\"", ",", 
+              RowBox[{"i", " ", "j", " ", "k"}]}], "]"}], ";", 
+            RowBox[{"Break", "[", "]"}]}]}], "]"}]}], "\[IndentingNewLine]", 
+        "]"}]}], "\[IndentingNewLine]", "]"}]}], "\[IndentingNewLine]", 
+    "]"}]}], "\[IndentingNewLine]", "]"}]}], "Input",
+ CellChangeTimes->{{3.648401336542797*^9, 3.648401419317913*^9}, {
+  3.6484014585879784`*^9, 3.648401581838151*^9}, {3.6484016243182106`*^9, 
+  3.648401641108234*^9}, {3.6484017302793627`*^9, 3.6484017798094316`*^9}}],
+
+Cell[BoxData[
+ InterpretationBox[
+  RowBox[{
+  "425", "\[InvisibleSpace]", "\<\", \"\>", "\[InvisibleSpace]", "375", 
+   "\[InvisibleSpace]", "\<\", \"\>", "\[InvisibleSpace]", "200", 
+   "\[InvisibleSpace]", "\<\", product = \"\>", "\[InvisibleSpace]", 
+   "31875000"}],
+  SequenceForm[425, ", ", 375, ", ", 200, ", product = ", 31875000],
+  Editable->False]], "Print",
+ CellChangeTimes->{3.6484016882283034`*^9, 3.648401815719482*^9}]
+}, Open  ]]
+}, Open  ]]
+},
+WindowSize->{826, 644},
+WindowMargins->{{Automatic, 26}, {Automatic, 8}},
+ShowSelection->True,
+FrontEndVersion->"10.2 for Microsoft Windows (64-bit) (July 7, 2015)",
+StyleDefinitions->"MyBook.nb"
+]
+(* End of Notebook Content *)
+
+(* Internal cache information *)
+(*CellTagsOutline
+CellTagsIndex->{}
+*)
+(*CellTagsIndex
+CellTagsIndex->{}
+*)
+(*NotebookFileOutline
+Notebook[{
+Cell[CellGroupData[{
+Cell[579, 22, 117, 1, 80, "BOOK TITLE"],
+Cell[699, 25, 725, 22, 57, "Text"],
+Cell[CellGroupData[{
+Cell[1449, 51, 1678, 40, 230, "Input"],
+Cell[3130, 93, 436, 9, 23, "Print"]
+}, Open  ]]
+}, Open  ]]
+}
+]
+*)
+
+(* End of internal cache information *)

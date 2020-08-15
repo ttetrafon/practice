@@ -1,0 +1,161 @@
+(* Content-type: application/vnd.wolfram.mathematica *)
+
+(*** Wolfram Notebook File ***)
+(* http://www.wolfram.com/nb *)
+
+(* CreatedBy='Mathematica 9.0' *)
+
+(*CacheID: 234*)
+(* Internal cache information:
+NotebookFileLineBreakTest
+NotebookFileLineBreakTest
+NotebookDataPosition[       157,          7]
+NotebookDataLength[      4942,        152]
+NotebookOptionsPosition[      4356,        126]
+NotebookOutlinePosition[      4717,        142]
+CellTagsIndexPosition[      4674,        139]
+WindowFrame->Normal*)
+
+(* Beginning of Notebook Content *)
+Notebook[{
+
+Cell[CellGroupData[{
+Cell["41 - Pandigital prime", "BOOK TITLE",
+ CellChangeTimes->{{3.6495310822103443`*^9, 3.6495310865225906`*^9}, {
+  3.6495318231247797`*^9, 3.6495318246547823`*^9}}],
+
+Cell["\<\
+We shall say that an n-digit number is pandigital if it makes use of all the \
+digits 1 to n exactly once. For example, 2143 is a 4-digit pandigital and is \
+also prime.
+
+What is the largest n-digit pandigital prime that exists?
+\
+\>", "Text",
+ CellChangeTimes->{{3.6495310918978977`*^9, 3.649531093589995*^9}}],
+
+Cell[CellGroupData[{
+
+Cell[BoxData[{
+ RowBox[{"ClearAll", "[", "\"\<Global`*\>\"", "]"}], "\[IndentingNewLine]", 
+ RowBox[{
+  RowBox[{"target", "=", "4"}], ";"}], "\[IndentingNewLine]", 
+ RowBox[{"For", "[", 
+  RowBox[{
+   RowBox[{"j", "=", "9"}], ",", 
+   RowBox[{"Not", "[", 
+    RowBox[{"PrimeQ", "[", "target", "]"}], "]"}], ",", 
+   RowBox[{"j", "--"}], ",", "\[IndentingNewLine]", 
+   RowBox[{
+    RowBox[{"Print", "[", 
+     RowBox[{"j", ",", "\"\<-number pandigitals\>\""}], "]"}], ";", 
+    "\[IndentingNewLine]", 
+    RowBox[{"numbers", "=", 
+     RowBox[{"Sort", "[", 
+      RowBox[{
+       RowBox[{"Map", "[", 
+        RowBox[{"FromDigits", ",", 
+         RowBox[{"Permutations", "[", 
+          RowBox[{"Table", "[", 
+           RowBox[{"i", ",", 
+            RowBox[{"{", 
+             RowBox[{"i", ",", "1", ",", "j"}], "}"}]}], "]"}], "]"}]}], 
+        "]"}], ",", "Greater"}], "]"}]}], ";", "\[IndentingNewLine]", 
+    RowBox[{"For", "[", 
+     RowBox[{
+      RowBox[{"i", "=", "1"}], ",", 
+      RowBox[{"i", "\[LessEqual]", 
+       RowBox[{"Length", "[", "numbers", "]"}]}], ",", 
+      RowBox[{"i", "++"}], ",", "\[IndentingNewLine]", 
+      RowBox[{
+       RowBox[{"target", "=", 
+        RowBox[{"numbers", "[", 
+         RowBox[{"[", "i", "]"}], "]"}]}], ";", "\[IndentingNewLine]", 
+       RowBox[{"If", "[", 
+        RowBox[{
+         RowBox[{"PrimeQ", "[", "target", "]"}], ",", 
+         RowBox[{
+          RowBox[{"Print", "[", 
+           RowBox[{"\"\<Target \[Rule] \>\"", ",", 
+            RowBox[{"numbers", "[", 
+             RowBox[{"[", "i", "]"}], "]"}]}], "]"}], ";", 
+          RowBox[{"Break", "[", "]"}]}]}], "]"}]}]}], "\[IndentingNewLine]", 
+     "]"}]}]}], "\[IndentingNewLine]", "]"}]}], "Input",
+ CellChangeTimes->{{3.649531095287092*^9, 3.6495311016054535`*^9}, {
+   3.6495311653602138`*^9, 3.649531408371554*^9}, {3.649531440641599*^9, 
+   3.6495315785617924`*^9}, {3.6495316566225624`*^9, 
+   3.6495316677962017`*^9}, {3.649531703558247*^9, 3.649531753684682*^9}, 
+   3.651754524594208*^9}],
+
+Cell[CellGroupData[{
+
+Cell[BoxData[
+ InterpretationBox[
+  RowBox[{"9", "\[InvisibleSpace]", "\<\"-number pandigitals\"\>"}],
+  SequenceForm[9, "-number pandigitals"],
+  Editable->False]], "Print",
+ CellChangeTimes->{3.6495315800417943`*^9, 3.6495316725844755`*^9, 
+  3.6495317545046825`*^9, 3.6517545257009926`*^9}],
+
+Cell[BoxData[
+ InterpretationBox[
+  RowBox[{"8", "\[InvisibleSpace]", "\<\"-number pandigitals\"\>"}],
+  SequenceForm[8, "-number pandigitals"],
+  Editable->False]], "Print",
+ CellChangeTimes->{3.6495315800417943`*^9, 3.6495316725844755`*^9, 
+  3.6495317545046825`*^9, 3.651754529266453*^9}],
+
+Cell[BoxData[
+ InterpretationBox[
+  RowBox[{"7", "\[InvisibleSpace]", "\<\"-number pandigitals\"\>"}],
+  SequenceForm[7, "-number pandigitals"],
+  Editable->False]], "Print",
+ CellChangeTimes->{3.6495315800417943`*^9, 3.6495316725844755`*^9, 
+  3.6495317545046825`*^9, 3.6517545296507297`*^9}],
+
+Cell[BoxData[
+ InterpretationBox[
+  RowBox[{"\<\"Target \[Rule] \"\>", "\[InvisibleSpace]", "7652413"}],
+  SequenceForm["Target \[Rule] ", 7652413],
+  Editable->False]], "Print",
+ CellChangeTimes->{3.6495315800417943`*^9, 3.6495316725844755`*^9, 
+  3.6495317545046825`*^9, 3.651754529676745*^9}]
+}, Open  ]]
+}, Open  ]]
+}, Open  ]]
+},
+WindowSize->{826, 644},
+WindowMargins->{{Automatic, 16}, {Automatic, 15}},
+ShowSelection->True,
+FrontEndVersion->"10.2 for Microsoft Windows (64-bit) (July 7, 2015)",
+StyleDefinitions->"MyBook.nb"
+]
+(* End of Notebook Content *)
+
+(* Internal cache information *)
+(*CellTagsOutline
+CellTagsIndex->{}
+*)
+(*CellTagsIndex
+CellTagsIndex->{}
+*)
+(*NotebookFileOutline
+Notebook[{
+Cell[CellGroupData[{
+Cell[579, 22, 166, 2, 80, "BOOK TITLE"],
+Cell[748, 26, 321, 8, 95, "Text"],
+Cell[CellGroupData[{
+Cell[1094, 38, 2016, 49, 212, "Input"],
+Cell[CellGroupData[{
+Cell[3135, 91, 293, 6, 23, "Print"],
+Cell[3431, 99, 291, 6, 23, "Print"],
+Cell[3725, 107, 293, 6, 23, "Print"],
+Cell[4021, 115, 295, 6, 23, "Print"]
+}, Open  ]]
+}, Open  ]]
+}, Open  ]]
+}
+]
+*)
+
+(* End of internal cache information *)

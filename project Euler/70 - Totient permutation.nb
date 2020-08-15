@@ -1,0 +1,176 @@
+(* Content-type: application/vnd.wolfram.mathematica *)
+
+(*** Wolfram Notebook File ***)
+(* http://www.wolfram.com/nb *)
+
+(* CreatedBy='Mathematica 10.2' *)
+
+(*CacheID: 234*)
+(* Internal cache information:
+NotebookFileLineBreakTest
+NotebookFileLineBreakTest
+NotebookDataPosition[       158,          7]
+NotebookDataLength[      6129,        167]
+NotebookOptionsPosition[      5740,        149]
+NotebookOutlinePosition[      6081,        164]
+CellTagsIndexPosition[      6038,        161]
+WindowFrame->Normal*)
+
+(* Beginning of Notebook Content *)
+Notebook[{
+Cell["\<\
+
+
+Euler\[CloseCurlyQuote]s Totient function, \[CurlyPhi](n) [sometimes called \
+the phi function], is used to determine the number of positive numbers less \
+than or equal to n which are relatively prime to n. For example, as 1, 2, 4, \
+5, 7, and 8, are all less than nine and relatively prime to nine, \
+\[CurlyPhi](9)=6.
+The number 1 is considered to be relatively prime to every positive number, \
+so \[CurlyPhi](1)=1.
+
+Interestingly, \[CurlyPhi](87109)=79180, and it can be seen that 87109 is a \
+permutation of 79180.
+
+Find the value of n, 1 < n < 10^7, for which \[CurlyPhi](n) is a permutation \
+of n and the ratio n/\[CurlyPhi](n) produces a minimum.
+\
+\>", "Text",
+ CellChangeTimes->{3.6518267513172827`*^9, 3.651826843928372*^9}],
+
+Cell[CellGroupData[{
+
+Cell[BoxData[{
+ RowBox[{
+  RowBox[{"ClearAll", "[", "\"\<Global`*\>\"", "]"}], 
+  "\[IndentingNewLine]"}], "\[IndentingNewLine]", 
+ RowBox[{
+  RowBox[{
+   RowBox[{
+    RowBox[{"isPermutation", "[", 
+     RowBox[{"x_", ",", "y_"}], "]"}], ":=", 
+    RowBox[{"Module", "[", "\[IndentingNewLine]", 
+     RowBox[{
+      RowBox[{"{", "\[IndentingNewLine]", 
+       RowBox[{
+        RowBox[{"xDigits", "=", 
+         RowBox[{"Sort", "[", 
+          RowBox[{"IntegerDigits", "[", "x", "]"}], "]"}]}], ",", 
+        "\[IndentingNewLine]", 
+        RowBox[{"yDigits", "=", 
+         RowBox[{"Sort", "[", 
+          RowBox[{"IntegerDigits", "[", "y", "]"}], "]"}]}]}], 
+       "\[IndentingNewLine]", "}"}], ",", "\[IndentingNewLine]", 
+      RowBox[{"If", "[", 
+       RowBox[{
+        RowBox[{"xDigits", "\[Equal]", "yDigits"}], ",", "True", ",", 
+        "False"}], "]"}]}], "\[IndentingNewLine]", "]"}]}], ";"}], 
+  "\[IndentingNewLine]"}], "\[IndentingNewLine]", 
+ RowBox[{
+  RowBox[{"StringForm", "[", 
+   RowBox[{
+   "\"\<progress \[Rule] `4` (`1`%)\\ncurrent min of n/\[Phi](n)=`2` for the \
+number `3`\>\"", ",", "\[IndentingNewLine]", 
+    RowBox[{"(*", "1", "*)"}], 
+    RowBox[{"Dynamic", "[", 
+     RowBox[{"100.", 
+      RowBox[{"i", "/", "limit"}]}], "]"}], ",", "\[IndentingNewLine]", 
+    RowBox[{"(*", "2", "*)"}], 
+    RowBox[{"Dynamic", "[", "min", "]"}], ",", "\[IndentingNewLine]", 
+    RowBox[{"(*", "3", "*)"}], 
+    RowBox[{"Dynamic", "[", "num", "]"}], ",", "\[IndentingNewLine]", 
+    RowBox[{"(*", "4", "*)"}], 
+    RowBox[{"Dynamic", "[", "i", "]"}]}], "\[IndentingNewLine]", "]"}], 
+  "\[IndentingNewLine]"}], "\[IndentingNewLine]", 
+ RowBox[{
+  RowBox[{"min", "=", "1000"}], ";"}], "\[IndentingNewLine]", 
+ RowBox[{
+  RowBox[{"limit", "=", 
+   SuperscriptBox["10", "7"]}], ";"}], "\[IndentingNewLine]", 
+ RowBox[{
+  RowBox[{
+   RowBox[{"num", "=", "1"}], ";"}], 
+  "\[IndentingNewLine]"}], "\[IndentingNewLine]", 
+ RowBox[{
+  RowBox[{"For", "[", 
+   RowBox[{
+    RowBox[{"i", "=", "1"}], ",", 
+    RowBox[{"i", "<", "limit"}], ",", 
+    RowBox[{"i", "++"}], ",", "\[IndentingNewLine]", 
+    RowBox[{
+     RowBox[{"tot", "=", 
+      RowBox[{"EulerPhi", "[", "i", "]"}]}], ";", "\[IndentingNewLine]", 
+     RowBox[{"If", "[", "\[IndentingNewLine]", 
+      RowBox[{
+       RowBox[{
+        RowBox[{
+         RowBox[{"i", "/", "tot"}], "<", "min"}], " ", "&&", " ", 
+        RowBox[{"isPermutation", "[", 
+         RowBox[{"i", ",", "tot"}], "]"}]}], "\[IndentingNewLine]", ",", 
+       "\[IndentingNewLine]", 
+       RowBox[{
+        RowBox[{"min", "=", 
+         RowBox[{"i", "/", "tot"}]}], ";", "\[IndentingNewLine]", 
+        RowBox[{"num", "=", "i"}], ";"}]}], "\[IndentingNewLine]", "]"}], 
+     ";"}]}], "\[IndentingNewLine]", "]"}], ";"}]}], "Input",
+ CellChangeTimes->{{3.65182691945158*^9, 3.6518270533627205`*^9}, {
+   3.651827178514416*^9, 3.651827202962123*^9}, {3.651827243970934*^9, 
+   3.6518274914111137`*^9}, {3.6518275310433664`*^9, 
+   3.6518275566257114`*^9}, {3.6518280338324547`*^9, 3.651828083859481*^9}, {
+   3.651828135115693*^9, 3.65182815611246*^9}, {3.6518283696494884`*^9, 
+   3.6518284599710703`*^9}, {3.6518285980504165`*^9, 3.6518286110274515`*^9}, 
+   3.6518287834094143`*^9}],
+
+Cell[BoxData[
+ InterpretationBox["\<\"progress \[Rule] \\!\\(\\*DynamicBox[ToBoxes[i, \
+StandardForm]]\\) (\\!\\(\\*DynamicBox[ToBoxes[Times[100.`, Times[i, \
+Power[limit, -1]]], StandardForm]]\\)%)\\ncurrent min of \
+n/\[Phi](n)=\\!\\(\\*DynamicBox[ToBoxes[min, StandardForm]]\\) for the number \
+\\!\\(\\*DynamicBox[ToBoxes[num, StandardForm]]\\)\"\>",
+  StringForm[
+  "progress \[Rule] `4` (`1`%)\ncurrent min of n/\[Phi](n)=`2` for the number \
+`3`", 
+   Dynamic[100. ($CellContext`i/$CellContext`limit)], 
+   Dynamic[$CellContext`min], 
+   Dynamic[$CellContext`num], 
+   Dynamic[$CellContext`i]],
+  Editable->False]], "Output",
+ CellChangeTimes->{{3.6518281420220118`*^9, 3.6518281566124353`*^9}, {
+   3.651828397200337*^9, 3.651828416347515*^9}, {3.6518284511507*^9, 
+   3.6518284606485205`*^9}, 3.6518287517167077`*^9, 3.6518287841209335`*^9, 
+   3.6518921623970895`*^9}],
+
+Cell[BoxData["$Aborted"], "Output",
+ CellChangeTimes->{{3.6518281420220118`*^9, 3.6518281566124353`*^9}, {
+   3.651828397200337*^9, 3.651828416347515*^9}, {3.6518284511507*^9, 
+   3.6518284606485205`*^9}, 3.6518287517167077`*^9, 3.6518287841209335`*^9, 
+   3.6518921742648973`*^9}]
+}, Open  ]]
+},
+WindowSize->{775, 561},
+WindowMargins->{{Automatic, 169}, {Automatic, 43}},
+FrontEndVersion->"10.2 for Microsoft Windows (64-bit) (July 7, 2015)",
+StyleDefinitions->"MyBook.nb"
+]
+(* End of Notebook Content *)
+
+(* Internal cache information *)
+(*CellTagsOutline
+CellTagsIndex->{}
+*)
+(*CellTagsIndex
+CellTagsIndex->{}
+*)
+(*NotebookFileOutline
+Notebook[{
+Cell[558, 20, 749, 18, 228, "Text"],
+Cell[CellGroupData[{
+Cell[1332, 42, 3227, 79, 632, "Input"],
+Cell[4562, 123, 878, 17, 52, "Output"],
+Cell[5443, 142, 281, 4, 31, "Output"]
+}, Open  ]]
+}
+]
+*)
+
+(* End of internal cache information *)

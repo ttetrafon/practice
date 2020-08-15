@@ -1,0 +1,216 @@
+(* Content-type: application/vnd.wolfram.mathematica *)
+
+(*** Wolfram Notebook File ***)
+(* http://www.wolfram.com/nb *)
+
+(* CreatedBy='Mathematica 10.2' *)
+
+(*CacheID: 234*)
+(* Internal cache information:
+NotebookFileLineBreakTest
+NotebookFileLineBreakTest
+NotebookDataPosition[       158,          7]
+NotebookDataLength[      7027,        207]
+NotebookOptionsPosition[      6564,        186]
+NotebookOutlinePosition[      6905,        201]
+CellTagsIndexPosition[      6862,        198]
+WindowFrame->Normal*)
+
+(* Beginning of Notebook Content *)
+Notebook[{
+
+Cell[CellGroupData[{
+Cell["38 - Pandigital multiples", "BOOK TITLE",
+ CellChangeTimes->{{3.652895184193604*^9, 3.6528951872406406`*^9}}],
+
+Cell["\<\
+
+
+Take the number 192 and multiply it by each of 1, 2, and 3:
+
+    192 \[Times] 1 = 192
+    192 \[Times] 2 = 384
+    192 \[Times] 3 = 576
+
+By concatenating each product we get the 1 to 9 pandigital, 192384576. We \
+will call 192384576 the concatenated product of 192 and (1,2,3)
+
+The same can be achieved by starting with 9 and multiplying by 1, 2, 3, 4, \
+and 5, giving the pandigital, 918273645, which is the concatenated product of \
+9 and (1,2,3,4,5).
+
+What is the largest 1 to 9 pandigital 9-digit number that can be formed as \
+the concatenated product of an integer with (1,2, ... , n) where n > 1?
+\
+\>", "Text",
+ CellChangeTimes->{3.6528951940204644`*^9}],
+
+Cell[CellGroupData[{
+
+Cell[BoxData[{
+ RowBox[{"ClearAll", "[", "\"\<Global`*\>\"", "]"}], "\[IndentingNewLine]", 
+ RowBox[{
+  RowBox[{
+   RowBox[{"isPandigital", "[", "num_", "]"}], ":=", 
+   RowBox[{"If", "[", 
+    RowBox[{
+     RowBox[{
+      RowBox[{"Tally", "[", 
+       RowBox[{"Sort", "[", 
+        RowBox[{"IntegerDigits", "[", "num", "]"}], "]"}], "]"}], "\[Equal]", 
+      RowBox[{"{", 
+       RowBox[{
+        RowBox[{"{", 
+         RowBox[{"1", ",", "1"}], "}"}], ",", 
+        RowBox[{"{", 
+         RowBox[{"2", ",", "1"}], "}"}], ",", 
+        RowBox[{"{", 
+         RowBox[{"3", ",", "1"}], "}"}], ",", 
+        RowBox[{"{", 
+         RowBox[{"4", ",", "1"}], "}"}], ",", 
+        RowBox[{"{", 
+         RowBox[{"5", ",", "1"}], "}"}], ",", 
+        RowBox[{"{", 
+         RowBox[{"6", ",", "1"}], "}"}], ",", 
+        RowBox[{"{", 
+         RowBox[{"7", ",", "1"}], "}"}], ",", 
+        RowBox[{"{", 
+         RowBox[{"8", ",", "1"}], "}"}], ",", 
+        RowBox[{"{", 
+         RowBox[{"9", ",", "1"}], "}"}]}], "}"}]}], ",", "True", ",", 
+     "False"}], "]"}]}], ";"}], "\[IndentingNewLine]", 
+ RowBox[{
+  RowBox[{
+   RowBox[{
+    RowBox[{"checkN", "[", "num_", "]"}], ":=", 
+    RowBox[{"Module", "[", "\[IndentingNewLine]", 
+     RowBox[{
+      RowBox[{"{", "\[IndentingNewLine]", 
+       RowBox[{"i", ",", "full", ",", "final", ",", "range"}], 
+       "\[IndentingNewLine]", "}"}], ",", "\[IndentingNewLine]", 
+      RowBox[{
+       RowBox[{"For", "[", 
+        RowBox[{
+         RowBox[{"i", "=", "1"}], ",", "True", ",", 
+         RowBox[{"i", "++"}], ",", "\[IndentingNewLine]", 
+         RowBox[{
+          RowBox[{"range", "=", 
+           RowBox[{"Range", "[", "i", "]"}]}], ";", "\[IndentingNewLine]", 
+          RowBox[{"final", "=", 
+           RowBox[{"FromDigits", "[", 
+            RowBox[{"Flatten", "[", 
+             RowBox[{"Map", "[", 
+              RowBox[{
+               RowBox[{
+                RowBox[{"IntegerDigits", "[", "#", "]"}], "&"}], ",", 
+               StyleBox[
+                RowBox[{"num", "*", "range"}],
+                FontWeight->"Plain"]}], "]"}], "]"}], "]"}]}], ";", 
+          "\[IndentingNewLine]", 
+          RowBox[{"If", "[", 
+           RowBox[{
+            RowBox[{
+             RowBox[{"IntegerLength", "[", "final", "]"}], "\[GreaterEqual]", 
+             "9"}], ",", 
+            RowBox[{"Break", "[", "]"}]}], "]"}]}]}], "\[IndentingNewLine]", 
+        "]"}], ";", "\[IndentingNewLine]", 
+       RowBox[{"{", 
+        RowBox[{
+         RowBox[{"isPandigital", "[", "final", "]"}], ",", "final", ",", 
+         "i"}], "}"}]}]}], "\[IndentingNewLine]", "]"}]}], ";"}], 
+  "\[IndentingNewLine]"}], "\[IndentingNewLine]", 
+ RowBox[{"StringForm", "[", 
+  RowBox[{"\"\<progress \[Rule] ``\>\"", ",", 
+   RowBox[{"Dynamic", "[", "i", "]"}]}], "]"}], "\[IndentingNewLine]", 
+ RowBox[{
+  RowBox[{"StringForm", "[", 
+   RowBox[{"\"\<current max: ``\>\"", ",", 
+    RowBox[{"Dynamic", "[", 
+     RowBox[{"Max", "[", "list", "]"}], "]"}]}], "]"}], 
+  "\[IndentingNewLine]"}], "\[IndentingNewLine]", 
+ RowBox[{
+  RowBox[{
+   RowBox[{"list", "=", 
+    RowBox[{"{", "}"}]}], ";"}], 
+  "\[IndentingNewLine]"}], "\[IndentingNewLine]", 
+ RowBox[{"For", "[", 
+  RowBox[{
+   RowBox[{"i", "=", "1"}], ",", 
+   RowBox[{"i", "<", "10000"}], ",", 
+   RowBox[{"i", "++"}], ",", "\[IndentingNewLine]", 
+   RowBox[{
+    RowBox[{"query", "=", 
+     RowBox[{"checkN", "[", "i", "]"}]}], ";", "\[IndentingNewLine]", 
+    RowBox[{"If", "[", 
+     RowBox[{
+      RowBox[{
+       RowBox[{"query", "[", 
+        RowBox[{"[", "1", "]"}], "]"}], "\[Equal]", "True"}], ",", 
+      RowBox[{"AppendTo", "[", 
+       RowBox[{"list", ",", 
+        RowBox[{"query", "[", 
+         RowBox[{"[", "2", "]"}], "]"}]}], "]"}]}], "]"}]}]}], 
+  "\[IndentingNewLine]", "]"}]}], "Input",
+ CellChangeTimes->{{3.6528951980077977`*^9, 3.652895246595151*^9}, {
+  3.6528966448237095`*^9, 3.6528966515794945`*^9}, {3.65289676048305*^9, 
+  3.652896841136032*^9}, {3.6528969511232405`*^9, 3.652896951289342*^9}, {
+  3.6528970879454117`*^9, 3.6528971182154484`*^9}, {3.652897163691893*^9, 
+  3.652897398778481*^9}, {3.6528974376497197`*^9, 3.6528974733505383`*^9}, {
+  3.6528975445397887`*^9, 3.652897549295184*^9}, {3.6528976598560047`*^9, 
+  3.6528976974389687`*^9}, {3.6528977447011476`*^9, 3.652897752010606*^9}, {
+  3.652897824389344*^9, 3.6528979475173845`*^9}, {3.652898010325242*^9, 
+  3.652898011149849*^9}, {3.6528980657144585`*^9, 3.652898065882578*^9}}],
+
+Cell[BoxData[
+ InterpretationBox["\<\"progress \[Rule] \\!\\(\\*DynamicBox[ToBoxes[i, \
+StandardForm]]\\)\"\>",
+  StringForm["progress \[Rule] ``", 
+   Dynamic[$CellContext`i]],
+  Editable->False]], "Output",
+ CellChangeTimes->{
+  3.6528978854200892`*^9, {3.652897916271968*^9, 3.6528979479686875`*^9}, 
+   3.652898070388088*^9}],
+
+Cell[BoxData[
+ InterpretationBox["\<\"current max: \\!\\(\\*DynamicBox[ToBoxes[Max[list], \
+StandardForm]]\\)\"\>",
+  StringForm["current max: ``", 
+   Dynamic[
+    Max[$CellContext`list]]],
+  Editable->False]], "Output",
+ CellChangeTimes->{
+  3.6528978854200892`*^9, {3.652897916271968*^9, 3.6528979479686875`*^9}, 
+   3.6528980703910904`*^9}]
+}, Open  ]]
+}, Open  ]]
+},
+WindowSize->{775, 561},
+WindowMargins->{{Automatic, 181}, {43, Automatic}},
+FrontEndVersion->"10.2 for Microsoft Windows (64-bit) (July 7, 2015)",
+StyleDefinitions->"MyBook.nb"
+]
+(* End of Notebook Content *)
+
+(* Internal cache information *)
+(*CellTagsOutline
+CellTagsIndex->{}
+*)
+(*CellTagsIndex
+CellTagsIndex->{}
+*)
+(*NotebookFileOutline
+Notebook[{
+Cell[CellGroupData[{
+Cell[580, 22, 115, 1, 80, "BOOK TITLE"],
+Cell[698, 25, 674, 20, 323, "Text"],
+Cell[CellGroupData[{
+Cell[1397, 49, 4460, 112, 532, "Input"],
+Cell[5860, 163, 329, 8, 31, "Output"],
+Cell[6192, 173, 344, 9, 31, "Output"]
+}, Open  ]]
+}, Open  ]]
+}
+]
+*)
+
+(* End of internal cache information *)

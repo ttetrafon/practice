@@ -1,0 +1,112 @@
+(* Content-type: application/vnd.wolfram.mathematica *)
+
+(*** Wolfram Notebook File ***)
+(* http://www.wolfram.com/nb *)
+
+(* CreatedBy='Mathematica 9.0' *)
+
+(*CacheID: 234*)
+(* Internal cache information:
+NotebookFileLineBreakTest
+NotebookFileLineBreakTest
+NotebookDataPosition[       157,          7]
+NotebookDataLength[      2808,        103]
+NotebookOptionsPosition[      2368,         82]
+NotebookOutlinePosition[      2728,         98]
+CellTagsIndexPosition[      2685,         95]
+WindowFrame->Normal*)
+
+(* Beginning of Notebook Content *)
+Notebook[{
+
+Cell[CellGroupData[{
+Cell["26 - Reciprocal cycles", "BOOK TITLE",
+ CellChangeTimes->{{3.649442104891839*^9, 3.6494421102221437`*^9}}],
+
+Cell["\<\
+A unit fraction contains 1 in the numerator. The decimal representation of \
+the unit fractions with denominators 2 to 10 are given:
+
+    1/2\t= \t0.5
+    1/3\t= \t0.(3)
+    1/4\t= \t0.25
+    1/5\t= \t0.2
+    1/6\t= \t0.1(6)
+    1/7\t= \t0.(142857)
+    1/8\t= \t0.125
+    1/9\t= \t0.(1)
+    1/10\t= \t0.1 
+
+Where 0.1(6) means 0.166666..., and has a 1-digit recurring cycle. It can be \
+seen that 1/7 has a 6-digit recurring cycle.
+
+Find the value of d < 1000 for which 1/d contains the longest recurring cycle \
+in its decimal fraction part.
+\
+\>", "Text",
+ CellChangeTimes->{
+  3.6494421162434883`*^9, {3.649734366211669*^9, 3.649734366411669*^9}}],
+
+Cell[CellGroupData[{
+
+Cell[BoxData[{
+ RowBox[{"ClearAll", "[", "\"\<Global`*\>\"", "]"}], "\[IndentingNewLine]", 
+ RowBox[{
+  RowBox[{"CycleLength", "[", "x_", "]"}], ":=", 
+  RowBox[{"Length", "[", 
+   RowBox[{"Last", "[", 
+    RowBox[{"First", "[", 
+     RowBox[{"RealDigits", "[", "x", "]"}], "]"}], "]"}], "]"}]}], "\n", 
+ RowBox[{
+  RowBox[{"d", "=", "1"}], ";"}], "\n", 
+ RowBox[{"For", "[", 
+  RowBox[{
+   RowBox[{"i", "=", "1"}], ",", 
+   RowBox[{"i", "<", "1000"}], ",", 
+   RowBox[{"i", "++"}], ",", "\[IndentingNewLine]", 
+   RowBox[{"If", "[", 
+    RowBox[{
+     RowBox[{
+      RowBox[{"CycleLength", "[", 
+       RowBox[{"1", "/", "i"}], "]"}], ">", 
+      RowBox[{"CycleLength", "[", 
+       RowBox[{"1", "/", "d"}], "]"}]}], ",", 
+     RowBox[{"d", "=", "i"}]}], "]"}]}], "\[IndentingNewLine]", 
+  "]"}], "\n", "d"}], "Input",
+ CellChangeTimes->{{3.649758973845023*^9, 3.649759010065074*^9}}],
+
+Cell[BoxData["983"], "Output",
+ CellChangeTimes->{3.6497589848150387`*^9}]
+}, Open  ]]
+}, Open  ]]
+},
+WindowSize->{826, 644},
+WindowMargins->{{Automatic, 26}, {Automatic, 8}},
+ShowSelection->True,
+FrontEndVersion->"10.2 for Microsoft Windows (64-bit) (July 7, 2015)",
+StyleDefinitions->"MyBook.nb"
+]
+(* End of Notebook Content *)
+
+(* Internal cache information *)
+(*CellTagsOutline
+CellTagsIndex->{}
+*)
+(*CellTagsIndex
+CellTagsIndex->{}
+*)
+(*NotebookFileOutline
+Notebook[{
+Cell[CellGroupData[{
+Cell[579, 22, 112, 1, 80, "BOOK TITLE"],
+Cell[694, 25, 659, 22, 323, "Text"],
+Cell[CellGroupData[{
+Cell[1378, 51, 885, 24, 152, "Input"],
+Cell[2266, 77, 74, 1, 31, "Output"]
+}, Open  ]]
+}, Open  ]]
+}
+]
+*)
+
+(* End of internal cache information *)

@@ -1,0 +1,113 @@
+(* Content-type: application/vnd.wolfram.mathematica *)
+
+(*** Wolfram Notebook File ***)
+(* http://www.wolfram.com/nb *)
+
+(* CreatedBy='Mathematica 9.0' *)
+
+(*CacheID: 234*)
+(* Internal cache information:
+NotebookFileLineBreakTest
+NotebookFileLineBreakTest
+NotebookDataPosition[       157,          7]
+NotebookDataLength[      3340,        104]
+NotebookOptionsPosition[      2861,         82]
+NotebookOutlinePosition[      3222,         98]
+CellTagsIndexPosition[      3179,         95]
+WindowFrame->Normal*)
+
+(* Beginning of Notebook Content *)
+Notebook[{
+
+Cell[CellGroupData[{
+Cell["179 - Consecutive positive divisors", "BOOK TITLE",
+ CellChangeTimes->{{3.650445750299227*^9, 3.650445758794713*^9}}],
+
+Cell["\<\
+Find the number of integers 1 < n < 10^7, for which n and n + 1 have the same \
+number of positive divisors. For example, 14 has the positive divisors 1, 2, \
+7, 14 while 15 has 1, 3, 5, 15.\
+\>", "Text",
+ CellChangeTimes->{{3.650445766236139*^9, 3.6504457693233156`*^9}}],
+
+Cell[CellGroupData[{
+
+Cell[BoxData[{
+ RowBox[{"ClearAll", "[", "\"\<Global`*\>\"", "]"}], "\[IndentingNewLine]", 
+ RowBox[{
+  RowBox[{"count", "=", "0"}], ";"}], "\[IndentingNewLine]", 
+ RowBox[{"StringForm", "[", 
+  RowBox[{"\"\<current number: ``, current count: ``\>\"", ",", 
+   RowBox[{"Dynamic", "[", "i", "]"}], ",", 
+   RowBox[{"Dynamic", "[", "count", "]"}]}], "]"}], "\[IndentingNewLine]", 
+ RowBox[{"For", "[", 
+  RowBox[{
+   RowBox[{"i", "=", "1"}], ",", 
+   RowBox[{"i", "\[LessEqual]", 
+    SuperscriptBox["10", "7"]}], ",", 
+   RowBox[{"i", "++"}], ",", "\[IndentingNewLine]", 
+   RowBox[{"If", "[", 
+    RowBox[{
+     RowBox[{
+      RowBox[{"Length", "[", 
+       RowBox[{"Divisors", "[", "i", "]"}], "]"}], "\[Equal]", 
+      RowBox[{"Length", "[", 
+       RowBox[{"Divisors", "[", 
+        RowBox[{"i", "+", "1"}], "]"}], "]"}]}], ",", "\[IndentingNewLine]", 
+     RowBox[{"count", "=", 
+      RowBox[{"count", "+", "1"}]}]}], "\[IndentingNewLine]", "]"}]}], 
+  "\[IndentingNewLine]", "]"}], "\[IndentingNewLine]", 
+ RowBox[{"StringForm", "[", 
+  RowBox[{"\"\<Total: ``\>\"", ",", "count"}], "]"}]}], "Input",
+ CellChangeTimes->{{3.6504457730445285`*^9, 3.6504459343277545`*^9}, {
+  3.650446032236747*^9, 3.6504461466820936`*^9}}],
+
+Cell[BoxData[
+ InterpretationBox["\<\"current number: \\!\\(\\*DynamicBox[ToBoxes[i, \
+StandardForm]]\\), current count: \\!\\(\\*DynamicBox[ToBoxes[count, \
+StandardForm]]\\)\"\>",
+  StringForm["current number: ``, current count: ``", 
+   Dynamic[$CellContext`i], 
+   Dynamic[$CellContext`count]],
+  Editable->False]], "Output",
+ CellChangeTimes->{3.650446109672042*^9, 3.650446147322095*^9}],
+
+Cell[BoxData[
+ InterpretationBox["\<\"Total: \\!\\(986262\\)\"\>",
+  StringForm["Total: ``", 986262],
+  Editable->False]], "Output",
+ CellChangeTimes->{3.650446109672042*^9, 3.650446443146675*^9}]
+}, Open  ]]
+}, Open  ]]
+},
+WindowSize->{826, 644},
+WindowMargins->{{Automatic, 16}, {Automatic, 15}},
+ShowSelection->True,
+FrontEndVersion->"10.2 for Microsoft Windows (64-bit) (July 7, 2015)",
+StyleDefinitions->"MyBook.nb"
+]
+(* End of Notebook Content *)
+
+(* Internal cache information *)
+(*CellTagsOutline
+CellTagsIndex->{}
+*)
+(*CellTagsIndex
+CellTagsIndex->{}
+*)
+(*NotebookFileOutline
+Notebook[{
+Cell[CellGroupData[{
+Cell[579, 22, 123, 1, 80, "BOOK TITLE"],
+Cell[705, 25, 282, 5, 38, "Text"],
+Cell[CellGroupData[{
+Cell[1012, 34, 1226, 28, 198, "Input"],
+Cell[2241, 64, 393, 8, 31, "Output"],
+Cell[2637, 74, 196, 4, 31, "Output"]
+}, Open  ]]
+}, Open  ]]
+}
+]
+*)
+
+(* End of internal cache information *)

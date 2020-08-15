@@ -1,0 +1,90 @@
+(* Content-type: application/vnd.wolfram.mathematica *)
+
+(*** Wolfram Notebook File ***)
+(* http://www.wolfram.com/nb *)
+
+(* CreatedBy='Mathematica 9.0' *)
+
+(*CacheID: 234*)
+(* Internal cache information:
+NotebookFileLineBreakTest
+NotebookFileLineBreakTest
+NotebookDataPosition[       157,          7]
+NotebookDataLength[      2131,         81]
+NotebookOptionsPosition[      1694,         60]
+NotebookOutlinePosition[      2054,         76]
+CellTagsIndexPosition[      2011,         73]
+WindowFrame->Normal*)
+
+(* Beginning of Notebook Content *)
+Notebook[{
+
+Cell[CellGroupData[{
+Cell["16 - Power digit sum", "BOOK TITLE",
+ CellChangeTimes->{{3.648801304309943*^9, 3.6488013100732727`*^9}}],
+
+Cell[TextData[{
+ Cell[BoxData[
+  FormBox[
+   RowBox[{
+    SuperscriptBox["2", "15"], "=", "32768"}], TraditionalForm]]],
+ " and the sum of its digits is ",
+ Cell[BoxData[
+  FormBox[
+   RowBox[{
+    RowBox[{"3", "+", "2", "+", "7", "+", "6", "+", "8"}], "=", "26"}], 
+   TraditionalForm]]],
+ ".\n\nWhat is the sum of the digits of the number ",
+ Cell[BoxData[
+  FormBox[
+   SuperscriptBox["2", "1000"], TraditionalForm]]],
+ "?"
+}], "Text",
+ CellChangeTimes->{{3.648801320572873*^9, 3.6488013515226436`*^9}}],
+
+Cell[CellGroupData[{
+
+Cell[BoxData[{
+ RowBox[{"ClearAll", "[", "\"\<Global`*\>\"", "]"}], "\[IndentingNewLine]", 
+ RowBox[{
+  RowBox[{"num", "=", 
+   SuperscriptBox["2", "1000"]}], ";"}], "\[IndentingNewLine]", 
+ RowBox[{"Total", "[", 
+  RowBox[{"IntegerDigits", "[", "num", "]"}], "]"}]}], "Input",
+ CellChangeTimes->{{3.651753476553531*^9, 3.651753522949707*^9}}],
+
+Cell[BoxData["1366"], "Output",
+ CellChangeTimes->{{3.651753517785246*^9, 3.651753523417055*^9}}]
+}, Open  ]]
+}, Open  ]]
+},
+WindowSize->{826, 644},
+WindowMargins->{{Automatic, 26}, {Automatic, 8}},
+ShowSelection->True,
+FrontEndVersion->"10.2 for Microsoft Windows (64-bit) (July 7, 2015)",
+StyleDefinitions->"MyBook.nb"
+]
+(* End of Notebook Content *)
+
+(* Internal cache information *)
+(*CellTagsOutline
+CellTagsIndex->{}
+*)
+(*CellTagsIndex
+CellTagsIndex->{}
+*)
+(*NotebookFileOutline
+Notebook[{
+Cell[CellGroupData[{
+Cell[579, 22, 110, 1, 80, "BOOK TITLE"],
+Cell[692, 25, 506, 17, 57, "Text"],
+Cell[CellGroupData[{
+Cell[1223, 46, 343, 7, 72, "Input"],
+Cell[1569, 55, 97, 1, 31, "Output"]
+}, Open  ]]
+}, Open  ]]
+}
+]
+*)
+
+(* End of internal cache information *)

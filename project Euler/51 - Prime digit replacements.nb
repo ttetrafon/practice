@@ -1,0 +1,161 @@
+(* Content-type: application/vnd.wolfram.mathematica *)
+
+(*** Wolfram Notebook File ***)
+(* http://www.wolfram.com/nb *)
+
+(* CreatedBy='Mathematica 10.2' *)
+
+(*CacheID: 234*)
+(* Internal cache information:
+NotebookFileLineBreakTest
+NotebookFileLineBreakTest
+NotebookDataPosition[       158,          7]
+NotebookDataLength[      5826,        153]
+NotebookOptionsPosition[      5214,        135]
+NotebookOutlinePosition[      5556,        150]
+CellTagsIndexPosition[      5513,        147]
+WindowFrame->Normal*)
+
+(* Beginning of Notebook Content *)
+Notebook[{
+
+Cell[CellGroupData[{
+Cell["51 - Prime digit replacements", "BOOK TITLE",
+ CellChangeTimes->{{3.6520080983307486`*^9, 
+  3.652008103772574*^9}},ExpressionUUID->"38387ea0-3495-4b1d-852f-\
+b58ccbc6e4da"],
+
+Cell["\<\
+
+
+By replacing the 1st digit of the 2-digit number *3, it turns out that six of \
+the nine possible values: 13, 23, 43, 53, 73, and 83, are all prime.
+
+By replacing the 3rd and 4th digits of 56**3 with the same digit, this \
+5-digit number is the first example having seven primes among the ten \
+generated numbers, yielding the family: 56003, 56113, 56333, 56443, 56663, \
+56773, and 56993. Consequently 56003, being the first member of this family, \
+is the smallest prime with this property.
+
+Find the smallest prime which, by replacing part of the number (not \
+necessarily adjacent digits) with the same digit, is part of an eight prime \
+value family.
+\
+\>", "Text",
+ CellChangeTimes->{
+  3.652008095846289*^9},ExpressionUUID->"c527be90-3651-4a1e-a0f3-\
+ff83c4a58096"],
+
+Cell[BoxData[{
+ RowBox[{"ClearAll", "[", "\"\<Global`*\>\"", "]"}], "\[IndentingNewLine]", 
+ RowBox[{
+  RowBox[{"i", "=", "10"}], ";"}], "\[IndentingNewLine]", 
+ RowBox[{
+  RowBox[{"max", "=", "0"}], ";"}], "\[IndentingNewLine]", 
+ RowBox[{"StringForm", "[", 
+  RowBox[{
+  "\"\<The current max chain has `2` members and is produced by `1`\>\"", ",",
+    "\[IndentingNewLine]", 
+   RowBox[{"(*", "1", "*)"}], 
+   RowBox[{"Dynamic", "[", "i", "]"}], ",", "\[IndentingNewLine]", 
+   RowBox[{"(*", "2", "*)"}], 
+   RowBox[{"Dynamic", "[", "max", "]"}]}], "\[IndentingNewLine]", 
+  "]"}], "\[IndentingNewLine]", 
+ RowBox[{"While", "[", 
+  RowBox[{"True", ",", "\[IndentingNewLine]", "\[IndentingNewLine]", 
+   RowBox[{
+    RowBox[{"i", "++"}], ";"}]}], "\[IndentingNewLine]", "]"}]}], "Input",
+ CellChangeTimes->{{3.652008114678938*^9, 3.6520082193622227`*^9}, {
+  3.65200828814725*^9, 3.6520086072519083`*^9}, {3.652008648256033*^9, 
+  3.652008676785118*^9}, {3.6520088568219414`*^9, 3.652008860053234*^9}, {
+  3.76996958648356*^9, 
+  3.769969626433962*^9}},ExpressionUUID->"21166361-e3b5-4850-9d1d-\
+f7fa9bde390e"],
+
+Cell[BoxData[
+ RowBox[{
+  RowBox[{"(*", " ", 
+   RowBox[{
+    RowBox[{
+     RowBox[{"lathos", " ", "auti", " ", "i", " ", "idea"}], "..."}], " ", 
+    "oxi", " ", "aparaitita", " ", "ola", " ", "ta", " ", "psifia"}], " ", 
+   "*)"}], "\[IndentingNewLine]", 
+  RowBox[{
+   RowBox[{
+    RowBox[{"countPrimeReplacements", "[", "n_Integer", "]"}], ":=", 
+    RowBox[{"Module", "[", "\[IndentingNewLine]", 
+     RowBox[{
+      RowBox[{"{", "\[IndentingNewLine]", 
+       RowBox[{"i", ",", "j", ",", "digits", ",", "digitNum", ",", 
+        RowBox[{"counter", "=", "0"}], ",", 
+        RowBox[{"list", "=", 
+         RowBox[{"{", "}"}]}], ",", "newDigits"}], "\[IndentingNewLine]", 
+       "}"}], ",", "\[IndentingNewLine]", 
+      RowBox[{
+       RowBox[{"digits", "=", 
+        RowBox[{"IntegerDigits", "[", "n", "]"}]}], ";", 
+       "\[IndentingNewLine]", 
+       RowBox[{"digitNum", "=", 
+        RowBox[{"Length", "[", "digits", "]"}]}], ";", "\[IndentingNewLine]", 
+       RowBox[{"newDigits", "=", "digits"}], ";", "\[IndentingNewLine]", 
+       RowBox[{"For", "[", 
+        RowBox[{
+         RowBox[{"i", "=", "1"}], ",", 
+         RowBox[{"i", "\[LessEqual]", "digitNum"}], ",", 
+         RowBox[{"i", "++"}], ",", "\[IndentingNewLine]", 
+         RowBox[{
+          RowBox[{"For", "[", 
+           RowBox[{
+            RowBox[{"j", "=", "0"}], ",", 
+            RowBox[{"j", "\[LessEqual]", "9"}], ",", 
+            RowBox[{"j", "++"}], ",", "\[IndentingNewLine]", 
+            RowBox[{
+             RowBox[{"newDigits", "=", "digits"}], ";", "\[IndentingNewLine]", 
+             RowBox[{
+              RowBox[{"newDigits", "[", 
+               RowBox[{"[", "i", "]"}], "]"}], "=", "j"}], ";", 
+             "\[IndentingNewLine]", 
+             RowBox[{"AppendTo", "[", 
+              RowBox[{"list", ",", 
+               RowBox[{"FromDigits", "[", "newDigits", "]"}]}], "]"}]}]}], 
+           "\[IndentingNewLine]", "]"}], ";"}]}], "\[IndentingNewLine]", 
+        "]"}], ";", "\[IndentingNewLine]", 
+       RowBox[{"counter", "=", 
+        RowBox[{"Count", "[", 
+         RowBox[{"list", ",", 
+          RowBox[{"x_", "/;", 
+           RowBox[{"x", "\[Element]", "Primes"}]}]}], "]"}]}]}]}], 
+     "\[IndentingNewLine]", "]"}]}], ";"}]}]], "Input",
+ CellChangeTimes->{{3.6520088754410715`*^9, 3.6520089548193417`*^9}, {
+  3.6520090072734947`*^9, 3.6520091479997487`*^9}, {3.652009203526598*^9, 
+  3.65200923514062*^9}, {3.6520092933939266`*^9, 
+  3.6520093209258633`*^9}},ExpressionUUID->"c6003c7a-fa57-44e5-be4e-\
+320d67599fc3"]
+}, Open  ]]
+},
+WindowSize->{775, 561},
+WindowMargins->{{287, Automatic}, {Automatic, 54}},
+FrontEndVersion->"12.0 for Microsoft Windows (64-bit) (April 8, 2019)",
+StyleDefinitions->"MyBook.nb"
+]
+(* End of Notebook Content *)
+
+(* Internal cache information *)
+(*CellTagsOutline
+CellTagsIndex->{}
+*)
+(*CellTagsIndex
+CellTagsIndex->{}
+*)
+(*NotebookFileOutline
+Notebook[{
+Cell[CellGroupData[{
+Cell[580, 22, 179, 3, 85, "BOOK TITLE",ExpressionUUID->"38387ea0-3495-4b1d-852f-b58ccbc6e4da"],
+Cell[762, 27, 784, 19, 233, "Text",ExpressionUUID->"c527be90-3651-4a1e-a0f3-ff83c4a58096"],
+Cell[1549, 48, 1111, 24, 219, "Input",ExpressionUUID->"21166361-e3b5-4850-9d1d-f7fa9bde390e"],
+Cell[2663, 74, 2535, 58, 333, "Input",ExpressionUUID->"c6003c7a-fa57-44e5-be4e-320d67599fc3"]
+}, Open  ]]
+}
+]
+*)
+

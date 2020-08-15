@@ -1,0 +1,104 @@
+(* Content-type: application/vnd.wolfram.mathematica *)
+
+(*** Wolfram Notebook File ***)
+(* http://www.wolfram.com/nb *)
+
+(* CreatedBy='Mathematica 9.0' *)
+
+(*CacheID: 234*)
+(* Internal cache information:
+NotebookFileLineBreakTest
+NotebookFileLineBreakTest
+NotebookDataPosition[       157,          7]
+NotebookDataLength[      2880,         95]
+NotebookOptionsPosition[      2404,         73]
+NotebookOutlinePosition[      2766,         89]
+CellTagsIndexPosition[      2723,         86]
+WindowFrame->Normal*)
+
+(* Beginning of Notebook Content *)
+Notebook[{
+
+Cell[CellGroupData[{
+Cell["63 - Powerful digit counts", "BOOK TITLE",
+ CellChangeTimes->{{3.6497628876658087`*^9, 3.649762911705842*^9}}],
+
+Cell["\<\
+The 5-digit number, 16807=7^5, is also a fifth power. Similarly, the 9-digit \
+number, 134217728=8^9, is a ninth power.
+
+How many n-digit positive integers exist which are also an nth power?
+\
+\>", "Text",
+ CellChangeTimes->{{3.649762918375851*^9, 3.64976293205587*^9}}],
+
+Cell["\<\
+With a little more thought on the math side, this can actually be done by \
+hand. You know that x^n has n digits when:
+
+10^(n-1) <= x^n < 10^n
+
+First of all, x < 10. So we only have to try x={1, 2, 3, ..., 9}. The next \
+thing to notice is that the left inequality is true for small values of n, \
+but the 10^(n-1) part grows faster than the x^n part. All you have to do is \
+find out when they meet. This can be done like this:
+10^(n-1)=x^n => 0.1*10^n=x^n => log(0.1)+n*log(10)=n*log(x) => \
+log(10)=n*(log(10)-log(x)) => n=log(10)/(log(10)-log(x))
+That value of n is already not good, so we have to round down to find out the \
+largest integer for which the inequality holds true.\
+\>", "Text",
+ CellChangeTimes->{{3.6534188081717863`*^9, 3.653418865832337*^9}}],
+
+Cell[CellGroupData[{
+
+Cell[BoxData[
+ RowBox[{"Sum", "[", "\[IndentingNewLine]", 
+  RowBox[{
+   RowBox[{"Floor", "[", 
+    RowBox[{
+     RowBox[{"Log", "[", "10", "]"}], "/", 
+     RowBox[{"(", 
+      RowBox[{
+       RowBox[{"Log", "[", "10", "]"}], "-", 
+       RowBox[{"Log", "[", "x", "]"}]}], ")"}]}], "]"}], 
+   "\[IndentingNewLine]", ",", "\[IndentingNewLine]", 
+   RowBox[{"{", 
+    RowBox[{"x", ",", "1", ",", "9"}], "}"}]}], "]"}]], "Input",
+ CellChangeTimes->{{3.6534188952993517`*^9, 3.653418994604292*^9}}],
+
+Cell[BoxData["49"], "Output",
+ CellChangeTimes->{{3.6534189713652163`*^9, 3.653418983213464*^9}}]
+}, Open  ]]
+}, Open  ]]
+},
+WindowSize->{826, 609},
+WindowMargins->{{Automatic, 208}, {Automatic, 20}},
+ShowSelection->True,
+FrontEndVersion->"10.2 for Microsoft Windows (64-bit) (July 7, 2015)",
+StyleDefinitions->"MyBook.nb"
+]
+(* End of Notebook Content *)
+
+(* Internal cache information *)
+(*CellTagsOutline
+CellTagsIndex->{}
+*)
+(*CellTagsIndex
+CellTagsIndex->{}
+*)
+(*NotebookFileOutline
+Notebook[{
+Cell[CellGroupData[{
+Cell[579, 22, 116, 1, 80, "BOOK TITLE"],
+Cell[698, 25, 280, 7, 76, "Text"],
+Cell[981, 34, 775, 15, 209, "Text"],
+Cell[CellGroupData[{
+Cell[1781, 53, 495, 13, 92, "Input"],
+Cell[2279, 68, 97, 1, 31, "Output"]
+}, Open  ]]
+}, Open  ]]
+}
+]
+*)
+
+(* End of internal cache information *)

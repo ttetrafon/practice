@@ -1,0 +1,175 @@
+(* Content-type: application/vnd.wolfram.mathematica *)
+
+(*** Wolfram Notebook File ***)
+(* http://www.wolfram.com/nb *)
+
+(* CreatedBy='Mathematica 9.0' *)
+
+(*CacheID: 234*)
+(* Internal cache information:
+NotebookFileLineBreakTest
+NotebookFileLineBreakTest
+NotebookDataPosition[       157,          7]
+NotebookDataLength[      5449,        166]
+NotebookOptionsPosition[      4838,        140]
+NotebookOutlinePosition[      5367,        161]
+CellTagsIndexPosition[      5324,        158]
+WindowFrame->Normal*)
+
+(* Beginning of Notebook Content *)
+Notebook[{
+
+Cell[CellGroupData[{
+Cell["42 - Coded triangle numbers", "BOOK TITLE",
+ CellChangeTimes->{{3.649444575275137*^9, 3.649444582658559*^9}}],
+
+Cell["\<\
+The nth term of the sequence of triangle numbers is given by, tn = \
+\.bdn(n+1); so the first ten triangle numbers are:
+
+1, 3, 6, 10, 15, 21, 28, 36, 45, 55, ...
+
+By converting each letter in a word to a number corresponding to its \
+alphabetical position and adding these values we form a word value. For \
+example, the word value for SKY is 19 + 11 + 25 = 55 = t10. If the word value \
+is a triangle number then we shall call the word a triangle word.
+
+Using words.txt (right click and \[OpenCurlyQuote]Save Link/Target As...\
+\[CloseCurlyQuote]), a 16K text file containing nearly two-thousand common \
+English words, how many are triangle words?
+\
+\>", "Text",
+ CellChangeTimes->{{3.6494445897319636`*^9, 3.649444591327055*^9}}],
+
+Cell[CellGroupData[{
+
+Cell[BoxData[{
+ RowBox[{"ClearAll", "[", "\"\<Global`*\>\"", "]"}], "\[IndentingNewLine]", 
+ RowBox[{
+  RowBox[{
+  "Import", "[", 
+   "\"\<C:\\\\Users\\\\Nakis\\\\Documents\\\\Project Euler\\\\42.txt\>\"", 
+   "]"}], ";"}], "\[IndentingNewLine]", 
+ RowBox[{
+  RowBox[{"StringSplit", "[", 
+   RowBox[{"%", ",", "\"\<,\>\""}], "]"}], ";"}], "\[IndentingNewLine]", 
+ RowBox[{
+  RowBox[{"Map", "[", 
+   RowBox[{
+    RowBox[{
+     RowBox[{"StringDrop", "[", 
+      RowBox[{"#", ",", "1"}], "]"}], "&"}], ",", "%"}], "]"}], 
+  ";"}], "\[IndentingNewLine]", 
+ RowBox[{
+  RowBox[{"words", "=", 
+   RowBox[{"Map", "[", 
+    RowBox[{
+     RowBox[{
+      RowBox[{"StringDrop", "[", 
+       RowBox[{"#", ",", 
+        RowBox[{"-", "1"}]}], "]"}], "&"}], ",", "%"}], "]"}]}], 
+  ";"}], "\[IndentingNewLine]", 
+ RowBox[{
+  RowBox[{
+   RowBox[{"TriangleNumber", "[", "n_", "]"}], ":=", 
+   RowBox[{
+    FractionBox["1", "2"], "n", 
+    RowBox[{"(", 
+     RowBox[{"n", "+", "1"}], ")"}]}]}], ";"}], "\[IndentingNewLine]", 
+ RowBox[{
+  RowBox[{"CheckList", "=", 
+   RowBox[{"Table", "[", 
+    RowBox[{
+     RowBox[{"TriangleNumber", "[", "i", "]"}], ",", 
+     RowBox[{"{", 
+      RowBox[{"i", ",", "1", ",", "5000"}], "}"}]}], "]"}]}], 
+  ";"}], "\[IndentingNewLine]", 
+ RowBox[{
+  RowBox[{
+   RowBox[{"WordScore", "[", "word_", "]"}], ":=", 
+   RowBox[{"Total", "[", 
+    RowBox[{"Map", "[", 
+     RowBox[{"LetterNumber", ",", 
+      RowBox[{"Characters", "[", "word", "]"}]}], "]"}], "]"}]}], 
+  ";"}], "\[IndentingNewLine]", 
+ RowBox[{
+  RowBox[{"count", "=", "0"}], ";"}], "\[IndentingNewLine]", 
+ RowBox[{"For", "[", 
+  RowBox[{
+   RowBox[{"i", "=", "1"}], ",", 
+   RowBox[{"i", "\[LessEqual]", 
+    RowBox[{"Length", "[", "words", "]"}]}], ",", 
+   RowBox[{"i", "++"}], ",", "\[IndentingNewLine]", 
+   RowBox[{"If", "[", 
+    RowBox[{
+     RowBox[{"MemberQ", "[", 
+      RowBox[{"CheckList", ",", 
+       RowBox[{"WordScore", "[", 
+        RowBox[{"words", "[", 
+         RowBox[{"[", "i", "]"}], "]"}], "]"}]}], "]"}], ",", 
+     RowBox[{"(*", 
+      RowBox[{
+       RowBox[{"Print", "[", 
+        RowBox[{"words", "[", 
+         RowBox[{"[", "i", "]"}], "]"}], "]"}], ";"}], "*)"}], 
+     RowBox[{"count", "=", 
+      RowBox[{"count", "+", "1"}]}]}], "]"}]}], "\[IndentingNewLine]", 
+  "]"}], "\[IndentingNewLine]", 
+ RowBox[{"Print", "[", 
+  RowBox[{"\"\<number of triangle words in the list: \>\"", ",", "count"}], 
+  "]"}]}], "Input",
+ CellChangeTimes->{{3.6494445931741605`*^9, 3.649444598255451*^9}, 
+   3.649744372033334*^9, {3.6497452182679787`*^9, 3.6497452213091526`*^9}, {
+   3.6497452650296535`*^9, 3.649745316824616*^9}, {3.649745389005745*^9, 
+   3.6497454018394785`*^9}, {3.649745473111555*^9, 3.6497454838911715`*^9}, {
+   3.6497455527901125`*^9, 3.649745774330784*^9}, {3.6497458123829603`*^9, 
+   3.6497458521652355`*^9}, {3.64974589437565*^9, 3.6497460290913553`*^9}, {
+   3.6497462054054403`*^9, 3.64974621484698*^9}, {3.6497462928284407`*^9, 
+   3.649746349657691*^9}, {3.6497464029587393`*^9, 3.6497464329084525`*^9}, 
+   3.651891618314623*^9}],
+
+Cell[BoxData[
+ InterpretationBox[
+  RowBox[{"\<\"number of triangle words in the list: \"\>", 
+   "\[InvisibleSpace]", "162"}],
+  SequenceForm["number of triangle words in the list: ", 162],
+  Editable->False]], "Print",
+ CellChangeTimes->{3.649746437343706*^9, 3.6518916899181724`*^9}]
+}, Open  ]]
+}, Open  ]]
+},
+WindowSize->{826, 644},
+WindowMargins->{{Automatic, 95}, {12, Automatic}},
+PrintingCopies->1,
+PrintingPageRange->{32000, 32000},
+PrintingOptions->{"Magnification"->1.,
+"PaperOrientation"->"Portrait",
+"PaperSize"->{595.1999999999999, 841.68}},
+ShowSelection->True,
+FrontEndVersion->"10.2 for Microsoft Windows (64-bit) (July 7, 2015)",
+StyleDefinitions->"MyBook.nb"
+]
+(* End of Notebook Content *)
+
+(* Internal cache information *)
+(*CellTagsOutline
+CellTagsIndex->{}
+*)
+(*CellTagsIndex
+CellTagsIndex->{}
+*)
+(*NotebookFileOutline
+Notebook[{
+Cell[CellGroupData[{
+Cell[579, 22, 115, 1, 80, "BOOK TITLE"],
+Cell[697, 25, 742, 16, 209, "Text"],
+Cell[CellGroupData[{
+Cell[1464, 45, 3057, 83, 288, "Input"],
+Cell[4524, 130, 286, 6, 23, "Print"]
+}, Open  ]]
+}, Open  ]]
+}
+]
+*)
+
+(* End of internal cache information *)

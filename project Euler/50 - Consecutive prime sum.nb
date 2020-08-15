@@ -1,0 +1,147 @@
+(* Content-type: application/vnd.wolfram.mathematica *)
+
+(*** Wolfram Notebook File ***)
+(* http://www.wolfram.com/nb *)
+
+(* CreatedBy='Mathematica 9.0' *)
+
+(*CacheID: 234*)
+(* Internal cache information:
+NotebookFileLineBreakTest
+NotebookFileLineBreakTest
+NotebookDataPosition[       157,          7]
+NotebookDataLength[      4546,        138]
+NotebookOptionsPosition[      4025,        116]
+NotebookOutlinePosition[      4385,        132]
+CellTagsIndexPosition[      4342,        129]
+WindowFrame->Normal*)
+
+(* Beginning of Notebook Content *)
+Notebook[{
+
+Cell[CellGroupData[{
+Cell["50 - Consecutive prime sum", "BOOK TITLE",
+ CellChangeTimes->{{3.6497616439994097`*^9, 3.6497616525228977`*^9}}],
+
+Cell["\<\
+The prime 41, can be written as the sum of six consecutive primes:
+41 = 2 + 3 + 5 + 7 + 11 + 13
+
+This is the longest sum of consecutive primes that adds to a prime below \
+one-hundred.
+
+The longest sum of consecutive primes below one-thousand that adds to a \
+prime, contains 21 terms, and is equal to 953.
+
+Which prime, below one-million, can be written as the sum of the most \
+consecutive primes?
+\
+\>", "Text",
+ CellChangeTimes->{{3.6497616611143885`*^9, 3.6497616636275325`*^9}}],
+
+Cell["direct way", "comment",
+ CellChangeTimes->{{3.650374708541442*^9, 3.650374711881446*^9}}],
+
+Cell[BoxData[{
+ RowBox[{"ClearAll", "[", "\"\<Global`*\>\"", "]"}], "\[IndentingNewLine]", 
+ RowBox[{
+  RowBox[{"PrimeSum", "[", "n_", "]"}], ":=", 
+  RowBox[{"Module", "[", 
+   RowBox[{
+    RowBox[{"{", 
+     RowBox[{
+      RowBox[{"sum", "=", "0"}], ",", "i"}], "}"}], ",", 
+    "\[IndentingNewLine]", 
+    RowBox[{
+     RowBox[{"For", "[", 
+      RowBox[{
+       RowBox[{"i", "=", "1"}], ",", 
+       RowBox[{"sum", "<", "n"}], ",", 
+       RowBox[{"i", "++"}], ",", "\[IndentingNewLine]", 
+       RowBox[{
+        RowBox[{"Print", "[", 
+         RowBox[{"\"\<sum=\>\"", ",", "sum", ",", "\"\<  i=\>\"", ",", "i"}], 
+         "]"}], ";", "\[IndentingNewLine]", 
+        RowBox[{"sum", "=", 
+         RowBox[{"sum", "+", 
+          RowBox[{"Prime", "[", "i", "]"}]}]}]}]}], "\[IndentingNewLine]", 
+      "]"}], ";", "\[IndentingNewLine]", 
+     RowBox[{"{", 
+      RowBox[{"sum", ",", 
+       RowBox[{"i", "-", "1"}]}], "}"}]}]}], "\[IndentingNewLine]", 
+   "]"}]}], "\[IndentingNewLine]", 
+ RowBox[{
+  RowBox[{"isPrimeSum", "[", "n_", "]"}], ":=", 
+  RowBox[{"If", "[", 
+   RowBox[{
+    RowBox[{
+     RowBox[{
+      RowBox[{"PrimeSum", "[", "n", "]"}], "[", 
+      RowBox[{"[", "1", "]"}], "]"}], "\[Equal]", "n"}], ",", "True", ",", 
+    "False"}], "]"}]}]}], "Input",
+ CellChangeTimes->{{3.6497616666627064`*^9, 3.649761885765623*^9}, {
+  3.6497619227556744`*^9, 3.64976205530686*^9}, {3.6497621470769887`*^9, 
+  3.649762148606991*^9}}],
+
+Cell["\<\
+!!! \:03cc\[Chi]\[Iota] \[Sigma]\[Upsilon]\[Nu]\[CurlyEpsilon]\[Chi]\:03cc\
+\[Mu]\[CurlyEpsilon]\[Nu]\[Omicron]\[Iota] \[Alpha]\[Pi]\:03cc \[Tau]\
+\[Omicron] 2 \[Kappa]\[Alpha]\[Iota] \[Mu]\[CurlyEpsilon]\[Tau]\:03ac... \
+\[Gamma]\[CurlyEpsilon]\[Nu]\[Iota]\[Kappa]\:03ac \[Sigma]\[Upsilon]\[Nu]\
+\[CurlyEpsilon]\[Chi]\:03cc\[Mu]\[CurlyEpsilon]\[Nu]\[Omicron]\[Iota]... !!!\
+\>", "note",
+ CellChangeTimes->{{3.649762152296996*^9, 3.649762166007015*^9}, {
+  3.650374729771471*^9, 3.650374733361476*^9}}],
+
+Cell["indirect way", "comment",
+ CellChangeTimes->{{3.650374723131462*^9, 3.650374725591465*^9}}],
+
+Cell[BoxData[{
+ RowBox[{"ClearAll", "[", "\"\<Global`*\>\"", "]"}], "\[IndentingNewLine]", 
+ RowBox[{
+  RowBox[{"TargetPrimes", "=", 
+   RowBox[{"{", "}"}]}], ";"}], "\[IndentingNewLine]", 
+ RowBox[{
+  RowBox[{"AllPrimes", "=", 
+   RowBox[{"Table", "[", 
+    RowBox[{
+     RowBox[{"Prime", "[", "i", "]"}], ",", 
+     RowBox[{"{", 
+      RowBox[{"i", ",", "1", ",", "2000"}], "}"}]}], "]"}]}], 
+  ";"}], "\[IndentingNewLine]"}], "Input",
+ CellChangeTimes->{{3.650374745111493*^9, 3.650374759691513*^9}, {
+  3.6503748021395736`*^9, 3.6503748058795786`*^9}, {3.650374881287607*^9, 
+  3.6503749716158514`*^9}, {3.6503750063280287`*^9, 3.650375017402113*^9}}]
+}, Open  ]]
+},
+WindowSize->{826, 645},
+WindowMargins->{{Automatic, 16}, {9, Automatic}},
+ShowSelection->True,
+FrontEndVersion->"10.2 for Microsoft Windows (64-bit) (July 7, 2015)",
+StyleDefinitions->"MyBook.nb"
+]
+(* End of Notebook Content *)
+
+(* Internal cache information *)
+(*CellTagsOutline
+CellTagsIndex->{}
+*)
+(*CellTagsIndex
+CellTagsIndex->{}
+*)
+(*NotebookFileOutline
+Notebook[{
+Cell[CellGroupData[{
+Cell[579, 22, 118, 1, 80, "BOOK TITLE"],
+Cell[700, 25, 494, 14, 190, "Text"],
+Cell[1197, 41, 95, 1, 44, "comment"],
+Cell[1295, 44, 1441, 39, 192, "Input"],
+Cell[2739, 85, 512, 8, 28, "note"],
+Cell[3254, 95, 97, 1, 44, "comment"],
+Cell[3354, 98, 655, 15, 92, "Input"]
+}, Open  ]]
+}
+]
+*)
+
+(* End of internal cache information *)

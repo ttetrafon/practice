@@ -1,0 +1,73 @@
+(* Content-type: application/vnd.wolfram.mathematica *)
+
+(*** Wolfram Notebook File ***)
+(* http://www.wolfram.com/nb *)
+
+(* CreatedBy='Mathematica 9.0' *)
+
+(*CacheID: 234*)
+(* Internal cache information:
+NotebookFileLineBreakTest
+NotebookFileLineBreakTest
+NotebookDataPosition[       157,          7]
+NotebookDataLength[      1618,         64]
+NotebookOptionsPosition[      1183,         43]
+NotebookOutlinePosition[      1543,         59]
+CellTagsIndexPosition[      1500,         56]
+WindowFrame->Normal*)
+
+(* Beginning of Notebook Content *)
+Notebook[{
+
+Cell[CellGroupData[{
+Cell["7 - 10001st prime", "BOOK TITLE",
+ CellChangeTimes->{{3.6483996181311445`*^9, 3.648399623979479*^9}}],
+
+Cell["\<\
+By listing the first six prime numbers: 2, 3, 5, 7, 11, and 13, we can see \
+that the 6th prime is 13.
+What is the 10 001st prime number?\
+\>", "Text",
+ CellChangeTimes->{{3.6483996303608437`*^9, 3.6483996350471115`*^9}}],
+
+Cell[CellGroupData[{
+
+Cell[BoxData[
+ RowBox[{"Prime", "[", "10001", "]"}]], "Input",
+ CellChangeTimes->{{3.6483996378252707`*^9, 3.648399642766553*^9}}],
+
+Cell[BoxData["104743"], "Output",
+ CellChangeTimes->{3.6483996433805885`*^9}]
+}, Open  ]]
+}, Open  ]]
+},
+WindowSize->{826, 644},
+WindowMargins->{{Automatic, 26}, {Automatic, 8}},
+ShowSelection->True,
+FrontEndVersion->"10.2 for Microsoft Windows (64-bit) (July 7, 2015)",
+StyleDefinitions->"MyBook.nb"
+]
+(* End of Notebook Content *)
+
+(* Internal cache information *)
+(*CellTagsOutline
+CellTagsIndex->{}
+*)
+(*CellTagsIndex
+CellTagsIndex->{}
+*)
+(*NotebookFileOutline
+Notebook[{
+Cell[CellGroupData[{
+Cell[579, 22, 107, 1, 80, "BOOK TITLE"],
+Cell[689, 25, 231, 5, 38, "Text"],
+Cell[CellGroupData[{
+Cell[945, 34, 130, 2, 31, "Input"],
+Cell[1078, 38, 77, 1, 31, "Output"]
+}, Open  ]]
+}, Open  ]]
+}
+]
+*)
+
+(* End of internal cache information *)

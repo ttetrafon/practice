@@ -1,0 +1,111 @@
+(* Content-type: application/vnd.wolfram.mathematica *)
+
+(*** Wolfram Notebook File ***)
+(* http://www.wolfram.com/nb *)
+
+(* CreatedBy='Mathematica 9.0' *)
+
+(*CacheID: 234*)
+(* Internal cache information:
+NotebookFileLineBreakTest
+NotebookFileLineBreakTest
+NotebookDataPosition[       157,          7]
+NotebookDataLength[      2884,        102]
+NotebookOptionsPosition[      2442,         81]
+NotebookOutlinePosition[      2803,         97]
+CellTagsIndexPosition[      2760,         94]
+WindowFrame->Normal*)
+
+(* Beginning of Notebook Content *)
+Notebook[{
+
+Cell[CellGroupData[{
+Cell["53 - Combinatori selections", "BOOK TITLE",
+ CellChangeTimes->{{3.649762216227085*^9, 3.6497622250670977`*^9}}],
+
+Cell["\<\
+There are exactly ten ways of selecting three from five, 12345:
+
+123, 124, 125, 134, 135, 145, 234, 235, 245, and 345
+
+In combinatorics, we use the notation, 5C3 = 10.
+
+In general,
+nCr =n!/r!(n\[Minus]r)!
+
+where r \[LessEqual] n, n! = \
+n\[Times](n\[Minus]1)\[Times]...\[Times]3\[Times]2\[Times]1, and 0! = 1.
+
+It is not until n = 23, that a value exceeds one-million: 23C10 = 1144066.
+
+How many, not necessarily distinct, values of  nCr, for 1 \[LessEqual] n \
+\[LessEqual] 100, are greater than one-million?
+\
+\>", "Text",
+ CellChangeTimes->{{3.6497622326571083`*^9, 3.649762249487132*^9}}],
+
+Cell[CellGroupData[{
+
+Cell[BoxData[{
+ RowBox[{"ClearAll", "[", "\"\<Global`*\>\"", "]"}], "\[IndentingNewLine]", 
+ RowBox[{
+  RowBox[{"count", "=", "0"}], ";"}], "\[IndentingNewLine]", 
+ RowBox[{
+  RowBox[{"For", "[", 
+   RowBox[{
+    RowBox[{"n", "=", "1"}], ",", 
+    RowBox[{"n", "\[LessEqual]", "100"}], ",", 
+    RowBox[{"n", "++"}], ",", "\[IndentingNewLine]", 
+    RowBox[{
+     RowBox[{"For", "[", 
+      RowBox[{
+       RowBox[{"r", "=", "1"}], ",", 
+       RowBox[{"r", "\[LessEqual]", "n"}], ",", 
+       RowBox[{"r", "++"}], ",", "\[IndentingNewLine]", 
+       RowBox[{"If", "[", 
+        RowBox[{
+         RowBox[{
+          RowBox[{"Binomial", "[", 
+           RowBox[{"n", ",", "r"}], "]"}], "\[GreaterEqual]", "1000000"}], 
+         ",", 
+         RowBox[{"count", "=", 
+          RowBox[{"count", "+", "1"}]}]}], "]"}]}], "\[IndentingNewLine]", 
+      "]"}], ";"}]}], "\[IndentingNewLine]", "]"}], 
+  ";"}], "\[IndentingNewLine]", "count"}], "Input",
+ CellChangeTimes->{{3.649762286257183*^9, 3.6497623959273367`*^9}}],
+
+Cell[BoxData["4075"], "Output",
+ CellChangeTimes->{3.64976240537735*^9}]
+}, Open  ]]
+}, Open  ]]
+},
+WindowSize->{826, 644},
+WindowMargins->{{Automatic, 16}, {Automatic, 15}},
+ShowSelection->True,
+FrontEndVersion->"10.2 for Microsoft Windows (64-bit) (July 7, 2015)",
+StyleDefinitions->"MyBook.nb"
+]
+(* End of Notebook Content *)
+
+(* Internal cache information *)
+(*CellTagsOutline
+CellTagsIndex->{}
+*)
+(*CellTagsIndex
+CellTagsIndex->{}
+*)
+(*NotebookFileOutline
+Notebook[{
+Cell[CellGroupData[{
+Cell[579, 22, 117, 1, 80, "BOOK TITLE"],
+Cell[699, 25, 602, 19, 285, "Text"],
+Cell[CellGroupData[{
+Cell[1326, 48, 1013, 26, 172, "Input"],
+Cell[2342, 76, 72, 1, 31, "Output"]
+}, Open  ]]
+}, Open  ]]
+}
+]
+*)
+
+(* End of internal cache information *)

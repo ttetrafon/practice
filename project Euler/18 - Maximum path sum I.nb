@@ -1,0 +1,207 @@
+(* Content-type: application/vnd.wolfram.mathematica *)
+
+(*** Wolfram Notebook File ***)
+(* http://www.wolfram.com/nb *)
+
+(* CreatedBy='Mathematica 9.0' *)
+
+(*CacheID: 234*)
+(* Internal cache information:
+NotebookFileLineBreakTest
+NotebookFileLineBreakTest
+NotebookDataPosition[       157,          7]
+NotebookDataLength[      6268,        198]
+NotebookOptionsPosition[      5823,        177]
+NotebookOutlinePosition[      6183,        193]
+CellTagsIndexPosition[      6140,        190]
+WindowFrame->Normal*)
+
+(* Beginning of Notebook Content *)
+Notebook[{
+
+Cell[CellGroupData[{
+Cell["18 - Maximum path sum I", "BOOK TITLE",
+ CellChangeTimes->{{3.64888527324397*^9, 3.6488852779962416`*^9}, {
+  3.649340962088008*^9, 3.6493409635760927`*^9}}],
+
+Cell["\<\
+By starting at the top of the triangle below and moving to adjacent numbers \
+on the row below, the maximum total from top to bottom is 23.
+
+   3
+  7 4
+ 2 4 6
+8 5 9 3
+
+That is, 3 + 7 + 4 + 9 = 23.
+
+Find the maximum total from top to bottom of the triangle below:
+
+                           75
+                         95 64
+                       17 47 82
+                     18 35 87 10
+                   20 04 82 47 65
+                 19 01 23 75 03 34
+               88 02 77 73 07 63 67
+             99 65 04 28 06 16 70 92
+           41 41 26 56 83 40 80 70 33
+         41 48 72 33 47 32 37 16 94 29
+        53 71 44 65 25 43 91 52 97 51 14
+      70 11 33 28 77 73 17 78 39 68 17 57
+    91 71 52 38 17 14 91 43 58 50 27 29 48
+  63 66 04 68 89 53 67 30 73 16 69 87 40 31
+04 62 98 27 23 09 70 98 73 93 38 53 60 04 23
+
+NOTE: As there are only 16384 routes, it is possible to solve this problem by \
+trying every route. However, Problem 67, is the same challenge with a \
+triangle containing one-hundred rows; it cannot be solved by brute force, and \
+requires a clever method! ;o)
+\
+\>", "Text",
+ CellChangeTimes->{{3.648885288220826*^9, 3.64888534405902*^9}, {
+  3.648889912349311*^9, 3.6488899309733763`*^9}}],
+
+Cell[CellGroupData[{
+
+Cell[BoxData[{
+ RowBox[{"ClearAll", "[", "\"\<Global`*\>\"", "]"}], "\[IndentingNewLine]", 
+ RowBox[{
+  RowBox[{"data1", "=", 
+   RowBox[{"ReadList", "[", 
+    RowBox[{
+    "\"\<C:\\\\Users\\\\Nakis\\\\Documents\\\\Project Euler\\\\18.txt\>\"", 
+     ",", "String"}], "]"}]}], ";"}], "\[IndentingNewLine]", 
+ RowBox[{
+  RowBox[{"data2", "=", 
+   RowBox[{"StringSplit", "[", 
+    RowBox[{"data1", ",", "\"\<,\>\""}], "]"}]}], 
+  ";"}], "\[IndentingNewLine]", 
+ RowBox[{
+  RowBox[{"data3", "=", 
+   RowBox[{"Table", "[", 
+    RowBox[{
+     RowBox[{"StringSplit", "[", 
+      RowBox[{
+       RowBox[{"data2", "[", 
+        RowBox[{"[", "i", "]"}], "]"}], ",", "\"\< \>\""}], "]"}], ",", 
+     RowBox[{"{", 
+      RowBox[{"i", ",", "1", ",", 
+       RowBox[{"Length", "[", "data2", "]"}]}], "}"}]}], "]"}]}], 
+  ";"}], "\[IndentingNewLine]", 
+ RowBox[{
+  RowBox[{"tableString", "=", 
+   RowBox[{"Flatten", "[", 
+    RowBox[{"data3", ",", "1"}], "]"}]}], ";"}], "\[IndentingNewLine]", 
+ RowBox[{
+  RowBox[{"table", "=", 
+   RowBox[{"Map", "[", 
+    RowBox[{
+     RowBox[{
+      RowBox[{"Read", "[", 
+       RowBox[{
+        RowBox[{"StringToStream", "[", "#", "]"}], ",", "Number"}], "]"}], 
+      "&"}], ",", "tableString", ",", 
+     RowBox[{"{", "2", "}"}]}], "]"}]}], ";"}], "\[IndentingNewLine]", 
+ RowBox[{
+  RowBox[{"rowsNum", "=", 
+   RowBox[{"Length", "[", "table", "]"}]}], ";"}], "\[IndentingNewLine]", 
+ RowBox[{
+  RowBox[{
+   RowBox[{"lastRowLen", "=", 
+    RowBox[{"Length", "[", 
+     RowBox[{"table", "[", 
+      RowBox[{"[", 
+       RowBox[{"-", "1"}], "]"}], "]"}], "]"}]}], ";"}], 
+  "\[IndentingNewLine]"}], "\[IndentingNewLine]", 
+ RowBox[{
+  RowBox[{"For", "[", 
+   RowBox[{
+    RowBox[{"i", "=", 
+     RowBox[{"rowsNum", "-", "1"}]}], ",", 
+    RowBox[{"i", ">=", "1"}], ",", 
+    RowBox[{"i", "--"}], ",", 
+    RowBox[{"(*", "rows", "*)"}], "\[IndentingNewLine]", 
+    RowBox[{
+     RowBox[{"For", "[", 
+      RowBox[{
+       RowBox[{"j", "=", "1"}], ",", 
+       RowBox[{"j", "\[LessEqual]", 
+        RowBox[{"Length", "[", 
+         RowBox[{"table", "[", 
+          RowBox[{"[", "i", "]"}], "]"}], "]"}]}], ",", 
+       RowBox[{"j", "++"}], ",", 
+       RowBox[{"(*", "columns", "*)"}], "\[IndentingNewLine]", 
+       RowBox[{
+        RowBox[{
+         RowBox[{"table", "[", 
+          RowBox[{"[", 
+           RowBox[{"i", ",", "j"}], "]"}], "]"}], "=", 
+         RowBox[{
+          RowBox[{"table", "[", 
+           RowBox[{"[", 
+            RowBox[{"i", ",", "j"}], "]"}], "]"}], "+", 
+          RowBox[{"Max", "[", 
+           RowBox[{
+            RowBox[{"table", "[", 
+             RowBox[{"[", 
+              RowBox[{
+               RowBox[{"i", "+", "1"}], ",", "j"}], "]"}], "]"}], ",", 
+            RowBox[{"table", "[", 
+             RowBox[{"[", 
+              RowBox[{
+               RowBox[{"i", "+", "1"}], ",", 
+               RowBox[{"j", "+", "1"}]}], "]"}], "]"}]}], "]"}]}]}], ";"}]}], 
+      "\[IndentingNewLine]", "]"}], ";"}]}], "\[IndentingNewLine]", "]"}], 
+  ";"}], "\[IndentingNewLine]", 
+ RowBox[{"table", "[", 
+  RowBox[{"[", 
+   RowBox[{"1", ",", "1"}], "]"}], "]"}]}], "Input",
+ CellChangeTimes->CompressedData["
+1:eJxTTMoPSmViYGAQBWIQPWUts98m/deO3Eqc/iD6U39uIojWuPg0HUR/qZlR
+A6JVr+1oANEbrlTOB9E6i68vAdECBiYbQPQl68JdIHrXitdHQDQjs90JEJ0j
+PekMiC48dxpM25UJH9oMpKu3e5wG0e/2ed0E0a82LL8DohdVv+TbAqQdbRQE
+QXS/KJMoiDbYFCMGogv0ExRB9LIEc1UQfW22sw6I9tzbqQuiJZ78tgDRi4IE
+rEC0ietV036D145LvTK8QLTF2lR/EL0qrSACRHOaWSWAaLdC90QQvYvhSwaI
+fpOpVw2iL5zRrAfRE8oMG0C0Qs6BnROA9F6x8l0gWuOTxEEQfS6z+TCIBgAK
+cqQK
+  "]],
+
+Cell[BoxData["1074"], "Output",
+ CellChangeTimes->{
+  3.6493381232876377`*^9, {3.649338198397934*^9, 3.6493383307725053`*^9}, {
+   3.649338362653329*^9, 3.6493383974553194`*^9}, 3.649340885001599*^9, {
+   3.649340941449827*^9, 3.6493409566286955`*^9}}]
+}, Open  ]]
+}, Open  ]]
+},
+WindowSize->{826, 644},
+WindowMargins->{{Automatic, 26}, {Automatic, 8}},
+ShowSelection->True,
+FrontEndVersion->"10.2 for Microsoft Windows (64-bit) (July 7, 2015)",
+StyleDefinitions->"MyBook.nb"
+]
+(* End of Notebook Content *)
+
+(* Internal cache information *)
+(*CellTagsOutline
+CellTagsIndex->{}
+*)
+(*CellTagsIndex
+CellTagsIndex->{}
+*)
+(*NotebookFileOutline
+Notebook[{
+Cell[CellGroupData[{
+Cell[579, 22, 163, 2, 80, "BOOK TITLE"],
+Cell[745, 26, 1227, 36, 608, "Text"],
+Cell[CellGroupData[{
+Cell[1997, 66, 3543, 101, 312, "Input"],
+Cell[5543, 169, 252, 4, 31, "Output"]
+}, Open  ]]
+}, Open  ]]
+}
+]
+*)
+
+(* End of internal cache information *)

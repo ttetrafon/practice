@@ -1,0 +1,142 @@
+(* Content-type: application/vnd.wolfram.mathematica *)
+
+(*** Wolfram Notebook File ***)
+(* http://www.wolfram.com/nb *)
+
+(* CreatedBy='Mathematica 9.0' *)
+
+(*CacheID: 234*)
+(* Internal cache information:
+NotebookFileLineBreakTest
+NotebookFileLineBreakTest
+NotebookDataPosition[       157,          7]
+NotebookDataLength[      4316,        133]
+NotebookOptionsPosition[      3834,        111]
+NotebookOutlinePosition[      4195,        127]
+CellTagsIndexPosition[      4152,        124]
+WindowFrame->Normal*)
+
+(* Beginning of Notebook Content *)
+Notebook[{
+
+Cell[CellGroupData[{
+Cell["47 - Distinct primes factors", "BOOK TITLE",
+ CellChangeTimes->{{3.6508214933396215`*^9, 3.650821506733635*^9}}],
+
+Cell["\<\
+The first two consecutive numbers to have two distinct prime factors are:
+
+14 = 2 \[Times] 7
+15 = 3 \[Times] 5
+
+The first three consecutive numbers to have three distinct prime factors are:
+
+644 = 2\.b2 \[Times] 7 \[Times] 23
+645 = 3 \[Times] 5 \[Times] 43
+646 = 2 \[Times] 17 \[Times] 19.
+
+Find the first four consecutive integers to have four distinct prime factors. \
+What is the first of these numbers?\
+\>", "Text",
+ CellChangeTimes->{{3.650821513851675*^9, 3.6508215143130035`*^9}, {
+  3.6508216545251274`*^9, 3.65082167667844*^9}}],
+
+Cell[CellGroupData[{
+
+Cell[BoxData[{
+ RowBox[{"ClearAll", "[", "\"\<Global`*\>\"", "]"}], "\[IndentingNewLine]", 
+ RowBox[{
+  RowBox[{
+   RowBox[{
+    RowBox[{"numOfFactors", "[", "n_", "]"}], ":=", 
+    RowBox[{"Length", "[", 
+     RowBox[{"Map", "[", 
+      RowBox[{"First", ",", 
+       RowBox[{"FactorInteger", "[", "n", "]"}]}], "]"}], "]"}]}], ";"}], 
+  "\[IndentingNewLine]"}], "\[IndentingNewLine]", 
+ RowBox[{"StringForm", "[", 
+  RowBox[{"\"\<progress \[Rule] ``\>\"", ",", "\[IndentingNewLine]", 
+   RowBox[{"Dynamic", "[", "i", "]"}]}], "\[IndentingNewLine]", 
+  "]"}], "\[IndentingNewLine]", 
+ RowBox[{
+  RowBox[{"For", "[", 
+   RowBox[{
+    RowBox[{"i", "=", "1"}], ",", "True", ",", 
+    RowBox[{"i", "++"}], ",", "\[IndentingNewLine]", 
+    RowBox[{"If", "[", "\[IndentingNewLine]", 
+     RowBox[{
+      RowBox[{
+       RowBox[{
+        RowBox[{"numOfFactors", "[", "i", "]"}], "\[Equal]", "4"}], 
+       "\[IndentingNewLine]", "&&", "\[IndentingNewLine]", 
+       RowBox[{
+        RowBox[{"numOfFactors", "[", 
+         RowBox[{"i", "+", "1"}], "]"}], "\[Equal]", "4"}], 
+       "\[IndentingNewLine]", "&&", "\[IndentingNewLine]", 
+       RowBox[{
+        RowBox[{"numOfFactors", "[", 
+         RowBox[{"i", "+", "2"}], "]"}], "\[Equal]", "4"}], 
+       "\[IndentingNewLine]", "&&", "\[IndentingNewLine]", 
+       RowBox[{
+        RowBox[{"numOfFactors", "[", 
+         RowBox[{"i", "+", "3"}], "]"}], "\[Equal]", "4"}]}], 
+      "\[IndentingNewLine]", ",", "\[IndentingNewLine]", 
+      RowBox[{
+       RowBox[{"target", "=", "i"}], ";", 
+       RowBox[{"Break", "[", "]"}]}]}], "]"}]}], "\[IndentingNewLine]", "]"}],
+   ";"}], "\[IndentingNewLine]", 
+ RowBox[{"StringForm", "[", 
+  RowBox[{"\"\<The first number is ``\>\"", ",", "target"}], "]"}]}], "Input",
+ CellChangeTimes->{{3.6508215205974874`*^9, 3.6508215275317545`*^9}, {
+  3.650821595771369*^9, 3.650821610974696*^9}, {3.6508216442857585`*^9, 
+  3.650821646368824*^9}, {3.6508216801542416`*^9, 3.650821749692814*^9}, {
+  3.6508218902832413`*^9, 3.6508219955049353`*^9}, {3.650822447276479*^9, 
+  3.6508225152188883`*^9}}],
+
+Cell[BoxData[
+ InterpretationBox["\<\"progress \[Rule] \\!\\(\\*DynamicBox[ToBoxes[i, \
+StandardForm]]\\)\"\>",
+  StringForm["progress \[Rule] ``", 
+   Dynamic[$CellContext`i]],
+  Editable->False]], "Output",
+ CellChangeTimes->{3.650822516718964*^9}],
+
+Cell[BoxData[
+ InterpretationBox["\<\"The first number is \\!\\(134043\\)\"\>",
+  StringForm["The first number is ``", 134043],
+  Editable->False]], "Output",
+ CellChangeTimes->{3.650822518203306*^9}]
+}, Open  ]]
+}, Open  ]]
+},
+WindowSize->{826, 644},
+WindowMargins->{{Automatic, 16}, {Automatic, 15}},
+ShowSelection->True,
+FrontEndVersion->"10.2 for Microsoft Windows (64-bit) (July 7, 2015)",
+StyleDefinitions->"MyBook.nb"
+]
+(* End of Notebook Content *)
+
+(* Internal cache information *)
+(*CellTagsOutline
+CellTagsIndex->{}
+*)
+(*CellTagsIndex
+CellTagsIndex->{}
+*)
+(*NotebookFileOutline
+Notebook[{
+Cell[CellGroupData[{
+Cell[579, 22, 118, 1, 80, "BOOK TITLE"],
+Cell[700, 25, 548, 16, 228, "Text"],
+Cell[CellGroupData[{
+Cell[1273, 45, 2077, 48, 392, "Input"],
+Cell[3353, 95, 250, 6, 31, "Output"],
+Cell[3606, 103, 200, 4, 31, "Output"]
+}, Open  ]]
+}, Open  ]]
+}
+]
+*)
+
+(* End of internal cache information *)

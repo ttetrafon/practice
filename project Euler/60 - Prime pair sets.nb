@@ -1,0 +1,285 @@
+(* Content-type: application/vnd.wolfram.mathematica *)
+
+(*** Wolfram Notebook File ***)
+(* http://www.wolfram.com/nb *)
+
+(* CreatedBy='Mathematica 10.2' *)
+
+(*CacheID: 234*)
+(* Internal cache information:
+NotebookFileLineBreakTest
+NotebookFileLineBreakTest
+NotebookDataPosition[       158,          7]
+NotebookDataLength[     10757,        276]
+NotebookOptionsPosition[     10254,        254]
+NotebookOutlinePosition[     10595,        269]
+CellTagsIndexPosition[     10552,        266]
+WindowFrame->Normal*)
+
+(* Beginning of Notebook Content *)
+Notebook[{
+
+Cell[CellGroupData[{
+Cell["60 - Prime pair sets", "BOOK TITLE",
+ CellChangeTimes->{{3.6521640669042873`*^9, 3.65216406887368*^9}}],
+
+Cell["\<\
+
+
+The primes 3, 7, 109, and 673, are quite remarkable. By taking any two primes \
+and concatenating them in any order the result will always be prime. For \
+example, taking 7 and 109, both 7109 and 1097 are prime. The sum of these \
+four primes, 792, represents the lowest sum for a set of four primes with \
+this property.
+
+Find the lowest sum for a set of five primes for which any two primes \
+concatenate to produce another prime.
+\
+\>", "Text",
+ CellChangeTimes->{3.6521640811307306`*^9}],
+
+Cell[CellGroupData[{
+
+Cell[BoxData[{
+ RowBox[{
+  RowBox[{"ClearAll", "[", "\"\<Global`*\>\"", "]"}], "\[IndentingNewLine]", 
+  RowBox[{"(*", 
+   RowBox[{
+   "function", " ", "to", " ", "create", " ", "all", " ", "the", "  ", 
+    "possible", " ", "combinations"}], "*)"}]}], "\[IndentingNewLine]", 
+ RowBox[{
+  RowBox[{
+   RowBox[{
+    RowBox[{"allPairs", "[", "list__", "]"}], ":=", 
+    RowBox[{"Module", "[", "\[IndentingNewLine]", 
+     RowBox[{
+      RowBox[{"{", "\[IndentingNewLine]", 
+       RowBox[{
+       "pairs1", ",", "pairs2", ",", "pairs3", ",", "pairs4", ",", "pairs5", 
+        ",", "pairs6"}], "\[IndentingNewLine]", "}"}], ",", 
+      "\[IndentingNewLine]", 
+      RowBox[{
+       RowBox[{"pairs1", "=", 
+        RowBox[{"Subsets", "[", 
+         RowBox[{"list", ",", 
+          RowBox[{"{", "2", "}"}]}], "]"}]}], ";", "\[IndentingNewLine]", 
+       RowBox[{"pairs2", "=", 
+        RowBox[{"Map", "[", 
+         RowBox[{"Reverse", ",", "pairs1"}], "]"}]}], ";", 
+       "\[IndentingNewLine]", 
+       RowBox[{"pairs3", "=", 
+        RowBox[{"Join", "[", 
+         RowBox[{"pairs1", ",", "pairs2"}], "]"}]}], ";", 
+       "\[IndentingNewLine]", 
+       RowBox[{"pairs4", "=", 
+        RowBox[{"Map", "[", 
+         RowBox[{"IntegerDigits", ",", "pairs3"}], "]"}]}], ";", 
+       "\[IndentingNewLine]", 
+       RowBox[{"pairs5", "=", 
+        RowBox[{"Map", "[", 
+         RowBox[{"Flatten", ",", "pairs4", ",", "2"}], "]"}]}], ";", 
+       "\[IndentingNewLine]", 
+       RowBox[{"pairs6", "=", 
+        RowBox[{"Map", "[", 
+         RowBox[{"FromDigits", ",", "pairs5"}], "]"}]}]}]}], 
+     "\[IndentingNewLine]", "]"}]}], ";"}], "\[IndentingNewLine]", 
+  RowBox[{"(*", 
+   RowBox[{
+   "function", " ", "to", " ", "check", " ", "if", " ", "all", " ", 
+    "elements", " ", "in", " ", "a", " ", "list", " ", "are", " ", "primes"}],
+    "*)"}]}], "\[IndentingNewLine]", 
+ RowBox[{
+  RowBox[{
+   RowBox[{
+    RowBox[{"arePrimes", "[", "list__", "]"}], ":=", 
+    RowBox[{"Module", "[", "\[IndentingNewLine]", 
+     RowBox[{
+      RowBox[{"{", "\[IndentingNewLine]", 
+       RowBox[{"checkList", "=", 
+        RowBox[{"Map", "[", 
+         RowBox[{"PrimeQ", ",", "list"}], "]"}]}], "\[IndentingNewLine]", 
+       "}"}], ",", "\[IndentingNewLine]", 
+      RowBox[{"If", "[", 
+       RowBox[{
+        RowBox[{"MemberQ", "[", 
+         RowBox[{"checkList", ",", "False"}], "]"}], ",", "False", ",", 
+        "True"}], "]"}]}], "\[IndentingNewLine]", "]"}]}], ";"}], 
+  "\[IndentingNewLine]"}], "\[IndentingNewLine]", 
+ RowBox[{
+  RowBox[{"StringForm", "[", 
+   RowBox[{
+   "\"\<progress \[Rule] { `1` , `2` , `3` , `4` , `5` }\>\"", ",", 
+    "\[IndentingNewLine]", 
+    RowBox[{"(*", "1", "*)"}], 
+    RowBox[{"Dynamic", "[", 
+     RowBox[{"Prime", "[", "a", "]"}], "]"}], ",", "\[IndentingNewLine]", 
+    RowBox[{"(*", "2", "*)"}], 
+    RowBox[{"Dynamic", "[", 
+     RowBox[{"Prime", "[", "b", "]"}], "]"}], ",", "\[IndentingNewLine]", 
+    RowBox[{"(*", "3", "*)"}], 
+    RowBox[{"Dynamic", "[", 
+     RowBox[{"Prime", "[", "c", "]"}], "]"}], ",", "\[IndentingNewLine]", 
+    RowBox[{"(*", "4", "*)"}], 
+    RowBox[{"Dynamic", "[", 
+     RowBox[{"Prime", "[", "d", "]"}], "]"}], ",", "\[IndentingNewLine]", 
+    RowBox[{"(*", "5", "*)"}], 
+    RowBox[{"Dynamic", "[", 
+     RowBox[{"Prime", "[", "e", "]"}], "]"}]}], "\[IndentingNewLine]", "]"}], 
+  "\[IndentingNewLine]"}], "\[IndentingNewLine]", 
+ RowBox[{
+  RowBox[{"pairs", "=", 
+   RowBox[{"{", 
+    RowBox[{"4", ",", "4", ",", "4"}], "}"}]}], ";"}], "\[IndentingNewLine]", 
+ RowBox[{
+  RowBox[{
+   RowBox[{"For", "[", 
+    RowBox[{
+     RowBox[{"a", "=", "5"}], ",", 
+     RowBox[{
+      RowBox[{"arePrimes", "[", "pairs", "]"}], "\[Equal]", "False"}], ",", 
+     RowBox[{"a", "++"}], ",", "\[IndentingNewLine]", 
+     RowBox[{
+      RowBox[{"For", "[", 
+       RowBox[{
+        RowBox[{"b", "=", "4"}], ",", 
+        RowBox[{"b", "<", "a"}], ",", 
+        RowBox[{"b", "++"}], ",", "\[IndentingNewLine]", 
+        RowBox[{
+         RowBox[{"For", "[", 
+          RowBox[{
+           RowBox[{"c", "=", "3"}], ",", 
+           RowBox[{"c", "<", "b"}], ",", 
+           RowBox[{"c", "++"}], ",", "\[IndentingNewLine]", 
+           RowBox[{
+            RowBox[{"For", "[", 
+             RowBox[{
+              RowBox[{"d", "=", "2"}], ",", 
+              RowBox[{"d", "<", "c"}], ",", 
+              RowBox[{"d", "++"}], ",", "\[IndentingNewLine]", 
+              RowBox[{
+               RowBox[{"For", "[", 
+                RowBox[{
+                 RowBox[{"e", "=", "1"}], ",", 
+                 RowBox[{"e", "<", "d"}], ",", 
+                 RowBox[{"e", "++"}], ",", "\[IndentingNewLine]", 
+                 RowBox[{"(*", 
+                  RowBox[{
+                   RowBox[{"Print", "[", 
+                    RowBox[{
+                    "a", ",", "\"\<-\>\"", ",", "b", ",", "\"\<-\>\"", ",", 
+                    "c", ",", "\"\<-\>\"", ",", "d", ",", "\"\<-\>\"", ",", 
+                    "e"}], "]"}], ";"}], "*)"}], "\[IndentingNewLine]", 
+                 RowBox[{
+                  RowBox[{"list", "=", 
+                   RowBox[{"{", 
+                    RowBox[{
+                    RowBox[{"Prime", "[", "a", "]"}], ",", 
+                    RowBox[{"Prime", "[", "b", "]"}], ",", 
+                    RowBox[{"Prime", "[", "c", "]"}], ",", 
+                    RowBox[{"Prime", "[", "d", "]"}], ",", 
+                    RowBox[{"Prime", "[", "e", "]"}]}], "}"}]}], ";", 
+                  "\[IndentingNewLine]", 
+                  RowBox[{"pairs", "=", 
+                   RowBox[{"allPairs", "[", "list", "]"}]}], ";"}]}], 
+                "\[IndentingNewLine]", "]"}], ";"}]}], "\[IndentingNewLine]", 
+             "]"}], ";"}]}], "\[IndentingNewLine]", "]"}], ";"}]}], 
+       "\[IndentingNewLine]", "]"}], ";"}]}], "\[IndentingNewLine]", "]"}], 
+   ";"}], "\[IndentingNewLine]"}], "\[IndentingNewLine]", 
+ RowBox[{"StringForm", "[", 
+  RowBox[{"\"\<The sum of the wanted primes is ``\>\"", ",", 
+   RowBox[{"Total", "[", 
+    RowBox[{"{", 
+     RowBox[{
+      RowBox[{"Prime", "[", "a", "]"}], ",", 
+      RowBox[{"Prime", "[", "b", "]"}], ",", 
+      RowBox[{"Prime", "[", "c", "]"}], ",", 
+      RowBox[{"Prime", "[", "d", "]"}], ",", 
+      RowBox[{"Prime", "[", "e", "]"}]}], "}"}], "]"}]}], "]"}]}], "Input",
+ CellChangeTimes->{{3.6521640833282814`*^9, 3.6521640905984397`*^9}, {
+  3.6521641447111235`*^9, 3.6521642800238247`*^9}, {3.652164320166868*^9, 
+  3.6521643338155503`*^9}, {3.6521643721364174`*^9, 3.6521643930672736`*^9}, {
+  3.6521644696075883`*^9, 3.6521645462468057`*^9}, {3.652164691383563*^9, 
+  3.6521647229997063`*^9}, {3.6521647589351077`*^9, 3.652164783526964*^9}, {
+  3.652164938376316*^9, 3.652164952040356*^9}, {3.6521649932553005`*^9, 
+  3.652165180055405*^9}, {3.6521652573833833`*^9, 3.652165260709148*^9}, {
+  3.652165315304593*^9, 3.6521653158940077`*^9}, {3.653123059907152*^9, 
+  3.6531234537097645`*^9}, {3.6531236297639923`*^9, 3.6531237528303003`*^9}, {
+  3.653123803071514*^9, 3.653124062580133*^9}, {3.653124159149107*^9, 
+  3.653124215914529*^9}, {3.653124291962826*^9, 3.653124372641632*^9}, {
+  3.6531246568028975`*^9, 3.6531246886447573`*^9}}],
+
+Cell[BoxData[
+ InterpretationBox["\<\"progress \[Rule] { \
+\\!\\(\\*DynamicBox[ToBoxes[Prime[a], StandardForm]]\\) , \
+\\!\\(\\*DynamicBox[ToBoxes[Prime[b], StandardForm]]\\) , \
+\\!\\(\\*DynamicBox[ToBoxes[Prime[c], StandardForm]]\\) , \
+\\!\\(\\*DynamicBox[ToBoxes[Prime[d], StandardForm]]\\) , \
+\\!\\(\\*DynamicBox[ToBoxes[Prime[e], StandardForm]]\\) }\"\>",
+  StringForm["progress \[Rule] { `1` , `2` , `3` , `4` , `5` }", 
+   Dynamic[
+    Prime[$CellContext`a]], 
+   Dynamic[
+    Prime[$CellContext`b]], 
+   Dynamic[
+    Prime[$CellContext`c]], 
+   Dynamic[
+    Prime[$CellContext`d]], 
+   Dynamic[
+    Prime[$CellContext`e]]],
+  Editable->False]], "Output",
+ CellChangeTimes->{{3.653123884903366*^9, 3.6531239020013013`*^9}, {
+   3.6531240163123674`*^9, 3.653124044230857*^9}, 3.6531241093163795`*^9, 
+   3.6531241754389963`*^9, 3.653124216376876*^9, {3.6531243236879745`*^9, 
+   3.653124375665787*^9}, {3.653124644631505*^9, 3.6531246893142157`*^9}, 
+   3.653223540631448*^9}],
+
+Cell[BoxData["$Aborted"], "Output",
+ CellChangeTimes->{{3.653123884903366*^9, 3.6531239020013013`*^9}, {
+   3.6531240163123674`*^9, 3.653124044230857*^9}, 3.6531241093163795`*^9, 
+   3.6531241754389963`*^9, 3.653124216376876*^9, {3.6531243236879745`*^9, 
+   3.653124375665787*^9}, {3.653124644631505*^9, 3.6531246893142157`*^9}, 
+   3.6532413345048018`*^9}],
+
+Cell[BoxData[
+ InterpretationBox["\<\"The sum of the wanted primes is \\!\\(1285\\)\"\>",
+  StringForm["The sum of the wanted primes is ``", 1285],
+  Editable->False]], "Output",
+ CellChangeTimes->{{3.653123884903366*^9, 3.6531239020013013`*^9}, {
+   3.6531240163123674`*^9, 3.653124044230857*^9}, 3.6531241093163795`*^9, 
+   3.6531241754389963`*^9, 3.653124216376876*^9, {3.6531243236879745`*^9, 
+   3.653124375665787*^9}, {3.653124644631505*^9, 3.6531246893142157`*^9}, 
+   3.653241334536052*^9}]
+}, Open  ]]
+}, Open  ]]
+},
+WindowSize->{775, 561},
+WindowMargins->{{250, Automatic}, {Automatic, 38}},
+FrontEndVersion->"10.2 for Microsoft Windows (64-bit) (July 7, 2015)",
+StyleDefinitions->"MyBook.nb"
+]
+(* End of Notebook Content *)
+
+(* Internal cache information *)
+(*CellTagsOutline
+CellTagsIndex->{}
+*)
+(*CellTagsIndex
+CellTagsIndex->{}
+*)
+(*NotebookFileOutline
+Notebook[{
+Cell[CellGroupData[{
+Cell[580, 22, 109, 1, 80, "BOOK TITLE"],
+Cell[692, 25, 503, 13, 152, "Text"],
+Cell[CellGroupData[{
+Cell[1220, 42, 7158, 166, 932, "Input"],
+Cell[8381, 210, 984, 23, 31, "Output"],
+Cell[9368, 235, 357, 5, 31, "Output"],
+Cell[9728, 242, 498, 8, 31, "Output"]
+}, Open  ]]
+}, Open  ]]
+}
+]
+*)
+
+(* End of internal cache information *)

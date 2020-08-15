@@ -1,0 +1,475 @@
+(* Content-type: application/vnd.wolfram.mathematica *)
+
+(*** Wolfram Notebook File ***)
+(* http://www.wolfram.com/nb *)
+
+(* CreatedBy='Mathematica 9.0' *)
+
+(*CacheID: 234*)
+(* Internal cache information:
+NotebookFileLineBreakTest
+NotebookFileLineBreakTest
+NotebookDataPosition[       157,          7]
+NotebookDataLength[     16358,        466]
+NotebookOptionsPosition[     14801,        415]
+NotebookOutlinePosition[     15161,        431]
+CellTagsIndexPosition[     15118,        428]
+WindowFrame->Normal*)
+
+(* Beginning of Notebook Content *)
+Notebook[{
+
+Cell[CellGroupData[{
+Cell["23 - Non-abundant sums", "BOOK TITLE",
+ CellChangeTimes->{{3.6489881230259933`*^9, 3.648988131857499*^9}}],
+
+Cell["\<\
+A perfect number is a number for which the sum of its proper divisors is \
+exactly equal to the number. For example, the sum of the proper divisors of \
+28 would be 1 + 2 + 4 + 7 + 14 = 28, which means that 28 is a perfect number.
+
+A number n is called deficient if the sum of its proper divisors is less than \
+n and it is called abundant if this sum exceeds n.
+
+As 12 is the smallest abundant number, 1 + 2 + 3 + 4 + 6 = 16, the smallest \
+number that can be written as the sum of two abundant numbers is 24. By \
+mathematical analysis, it can be shown that all integers greater than 28123 \
+can be written as the sum of two abundant numbers. However, this upper limit \
+cannot be reduced any further by analysis even though it is known that the \
+greatest number that cannot be expressed as the sum of two abundant numbers \
+is less than this limit.
+
+Find the sum of all the positive integers which cannot be written as the sum \
+of two abundant numbers.\
+\>", "Text",
+ CellChangeTimes->{{3.648988137090798*^9, 3.6489881400329666`*^9}}],
+
+Cell[CellGroupData[{
+
+Cell[BoxData[{
+ RowBox[{"ClearAll", "[", "\"\<Global`*\>\"", "]"}], "\[IndentingNewLine]", 
+ RowBox[{
+  RowBox[{"divisorTotal", "[", "n_", "]"}], ":=", 
+  RowBox[{"Total", "[", 
+   RowBox[{"Delete", "[", 
+    RowBox[{
+     RowBox[{"Divisors", "[", "n", "]"}], ",", 
+     RowBox[{"{", 
+      RowBox[{"-", "1"}], "}"}]}], "]"}], "]"}]}], "\[IndentingNewLine]", 
+ RowBox[{
+  RowBox[{"isAbundant", "[", "n_", "]"}], ":=", 
+  RowBox[{"If", "[", 
+   RowBox[{
+    RowBox[{"n", "<", 
+     RowBox[{"divisorTotal", "[", "n", "]"}]}], ",", "True", ",", "False"}], 
+   "]"}]}], "\[IndentingNewLine]", 
+ RowBox[{
+  RowBox[{"limit", "=", "28123"}], ";"}], "\[IndentingNewLine]", 
+ RowBox[{
+  RowBox[{"isSumOfTwoAbundants", "[", "n_Integer", "]"}], ":=", 
+  RowBox[{"Module", "[", 
+   RowBox[{
+    RowBox[{"{", 
+     RowBox[{
+      RowBox[{"pairs", "=", 
+       RowBox[{"{", "}"}]}], ",", "a", ",", "b", ",", "i", ",", 
+      RowBox[{"answer", "=", "False"}]}], "}"}], ",", "\[IndentingNewLine]", 
+    RowBox[{
+     RowBox[{"For", "[", 
+      RowBox[{
+       RowBox[{"i", "=", "1"}], ",", 
+       RowBox[{"i", "\[LessEqual]", 
+        RowBox[{"n", "/", "2"}]}], ",", 
+       RowBox[{"i", "++"}], ",", "\[IndentingNewLine]", 
+       RowBox[{
+        RowBox[{"a", "=", 
+         RowBox[{"n", "-", "i"}]}], ";", "\[IndentingNewLine]", 
+        RowBox[{"b", "=", "i"}], ";", "\[IndentingNewLine]", 
+        RowBox[{"If", "[", 
+         RowBox[{
+          RowBox[{
+           RowBox[{"isAbundant", "[", "a", "]"}], "&&", 
+           RowBox[{"isAbundant", "[", "b", "]"}]}], ",", 
+          RowBox[{
+           RowBox[{"answer", "=", "True"}], ";", 
+           RowBox[{"Break", "[", "]"}]}]}], "]"}]}]}], "\[IndentingNewLine]", 
+      "]"}], ";", "\[IndentingNewLine]", "answer"}]}], "\[IndentingNewLine]", 
+   "]"}]}], "\[IndentingNewLine]", 
+ RowBox[{
+  RowBox[{"total", "=", "0"}], ";"}], "\[IndentingNewLine]", 
+ RowBox[{
+  RowBox[{"For", "[", 
+   RowBox[{
+    RowBox[{"i", "=", "1"}], ",", 
+    RowBox[{"i", "\[LessEqual]", "limit"}], ",", 
+    RowBox[{"i", "++"}], ",", "\[IndentingNewLine]", 
+    RowBox[{
+     RowBox[{"test", "=", 
+      RowBox[{"isSumOfTwoAbundants", "[", "i", "]"}]}], ";", 
+     "\[IndentingNewLine]", 
+     RowBox[{"If", "[", 
+      RowBox[{
+       RowBox[{
+        RowBox[{"Mod", "[", 
+         RowBox[{"i", ",", "1000"}], "]"}], "\[Equal]", "0"}], ",", 
+       RowBox[{"Print", "[", 
+        RowBox[{"i", ",", "\"\<   subtotal = \>\"", ",", " ", "total"}], 
+        "]"}]}], "]"}], ";", "\[IndentingNewLine]", 
+     RowBox[{"If", "[", 
+      RowBox[{
+       RowBox[{"Not", "[", "test", "]"}], ",", 
+       RowBox[{"total", "=", 
+        RowBox[{"total", "+", "i"}]}]}], "]"}]}]}], "\[IndentingNewLine]", 
+   "]"}], ";"}], "\[IndentingNewLine]", 
+ RowBox[{"Print", "[", 
+  RowBox[{"\"\<Total = \>\"", ",", "total"}], "]"}]}], "Input",
+ CellChangeTimes->{{3.6489881427251205`*^9, 3.6489881794792223`*^9}, {
+   3.6489882172983856`*^9, 3.648988334230074*^9}, {3.6489883717342186`*^9, 
+   3.6489884153957157`*^9}, {3.648988461412348*^9, 3.6489885579278684`*^9}, {
+   3.648988657304552*^9, 3.64898882388108*^9}, {3.648988906697817*^9, 
+   3.6489891976394577`*^9}, {3.6489892347005777`*^9, 3.648989254019683*^9}, {
+   3.648989362999916*^9, 3.648989374036547*^9}, {3.648989566457553*^9, 
+   3.6489895854026365`*^9}, {3.6489896487772617`*^9, 3.648989683162228*^9}, {
+   3.6489897377653513`*^9, 3.6489897397644653`*^9}, {3.6489897951316323`*^9, 
+   3.648989836153979*^9}, {3.648990062555928*^9, 3.648990065435093*^9}, {
+   3.64899010087612*^9, 3.648990170266089*^9}, {3.648990239819067*^9, 
+   3.6489903045767713`*^9}, {3.6489903591628933`*^9, 3.648990361050001*^9}, {
+   3.64899043725836*^9, 3.648990480705845*^9}, {3.6489905951623917`*^9, 
+   3.6489906460063*^9}, {3.6489906984252977`*^9, 3.6489907156092806`*^9}, {
+   3.6489907804429893`*^9, 3.6489908146989484`*^9}, {3.6492702437520123`*^9, 
+   3.6492703018883376`*^9}, {3.649270352301221*^9, 3.6492703566784716`*^9}, {
+   3.649270391335454*^9, 3.6492703953086815`*^9}, {3.6492704284665775`*^9, 
+   3.649270442387374*^9}, {3.649270480385547*^9, 3.649270620285549*^9}, {
+   3.6492706891074853`*^9, 3.6492707665749164`*^9}, {3.6492708205850058`*^9, 
+   3.649270822572119*^9}, 3.6492710747385426`*^9, {3.649271441042494*^9, 
+   3.649271485505037*^9}, {3.6492715560050693`*^9, 3.6492716047928596`*^9}, {
+   3.6492716439320984`*^9, 3.649271670239603*^9}, {3.6492717246417146`*^9, 
+   3.649271834845018*^9}, 3.649271924172127*^9, {3.649272202603052*^9, 
+   3.649272249428731*^9}, {3.6492723323684745`*^9, 3.6492723677815*^9}, {
+   3.6492724502282157`*^9, 3.6492724818440237`*^9}, {3.6492726408331175`*^9, 
+   3.649272656049988*^9}, 3.649272812943962*^9}],
+
+Cell[CellGroupData[{
+
+Cell[BoxData[
+ InterpretationBox[
+  RowBox[{
+  "1000", "\[InvisibleSpace]", "\<\"   subtotal = \"\>", "\[InvisibleSpace]", 
+   "240492"}],
+  SequenceForm[1000, "   subtotal = ", 240492],
+  Editable->False]], "Print",
+ CellChangeTimes->{3.649272523508407*^9, 3.649272821909475*^9}],
+
+Cell[BoxData[
+ InterpretationBox[
+  RowBox[{
+  "2000", "\[InvisibleSpace]", "\<\"   subtotal = \"\>", "\[InvisibleSpace]", 
+   "573153"}],
+  SequenceForm[2000, "   subtotal = ", 573153],
+  Editable->False]], "Print",
+ CellChangeTimes->{3.649272523508407*^9, 3.6492728284678497`*^9}],
+
+Cell[BoxData[
+ InterpretationBox[
+  RowBox[{
+  "3000", "\[InvisibleSpace]", "\<\"   subtotal = \"\>", "\[InvisibleSpace]", 
+   "989657"}],
+  SequenceForm[3000, "   subtotal = ", 989657],
+  Editable->False]], "Print",
+ CellChangeTimes->{3.649272523508407*^9, 3.649272838700435*^9}],
+
+Cell[BoxData[
+ InterpretationBox[
+  RowBox[{
+  "4000", "\[InvisibleSpace]", "\<\"   subtotal = \"\>", "\[InvisibleSpace]", 
+   "1490743"}],
+  SequenceForm[4000, "   subtotal = ", 1490743],
+  Editable->False]], "Print",
+ CellChangeTimes->{3.649272523508407*^9, 3.649272851797184*^9}],
+
+Cell[BoxData[
+ InterpretationBox[
+  RowBox[{
+  "5000", "\[InvisibleSpace]", "\<\"   subtotal = \"\>", "\[InvisibleSpace]", 
+   "2035227"}],
+  SequenceForm[5000, "   subtotal = ", 2035227],
+  Editable->False]], "Print",
+ CellChangeTimes->{3.649272523508407*^9, 3.6492728667170377`*^9}],
+
+Cell[BoxData[
+ InterpretationBox[
+  RowBox[{
+  "6000", "\[InvisibleSpace]", "\<\"   subtotal = \"\>", "\[InvisibleSpace]", 
+   "2621368"}],
+  SequenceForm[6000, "   subtotal = ", 2621368],
+  Editable->False]], "Print",
+ CellChangeTimes->{3.649272523508407*^9, 3.6492728830139694`*^9}],
+
+Cell[BoxData[
+ InterpretationBox[
+  RowBox[{
+  "7000", "\[InvisibleSpace]", "\<\"   subtotal = \"\>", "\[InvisibleSpace]", 
+   "3054693"}],
+  SequenceForm[7000, "   subtotal = ", 3054693],
+  Editable->False]], "Print",
+ CellChangeTimes->{3.649272523508407*^9, 3.6492728969667673`*^9}],
+
+Cell[BoxData[
+ InterpretationBox[
+  RowBox[{
+  "8000", "\[InvisibleSpace]", "\<\"   subtotal = \"\>", "\[InvisibleSpace]", 
+   "3353255"}],
+  SequenceForm[8000, "   subtotal = ", 3353255],
+  Editable->False]], "Print",
+ CellChangeTimes->{3.649272523508407*^9, 3.649272910666551*^9}],
+
+Cell[BoxData[
+ InterpretationBox[
+  RowBox[{
+  "9000", "\[InvisibleSpace]", "\<\"   subtotal = \"\>", "\[InvisibleSpace]", 
+   "3590893"}],
+  SequenceForm[9000, "   subtotal = ", 3590893],
+  Editable->False]], "Print",
+ CellChangeTimes->{3.649272523508407*^9, 3.649272923599291*^9}],
+
+Cell[BoxData[
+ InterpretationBox[
+  RowBox[{
+  "10000", "\[InvisibleSpace]", "\<\"   subtotal = \"\>", "\[InvisibleSpace]",
+    "3731004"}],
+  SequenceForm[10000, "   subtotal = ", 3731004],
+  Editable->False]], "Print",
+ CellChangeTimes->{3.649272523508407*^9, 3.649272936634036*^9}],
+
+Cell[BoxData[
+ InterpretationBox[
+  RowBox[{
+  "11000", "\[InvisibleSpace]", "\<\"   subtotal = \"\>", "\[InvisibleSpace]",
+    "3805333"}],
+  SequenceForm[11000, "   subtotal = ", 3805333],
+  Editable->False]], "Print",
+ CellChangeTimes->{3.649272523508407*^9, 3.6492729537320147`*^9}],
+
+Cell[BoxData[
+ InterpretationBox[
+  RowBox[{
+  "12000", "\[InvisibleSpace]", "\<\"   subtotal = \"\>", "\[InvisibleSpace]",
+    "3828725"}],
+  SequenceForm[12000, "   subtotal = ", 3828725],
+  Editable->False]], "Print",
+ CellChangeTimes->{3.649272523508407*^9, 3.6492729724120827`*^9}],
+
+Cell[BoxData[
+ InterpretationBox[
+  RowBox[{
+  "13000", "\[InvisibleSpace]", "\<\"   subtotal = \"\>", "\[InvisibleSpace]",
+    "3916276"}],
+  SequenceForm[13000, "   subtotal = ", 3916276],
+  Editable->False]], "Print",
+ CellChangeTimes->{3.649272523508407*^9, 3.649272992788248*^9}],
+
+Cell[BoxData[
+ InterpretationBox[
+  RowBox[{
+  "14000", "\[InvisibleSpace]", "\<\"   subtotal = \"\>", "\[InvisibleSpace]",
+    "3997248"}],
+  SequenceForm[14000, "   subtotal = ", 3997248],
+  Editable->False]], "Print",
+ CellChangeTimes->{3.649272523508407*^9, 3.6492730129854035`*^9}],
+
+Cell[BoxData[
+ InterpretationBox[
+  RowBox[{
+  "15000", "\[InvisibleSpace]", "\<\"   subtotal = \"\>", "\[InvisibleSpace]",
+    "4039939"}],
+  SequenceForm[15000, "   subtotal = ", 4039939],
+  Editable->False]], "Print",
+ CellChangeTimes->{3.649272523508407*^9, 3.649273032987548*^9}],
+
+Cell[BoxData[
+ InterpretationBox[
+  RowBox[{
+  "16000", "\[InvisibleSpace]", "\<\"   subtotal = \"\>", "\[InvisibleSpace]",
+    "4070867"}],
+  SequenceForm[16000, "   subtotal = ", 4070867],
+  Editable->False]], "Print",
+ CellChangeTimes->{3.649272523508407*^9, 3.649273052378657*^9}],
+
+Cell[BoxData[
+ InterpretationBox[
+  RowBox[{
+  "17000", "\[InvisibleSpace]", "\<\"   subtotal = \"\>", "\[InvisibleSpace]",
+    "4087054"}],
+  SequenceForm[17000, "   subtotal = ", 4087054],
+  Editable->False]], "Print",
+ CellChangeTimes->{3.649272523508407*^9, 3.6492730743549137`*^9}],
+
+Cell[BoxData[
+ InterpretationBox[
+  RowBox[{
+  "18000", "\[InvisibleSpace]", "\<\"   subtotal = \"\>", "\[InvisibleSpace]",
+    "4122206"}],
+  SequenceForm[18000, "   subtotal = ", 4122206],
+  Editable->False]], "Print",
+ CellChangeTimes->{3.649272523508407*^9, 3.6492730973082266`*^9}],
+
+Cell[BoxData[
+ InterpretationBox[
+  RowBox[{
+  "19000", "\[InvisibleSpace]", "\<\"   subtotal = \"\>", "\[InvisibleSpace]",
+    "4140643"}],
+  SequenceForm[19000, "   subtotal = ", 4140643],
+  Editable->False]], "Print",
+ CellChangeTimes->{3.649272523508407*^9, 3.649273118630446*^9}],
+
+Cell[BoxData[
+ InterpretationBox[
+  RowBox[{
+  "20000", "\[InvisibleSpace]", "\<\"   subtotal = \"\>", "\[InvisibleSpace]",
+    "4159710"}],
+  SequenceForm[20000, "   subtotal = ", 4159710],
+  Editable->False]], "Print",
+ CellChangeTimes->{3.649272523508407*^9, 3.649273139783656*^9}],
+
+Cell[BoxData[
+ InterpretationBox[
+  RowBox[{
+  "21000", "\[InvisibleSpace]", "\<\"   subtotal = \"\>", "\[InvisibleSpace]",
+    "4179871"}],
+  SequenceForm[21000, "   subtotal = ", 4179871],
+  Editable->False]], "Print",
+ CellChangeTimes->{3.649272523508407*^9, 3.649273158864747*^9}],
+
+Cell[BoxData[
+ InterpretationBox[
+  RowBox[{
+  "22000", "\[InvisibleSpace]", "\<\"   subtotal = \"\>", "\[InvisibleSpace]",
+    "4179871"}],
+  SequenceForm[22000, "   subtotal = ", 4179871],
+  Editable->False]], "Print",
+ CellChangeTimes->{3.649272523508407*^9, 3.649273177605819*^9}],
+
+Cell[BoxData[
+ InterpretationBox[
+  RowBox[{
+  "23000", "\[InvisibleSpace]", "\<\"   subtotal = \"\>", "\[InvisibleSpace]",
+    "4179871"}],
+  SequenceForm[23000, "   subtotal = ", 4179871],
+  Editable->False]], "Print",
+ CellChangeTimes->{3.649272523508407*^9, 3.6492731957048545`*^9}],
+
+Cell[BoxData[
+ InterpretationBox[
+  RowBox[{
+  "24000", "\[InvisibleSpace]", "\<\"   subtotal = \"\>", "\[InvisibleSpace]",
+    "4179871"}],
+  SequenceForm[24000, "   subtotal = ", 4179871],
+  Editable->False]], "Print",
+ CellChangeTimes->{3.649272523508407*^9, 3.649273212352807*^9}],
+
+Cell[BoxData[
+ InterpretationBox[
+  RowBox[{
+  "25000", "\[InvisibleSpace]", "\<\"   subtotal = \"\>", "\[InvisibleSpace]",
+    "4179871"}],
+  SequenceForm[25000, "   subtotal = ", 4179871],
+  Editable->False]], "Print",
+ CellChangeTimes->{3.649272523508407*^9, 3.6492732326309667`*^9}],
+
+Cell[BoxData[
+ InterpretationBox[
+  RowBox[{
+  "26000", "\[InvisibleSpace]", "\<\"   subtotal = \"\>", "\[InvisibleSpace]",
+    "4179871"}],
+  SequenceForm[26000, "   subtotal = ", 4179871],
+  Editable->False]], "Print",
+ CellChangeTimes->{3.649272523508407*^9, 3.649273250600994*^9}],
+
+Cell[BoxData[
+ InterpretationBox[
+  RowBox[{
+  "27000", "\[InvisibleSpace]", "\<\"   subtotal = \"\>", "\[InvisibleSpace]",
+    "4179871"}],
+  SequenceForm[27000, "   subtotal = ", 4179871],
+  Editable->False]], "Print",
+ CellChangeTimes->{3.649272523508407*^9, 3.649273267432957*^9}],
+
+Cell[BoxData[
+ InterpretationBox[
+  RowBox[{
+  "28000", "\[InvisibleSpace]", "\<\"   subtotal = \"\>", "\[InvisibleSpace]",
+    "4179871"}],
+  SequenceForm[28000, "   subtotal = ", 4179871],
+  Editable->False]], "Print",
+ CellChangeTimes->{3.649272523508407*^9, 3.6492732878601255`*^9}],
+
+Cell[BoxData[
+ InterpretationBox[
+  RowBox[{"\<\"Total = \"\>", "\[InvisibleSpace]", "4179871"}],
+  SequenceForm["Total = ", 4179871],
+  Editable->False]], "Print",
+ CellChangeTimes->{3.649272523508407*^9, 3.6492732904292727`*^9}]
+}, Closed]]
+}, Open  ]]
+}, Open  ]]
+},
+WindowSize->{826, 644},
+WindowMargins->{{Automatic, 26}, {Automatic, 8}},
+ShowSelection->True,
+FrontEndVersion->"10.2 for Microsoft Windows (64-bit) (July 7, 2015)",
+StyleDefinitions->"MyBook.nb"
+]
+(* End of Notebook Content *)
+
+(* Internal cache information *)
+(*CellTagsOutline
+CellTagsIndex->{}
+*)
+(*CellTagsIndex
+CellTagsIndex->{}
+*)
+(*NotebookFileOutline
+Notebook[{
+Cell[CellGroupData[{
+Cell[579, 22, 112, 1, 80, "BOOK TITLE"],
+Cell[694, 25, 1049, 19, 247, "Text"],
+Cell[CellGroupData[{
+Cell[1768, 48, 4702, 101, 392, "Input"],
+Cell[CellGroupData[{
+Cell[6495, 153, 280, 7, 23, "Print"],
+Cell[6778, 162, 282, 7, 23, "Print"],
+Cell[7063, 171, 280, 7, 23, "Print"],
+Cell[7346, 180, 282, 7, 23, "Print"],
+Cell[7631, 189, 284, 7, 23, "Print"],
+Cell[7918, 198, 284, 7, 23, "Print"],
+Cell[8205, 207, 284, 7, 23, "Print"],
+Cell[8492, 216, 282, 7, 23, "Print"],
+Cell[8777, 225, 282, 7, 23, "Print"],
+Cell[9062, 234, 284, 7, 23, "Print"],
+Cell[9349, 243, 286, 7, 23, "Print"],
+Cell[9638, 252, 286, 7, 23, "Print"],
+Cell[9927, 261, 284, 7, 23, "Print"],
+Cell[10214, 270, 286, 7, 23, "Print"],
+Cell[10503, 279, 284, 7, 23, "Print"],
+Cell[10790, 288, 284, 7, 23, "Print"],
+Cell[11077, 297, 286, 7, 23, "Print"],
+Cell[11366, 306, 286, 7, 23, "Print"],
+Cell[11655, 315, 284, 7, 23, "Print"],
+Cell[11942, 324, 284, 7, 23, "Print"],
+Cell[12229, 333, 284, 7, 23, "Print"],
+Cell[12516, 342, 284, 7, 23, "Print"],
+Cell[12803, 351, 286, 7, 23, "Print"],
+Cell[13092, 360, 284, 7, 23, "Print"],
+Cell[13379, 369, 286, 7, 23, "Print"],
+Cell[13668, 378, 284, 7, 23, "Print"],
+Cell[13955, 387, 284, 7, 23, "Print"],
+Cell[14242, 396, 286, 7, 23, "Print"],
+Cell[14531, 405, 230, 5, 23, "Print"]
+}, Closed]]
+}, Open  ]]
+}, Open  ]]
+}
+]
+*)
+
+(* End of internal cache information *)

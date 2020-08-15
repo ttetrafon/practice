@@ -1,0 +1,79 @@
+(* Content-type: application/vnd.wolfram.mathematica *)
+
+(*** Wolfram Notebook File ***)
+(* http://www.wolfram.com/nb *)
+
+(* CreatedBy='Mathematica 9.0' *)
+
+(*CacheID: 234*)
+(* Internal cache information:
+NotebookFileLineBreakTest
+NotebookFileLineBreakTest
+NotebookDataPosition[       157,          7]
+NotebookDataLength[      1965,         70]
+NotebookOptionsPosition[      1529,         49]
+NotebookOutlinePosition[      1889,         65]
+CellTagsIndexPosition[      1846,         62]
+WindowFrame->Normal*)
+
+(* Beginning of Notebook Content *)
+Notebook[{
+
+Cell[CellGroupData[{
+Cell["5 - Smallest multiple", "BOOK TITLE",
+ CellChangeTimes->{{3.6483786056703215`*^9, 3.6483786209681964`*^9}, {
+  3.6483786853878813`*^9, 3.648378688380052*^9}}],
+
+Cell["\<\
+2520 is the smallest number that can be divided by each of the numbers from 1 \
+to 10 without any remainder.
+What is the smallest positive number that is evenly divisible by all of the \
+numbers from 1 to 20?\
+\>", "Text",
+ CellChangeTimes->{{3.6483787083031917`*^9, 3.648378717037691*^9}}],
+
+Cell[CellGroupData[{
+
+Cell[BoxData[
+ RowBox[{"LCM", "[", 
+  RowBox[{
+  "1", ",", "2", ",", "3", ",", "4", ",", "5", ",", "6", ",", "7", ",", "8", 
+   ",", "9", ",", "10", ",", "11", ",", "12", ",", "13", ",", "14", ",", "15",
+    ",", "16", ",", "17", ",", "18", ",", "19", ",", "20"}], "]"}]], "Input",
+ CellChangeTimes->{{3.6484765914419737`*^9, 3.648476659569871*^9}}],
+
+Cell[BoxData["232792560"], "Output",
+ CellChangeTimes->{3.648476659868888*^9}]
+}, Open  ]]
+}, Open  ]]
+},
+WindowSize->{826, 644},
+WindowMargins->{{Automatic, 26}, {Automatic, 8}},
+ShowSelection->True,
+FrontEndVersion->"10.2 for Microsoft Windows (64-bit) (July 7, 2015)",
+StyleDefinitions->"MyBook.nb"
+]
+(* End of Notebook Content *)
+
+(* Internal cache information *)
+(*CellTagsOutline
+CellTagsIndex->{}
+*)
+(*CellTagsIndex
+CellTagsIndex->{}
+*)
+(*NotebookFileOutline
+Notebook[{
+Cell[CellGroupData[{
+Cell[579, 22, 164, 2, 80, "BOOK TITLE"],
+Cell[746, 26, 300, 6, 38, "Text"],
+Cell[CellGroupData[{
+Cell[1071, 36, 349, 6, 31, "Input"],
+Cell[1423, 44, 78, 1, 31, "Output"]
+}, Open  ]]
+}, Open  ]]
+}
+]
+*)
+
+(* End of internal cache information *)

@@ -1,0 +1,169 @@
+(* Content-type: application/vnd.wolfram.mathematica *)
+
+(*** Wolfram Notebook File ***)
+(* http://www.wolfram.com/nb *)
+
+(* CreatedBy='Mathematica 9.0' *)
+
+(*CacheID: 234*)
+(* Internal cache information:
+NotebookFileLineBreakTest
+NotebookFileLineBreakTest
+NotebookDataPosition[       157,          7]
+NotebookDataLength[      5354,        162]
+NotebookOptionsPosition[      4835,        139]
+NotebookOutlinePosition[      5195,        155]
+CellTagsIndexPosition[      5152,        152]
+WindowFrame->Normal*)
+
+(* Beginning of Notebook Content *)
+Notebook[{
+
+Cell[CellGroupData[{
+Cell["28 - Number spiral diagonals", "BOOK TITLE",
+ CellChangeTimes->{{3.649441180223951*^9, 3.6494411919606223`*^9}, {
+  3.649682110388091*^9, 3.6496821120141835`*^9}}],
+
+Cell["\<\
+
+
+Starting with the number 1 and moving to the right in a clockwise direction a \
+5 by 5 spiral is formed as follows:
+
+21 22 23 24 25
+20  7  8  9 10
+19  6  1  2 11
+18  5  4  3 12
+17 16 15 14 13
+
+It can be verified that the sum of the numbers on the diagonals is 101.
+
+What is the sum of the numbers on the diagonals in a 1001 by 1001 spiral \
+formed in the same way?\
+\>", "Text",
+ CellChangeTimes->{{3.6494412000030823`*^9, 3.6494412020692005`*^9}}],
+
+Cell[BoxData[GridBox[{
+   {"73", "\[Placeholder]", "\[Placeholder]", "\[Placeholder]", 
+    "\[Placeholder]", "\[Placeholder]", "\[Placeholder]", "\[Placeholder]", 
+    "81"},
+   {"\[Placeholder]", "43", "\[Placeholder]", "\[Placeholder]", 
+    "\[Placeholder]", "\[Placeholder]", "\[Placeholder]", "49", 
+    "\[Placeholder]"},
+   {"\[Placeholder]", "\[Placeholder]", "21", "\[Placeholder]", 
+    "\[Placeholder]", "\[Placeholder]", "25", "\[Placeholder]", 
+    "\[Placeholder]"},
+   {"\[Placeholder]", "\[Placeholder]", "\[Placeholder]", "7", 
+    "\[Placeholder]", "9", "\[Placeholder]", "\[Placeholder]", 
+    "\[Placeholder]"},
+   {"\[Placeholder]", "\[Placeholder]", "\[Placeholder]", "\[Placeholder]", 
+    "1", "\[Placeholder]", "\[Placeholder]", "\[Placeholder]", 
+    "\[Placeholder]"},
+   {"\[Placeholder]", "\[Placeholder]", "\[Placeholder]", "5", 
+    "\[Placeholder]", "3", "\[Placeholder]", "\[Placeholder]", 
+    "\[Placeholder]"},
+   {"\[Placeholder]", "\[Placeholder]", "17", "\[Placeholder]", 
+    "\[Placeholder]", "\[Placeholder]", "13", "\[Placeholder]", 
+    "\[Placeholder]"},
+   {"\[Placeholder]", "37", "\[Placeholder]", "\[Placeholder]", 
+    "\[Placeholder]", "\[Placeholder]", "\[Placeholder]", "31", 
+    "\[Placeholder]"},
+   {"65", "\[Placeholder]", "\[Placeholder]", "\[Placeholder]", 
+    "\[Placeholder]", "\[Placeholder]", "\[Placeholder]", "\[Placeholder]", 
+    "57"}
+  }]], "Input",
+ CellChangeTimes->{{3.6494412445956326`*^9, 3.6494413432002726`*^9}, 
+   3.6494414736277323`*^9, {3.64944151624617*^9, 3.649441543399723*^9}}],
+
+Cell[CellGroupData[{
+
+Cell[BoxData[{
+ RowBox[{"ClearAll", "[", "\"\<Global`*\>\"", "]"}], "\[IndentingNewLine]", 
+ RowBox[{
+  RowBox[{"side", "=", "500"}], ";"}], "\[IndentingNewLine]", 
+ RowBox[{
+  RowBox[{"mult", "=", 
+   RowBox[{"Flatten", "[", 
+    RowBox[{"Table", "[", 
+     RowBox[{
+      RowBox[{"{",,
+
+Cell[CellGroupData[{
+
+   {"73", "\[Placeholder]", "\[Placeholder]", "\[Placeholder]", 
+    "\[Placeholder]", "\[Placeholder]", "\[Placeholder]", "\[Placeholder]", 
+    "81"},
+   {"\[Placeholder]", "43", "\[Placeholder]", "\[Placeholder]", 
+    "\[Placeholder]", "\[Placeholder]", "\[Placeholder]", "49", 
+    "\[ 
+       RowBox[{
+        RowBox[{"2", "i"}], ",", 
+        RowBox[{"2", "i"}], ",", 
+        RowBox[{"2", "i"}], ",", 
+        RowBox[{"2", "i"}]}], "}"}], ",", 
+      RowBox[{"{", 
+       RowBox[{"i", ",", "1", ",", "side"}], "}"}]}], "]"}], "]"}]}], 
+  ";"}], "\[IndentingNewLine]", 
+ RowBox[{
+  RowBox[{"numbers", "=", 
+   RowBox[{"{", "1", "}"}]}], ";"}], "\[IndentingNewLine]", 
+ RowBox[{
+  RowBox[{"num", "=", "1"}], ";"}], "\[IndentingNewLine]", 
+ RowBox[{
+  RowBox[{"For", "[", 
+   RowBox[{
+    RowBox[{"i", "=", "1"}], ",", 
+    RowBox[{"i", "\[LessEqual]", 
+     RowBox[{"4", " ", "side"}]}], ",", 
+    RowBox[{"i", "++"}], ",", "\[IndentingNewLine]", 
+    RowBox[{
+     RowBox[{"num", "=", 
+      RowBox[{"num", "+", 
+       RowBox[{"mult", "[", 
+        RowBox[{"[", "i", "]"}], "]"}]}]}], ";", "\[IndentingNewLine]", 
+     RowBox[{"AppendTo", "[", 
+      RowBox[{"numbers", ",", "num"}], "]"}]}]}], "\[IndentingNewLine]", 
+   "]"}], ";"}], "\[IndentingNewLine]", 
+ RowBox[{"Total", "[", "numbers", "]"}]}], "Input",
+ CellChangeTimes->{{3.649441615807865*^9, 3.6494416190010476`*^9}, {
+  3.6494416671117992`*^9, 3.6494418056547236`*^9}, {3.649441901423201*^9, 
+  3.649442055998042*^9}, {3.649530185332307*^9, 3.6495304055493355`*^9}, {
+  3.649530447049393*^9, 3.6495304998594675`*^9}}],
+
+Cell[BoxData["669171001"], "Output",
+ CellChangeTimes->{{3.6495304523294005`*^9, 3.649530500389468*^9}}]
+}, Open  ]]
+}, Open  ]]
+},
+WindowSize->{826, 644},
+WindowMargins->{{Automatic, 26}, {Automatic, 8}},
+ShowSelection->True,
+FrontEndVersion->"10.2 for Microsoft Windows (64-bit) (July 7, 2015)",
+StyleDefinitions->"MyBook.nb"
+]
+(* End of Notebook Content *)
+
+(* Internal cache information *)
+(*CellTagsOutline
+CellTagsIndex->{}
+*)
+(*CellTagsIndex
+CellTagsIndex->{}
+*)
+(*NotebookFileOutline
+Notebook[{
+Cell[CellGroupData[{
+Cell[579, 22, 169, 2, 80, "BOOK TITLE"],
+Cell[751, 26, 460, 17, 247, "Text"],
+Cell[1214, 45, 1564, 30, 165, "Input"],
+Cell[2781, 77, 310, 9, 95, "Text"],
+Cell[CellGroupData[{
+Cell[3116, 90, 1584, 42, 212, "Input"],
+Cell[4703, 134, 104, 1, 31, "Output"]
+}, Open  ]]
+}, Open  ]]
+}
+]
+*)
+
+(* End of internal cache information *)

@@ -1,0 +1,181 @@
+(* Content-type: application/vnd.wolfram.mathematica *)
+
+(*** Wolfram Notebook File ***)
+(* http://www.wolfram.com/nb *)
+
+(* CreatedBy='Mathematica 9.0' *)
+
+(*CacheID: 234*)
+(* Internal cache information:
+NotebookFileLineBreakTest
+NotebookFileLineBreakTest
+NotebookDataPosition[       157,          7]
+NotebookDataLength[      5837,        172]
+NotebookOptionsPosition[      5299,        149]
+NotebookOutlinePosition[      5828,        170]
+CellTagsIndexPosition[      5785,        167]
+WindowFrame->Normal*)
+
+(* Beginning of Notebook Content *)
+Notebook[{
+Cell["\<\
+
+
+If p is the perimeter of a right angle triangle with integral length sides, \
+{a,b,c}, there are exactly three solutions for p = 120.
+
+{20,48,52}, {24,45,51}, {30,40,50}
+
+For which value of p \[LessEqual] 1000, is the number of solutions maximised?
+\
+\>", "Text",
+ CellChangeTimes->{{3.649530864890914*^9, 3.649530866465004*^9}, {
+  3.6517608224416523`*^9, 3.6517608226177835`*^9}}],
+
+Cell[CellGroupData[{
+
+Cell[BoxData[{
+ RowBox[{
+  RowBox[{"ClearAll", "[", "\"\<Global`*\>\"", "]"}], 
+  "\[IndentingNewLine]"}], "\[IndentingNewLine]", 
+ RowBox[{
+  RowBox[{"StringForm", "[", 
+   RowBox[{
+   "\"\<progress \[Rule] ``/1000\\nMax \[Rule] `` for a perimeter of ``\>\"", 
+    ",", "\[IndentingNewLine]", 
+    RowBox[{"Dynamic", "[", "peri", "]"}], ",", "\[IndentingNewLine]", 
+    RowBox[{"Dynamic", "[", "max", "]"}], ",", "\[IndentingNewLine]", 
+    RowBox[{"Dynamic", "[", "maxPer", "]"}]}], "\[IndentingNewLine]", "]"}], 
+  "\[IndentingNewLine]"}], "\[IndentingNewLine]", 
+ RowBox[{
+  RowBox[{"max", "=", "0"}], ";"}], "\[IndentingNewLine]", 
+ RowBox[{
+  RowBox[{
+   RowBox[{"maxPer", "=", "0"}], ";"}], 
+  "\[IndentingNewLine]"}], "\[IndentingNewLine]", 
+ RowBox[{
+  RowBox[{"For", "[", 
+   RowBox[{
+    RowBox[{"peri", "=", "12"}], ",", 
+    RowBox[{"peri", "<", "1000"}], ",", 
+    RowBox[{"peri", "++"}], ",", "\[IndentingNewLine]", 
+    RowBox[{
+     RowBox[{"gs", "=", 
+      RowBox[{"Solve", "[", 
+       RowBox[{
+        RowBox[{"{", 
+         RowBox[{
+          RowBox[{
+           RowBox[{
+            SuperscriptBox["a", "2"], "+", 
+            SuperscriptBox["b", "2"]}], "\[Equal]", 
+           SuperscriptBox["c", "2"]}], ",", 
+          RowBox[{
+           RowBox[{"a", "+", "b", "+", "c"}], "\[Equal]", "peri"}]}], "}"}], 
+        ",", 
+        RowBox[{"{", 
+         RowBox[{"a", ",", "b"}], "}"}]}], "]"}]}], ";", 
+     "\[IndentingNewLine]", 
+     RowBox[{"genSol", "=", 
+      RowBox[{"Flatten", "[", 
+       RowBox[{"Drop", "[", 
+        RowBox[{"gs", ",", 
+         RowBox[{"-", "1"}]}], "]"}], "]"}]}], ";", "\[IndentingNewLine]", 
+     RowBox[{"numSol", "=", 
+      RowBox[{"{", "}"}]}], ";", "\[IndentingNewLine]", 
+     RowBox[{"For", "[", 
+      RowBox[{
+       RowBox[{"i", "=", "1"}], ",", 
+       RowBox[{"i", "<", "peri"}], ",", 
+       RowBox[{"i", "++"}], ",", "\[IndentingNewLine]", 
+       RowBox[{"AppendTo", "[", 
+        RowBox[{"numSol", ",", 
+         RowBox[{"genSol", "/.", 
+          RowBox[{"c", "\[Rule]", "i"}]}]}], "]"}]}], "\[IndentingNewLine]", 
+      "]"}], ";", "\[IndentingNewLine]", 
+     RowBox[{"numSolNew", "=", 
+      RowBox[{"Table", "[", 
+       RowBox[{
+        RowBox[{"{", 
+         RowBox[{
+          RowBox[{"numSol", "[", 
+           RowBox[{"[", 
+            RowBox[{"i", ",", "1", ",", "2"}], "]"}], "]"}], ",", 
+          RowBox[{"numSol", "[", 
+           RowBox[{"[", 
+            RowBox[{"i", ",", "2", ",", "2"}], "]"}], "]"}]}], "}"}], ",", 
+        RowBox[{"{", 
+         RowBox[{"i", ",", "1", ",", 
+          RowBox[{"Length", "[", "numSol", "]"}]}], "}"}]}], "]"}]}], ";", 
+     "\[IndentingNewLine]", 
+     RowBox[{"integerSol", "=", 
+      RowBox[{"Cases", "[", 
+       RowBox[{"numSolNew", ",", 
+        RowBox[{
+         RowBox[{"{", 
+          RowBox[{"x_", ",", "y_"}], "}"}], "/;", 
+         RowBox[{
+          RowBox[{"x", "\[Element]", "Integers"}], "&&", 
+          RowBox[{"y", "\[Element]", "Integers"}], "&&", 
+          RowBox[{"x", ">", "0"}], "&&", 
+          RowBox[{"y", ">", "0"}]}]}]}], "]"}]}], ";", "\[IndentingNewLine]", 
+     RowBox[{"numberOfSolutions", "=", 
+      RowBox[{"Length", "[", "integerSol", "]"}]}], ";", 
+     "\[IndentingNewLine]", 
+     RowBox[{"If", "[", 
+      RowBox[{
+       RowBox[{"numberOfSolutions", ">", "max"}], ",", 
+       RowBox[{
+        RowBox[{"max", "=", "numberOfSolutions"}], ";", 
+        RowBox[{"maxPer", "=", "peri"}]}]}], "]"}], ";"}]}], 
+   "\[IndentingNewLine]", "]"}], ";"}]}], "Input",
+ CellChangeTimes->{{3.6517602821843505`*^9, 3.6517604115944653`*^9}, {
+  3.6517604647147245`*^9, 3.651760560045306*^9}, {3.6517606077703533`*^9, 
+  3.6517606529245596`*^9}, {3.651760840298335*^9, 3.651760846250572*^9}}],
+
+Cell[BoxData[
+ InterpretationBox["\<\"progress \[Rule] \\!\\(\\*DynamicBox[ToBoxes[peri, \
+StandardForm]]\\)/1000\\nMax \[Rule] \\!\\(\\*DynamicBox[ToBoxes[max, \
+StandardForm]]\\) for a perimeter of \\!\\(\\*DynamicBox[ToBoxes[maxPer, \
+StandardForm]]\\)\"\>",
+  StringForm["progress \[Rule] ``/1000\nMax \[Rule] `` for a perimeter of ``", 
+   Dynamic[$CellContext`peri], 
+   Dynamic[$CellContext`max], 
+   Dynamic[$CellContext`maxPer]],
+  Editable->False]], "Output",
+ CellChangeTimes->{3.651760654147398*^9, 3.651891590431903*^9, 
+  3.6518918940703177`*^9}]
+}, Open  ]]
+},
+WindowSize->{826, 644},
+WindowMargins->{{Automatic, 16}, {10, Automatic}},
+PrintingCopies->1,
+PrintingPageRange->{32000, 32000},
+PrintingOptions->{"Magnification"->1.,
+"PaperOrientation"->"Portrait",
+"PaperSize"->{595.1999999999999, 841.68}},
+ShowSelection->True,
+FrontEndVersion->"10.2 for Microsoft Windows (64-bit) (July 7, 2015)",
+StyleDefinitions->"MyBook.nb"
+]
+(* End of Notebook Content *)
+
+(* Internal cache information *)
+(*CellTagsOutline
+CellTagsIndex->{}
+*)
+(*CellTagsIndex
+CellTagsIndex->{}
+*)
+(*NotebookFileOutline
+Notebook[{
+Cell[557, 20, 394, 12, 171, "Text"],
+Cell[CellGroupData[{
+Cell[976, 36, 3744, 97, 479, "Input"],
+Cell[4723, 135, 560, 11, 52, "Output"]
+}, Open  ]]
+}
+]
+*)
+
+(* End of internal cache information *)

@@ -1,0 +1,154 @@
+(* Content-type: application/vnd.wolfram.mathematica *)
+
+(*** Wolfram Notebook File ***)
+(* http://www.wolfram.com/nb *)
+
+(* CreatedBy='Mathematica 9.0' *)
+
+(*CacheID: 234*)
+(* Internal cache information:
+NotebookFileLineBreakTest
+NotebookFileLineBreakTest
+NotebookDataPosition[       157,          7]
+NotebookDataLength[      4810,        145]
+NotebookOptionsPosition[      4329,        123]
+NotebookOutlinePosition[      4690,        139]
+CellTagsIndexPosition[      4647,        136]
+WindowFrame->Normal*)
+
+(* Beginning of Notebook Content *)
+Notebook[{
+
+Cell[CellGroupData[{
+Cell["62 - Cubic permutations", "BOOK TITLE",
+ CellChangeTimes->{{3.6507041366232767`*^9, 3.650704142031376*^9}}],
+
+Cell["\<\
+The cube, 41063625 (345^3), can be permuted to produce two other cubes: \
+56623104 (384^3) and 66430125 (405^3). In fact, 41063625 is the smallest cube \
+which has exactly three permutations of its digits which are also cube.
+
+Find the smallest cube for which exactly five permutations of its digits are \
+cube.
+\
+\>", "Text",
+ CellChangeTimes->{{3.650704146883048*^9, 3.650704156751361*^9}}],
+
+Cell[CellGroupData[{
+
+Cell[BoxData[{
+ RowBox[{"ClearAll", "[", "\"\<Global`*\>\"", "]"}], "\[IndentingNewLine]", 
+ RowBox[{
+  RowBox[{
+   RowBox[{"isCube", "[", "n_", "]"}], ":=", 
+   RowBox[{"IntegerQ", "[", 
+    RowBox[{"CubeRoot", "[", "n", "]"}], "]"}]}], 
+  ";"}], "\[IndentingNewLine]", 
+ RowBox[{
+  RowBox[{
+   RowBox[{
+    RowBox[{"permutations", "[", "n_", "]"}], ":=", 
+    RowBox[{"Map", "[", 
+     RowBox[{"FromDigits", ",", 
+      RowBox[{"Permutations", "[", 
+       RowBox[{"IntegerDigits", "[", "n", "]"}], "]"}]}], "]"}]}], ";"}], 
+  "\[IndentingNewLine]", 
+  RowBox[{"(*", 
+   RowBox[{
+    RowBox[{
+     RowBox[{"countCubes", "[", "list_", "]"}], ":=", 
+     RowBox[{"Count", "[", 
+      RowBox[{
+       RowBox[{"Map", "[", 
+        RowBox[{"isCube", ",", "list"}], "]"}], ",", "True"}], "]"}]}], ";"}],
+    "*)"}]}], "\[IndentingNewLine]", 
+ RowBox[{
+  RowBox[{
+   RowBox[{
+    RowBox[{"findCubes", "[", "list_", "]"}], ":=", 
+    RowBox[{"Select", "[", 
+     RowBox[{"list", ",", 
+      RowBox[{
+       RowBox[{
+        RowBox[{"isCube", "[", "#", "]"}], "\[Equal]", "True"}], "&"}]}], 
+     "]"}]}], ";"}], "\[IndentingNewLine]"}], "\[IndentingNewLine]", 
+ RowBox[{"StringForm", "[", 
+  RowBox[{"\"\<progress (base): `1`^3=`2`\>\"", ",", "\[IndentingNewLine]", 
+   RowBox[{"Dynamic", "[", "base", "]"}], ",", "\[IndentingNewLine]", 
+   RowBox[{"Dynamic", "[", "number", "]"}]}], "\[IndentingNewLine]", 
+  "]"}], "\[IndentingNewLine]", 
+ RowBox[{"For", "[", 
+  RowBox[{
+   RowBox[{"base", "=", "1"}], ",", "True", ",", 
+   RowBox[{"base", "++"}], ",", "\[IndentingNewLine]", 
+   RowBox[{
+    RowBox[{"number", "=", 
+     SuperscriptBox["base", "3"]}], ";", "\[IndentingNewLine]", 
+    RowBox[{"pers", "=", 
+     RowBox[{"permutations", "[", "number", "]"}]}], ";", 
+    "\[IndentingNewLine]", 
+    RowBox[{"cubes", "=", 
+     RowBox[{"countCubes", "[", "]"}]}], ";", "\[IndentingNewLine]", 
+    RowBox[{"If", "[", 
+     RowBox[{
+      RowBox[{"cubes", "\[Equal]", "5"}], ",", 
+      RowBox[{
+       RowBox[{"Print", "[", 
+        RowBox[{"\"\<Target \[Rule] \>\"", ",", "number"}], "]"}], ";", 
+       RowBox[{"Break", "[", "]"}]}]}], "]"}]}]}], "\[IndentingNewLine]", 
+  "]"}]}], "Input",
+ CellChangeTimes->{{3.6507041608419914`*^9, 3.6507041795352907`*^9}, {
+   3.6507042215528517`*^9, 3.650704320977295*^9}, {3.6507043521603527`*^9, 
+   3.6507044598410387`*^9}, {3.6507045000651526`*^9, 
+   3.6507046991864595`*^9}, {3.650704741555715*^9, 3.650704749584625*^9}, {
+   3.6507047840817723`*^9, 3.650704789841019*^9}, {3.6507048297958183`*^9, 
+   3.6507048599545093`*^9}, 3.6507049557034335`*^9, {3.6517551086481686`*^9, 
+   3.6517551538257256`*^9}}],
+
+Cell[BoxData[
+ InterpretationBox["\<\"progress (base): \\!\\(\\*DynamicBox[ToBoxes[base, \
+StandardForm]]\\)^3=\\!\\(\\*DynamicBox[ToBoxes[number, StandardForm]]\\)\"\>",
+  StringForm["progress (base): `1`^3=`2`", 
+   Dynamic[$CellContext`base], 
+   Dynamic[$CellContext`number]],
+  Editable->False]], "Output",
+ CellChangeTimes->{3.650704860646694*^9, 3.650704957434667*^9, 
+  3.6518920831531415`*^9}],
+
+Cell[BoxData["$Aborted"], "Output",
+ CellChangeTimes->{3.650704860646694*^9, 3.650704957434667*^9, 
+  3.651892093840207*^9}]
+}, Open  ]]
+}, Open  ]]
+},
+WindowSize->{826, 644},
+WindowMargins->{{Automatic, 16}, {Automatic, 15}},
+ShowSelection->True,
+FrontEndVersion->"10.2 for Microsoft Windows (64-bit) (July 7, 2015)",
+StyleDefinitions->"MyBook.nb"
+]
+(* End of Notebook Content *)
+
+(* Internal cache information *)
+(*CellTagsOutline
+CellTagsIndex->{}
+*)
+(*CellTagsIndex
+CellTagsIndex->{}
+*)
+(*NotebookFileOutline
+Notebook[{
+Cell[CellGroupData[{
+Cell[579, 22, 113, 1, 80, "BOOK TITLE"],
+Cell[695, 25, 402, 9, 95, "Text"],
+Cell[CellGroupData[{
+Cell[1122, 38, 2647, 67, 337, "Input"],
+Cell[3772, 107, 402, 8, 31, "Output"],
+Cell[4177, 117, 124, 2, 31, "Output"]
+}, Open  ]]
+}, Open  ]]
+}
+]
+*)
+
+(* End of internal cache information *)

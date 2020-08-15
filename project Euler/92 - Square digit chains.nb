@@ -1,0 +1,248 @@
+(* Content-type: application/vnd.wolfram.mathematica *)
+
+(*** Wolfram Notebook File ***)
+(* http://www.wolfram.com/nb *)
+
+(* CreatedBy='Mathematica 9.0' *)
+
+(*CacheID: 234*)
+(* Internal cache information:
+NotebookFileLineBreakTest
+NotebookFileLineBreakTest
+NotebookDataPosition[       157,          7]
+NotebookDataLength[      7773,        239]
+NotebookOptionsPosition[      6877,        205]
+NotebookOutlinePosition[      7238,        221]
+CellTagsIndexPosition[      7195,        218]
+WindowFrame->Normal*)
+
+(* Beginning of Notebook Content *)
+Notebook[{
+
+Cell[CellGroupData[{
+Cell["92 - Square digit chains", "BOOK TITLE",
+ CellChangeTimes->{{3.6497648924879017`*^9, 3.6497649002179127`*^9}}],
+
+Cell["\<\
+A number chain is created by continuously adding the square of the digits in \
+a number to form a new number until it has been seen before.
+
+For example,
+
+44 \[RightArrow] 32 \[RightArrow] 13 \[RightArrow] 10 \[RightArrow] 1 \
+\[RightArrow] 1
+85 \[RightArrow] 89 \[RightArrow] 145 \[RightArrow] 42 \[RightArrow] 20 \
+\[RightArrow] 4 \[RightArrow] 16 \[RightArrow] 37 \[RightArrow] 58 \
+\[RightArrow] 89
+
+Therefore any chain that arrives at 1 or 89 will become stuck in an endless \
+loop. What is most amazing is that EVERY starting number will eventually \
+arrive at 1 or 89.
+
+How many starting numbers below ten million will arrive at 89?
+\
+\>", "Text",
+ CellChangeTimes->{{3.6497649017179146`*^9, 3.649764904335932*^9}}],
+
+Cell[CellGroupData[{
+
+Cell[BoxData[{
+ RowBox[{"ClearAll", "[", "\"\<Global`*\>\"", "]"}], "\[IndentingNewLine]", 
+ RowBox[{
+  RowBox[{"SquareDigits", "[", "num_", "]"}], ":=", 
+  RowBox[{"Module", "[", 
+   RowBox[{
+    RowBox[{"{", 
+     RowBox[{"digits", ",", 
+      RowBox[{"list", "=", 
+       RowBox[{"{", "num", "}"}]}], ",", 
+      RowBox[{"newNum", "=", "num"}]}], "}"}], ",", "\[IndentingNewLine]", 
+    RowBox[{
+     RowBox[{"While", "[", 
+      RowBox[{
+       RowBox[{
+        RowBox[{"Or", "[", 
+         RowBox[{
+          RowBox[{
+           RowBox[{"Count", "[", 
+            RowBox[{"list", ",", "1"}], "]"}], "\[Equal]", "2"}], ",", 
+          RowBox[{
+           RowBox[{"Count", "[", 
+            RowBox[{"list", ",", "89"}], "]"}], "\[Equal]", "2"}]}], "]"}], 
+        "\[Equal]", "False"}], ",", "\[IndentingNewLine]", 
+       RowBox[{
+        RowBox[{"newNum", "=", 
+         RowBox[{"Total", "[", 
+          RowBox[{"Map", "[", 
+           RowBox[{
+            RowBox[{
+             SuperscriptBox["#", "2"], "&"}], ",", 
+            RowBox[{"IntegerDigits", "[", "newNum", "]"}]}], "]"}], "]"}]}], 
+        ";", "\[IndentingNewLine]", 
+        RowBox[{"AppendTo", "[", 
+         RowBox[{"list", ",", "newNum"}], "]"}]}]}], "\[IndentingNewLine]", 
+      "]"}], ";", "\[IndentingNewLine]", "list"}]}], "\[IndentingNewLine]", 
+   "]"}]}], "\[IndentingNewLine]", 
+ RowBox[{
+  RowBox[{"count", "=", "0"}], ";"}], "\[IndentingNewLine]", 
+ RowBox[{
+  RowBox[{"For", "[", 
+   RowBox[{
+    RowBox[{"i", "=", "1"}], ",", 
+    RowBox[{"i", "\[LessEqual]", "10000000"}], ",", 
+    RowBox[{"i", "++"}], ",", "\[IndentingNewLine]", 
+    RowBox[{
+     RowBox[{"If", "[", 
+      RowBox[{
+       RowBox[{
+        RowBox[{"Mod", "[", 
+         RowBox[{"i", ",", "1000000"}], "]"}], "\[Equal]", "0"}], ",", 
+       RowBox[{"Print", "[", 
+        RowBox[{"\"\<progress \[Rule] \>\"", ",", "i"}], "]"}]}], "]"}], ";", 
+     "\[IndentingNewLine]", 
+     RowBox[{"If", "[", 
+      RowBox[{
+       RowBox[{
+        RowBox[{"Last", "[", 
+         RowBox[{"SquareDigits", "[", "i", "]"}], "]"}], "\[Equal]", "89"}], 
+       ",", 
+       RowBox[{"count", "=", 
+        RowBox[{"count", "+", "1"}]}]}], "]"}], ";"}]}], 
+   "\[IndentingNewLine]", "]"}], ";"}], "\[IndentingNewLine]", 
+ RowBox[{"Print", "[", 
+  RowBox[{"\"\<total: \>\"", ",", "count"}], "]"}]}], "Input",
+ CellChangeTimes->{{3.649764906222963*^9, 3.649764915002975*^9}, {
+   3.649764982133069*^9, 3.649765108953246*^9}, {3.6497651612233195`*^9, 
+   3.649765206473383*^9}, {3.6497652434234347`*^9, 3.6497652710934734`*^9}, {
+   3.649765332143559*^9, 3.6497654764637613`*^9}, 3.6497655790150824`*^9, {
+   3.6497656121159754`*^9, 3.6497656344522533`*^9}}],
+
+Cell[CellGroupData[{
+
+Cell[BoxData[
+ InterpretationBox[
+  RowBox[{"\<\"progress \[Rule] \"\>", "\[InvisibleSpace]", "1000000"}],
+  SequenceForm["progress \[Rule] ", 1000000],
+  Editable->False]], "Print",
+ CellChangeTimes->{3.6497659061836715`*^9}],
+
+Cell[BoxData[
+ InterpretationBox[
+  RowBox[{"\<\"progress \[Rule] \"\>", "\[InvisibleSpace]", "2000000"}],
+  SequenceForm["progress \[Rule] ", 2000000],
+  Editable->False]], "Print",
+ CellChangeTimes->{3.6497661650844793`*^9}],
+
+Cell[BoxData[
+ InterpretationBox[
+  RowBox[{"\<\"progress \[Rule] \"\>", "\[InvisibleSpace]", "3000000"}],
+  SequenceForm["progress \[Rule] ", 3000000],
+  Editable->False]], "Print",
+ CellChangeTimes->{3.6497664160198326`*^9}],
+
+Cell[BoxData[
+ InterpretationBox[
+  RowBox[{"\<\"progress \[Rule] \"\>", "\[InvisibleSpace]", "4000000"}],
+  SequenceForm["progress \[Rule] ", 4000000],
+  Editable->False]], "Print",
+ CellChangeTimes->{3.649766667708228*^9}],
+
+Cell[BoxData[
+ InterpretationBox[
+  RowBox[{"\<\"progress \[Rule] \"\>", "\[InvisibleSpace]", "5000000"}],
+  SequenceForm["progress \[Rule] ", 5000000],
+  Editable->False]], "Print",
+ CellChangeTimes->{3.6497669198266487`*^9}],
+
+Cell[BoxData[
+ InterpretationBox[
+  RowBox[{"\<\"progress \[Rule] \"\>", "\[InvisibleSpace]", "6000000"}],
+  SequenceForm["progress \[Rule] ", 6000000],
+  Editable->False]], "Print",
+ CellChangeTimes->{3.6497671762043123`*^9}],
+
+Cell[BoxData[
+ InterpretationBox[
+  RowBox[{"\<\"progress \[Rule] \"\>", "\[InvisibleSpace]", "7000000"}],
+  SequenceForm["progress \[Rule] ", 7000000],
+  Editable->False]], "Print",
+ CellChangeTimes->{3.6497674362401857`*^9}],
+
+Cell[BoxData[
+ InterpretationBox[
+  RowBox[{"\<\"progress \[Rule] \"\>", "\[InvisibleSpace]", "8000000"}],
+  SequenceForm["progress \[Rule] ", 8000000],
+  Editable->False]], "Print",
+ CellChangeTimes->{3.6497676927578573`*^9}],
+
+Cell[BoxData[
+ InterpretationBox[
+  RowBox[{"\<\"progress \[Rule] \"\>", "\[InvisibleSpace]", "9000000"}],
+  SequenceForm["progress \[Rule] ", 9000000],
+  Editable->False]], "Print",
+ CellChangeTimes->{3.6497679546858387`*^9}],
+
+Cell[BoxData[
+ InterpretationBox[
+  RowBox[{"\<\"progress \[Rule] \"\>", "\[InvisibleSpace]", "10000000"}],
+  SequenceForm["progress \[Rule] ", 10000000],
+  Editable->False]], "Print",
+ CellChangeTimes->{3.6497682129266095`*^9}],
+
+Cell[BoxData[
+ InterpretationBox[
+  RowBox[{"\<\"total: \"\>", "\[InvisibleSpace]", "8581146"}],
+  SequenceForm["total: ", 8581146],
+  Editable->False]], "Print",
+ CellChangeTimes->{3.64976821292861*^9}]
+}, Open  ]]
+}, Open  ]],
+
+Cell["takes bloody times to complete...", "comment",
+ CellChangeTimes->{{3.6497660627506266`*^9, 3.649766097796631*^9}, {
+  3.6497672738919*^9, 3.6497672802112613`*^9}}]
+}, Open  ]]
+},
+WindowSize->{826, 644},
+WindowMargins->{{Automatic, 16}, {Automatic, 15}},
+ShowSelection->True,
+FrontEndVersion->"10.2 for Microsoft Windows (64-bit) (July 7, 2015)",
+StyleDefinitions->"MyBook.nb"
+]
+(* End of Notebook Content *)
+
+(* Internal cache information *)
+(*CellTagsOutline
+CellTagsIndex->{}
+*)
+(*CellTagsIndex
+CellTagsIndex->{}
+*)
+(*NotebookFileOutline
+Notebook[{
+Cell[CellGroupData[{
+Cell[579, 22, 116, 1, 80, "BOOK TITLE"],
+Cell[698, 25, 732, 19, 247, "Text"],
+Cell[CellGroupData[{
+Cell[1455, 48, 2692, 69, 305, "Input"],
+Cell[CellGroupData[{
+Cell[4172, 121, 226, 5, 23, "Print"],
+Cell[4401, 128, 226, 5, 23, "Print"],
+Cell[4630, 135, 226, 5, 23, "Print"],
+Cell[4859, 142, 224, 5, 23, "Print"],
+Cell[5086, 149, 226, 5, 23, "Print"],
+Cell[5315, 156, 226, 5, 23, "Print"],
+Cell[5544, 163, 226, 5, 23, "Print"],
+Cell[5773, 170, 226, 5, 23, "Print"],
+Cell[6002, 177, 226, 5, 23, "Print"],
+Cell[6231, 184, 228, 5, 23, "Print"],
+Cell[6462, 191, 203, 5, 23, "Print"]
+}, Open  ]]
+}, Open  ]],
+Cell[6692, 200, 169, 2, 44, "comment"]
+}, Open  ]]
+}
+]
+*)
+
+(* End of internal cache information *)

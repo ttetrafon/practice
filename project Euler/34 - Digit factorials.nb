@@ -1,0 +1,132 @@
+(* Content-type: application/vnd.wolfram.mathematica *)
+
+(*** Wolfram Notebook File ***)
+(* http://www.wolfram.com/nb *)
+
+(* CreatedBy='Mathematica 9.0' *)
+
+(*CacheID: 234*)
+(* Internal cache information:
+NotebookFileLineBreakTest
+NotebookFileLineBreakTest
+NotebookDataPosition[       157,          7]
+NotebookDataLength[      3553,        123]
+NotebookOptionsPosition[      3003,         98]
+NotebookOutlinePosition[      3364,        114]
+CellTagsIndexPosition[      3321,        111]
+WindowFrame->Normal*)
+
+(* Beginning of Notebook Content *)
+Notebook[{
+
+Cell[CellGroupData[{
+Cell["34 - Digit factorials", "BOOK TITLE",
+ CellChangeTimes->{{3.648921981769577*^9, 3.6489219891339984`*^9}}],
+
+Cell["\<\
+145 is a curious number, as 1! + 4! + 5! = 1 + 24 + 120 = 145.
+
+Find the sum of all numbers which are equal to the sum of the factorial of \
+their digits.
+
+Note: as 1! = 1 and 2! = 2 are not sums they are not included.
+\
+\>", "Text",
+ CellChangeTimes->{{3.6489219961594005`*^9, 3.648921998360526*^9}}],
+
+Cell[CellGroupData[{
+
+Cell[BoxData[{
+ RowBox[{"ClearAll", "[", "\"\<Global`*\>\"", "]"}], "\[IndentingNewLine]", 
+ RowBox[{
+  RowBox[{"DigitFactorialsTotal", "[", "n_Integer", "]"}], ":=", 
+  RowBox[{"Total", "[", 
+   RowBox[{"Map", "[", 
+    RowBox[{
+     RowBox[{
+      RowBox[{"#", "!"}], "&"}], ",", 
+     RowBox[{"IntegerDigits", "[", "n", "]"}]}], "]"}], 
+   "]"}]}], "\[IndentingNewLine]", 
+ RowBox[{
+  RowBox[{"numbers", "=", 
+   RowBox[{"{", "}"}]}], ";"}], "\[IndentingNewLine]", 
+ RowBox[{"For", "[", 
+  RowBox[{
+   RowBox[{"i", "=", "3"}], ",", 
+   RowBox[{"i", "<", "9999999"}], ",", 
+   RowBox[{"i", "++"}], ",", "\[IndentingNewLine]", 
+   RowBox[{
+    RowBox[{"If", "[", 
+     RowBox[{
+      RowBox[{"i", "\[Equal]", 
+       RowBox[{"DigitFactorialsTotal", "[", "i", "]"}]}], ",", 
+      RowBox[{"AppendTo", "[", 
+       RowBox[{"numbers", ",", 
+        RowBox[{"{", 
+         RowBox[{"i", ",", 
+          RowBox[{"DigitFactorialsTotal", "[", "i", "]"}]}], "}"}]}], "]"}]}],
+      "]"}], ";"}]}], "\[IndentingNewLine]", 
+  "]"}], "\[IndentingNewLine]", "numbers"}], "Input",
+ CellChangeTimes->{{3.6489220104142156`*^9, 3.648922017224605*^9}, {
+  3.6489222524700603`*^9, 3.6489222588114233`*^9}, {3.6489231792860713`*^9, 
+  3.648923202734412*^9}, {3.648923324114355*^9, 3.6489233285686097`*^9}, {
+  3.6489240331659107`*^9, 3.648924064996731*^9}, {3.648924107153142*^9, 
+  3.64892423125224*^9}}],
+
+Cell[BoxData[
+ RowBox[{"{", 
+  RowBox[{
+   RowBox[{"{", 
+    RowBox[{"145", ",", "145"}], "}"}], ",", 
+   RowBox[{"{", 
+    RowBox[{"40585", ",", "40585"}], "}"}]}], "}"}]], "Output",
+ CellChangeTimes->{3.648924547721341*^9}]
+}, Open  ]],
+
+Cell[CellGroupData[{
+
+Cell[BoxData[
+ RowBox[{"Total", "[", 
+  RowBox[{"Map", "[", 
+   RowBox[{"First", ",", "numbers"}], "]"}], "]"}]], "Input",
+ CellChangeTimes->{{3.6489245631122217`*^9, 3.648924583568392*^9}}],
+
+Cell[BoxData["40730"], "Output",
+ CellChangeTimes->{{3.6489245785181026`*^9, 3.6489245840264177`*^9}}]
+}, Open  ]]
+}, Open  ]]
+},
+WindowSize->{826, 644},
+WindowMargins->{{Automatic, 16}, {Automatic, 15}},
+ShowSelection->True,
+FrontEndVersion->"10.2 for Microsoft Windows (64-bit) (July 7, 2015)",
+StyleDefinitions->"MyBook.nb"
+]
+(* End of Notebook Content *)
+
+(* Internal cache information *)
+(*CellTagsOutline
+CellTagsIndex->{}
+*)
+(*CellTagsIndex
+CellTagsIndex->{}
+*)
+(*NotebookFileOutline
+Notebook[{
+Cell[CellGroupData[{
+Cell[579, 22, 111, 1, 80, "BOOK TITLE"],
+Cell[693, 25, 311, 9, 114, "Text"],
+Cell[CellGroupData[{
+Cell[1029, 38, 1386, 35, 152, "Input"],
+Cell[2418, 75, 225, 7, 31, "Output"]
+}, Open  ]],
+Cell[CellGroupData[{
+Cell[2680, 87, 190, 4, 31, "Input"],
+Cell[2873, 93, 102, 1, 31, "Output"]
+}, Open  ]]
+}, Open  ]]
+}
+]
+*)
+
+(* End of internal cache information *)

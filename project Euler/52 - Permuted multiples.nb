@@ -1,0 +1,139 @@
+(* Content-type: application/vnd.wolfram.mathematica *)
+
+(*** Wolfram Notebook File ***)
+(* http://www.wolfram.com/nb *)
+
+(* CreatedBy='Mathematica 9.0' *)
+
+(*CacheID: 234*)
+(* Internal cache information:
+NotebookFileLineBreakTest
+NotebookFileLineBreakTest
+NotebookDataPosition[       157,          7]
+NotebookDataLength[      3938,        130]
+NotebookOptionsPosition[      3428,        106]
+NotebookOutlinePosition[      3789,        122]
+CellTagsIndexPosition[      3746,        119]
+WindowFrame->Normal*)
+
+(* Beginning of Notebook Content *)
+Notebook[{
+
+Cell[CellGroupData[{
+Cell["52 - Permuted multiples", "BOOK TITLE",
+ CellChangeTimes->{{3.649589781158819*^9, 3.649589785918826*^9}}],
+
+Cell["\<\
+It can be seen that the number, 125874, and its double, 251748, contain \
+exactly the same digits, but in a different order.
+
+Find the smallest positive integer, x, such that 2x, 3x, 4x, 5x, and 6x, \
+contain the same digits.\
+\>", "Text",
+ CellChangeTimes->{{3.6495897971088414`*^9, 3.6495898042788515`*^9}, {
+  3.649590080369238*^9, 3.6495900807492385`*^9}, {3.651891720154385*^9, 
+  3.651891720310768*^9}}],
+
+Cell[CellGroupData[{
+
+Cell[BoxData[{
+ RowBox[{"ClearAll", "[", "\"\<Global`*\>\"", "]"}], "\[IndentingNewLine]", 
+ RowBox[{
+  RowBox[{
+   RowBox[{"xMult", "[", 
+    RowBox[{"x_", ",", "n_"}], "]"}], ":=", 
+   RowBox[{"n", " ", "x"}]}], ";"}], "\[IndentingNewLine]", 
+ RowBox[{
+  RowBox[{"xMultDigits", "[", "x_", "]"}], ":=", 
+  RowBox[{"Sort", "[", 
+   RowBox[{"IntegerDigits", "[", "x", "]"}], "]"}]}], "\[IndentingNewLine]", 
+ RowBox[{
+  RowBox[{"isOk", "[", "z_", "]"}], ":=", 
+  RowBox[{"Apply", "[", 
+   RowBox[{"Equal", ",", 
+    RowBox[{"Table", "[", 
+     RowBox[{
+      RowBox[{"xMultDigits", "[", 
+       RowBox[{"xMult", "[", 
+        RowBox[{"z", ",", "i"}], "]"}], "]"}], ",", 
+      RowBox[{"{", 
+       RowBox[{"i", ",", "1", ",", "6"}], "}"}]}], "]"}]}], 
+   "]"}]}], "\[IndentingNewLine]", 
+ RowBox[{"For", "[", 
+  RowBox[{
+   RowBox[{"j", "=", "1"}], ",", "True", ",", 
+   RowBox[{"j", "++"}], ",", "\[IndentingNewLine]", 
+   RowBox[{
+    RowBox[{"If", "[", 
+     RowBox[{
+      RowBox[{
+       RowBox[{"Mod", "[", 
+        RowBox[{"j", ",", "100000"}], "]"}], "\[Equal]", "0"}], ",", 
+      RowBox[{"Print", "[", 
+       RowBox[{"\"\<progress: \>\"", ",", "j"}], "]"}]}], "]"}], ";", 
+    "\[IndentingNewLine]", 
+    RowBox[{"If", "[", 
+     RowBox[{
+      RowBox[{"isOk", "[", "j", "]"}], ",", 
+      RowBox[{
+       RowBox[{"Print", "[", 
+        RowBox[{"\"\<Target \[Rule] \>\"", ",", "j"}], "]"}], ";", 
+       RowBox[{"Break", "[", "]"}]}]}], "]"}]}]}], "\[IndentingNewLine]", 
+  "]"}]}], "Input",
+ CellChangeTimes->{{3.6495898057488537`*^9, 3.649589926269022*^9}, 
+   3.64958996780908*^9, {3.64959000334913*^9, 3.6495901262293024`*^9}, {
+   3.6495903309012527`*^9, 3.6495903604469423`*^9}, {3.649590576069276*^9, 
+   3.6495906992653217`*^9}}],
+
+Cell[CellGroupData[{
+
+Cell[BoxData[
+ InterpretationBox[
+  RowBox[{"\<\"progress: \"\>", "\[InvisibleSpace]", "100000"}],
+  SequenceForm["progress: ", 100000],
+  Editable->False]], "Print",
+ CellChangeTimes->{{3.649590691276865*^9, 3.6495907045776258`*^9}}],
+
+Cell[BoxData[
+ InterpretationBox[
+  RowBox[{"\<\"Target \[Rule] \"\>", "\[InvisibleSpace]", "142857"}],
+  SequenceForm["Target \[Rule] ", 142857],
+  Editable->False]], "Print",
+ CellChangeTimes->{{3.649590691276865*^9, 3.649590706367728*^9}}]
+}, Open  ]]
+}, Open  ]]
+}, Open  ]]
+},
+WindowSize->{826, 644},
+WindowMargins->{{Automatic, 16}, {Automatic, 15}},
+ShowSelection->True,
+FrontEndVersion->"10.2 for Microsoft Windows (64-bit) (July 7, 2015)",
+StyleDefinitions->"MyBook.nb"
+]
+(* End of Notebook Content *)
+
+(* Internal cache information *)
+(*CellTagsOutline
+CellTagsIndex->{}
+*)
+(*CellTagsIndex
+CellTagsIndex->{}
+*)
+(*NotebookFileOutline
+Notebook[{
+Cell[CellGroupData[{
+Cell[579, 22, 111, 1, 80, "BOOK TITLE"],
+Cell[693, 25, 419, 9, 76, "Text"],
+Cell[CellGroupData[{
+Cell[1137, 38, 1747, 47, 172, "Input"],
+Cell[CellGroupData[{
+Cell[2909, 89, 234, 5, 23, "Print"],
+Cell[3146, 96, 242, 5, 23, "Print"]
+}, Open  ]]
+}, Open  ]]
+}, Open  ]]
+}
+]
+*)
+
+(* End of internal cache information *)

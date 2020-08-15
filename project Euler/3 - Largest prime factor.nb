@@ -1,0 +1,86 @@
+(* Content-type: application/vnd.wolfram.mathematica *)
+
+(*** Wolfram Notebook File ***)
+(* http://www.wolfram.com/nb *)
+
+(* CreatedBy='Mathematica 9.0' *)
+
+(*CacheID: 234*)
+(* Internal cache information:
+NotebookFileLineBreakTest
+NotebookFileLineBreakTest
+NotebookDataPosition[       157,          7]
+NotebookDataLength[      2447,         78]
+NotebookOptionsPosition[      1782,         57]
+NotebookOutlinePosition[      2149,         73]
+CellTagsIndexPosition[      2106,         70]
+WindowFrame->Normal*)
+
+(* Beginning of Notebook Content *)
+Notebook[{
+
+Cell[CellGroupData[{
+Cell["3 - Largest prime factor", "BOOK TITLE",
+ CellChangeTimes->{
+  3.6483773628192344`*^9, 3.648378619033086*^9, {3.648378649561832*^9, 
+   3.648378652953026*^9}},ExpressionUUID->"05e8ffb8-23e2-41ea-b008-\
+13156fab49ef"],
+
+Cell["\<\
+The prime factors of 13195 are 5, 7, 13 and 29.
+What is the largest prime factor of the number 600851475143?\
+\>", "Text",
+ CellChangeTimes->{{3.648377387720659*^9, 
+  3.6483773909288425`*^9}},ExpressionUUID->"74b02633-7156-44d5-9a07-\
+cc474d9edf86"],
+
+Cell[CellGroupData[{
+
+Cell[BoxData[{
+ RowBox[{"ClearAll", "[", "\"\<Global`*\>\"", "]"}], "\[IndentingNewLine]", 
+ RowBox[{
+  RowBox[{"FactorInteger", "[", "600851475143", "]"}], "[", 
+  RowBox[{"[", 
+   RowBox[{
+    RowBox[{"-", "1"}], ",", "1"}], "]"}], "]"}]}], "Input",
+ CellChangeTimes->{{3.6483773958341227`*^9, 3.648377438724576*^9}, {
+  3.648377477980821*^9, 3.6483775073855033`*^9}, {3.7348002829010925`*^9, 
+  3.7348002853793507`*^9}},ExpressionUUID->"961020ef-98e2-4623-8595-\
+f8427bf41c06"],
+
+Cell[BoxData["6857"], "Output",
+ CellChangeTimes->{{3.648377484464192*^9, 3.6483775076335173`*^9}, 
+   3.734800292060191*^9},ExpressionUUID->"9f33bec8-b1a3-4d42-afb3-\
+3774f1b337e9"]
+}, Open  ]]
+}, Open  ]]
+},
+WindowSize->{826, 625},
+WindowMargins->{{Automatic, 46}, {Automatic, 14}},
+ShowSelection->True,
+FrontEndVersion->"11.2 for Microsoft Windows (64-bit) (September 10, 2017)",
+StyleDefinitions->"MyBook.nb"
+]
+(* End of Notebook Content *)
+
+(* Internal cache information *)
+(*CellTagsOutline
+CellTagsIndex->{}
+*)
+(*CellTagsIndex
+CellTagsIndex->{}
+*)
+(*NotebookFileOutline
+Notebook[{
+Cell[CellGroupData[{
+Cell[579, 22, 222, 4, 85, "BOOK TITLE",ExpressionUUID->"05e8ffb8-23e2-41ea-b008-13156fab49ef"],
+Cell[804, 28, 260, 6, 43, "Text",ExpressionUUID->"74b02633-7156-44d5-9a07-cc474d9edf86"],
+Cell[CellGroupData[{
+Cell[1089, 38, 480, 10, 48, "Input",ExpressionUUID->"961020ef-98e2-4623-8595-f8427bf41c06"],
+Cell[1572, 50, 182, 3, 32, "Output",ExpressionUUID->"9f33bec8-b1a3-4d42-afb3-3774f1b337e9"]
+}, Open  ]]
+}, Open  ]]
+}
+]
+*)
+

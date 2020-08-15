@@ -1,0 +1,90 @@
+(* Content-type: application/vnd.wolfram.mathematica *)
+
+(*** Wolfram Notebook File ***)
+(* http://www.wolfram.com/nb *)
+
+(* CreatedBy='Mathematica 9.0' *)
+
+(*CacheID: 234*)
+(* Internal cache information:
+NotebookFileLineBreakTest
+NotebookFileLineBreakTest
+NotebookDataPosition[       157,          7]
+NotebookDataLength[      2288,         81]
+NotebookOptionsPosition[      1848,         60]
+NotebookOutlinePosition[      2208,         76]
+CellTagsIndexPosition[      2165,         73]
+WindowFrame->Normal*)
+
+(* Beginning of Notebook Content *)
+Notebook[{
+
+Cell[CellGroupData[{
+Cell["24 - Lexicographic permutations", "BOOK TITLE",
+ CellChangeTimes->{{3.648894343571763*^9, 3.6488943519292407`*^9}}],
+
+Cell["\<\
+A permutation is an ordered arrangement of objects. For example, 3124 is one \
+possible permutation of the digits 1, 2, 3 and 4. If all of the permutations \
+are listed numerically or alphabetically, we call it lexicographic order. The \
+lexicographic permutations of 0, 1 and 2 are:
+
+012   021   102   120   201   210
+
+What is the millionth lexicographic permutation of the digits 0, 1, 2, 3, 4, \
+5, 6, 7, 8 and 9?
+\
+\>", "Text",
+ CellChangeTimes->{{3.6488943537563453`*^9, 3.6488943554314413`*^9}}],
+
+Cell[CellGroupData[{
+
+Cell[BoxData[{
+ RowBox[{"ClearAll", "[", "\"\<Global`*\>\"", "]"}], "\[IndentingNewLine]", 
+ RowBox[{
+  RowBox[{"digits", "=", 
+   RowBox[{"Range", "[", 
+    RowBox[{"0", ",", "9"}], "]"}]}], ";"}], "\[IndentingNewLine]", 
+ RowBox[{
+  RowBox[{"Sort", "[", 
+   RowBox[{
+    RowBox[{"Permutations", "[", "digits", "]"}], "[", 
+    RowBox[{"[", "1000000", "]"}], "]"}], "]"}], "//", 
+  "FromDigits"}]}], "Input",
+ CellChangeTimes->{{3.651753861638239*^9, 3.6517539276199055`*^9}}],
+
+Cell[BoxData["123456789"], "Output",
+ CellChangeTimes->{{3.651753902470001*^9, 3.65175392828938*^9}}]
+}, Open  ]]
+}, Open  ]]
+},
+WindowSize->{826, 644},
+WindowMargins->{{Automatic, 26}, {Automatic, 8}},
+ShowSelection->True,
+FrontEndVersion->"10.2 for Microsoft Windows (64-bit) (July 7, 2015)",
+StyleDefinitions->"MyBook.nb"
+]
+(* End of Notebook Content *)
+
+(* Internal cache information *)
+(*CellTagsOutline
+CellTagsIndex->{}
+*)
+(*CellTagsIndex
+CellTagsIndex->{}
+*)
+(*NotebookFileOutline
+Notebook[{
+Cell[CellGroupData[{
+Cell[579, 22, 121, 1, 80, "BOOK TITLE"],
+Cell[703, 25, 511, 12, 152, "Text"],
+Cell[CellGroupData[{
+Cell[1239, 41, 477, 12, 72, "Input"],
+Cell[1719, 55, 101, 1, 31, "Output"]
+}, Open  ]]
+}, Open  ]]
+}
+]
+*)
+
+(* End of internal cache information *)
