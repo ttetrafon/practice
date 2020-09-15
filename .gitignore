@@ -4,8 +4,12 @@ node_modules/
 jspm_packages/
 typings/
 
+
 ### Python
 __pycache__/
+build/
+dist/
+*.spec
 
 
 ### Visual Studio
