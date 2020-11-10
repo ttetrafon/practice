@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { Helper } from '../../models/helper';
 
 @Component({
   selector: 'app-main',
@@ -6,8 +7,10 @@ import { Component, OnInit } from '@angular/core';
   styleUrls: ['./main.component.scss']
 })
 export class MainComponent implements OnInit {
+  helper: Helper = new Helper();
+  currentView = 'yadts'; // yadts, cv, portfolio
 
-  constructor() { }
+  constructor() {}
 
   ngOnInit(): void {
   }

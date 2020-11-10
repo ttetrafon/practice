@@ -1,1 +1,127 @@
-/* You can add global styles to this file, and also import other style files */
+$footer-height: 30px;
+$header-height: 30px;
+$wall-margin: 10px;
+
+// GLOBAL
+* {
+	margin: 0;
+	padding: 0;
+	box-sizing: content-box;
+}
+
+body {
+    background-color: rgb(65, 65, 65);
+    color: whitesmoke;
+}
+
+// NAVIGATION BAR
+.nav-bar {
+    // background-color: rgb(50, 50, 50);
+    position: absolute;
+    top: 0;
+    right: 0;
+    left: 0;
+    height: $header-height;
+    padding-top: 5px;
+    padding-left: 5px;
+    padding-right: 5px;
+    display: flex;
+    flex-wrap: nowrap;
+    justify-content: center;
+}
+
+.nav-button {
+    cursor: pointer;
+    color: black;
+    background-color: rgb(100, 100, 100);
+    text-decoration: none;
+    border: 2px solid black;
+    box-shadow: 10px 10px black;
+    border-radius: 10px;
+    padding: 4px;
+    margin-left: 5px;
+    margin-right: 5px;
+}
+
+.nav-button:hover {
+    box-shadow: 5px 5px black;
+    background-color: rgb(150, 150, 150);
+}
+
+.nav-active {
+    background-color: rgb(150, 150, 150);
+}
+
+// MAIN CONTENT
+main {
+    position: absolute;
+	top: $header-height;
+	bottom: $footer-height;
+    right: $wall-margin;
+    left: $wall-margin;
+}
+
+.main-container {
+    display: flex;
+    flex-wrap: nowrap;
+    flex-direction: row;
+    justify-content: left;
+}
+
+.sidebar {
+    padding-top: 10px;
+    padding-bottom: 10px;
+    max-width: 150px;
+    flex-grow: 0;
+    flex-shrink: 0;
+    margin-right: $wall-margin;
+    border-top-right-radius: 8px;
+    border-bottom-right-radius: 8px;
+    border-right: 2px black solid;
+}
+
+.sidebar-list {
+    list-style: none;
+}
+
+.sidebar-item {
+    padding-top: 2px;
+    padding-right: 5px;
+    padding-left: 2px;
+    cursor: pointer;
+}
+
+.sidebar-active {
+    text-decoration: underline;
+    color: silver;
+}
+
+.sidebar-item:hover {
+    color: orange;
+}
+
+$list-padding: 10px;
+
+.level1 {
+    padding-left: $list-padding;
+}
+
+.level2 {
+    padding-left: 2 * $list-padding;
+}
+
+.content {
+    flex-grow: 1;
+    flex-shrink: 1;
+}
+
+// FOOTER
+footer {
+	height: $footer-height;
+	position: absolute;
+	bottom: $wall-margin;
+	left: $wall-margin;
+	right: $wall-margin;
+	text-align: right;
+    font-size: 14px;
+}

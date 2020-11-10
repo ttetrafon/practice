@@ -6,10 +6,10 @@ import { Component, OnInit } from '@angular/core';
   styleUrls: ['./yadts.component.scss']
 })
 export class YadtsComponent implements OnInit {
+  currentView: string = 'magic' // magic, spellmaking
 
-  constructor() { }
+  constructor() {}
 
-  ngOnInit(): void {
-  }
+  ngOnInit(): void {}
 
 }

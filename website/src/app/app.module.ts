@@ -7,6 +7,8 @@ import { MainComponent } from './components/main/main.component';
 import { YadtsComponent } from './components/yadts/yadts.component';
 import { CvComponent } from './components/cv/cv.component';
 import { PortfolioComponent } from './components/portfolio/portfolio.component';
+import { YadtsSpellmakingComponent } from './components/yadts-spellmaking/yadts-spellmaking.component';
+import { YadtsMagicComponent } from './components/yadts-magic/yadts-magic.component';
 
 @NgModule({
   declarations: [
@@ -14,7 +16,9 @@ import { PortfolioComponent } from './components/portfolio/portfolio.component';
     MainComponent,
     YadtsComponent,
     CvComponent,
-    PortfolioComponent
+    PortfolioComponent,
+    YadtsSpellmakingComponent,
+    YadtsMagicComponent
   ],
   imports: [
     BrowserModule,
