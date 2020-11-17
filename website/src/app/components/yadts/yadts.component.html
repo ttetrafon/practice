@@ -1,10 +1,13 @@
-<div class="sidebar">
-    <ul class="sidebar-list">
-        <li class="sidebar-item level1">Magic</li>
-        <li class="sidebar-item level2">Spellmaking</li>
-    </ul>
-</div>
+<div class="main-container">
+    <div class="sidebar">
+        <ul class="sidebar-list">
+            <li (click)="currentView = 'magic'" class="sidebar-item level1" [class.sidebar-active]="currentView === 'magic'">Magic</li>
+            <li (click)="currentView = 'spellmaking'" class="sidebar-item level2" [class.sidebar-active]="currentView === 'spellmaking'">Spellmaking</li>
+        </ul>
+    </div>
 
-<div class="content">
-
+    <div class="content">
+        <app-yadts-magic *ngIf="currentView === 'magic'"></app-yadts-magic>
+        <app-yadts-spellmaking *ngIf="currentView === 'spellmaking'"></app-yadts-spellmaking>
+    </div>
 </div>
