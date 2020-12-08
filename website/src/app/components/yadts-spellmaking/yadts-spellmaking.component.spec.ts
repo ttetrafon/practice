@@ -1,4 +1,4 @@
-import { async, ComponentFixture, TestBed } from '@angular/core/testing';
+import { ComponentFixture, TestBed, waitForAsync } from '@angular/core/testing';
 
 import { YadtsSpellmakingComponent } from './yadts-spellmaking.component';
 
@@ -6,7 +6,7 @@ describe('YadtsSpellmakingComponent', () => {
   let component: YadtsSpellmakingComponent;
   let fixture: ComponentFixture<YadtsSpellmakingComponent>;
 
-  beforeEach(async(() => {
+  beforeEach(waitForAsync(() => {
     TestBed.configureTestingModule({
       declarations: [ YadtsSpellmakingComponent ]
     })
