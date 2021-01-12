@@ -20,5 +20,5 @@ var months = {
     'Nov': '11',
     'Dec': '12'
 };
-var res = now[3] + '-' + months[now[1]] + '-' + now[2];
+var res = now[3] + '-' + months[now[1]] + '-' + now[2] + ' ' + now[4];
 console.log(res);
