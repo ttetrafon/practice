@@ -1,0 +1,9 @@
+def raiser():
+    raise Exception("user raised exception")
+
+with open("out.log", "w") as log:
+    try:
+        raiser()
+    except Exception as exc:
+        print(exc)
+        log.write(str(exc) + "\n")
