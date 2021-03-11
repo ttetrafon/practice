@@ -1,4 +1,5 @@
-var processingDate = '2021-03-09 11:26:48';
+// var processingDate = '2021-03-09 11:26:48';
+var processingDate = '2021-03-09';
 var date = new Date(processingDate);
 console.log(date);
 
