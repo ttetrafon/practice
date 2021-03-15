@@ -1,3 +1,3 @@
 # Hint of what a function returns!
-def add(x, y) -> int:
+def add(x: float, y: float) -> float:
     return x + y
