@@ -53,5 +53,6 @@ e1 = Times(Const(3), Plus(Var("y"), Var("x")))
 e2 = Plus(Times(Const(3), Var("y")), Var("x"))
 
 env = { "x": 2, "y": 4 }
-print(e1 + " = ")
-print(e2)
+print(env)
+print(str(e1) + " = " + str(e1.eval(env)))
+print(str(e2) + " = " + str(e2.eval(env)))
