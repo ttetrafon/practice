@@ -1,0 +1,20 @@
+header {
+    text-align: center;
+}
+
+/* :is() is similar to 'header h1, header a' for the example below. */
+header :is(h1, a, .title) {
+    color: deeppink;
+}
+
+:is(header, p) :hover {
+    color: darkorange;
+}
+
+/* Note that :is() gets its specificity by the higher specificity of all the selectors within. Thus a class in :is() will result in all other selectors having the same specificity as the class. */
+/* (check this by removing `.title` from line 6) */
+header a {
+    color: darkblue;
+    font-weight: bold;
+    text-decoration: underline;
+}
