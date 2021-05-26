@@ -1,0 +1,35 @@
+body {
+    display: flex;
+    background-color: black;
+    margin: 0;
+    min-height: 100vh;
+    flex-wrap: wrap;
+    justify-content: space-evenly;
+    align-items: center;
+}
+
+.card {
+    background-color: beige;
+    color: chocolate;
+    padding: 0.5rem;
+    width: 50px;
+    height: 50px;
+    border: 2px solid red;
+    padding-block-start: 15px;
+}
+
+.c1 {
+    writing-mode: vertical-lr;
+}
+.c2 {
+    writing-mode: vertical-rl;
+}
+.c3 {
+    writing-mode: horizontal-tb;
+}
+.c4 {
+    writing-mode: sideways-lr;
+}
+.c5 {
+    writing-mode: sideways-rl;
+}
