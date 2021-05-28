@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+
+<html lang="en">
+    <head>
+        <title>Title</title>
+        <link rel="stylesheet" href="styles.css">
+    </head>
+
+    <body>
+        <!-- https://css-tricks.com/snippets/css/a-guide-to-flexbox/ -->
+        <div class="flex-parent">
+            <div class="flex-child">
+                <button mat-button class="mat-raised-button" color="primary" (click)="showSlus(data.batchToken)">{{ buttonText }}</button>
+                <button mat-button class="mat-raised-button" color="primary" [disabled]="!formRef.valid" (click)="updateBatch()">Save</button>
+                <button mat-button class="mat-raised-button" [mat-dialog-close]="0" (click)="cancel()">Cancel</button>
+            </div>
+            <div class="flex-child">
+                <label [hidden]="!displaySlus" class="header">Number of Slus manufactured:</label>
+                <!-- <label  [hidden]="!displaySlus" class="header">{{calculateSlusManufacturedCount()}}</label> -->
+            </div>
+        </div>
+    </body>
+</html>
