@@ -37,3 +37,7 @@ bld/
 .vs/
 [Tt]est[Rr]esult*/
 [Bb]uild[Ll]og.*
+
+# Other
+*.psd
+*.blend
