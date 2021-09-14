@@ -1,16 +1,16 @@
 //////////////////
 ///   DIGITS   ///
 //////////////////
-// var arr = [1,2,3];
+var arr = [1,2,3];
 
 // Concatenate
-// var num = parseInt(arr.join(""));
-// console.log("concatenated:", num);
+var num = parseInt(arr.join(""));
+console.log("concatenated:", num);
 
 // Split
-// console.log(
-//     num.toString().split("").map(x => parseInt(x))
-// );
+console.log(
+    num.toString().split("").map(x => parseInt(x))
+);
 
 ////////////////////////////
 ///   INDEX - INTEGERS   ///
@@ -37,10 +37,15 @@ console.log(
 var index2In = num2.toString().substring(0, 3).split("").map(x => parseInt(x));
 console.log("index2 (in):", index2In);
 
-var mask2 = index2In.map(x => "#".repeat(x)).join(" ");
-console.log("mask2:", mask2);
-
 var num2In = num2.toString().substring(3, num2.toString().length);
-var arr2In = format(num2In, mask2);
+console.log("num2 (in)", num2In);
 
+var arr2In = [];
+let k = 0;
+for (let i = 0; i < index2In.length; i++) {
+    console.log(" - ", index2In[i], ", ", k);
+    arr2In.push(num2In.toString().substring(k, k + index2In[i]));
+    k = k + index2In[i];
+}
 console.log("arr2 (in):", arr2In);
+
