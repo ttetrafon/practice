@@ -1,0 +1,18 @@
+1) Code:
+```
+BeginPackage["MyPackage`"];
+Unprotect @@ Names["MyPackage`"];
+ClearAll @@ Names["MyPackage`"];
+
+ff::usage = "f[x]";
+Begin["`Private`"];
+ff[x_] := Module[{}, x^2];
+End[];
+
+Protect @@ Names["MyPackage`"];
+EndPackage[];
+```
+
+2) Make the cell an "initialisation cell".
+
+3) Save the notebook as a mathematica package (.m).
