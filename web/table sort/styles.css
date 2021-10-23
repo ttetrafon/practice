@@ -1,0 +1,53 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+table {
+    padding: 5px 20px;
+    cursor: pointer;
+}
+
+thead {
+    padding: inherit;
+}
+
+tbody {
+    padding: inherit;
+}
+
+tr {
+    padding: inherit;
+}
+
+th {
+    background-color: darkgreen;
+    color: antiquewhite;
+    font-weight: bold;
+}
+
+td, th {
+    padding: inherit;
+    text-align: center;
+}
+
+.table-sortable .th-sort-asc::after {
+    content: "\25b4";
+}
+
+.table-sortable .th-sort-desc::after {
+    content: "\25be";
+}
+
+.table-sortable .th-sort-asc::after, .table-sortable .th-sort-desc::after {
+    margin-left: 5px;
+}
+
+.table-sortable .th-sort-asc, .table-sortable .th-sort-desc {
+    background: rgba(0, 0, 0, 0.1);
+}
+
+.th-sort-asc, .th-sort-desc {
+    color: darkgreen;
+}
