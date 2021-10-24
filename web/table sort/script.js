@@ -15,7 +15,7 @@ function sortTableByColumn(table, columnIndex, asc = true ) {
     const sortedRows = rows.sort((a, b) => {
         const aColText = a.querySelector(`td:nth-child(${columnIndex + 1})`).textContent.trim();
         const bColText = b.querySelector(`td:nth-child(${columnIndex + 1})`).textContent.trim();
-        console.log(aColText, " <> ", bColText);
+        // console.log(aColText, " <> ", bColText);
         if (typeof Number(aColText) === "number" && typeof Number(bColText) === "number") {
             return Number(aColText) > Number(bColText) ? dirModifier : (-1 * dirModifier);
         }

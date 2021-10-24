@@ -4,32 +4,48 @@
     box-sizing: border-box;
 }
 
-table {
+body {
+    margin: 25px;
+}
+
+.table {
     padding: 5px 20px;
+    border-collapse: collapse;
+    border-radius: 8px 8px 0 0;
+    margin: 25px 0;
+    font-size: 0.9em;
+    min-width: 400px;
+    overflow: hidden;
+    box-shadow: 0 0 20px rgba(0, 0, 0, 0.25);
+}
+
+.table thead tr {
+    background-color: darkolivegreen;
+    color: antiquewhite;
+    font-weight: bold;
+    text-align: left;
+}
+
+.table th {
     cursor: pointer;
 }
 
-thead {
-    padding: inherit;
-}
-
-tbody {
-    padding: inherit;
-}
-
-tr {
-    padding: inherit;
-}
-
-th {
-    background-color: darkgreen;
-    color: antiquewhite;
-    font-weight: bold;
-}
-
-td, th {
-    padding: inherit;
+.table th, .table td {
+    padding: 12px 15px;
     text-align: center;
+
+}
+
+.table tbody tr {
+    border-bottom: 1px solid gray;
+}
+
+.table tbody tr:nth-of-type(even) {
+    background-color: rgb(236, 236, 236);
+}
+
+.table tbody tr:last-of-type {
+    border-bottom: 2px solid darkolivegreen;
 }
 
 .table-sortable .th-sort-asc::after {
@@ -40,14 +56,10 @@ td, th {
     content: "\25be";
 }
 
-.table-sortable .th-sort-asc::after, .table-sortable .th-sort-desc::after {
+/* .table-sortable .th-sort-asc::after, .table-sortable .th-sort-desc::after {
     margin-left: 5px;
-}
+} */
 
 .table-sortable .th-sort-asc, .table-sortable .th-sort-desc {
     background: rgba(0, 0, 0, 0.1);
-}
-
-.th-sort-asc, .th-sort-desc {
-    color: darkgreen;
 }
