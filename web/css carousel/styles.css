@@ -1,0 +1,44 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+.frame {
+    position: relative;
+    top: 100px;
+    margin: 0 auto;
+    width: 600px;
+    height: 200px;
+    border-radius: 2px;
+    background: #373737;
+    color: white;
+    overflow: hidden
+}
+
+.element {
+    text-align: center;
+    font-size: 50px;
+    line-height: 200px;
+}
+
+.carousel {
+    animation: carousel 8s ease-in-out infinite;
+}
+@keyframes carousel {
+    0%, 20% {
+        transform: translateY(0);
+    }
+    25%, 45% {
+        transform: translateY(-200px)
+    }
+    50%, 70% {
+        transform: translateY(-400px)
+    }
+    75%, 95% {
+        transform: translateY(-600px)
+    }
+    100% {
+        transform: translateY(-800px)
+    }
+}
