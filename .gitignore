@@ -1,5 +1,7 @@
 ### general
+.cache
 hidden/
+
 
 ### js
 build/Release
