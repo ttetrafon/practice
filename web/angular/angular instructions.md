@@ -8,6 +8,29 @@
 1. Navigate to the project's parent folder.
 2. Run `ng new project-name` and follow the prompts.
 
+## Project Upgrade/Update
+
+1. https://update.angular.io/
+
+# Angular Use
+
+## CLI commands
+
+If angular/cli is installed only locally, use `npm run ng angular-command` instead of `ng angular-command`.
+
+### generate
+
+* `ng generate *type* *name*` is used to create specific items within the Angular application.
+  * component
+  * directive
+  * pipe
+  * service
+  * class
+  * guard
+  * interface
+  * enum
+  * module
+
 # Libraries
 
 ## Creation
