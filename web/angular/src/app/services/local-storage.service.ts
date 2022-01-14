@@ -4,6 +4,7 @@ import { Injectable } from '@angular/core';
   providedIn: 'root'
 })
 export class LocalStorageService {
+  // TODO: create cache of local storage, and use events to know when a value has changed instead of reading from local storage all the time
 
   constructor() {
     console.log("LocalStorageService started");
