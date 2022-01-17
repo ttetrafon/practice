@@ -70,13 +70,13 @@
     }
   })();
 
-  /* User code */
-  function InputController () {
-    this.message = 'Hello World!';
-  }
+/* User code */
+function InputController () {
+  this.message = 'Hello World!';
+}
 
-  var myInputController = angular.controller('InputController', InputController);
+var myInputController = angular.controller('InputController', InputController);
 
-  function onButtonClick () {
-    myInputController.message = 'Clicked!';
-  }
+function onButtonClick () {
+  myInputController.message = 'Clicked!';
+}
