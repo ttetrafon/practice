@@ -1,0 +1,19 @@
+<!DOCTYPE html>
+
+<html lang="en">
+  <head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Image Map</title>
+    <script src="script.js" defer></script>
+    <link rel="stylesheet" href="styles.css">
+  </head>
+
+  <body>
+    <p class="instructions">Try to click the squirrel's head!</p>
+    <img src="./image.jpg" alt="squirrel" usemap="#squirrel-map" />
+    <map name="squirrel-map">
+      <area class="img-shape" shape="circle" coords="305,735,100" alt="Head" id="Head">
+    </map>
+  </body>
+</html>

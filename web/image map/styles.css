@@ -1,0 +1,23 @@
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+.img {
+  z-index: 0;
+}
+
+.img-shape {
+  cursor: pointer;
+}
+
+.instructions {
+  z-index: 10;
+  position: absolute;
+  left: 25px;
+  top: 25px;
+  color: antiquewhite;
+  font-weight: bold;
+  font-size: larger;
+}
