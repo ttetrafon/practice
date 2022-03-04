@@ -43,6 +43,11 @@ bld/
 [Tt]est[Rr]esult*/
 [Bb]uild[Ll]og.*
 
+
+## IntelliJ Idea
+libraries
+
+
 # Other
 *.psd
 *.blend
