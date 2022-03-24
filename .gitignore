@@ -48,6 +48,10 @@ bld/
 libraries
 
 
+## Java
+.mvn/
+
+
 # Other
 *.psd
 *.blend
