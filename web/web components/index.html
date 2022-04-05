@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+
+<html lang="en">
+  <head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Web Components without a Framework</title>
+    <script src="script.js" type="module" defer></script>
+    <link rel="stylesheet" href="styles.css">
+  </head>
+
+  <body>
+    <p>The following is a modal:</p>
+    <br/>
+    <my-modal number="15563"></my-modal>
+    <br/>
+    <shadow-modal class="inverted" name="ttetrafon"></shadow-modal>
+    <br/>
+    <shadow-modal class="yellow" name="ttetrafon"></shadow-modal>
+    <br/>
+    <html-template name="nakis">
+      <h1 slot="msgText">Hello Default!</h1>
+      <p>Some more text that will be part of the template!</p>
+    </html-template>
+  </body>
+
+
+  <template id="html-template">
+    <style>
+      /* Styling is not direct - instead the slot needs to be targeted. */
+      slot[name="msgText"] {
+        color: green;
+      }
+      p {
+        text-align: center;
+        font-weight: normal;
+        padding: 0.5em;
+        margin: 1px 0;
+        background-color: #eee;
+        border: 1px solid #666;
+      }
+    </style>
+    <!-- Slots are used to inject html components in the template.
+      Named ones are placed in the appropriate slots,
+      while unnamed ones are placed in order. -->
+    <slot name="msgText" class="hw-text"></slot>
+    <p class="hw-text"></p>
+    <p class="hw-text"></p>
+    <p class="hw-text"></p>
+    <slot></slot>
+  </template>
+</html>

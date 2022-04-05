@@ -1,0 +1,10 @@
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+my-modal {
+  font-weight: bold;
+  color: red;
+}
