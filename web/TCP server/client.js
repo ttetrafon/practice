@@ -30,10 +30,11 @@ class Client {
    client.socket.write(message);
 
    client.socket.on('data', (data) => {
-    resolve(data);
-    if (data.toString().endsWith('exit')) {
-     client.socket.destroy();
-    }
+     resolve(data);
+     if (data.toString().endsWith('exit')) {
+       client.socket.destroy();
+      }
+    // this.removeListener(‘data’, getData) // To kill the listener if not needed any more.
    });
 
    client.socket.on('error', (err) => {
