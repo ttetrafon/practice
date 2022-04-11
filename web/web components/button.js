@@ -41,6 +41,7 @@ class Button extends HTMLElement {
     this._shadowRoot = this.attachShadow({ mode: 'closed' });
     this._shadowRoot.appendChild(template.content.cloneNode(true));
 
+    this.$container = this._shadowRoot.querySelector('.container');
     this.$button = this._shadowRoot.querySelector('button');
 
     this.$button.addEventListener('click', () => {
