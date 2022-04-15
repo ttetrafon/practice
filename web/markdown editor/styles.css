@@ -1,0 +1,31 @@
+body {
+  font-size: 18px;
+  font-family:'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif;
+  scroll-behavior: smooth;
+}
+
+html, body {
+  height: 100%;
+}
+
+.main-content {
+  display: flex;
+  height: 100%;
+}
+
+.text-editor {
+  flex: 1;
+  padding: 30px;
+  border: 0;
+  resize: none;
+  background-color: #fff;
+  color: #333;
+}
+
+.preview {
+  flex: 1;
+  padding: 0 50px;
+  background-color: #f3f3f3;
+  color: #3d3d3d;
+}
+
