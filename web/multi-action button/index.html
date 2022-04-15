@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+
+<html lang="en">
+  <head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Multi-Action Button</title>
+    <script src="script.js" defer></script>
+    <link rel="stylesheet" href="styles.css">
+    <link href="https://fonts.googleapis.com/icon?family=Material+Icons"
+      rel="stylesheet">
+  </head>
+
+  <body>
+    <div class="mab">
+      <button type="button" class="mab__button mab__button--primary" onclick="alert('Save Changes!')">
+        <span class="material-icons mab__icon">save</span>
+        <span class="ma__text">Save Changes</span>
+      </button>
+      <button type="button" class="mab__button mab__button--menu">
+        <span class="material-icons mab__icon">expand_more</span>
+      </button>
+      <div class="mab__list mab__list--hidden">
+        <button type="button" class="mab__button mab__button--secondary" onclick="alert('Save Draft!')">
+          <span class="material-icons mab__icon">edit_note</span>
+          <span class="ma__text">Save Draft</span>
+        </button>
+        <button type="button" class="mab__button mab__button--secondary" onclick="alert('Cancel Changes!')">
+          <span class="material-icons mab__icon">cancel</span>
+          <span class="ma__text">Cancel Changes</span>
+        </button>
+      </div>
+    </div>
+  </body>
+</html>

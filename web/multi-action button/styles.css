@@ -1,0 +1,53 @@
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+.mab {
+  position: relative;
+  background-color: #ddd;
+  display: inline-flex;
+}
+
+.mab__button {
+  background: none;
+  border: none;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 8px 12px;
+  color: #333;
+  cursor: pointer;
+}
+
+.mab__button--secondary {
+  width: 100%;
+  justify-content: flex-start;
+}
+
+.mab__button:hover {
+  background-color: rgba(0, 0, 0, 0.1);
+}
+
+.mab__button:not(.mab__button--menu) .mab__icon {
+  margin-right: 8px;
+}
+
+.mab__text {
+  font-family:'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
+}
+
+.mab__list {
+  position: absolute;
+  display: none;
+  top: 115%;
+  right: 0;
+  padding: 5px 0;
+  background-color: white;
+  box-shadow: 0 0 2px rgba(0, 0, 0, 0.2);
+}
+
+.mab__list--visible {
+  display: initial;
+}
