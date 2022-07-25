@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <projectDescription>
-	<name>DiceRoller</name>
+	<name>Dice Roller</name>
 	<comment>Project DiceRoller created by Buildship.</comment>
 	<projects>
 	</projects>
@@ -16,7 +16,7 @@
 	</natures>
 	<filteredResources>
 		<filter>
-			<id>1632216766683</id>
+			<id>0</id>
 			<name></name>
 			<type>30</type>
 			<matcher>
