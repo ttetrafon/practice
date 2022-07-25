@@ -1,0 +1,13 @@
+doctype html
+html(lang='en')
+  head
+    meta(charset='utf-8')
+    meta(name='viewport' content='user-scalable=no, width=device-width, initial-scale=1, shrink-to-fit=no')
+    title Payment Form
+  body
+    script.
+      if ( window.history.replaceState ) {
+        window.history.replaceState( null, null, window.location.href );
+      }
+      var parent = window.parent;
+      parent.postMessage('#{dataForPage.data}', "#{dataForPage.origin}");

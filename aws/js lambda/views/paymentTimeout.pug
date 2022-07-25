@@ -1,0 +1,17 @@
+doctype html
+html(lang='en')
+	head
+		meta(charset='utf-8')
+		meta(name='viewport' content='width=device-width, initial-scale=1, shrink-to-fit=no')
+		title Payment Timed Out
+	body
+		div(id="mainEl" style="text-align:center; margin:auto; width: 270px; height: 400px; position: absolute; top:0; bottom: 0; left: 0; right: 0;")
+			<img style="width: 75%; border-radius: 4px;" src="#{dataForPage.logo}">
+			h2 Payment Timed Out
+			p Sorry, the payment took too long.<br/>No money has been taken from your card.<br/>Please try again later.
+			p Your balance remains:
+			h2 £#{(dataForPage.walletBalance / 100).toFixed(2)}
+
+		script.
+			document.getElementById('mainEl').style.color = "#{dataForPage.seven}";
+			document.body.style.backgroundColor = "#{dataForPage.six}";

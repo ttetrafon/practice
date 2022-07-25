@@ -1,0 +1,104 @@
+---
+AWSTemplateFormatVersion: '2010-09-09'
+Transform: AWS::Serverless-2016-10-31
+Description: Deploys the Unsecured Service into the AWS environment specified by the EnvNameParam. Shares the same VPC, subnet etc as the demo AWS environemnt.
+Parameters: 
+  EnvNameParam: 
+    Type: String
+    AllowedValues: 
+      - test
+      - demo
+      - live-test
+      - pentest
+      - LIVE
+    Description: Environment name, test, demo or pentest
+  DbNameParam:
+    Type: String
+    Description: e.g. tapAndPlayDb
+  DbSecretKey:
+    Type: String
+    Description: Arn of the secret key containing the DB credential
+  CyberSourceSecretKey:
+    Type: String
+    Description: Arn of the secret key containing CyberSource credentials and keys
+  CognitoUserPoolIdParam:
+    Type: String
+    Description: Cognito user pool ID for players
+  CognitoAppClientIdParam:
+    Type: String
+    Description: Client ID for the Unsecured Service in the Cognito user pool for players
+  DefaultSecurityGroupParam: 
+    Type: String
+    Description: Name of the default security group, e.g. sg-046e8f1185c169930
+  PaymentProviderAccountParam:
+    Type: String
+    AllowedValues: 
+      - test
+      - LIVE
+  OperatorWalletToken:
+    Type: String
+    Description: Token for the GPT operator wallet token to use
+
+Resources:
+  ApiGatewayApi:
+    Type: AWS::Serverless::Api
+    Properties:
+      DefinitionUri: cf-apigateway-openApi-temp.yaml
+      StageName: prod
+  
+  LambdaApiGatewayExecutionPermission:
+    Type: AWS::Lambda::Permission
+    Properties:
+      Action: lambda:InvokeFunction
+      FunctionName: !GetAtt tpUnsecuredService.Arn
+      Principal: apigateway.amazonaws.com
+      SourceArn: !Join
+        - ''
+        - - 'arn:aws:execute-api:'
+          - !Ref AWS::Region
+          - ":"
+          - !Ref AWS::AccountId
+          - ":"
+          - !Ref ApiGatewayApi
+          - "/*/*"
+
+  tpUnsecuredService:
+    Type: AWS::Serverless::Function
+    Properties:
+      FunctionName : !Sub '${EnvNameParam}TpUnsecuredService'
+      CodeUri: ./
+      Handler: lambda.handler
+      MemorySize: 1024
+      Role: !ImportValue LambdaExecutionRoleArn
+      Runtime: nodejs12.x
+      Timeout: 30
+      MemorySize: 256
+      VpcConfig:
+        SubnetIds:
+        - !ImportValue tpPrivateSubnet1Ref
+        - !ImportValue tpPrivateSubnet2Ref
+        SecurityGroupIds:
+        - !ImportValue tpAllOutboundSecurityGroupRef
+        - !Ref DefaultSecurityGroupParam
+      Environment:
+        Variables:
+          DB_NAME: !Ref DbNameParam
+          DB_SECRET_KEY: !Ref DbSecretKey
+          CYBERSOURCE_SECRET_KEY: !Ref CyberSourceSecretKey
+          COGNITO_USER_POOL_ID: !Ref CognitoUserPoolIdParam
+          COGNITO_APP_CLIENT_ID: !Ref CognitoAppClientIdParam
+          PAYMENT_PROVIDER_ACCOUNT: !Ref PaymentProviderAccountParam
+          OPERATOR_WALLET_TOKEN: !Ref OperatorWalletToken
+      Events:
+        ProxyApiRoot:
+          Type: Api
+          Properties:
+            RestApiId: !Ref ApiGatewayApi
+            Path: /
+            Method: ANY
+        ProxyApiGreedy:
+          Type: Api
+          Properties:
+            RestApiId: !Ref ApiGatewayApi
+            Path: /{proxy+}
+            Method: ANY

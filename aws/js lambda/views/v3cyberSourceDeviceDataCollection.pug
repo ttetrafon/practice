@@ -1,0 +1,83 @@
+doctype html
+html(lang='en')
+    head
+        meta(charset='utf-8')
+        meta(name='viewport' content='user-scalable=no, width=device-width, initial-scale=1, shrink-to-fit=no')
+        title Payment Form
+    body
+        div(style="text-align:center; margin-top: 40px; margin-bottom: 40px; width: 100%; height: 100%;")
+            <img style="width: 50%; border-radius: 4px;" src="#{dataForPage.logo}">
+        #container
+            iframe(name="ddc-iframe" allow-same-origin height="100" width="100" style="display: none;")
+            form(id="ddc-form" target="ddc-iframe" method="POST" action="#{dataForPage.deviceDataCollectionUrl}")
+                input#accessToken(type='hidden' name="JWT")
+            form(id="submitDeviceForm" action="/v3/processPaymentAndConsumerAuthentication" method="post")
+                input#eventData(type='hidden' name="eventData")
+                input#transactionToken(type='hidden' name="transactionToken")
+                input#paymentToken(type='hidden' name="paymentToken")
+                input#transientToken(type='hidden' name="transientToken")
+                input#expiryDate(type='hidden' name="expiryDate")
+                input#newCard(type='hidden' name="newCard")
+                input#colourScheme(type='hidden' name="colourScheme")
+            form(id="cancelForm" action="/v3/cancelDepositFundsIntoWalletFromCard" method="post")
+                input#transactionTokenCancel(type='hidden' name="transactionToken")
+                input#cancelReason(type='hidden' name="cancelReason")
+                input#colourSchemeCancel(type='hidden' name="colourScheme")
+            p(id="loader" style="text-align:center; margin:30;")
+                b Processing Payment, please wait....
+        br
+        br
+        br
+        br
+
+        script.
+            if ( window.history.replaceState ) {
+                window.history.replaceState( null, null, window.location.href );
+            }
+            this.sendMessage = true;
+            document.getElementById('loader').style.color = "#{dataForPage.text}";
+            document.body.style.backgroundColor = "#{dataForPage.background}";
+
+            let accessToken = document.getElementById('accessToken');
+            accessToken.value = "#{dataForPage.accessToken}"
+            var ddcForm = document.querySelector('#ddc-form'); 
+            if(ddcForm) {// ddc form exists 
+                ddcForm.action = "#{dataForPage.deviceDataCollectionUrl}";
+                ddcForm.submit();
+            }
+
+            this.timeout = setTimeout(() => {
+                if(this.sendMessage) {
+                    this.sendMessage = false;
+                    document.getElementById("transactionTokenCancel").value = "#{dataForPage.transactionToken}";
+                    document.getElementById("cancelReason").value = "device data collection timeout";
+                    document.getElementById("colourSchemeCancel").value = "#{dataForPage.colourScheme}";
+                    document.getElementById("cancelForm").submit();   
+                }
+            }, 10000);
+
+            window.addEventListener('message', function completeDeviceData(event) {
+                clearTimeout(this.timeout);
+                if(this.sendMessage) {
+                    this.sendMessage = false;
+                    window.removeEventListener('message', completeDeviceData);
+                    if(event.origin === '#{dataForPage.deviceDataCollectioneEventOriginUrl}') {
+                        document.getElementById("eventData").value = event.data;
+                        document.getElementById("transactionToken").value = "#{dataForPage.transactionToken}";
+                        document.getElementById("transientToken").value = "#{dataForPage.transientToken}";
+                        document.getElementById("expiryDate").value = "#{dataForPage.expiryDate}";
+                        document.getElementById("paymentToken").value = "#{dataForPage.paymentToken}";
+                        document.getElementById("newCard").value = "#{dataForPage.newCard}";
+                        document.getElementById("colourScheme").value = "#{dataForPage.colourScheme}";
+                        document.getElementById("submitDeviceForm").submit(); 
+                    } else {
+                        document.getElementById("transactionTokenCancel").value = "#{dataForPage.transactionToken}";
+                        document.getElementById("cancelReason").value = "device data collection origin not trusted";
+                        document.getElementById("colourSchemeCancel").value = "#{dataForPage.colourScheme}";
+                        document.getElementById("cancelForm").submit();
+                    }
+                }
+            });
+
+
+            

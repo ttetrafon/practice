@@ -1,0 +1,66 @@
+doctype html
+html(lang='en')
+    head
+        meta(charset='utf-8')
+        meta(name='viewport' content='user-scalable=no, width=device-width, initial-scale=1, shrink-to-fit=no')
+        title Payment Form
+    body
+        div(style="text-align:center; margin-top: 40px; margin-bottom: 40px; width: 100%; height: 100%;")
+            <img style="width: 50%; border-radius: 4px;" src="#{dataForPage.logo}">
+        #container
+            iframe(name="step-up-iframe" allow-same-origin style="text-align:center; height: 400px; width: 100%;display: none; background-color: white")
+            form(id="step-up-form" target="step-up-iframe" method="POST" action="#{dataForPage.stepUpUrl}")
+                input#JWT(type='hidden' name="JWT" value="")
+                input#MD(type='hidden' name="MD" value="")
+            form(id="complete3DS" method="POST")
+                input#data(type='hidden' name="data" value="")
+            form(id="cancelForm" action="/v3/cancelDepositFundsIntoWalletFromCard" method="post")
+                input#transactionTokenCancel(type='hidden' name="transactionToken")
+                input#cancelReason(type='hidden' name="cancelReason")
+                input#colourSchemeCancel(type='hidden' name="colourScheme")
+        p(id="loader" style="text-align:center; margin:30;")
+            b Processing Payment, please wait....
+        br
+        br
+        br
+        br
+
+        script.
+            if ( window.history.replaceState ) {
+                window.history.replaceState( null, null, window.location.href );
+            }
+            this.sendCompleteMessage = true;
+            document.getElementById('loader').style.color = "#{dataForPage.text}";
+            document.body.style.backgroundColor = "#{dataForPage.background}";
+
+            let stepUpForm = document.getElementById('step-up-form');
+            if(stepUpForm) {
+                document.getElementById('MD').value = "#{dataForPage.transactionInfo}"
+                document.getElementById('JWT').value = "#{dataForPage.accessToken}";
+                stepUpForm.action = '#{dataForPage.stepUpUrl}';
+                document.getElementById('loader').style.display = 'none';
+                document.getElementsByName('step-up-iframe')[0].style.display = 'block';
+                stepUpForm.submit();
+                
+            }
+
+            window.addEventListener("message", function completeAuth(event) {
+                if(this.sendCompleteMessage) {
+                    this.sendCompleteMessage = false;
+                    window.removeEventListener("message", completeAuth, false);
+                    if(event.origin === '#{dataForPage.origin}') {
+                        document.getElementsByName('step-up-iframe')[0].style.display = 'none';
+                        document.getElementById('loader').style.display = 'block';
+                        
+                        document.getElementById('complete3DS').action = '/v3/players/wallet/completeValidateAuthenticationResult';
+                        document.getElementById('data').value = event.data;
+                        document.getElementById('complete3DS').submit();
+                    } else {
+                        document.getElementById("transactionTokenCancel").value = "#{dataForPage.transactionToken}";
+                        document.getElementById("cancelReason").value = "3DS completion origin not trusted";
+                        document.getElementById("colourSchemeCancel").value = "#{dataForPage.colourScheme}";
+                        document.getElementById("cancelForm").submit();
+                    }
+                }
+            }, false);
+            

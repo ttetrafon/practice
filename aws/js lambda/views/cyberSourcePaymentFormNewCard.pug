@@ -1,0 +1,275 @@
+doctype html
+html(lang='en')
+    head
+        meta(charset='utf-8')
+        meta(name='viewport' content='user-scalable=no, width=device-width, initial-scale=1, shrink-to-fit=no')
+        title Payment Form
+    body
+        div(style="text-align:center; margin-top:40px; margin-bottom:40px; width: 100%; height: 100%;")
+            <img style="width: 75%; border-radius: 4px;" src="#{dataForPage.logo}">
+        #container
+            hr(id="topLine")
+            p(style="margin-left:12px;") Amount: 
+                b £#{dataForPage.amount}
+            hr(id="bottomLine")
+            p(style="margin-left: 12px;")
+                b Debit Cards Only
+            <img style="width: 40%; margin-left: 12px;" src="#{dataForPage.acceptedPaymentLogos}">
+            form(id="paymentForm" action="", method="post")
+                div(style="margin: 5px; display: flex;")
+                    label(for="card-number" style="width: 40%; padding: 10px 12px;") Card Number
+                    #card-number(style="width:60%; padding: 10px 12px; border-radius: 4px; border: 1px solid black; height: 20px;")
+                div(style="margin: 5px; display: flex;")
+                    label(for="card-expiry" style="width: 40%; padding: 10px 12px;") Card Expiry
+                    input#card-expiry(type='text' placeholder="MM / YYYY" maxlength="7" style="width:60%; padding: 10px 12px; border-radius: 4px; border: 1px solid black; font-size: 14px; font-family: helvetica, tahoma, calibri, sans-serif;")
+                div(style="margin: 5px; display: flex;")
+                    label(for="card-cvc" style="width: 40%; padding: 10px 12px;") Security Code
+                    #card-cvc(style="width:60%; padding: 10px 12px; border-radius: 4px; border: 1px solid black; height: 20px; height: 20px;")
+                p(id="errorMessage") #{errorMessage}
+                div(style="text-align: center; margin: 0 auto;")
+                    a(id="cancel" href="" style="font-size: 16px; text-decoration: none; padding: 4px 10px; float: left; margin-left: 12px; border-radius: 4px;") Cancel
+                    button(id="submitButton" type="submit" style="font-size: 16px; border: none; float: right; margin-right: 12px; border-radius: 4px; padding: 4px 10px;") Submit Payment
+            form(id="submitForm" action="/v2/cyberSourceDeviceDataCollection" method="post")
+                input#transactionToken(type='hidden' name="transactionToken")
+                input#paymentToken(type='hidden' name="paymentToken")
+                input#captureContext(type='hidden' name="captureContext")
+            form(id="cancelForm" action="/v2/cancelDepositFundsIntoWalletFromCard" method="post")
+                input#playerTokenCancel(type='hidden' name="playerToken")
+                input#transactionTokenCancel(type='hidden' name="transactionToken")
+                input#cancelReason(type='hidden' name="cancelReason")
+        p(id="loader" style="display:none; text-align:center; margin:30;")
+            b Processing Payment, please wait....
+        p(id="cancelLoader" style="display:none; text-align:center; margin:30;")
+            b Processing Payment, please wait....
+        br
+        br
+        br
+        br
+
+        script(src="https://flex.cybersource.com/cybersource/assets/microform/0.11/flex-microform.min.js")
+        script.
+
+            document.getElementById('container').style.color = "#{dataForPage.seven}";
+            document.getElementById('topLine').style.borderColor = "#{dataForPage.seven}";
+            document.getElementById('bottomLine').style.borderColor = "#{dataForPage.seven}";
+            document.getElementById('loader').style.color = "#{dataForPage.seven}";
+            document.getElementById('cancelLoader').style.color = "#{dataForPage.seven}";
+            document.getElementById('errorMessage').style.color = '#{dataForPage.eight}';
+
+            /*const {sheet} = Object.assign(document.head.appendChild(document.createElement("style")), {type: "text/css" });
+            const placeholderStyle = sheet.rules[sheet.insertRule("::placeholder {}")].style;
+            placeholderStyle.color = '#{dataForPage.placeholder}';*/
+
+            
+            document.body.style.backgroundColor = "#{dataForPage.six}";
+            
+            var cardExpField = document.getElementById('card-expiry');
+            cardExpField.style.backgroundColor = "#{dataForPage.six}";
+            cardExpField.style.borderColor = "#{dataForPage.seven}";
+            cardExpField.style.color = "#{dataForPage.seven}"
+
+            var cardNumField = document.getElementById('card-number');
+            cardNumField.style.borderColor = "#{dataForPage.seven}";
+
+            var cardSecField = document.getElementById('card-cvc');
+            cardSecField.style.borderColor = "#{dataForPage.seven}";
+
+            var paymentCancelButton = document.getElementById('cancel');
+            paymentCancelButton.style.color = "#{dataForPage.nine}";
+            paymentCancelButton.style.backgroundColor = "#{dataForPage.two}";
+            
+            var paymentSubmitButton = document.getElementById('submitButton');
+            paymentSubmitButton.style.color = "#{dataForPage.nine}";
+            paymentSubmitButton.style.backgroundColor = "#{dataForPage.five}";
+
+            let captureContext = '#{dataForPage.captureContext}';
+            let flexStyles = {
+                'input': {
+                    'font-size': '14px',
+                    'font-family': 'helvetica, tahoma, calibri, sans-serif',
+                    'color': '#{dataForPage.seven}'
+                },
+                ':focus': { 'color': '#{dataForPage.seven}' },
+                ':disabled': {'cursor': 'not-allowed'},
+                'valid': {'color': '#{dataForPage.seven}'},
+                'invalid': {'color': '#{dataForPage.eight}'}
+            };
+
+            let flex = new Flex(captureContext);
+            let microform = flex.microform({ styles: flexStyles });
+            let cardNumber = microform.createField('number', { placeholder: 'Card number'});
+            let securityCode = microform.createField('securityCode', { placeholder: 'CVC'});
+
+            cardNumber.load('#card-number');
+            securityCode.load('#card-cvc');
+
+            cardNumber.focus();
+
+            let cardNumberComplete;
+            cardNumber.on('change', function (evt) {
+                if(evt.valid) {
+                    cardNumberComplete = true;
+                    document.getElementById('errorMessage').innerHTML = '';
+                } else {
+                    cardNumberComplete = false;
+                }
+            });
+
+            cardNumber.on('inputSubmitRequest', function(evt) {
+                window.scrollTo(0,document.body.scrollHeight);
+                document.getElementById('card-expiry').focus();
+            });
+
+            //handle card expiry field
+            let previousDelimiterPosition = -1;
+            let expiryDateField = document.getElementById('card-expiry')
+            expiryDateField.addEventListener('keyup', event => {
+                let expiryDateLengthBeforeReplace = expiryDateField.value.length;
+                let cursorPosition = expiryDateField.selectionStart;
+                expiryDateField.value = expiryDateField.value.replace(/[^0-9]/g, '');
+                if(expiryDateField.value.length == 2) {
+                    if(previousDelimiterPosition == -1 || expiryDateLengthBeforeReplace == 3) {
+                        expiryDateField.value = expiryDateField.value + '/';
+                        expiryDateField.setSelectionRange(cursorPosition + 1, cursorPosition + 1);
+                    } else {
+                        expiryDateField.value = expiryDateField.value.substring(0,1);
+                        expiryDateField.setSelectionRange(cursorPosition, cursorPosition);
+                    }
+                } else if(expiryDateField.value.length == 3) {
+                    expiryDateField.value = expiryDateField.value.substring(0, previousDelimiterPosition) + '/' + expiryDateField.value.substring(previousDelimiterPosition);
+                    expiryDateField.setSelectionRange(cursorPosition, cursorPosition);
+                } else if(expiryDateField.value.length >= 4) {
+                    expiryDateField.setSelectionRange(cursorPosition, cursorPosition);
+                    expiryDateField.value = expiryDateField.value.substring(0,2) + '/' + expiryDateField.value.substring(2);
+                }
+                
+                previousDelimiterPosition = expiryDateField.value.indexOf('/');
+            });
+
+            expiryDateField.addEventListener('paste', event => {
+                event.preventDefault();
+            });
+
+            let cardCvcComplete;
+            securityCode.on('change', function (evt) {
+                if(evt.valid) {
+                    cardCvcComplete = true;
+                    document.getElementById('errorMessage').innerHTML = '';
+                } else {
+                    cardCvcComplete = false;
+                }
+            });
+
+            securityCode.on('inputSubmitRequest', function(evt) {
+                window.scrollTo(0,document.body.scrollHeight);
+                document.getElementById('submitButton').focus();
+            });
+
+            document.getElementById('card-expiry').addEventListener('keypress', function(e) {
+                if(e.which == 13) {
+                    e.preventDefault();
+                    window.scrollTo(0,document.body.scrollHeight);
+                    securityCode.focus();
+                }
+            });
+
+            let timeout = setTimeout(() => {
+                cardNumber.unload();
+                securityCode.unload();
+                document.getElementById("playerTokenCancel").value = "#{dataForPage.userToken}";
+                document.getElementById("transactionTokenCancel").value = "#{dataForPage.transactionToken}";
+                document.getElementById("cancelReason").value = "transactionTimeout";
+                document.getElementById("cancelForm").submit();   
+
+            }, 300000);
+
+            const cancel = document.getElementById('cancel');
+            cancel.addEventListener('click', event => {
+                event.preventDefault();
+
+                let hideContainer = document.getElementById('container');
+                    hideContainer.style.display = "none";
+                    let showLoader = document.getElementById('cancelLoader');
+                    showLoader.style.display = "block";
+
+                cardNumber.unload();
+                securityCode.unload();
+                document.getElementById("playerTokenCancel").value = "#{dataForPage.userToken}";
+                document.getElementById("transactionTokenCancel").value = "#{dataForPage.transactionToken}";
+                document.getElementById("cancelReason").value = "Cancelled By Player";
+                document.getElementById("cancelForm").submit(); 
+
+            });
+
+            let submitForm = true;
+
+            const element = document.getElementById('paymentForm');
+            element.addEventListener('submit', event => {
+                event.preventDefault();
+
+                let expiryDate = document.getElementById('card-expiry').value;
+                if(expiryDate && !/^(0[1-9]|1[0-2])\/\d{4}$/.test(expiryDate)){
+                    document.getElementById('errorMessage').innerHTML = 'Card expiry date is invalid, it must be in a mm/yyyy format.';
+                    return false;
+                }
+
+                let expiryMonth = (expiryDate ? expiryDate.substring(0,2) : null);
+                let expiryYear = (expiryDate ? expiryDate.substring(3) : null);
+
+                let date = new Date();
+                let dateMonth = date.getMonth() + 1;
+                let dateYear = date.getFullYear();
+
+                if(dateMonth < 10) { 
+                    dateMonth = '0' + dateMonth;
+                }
+
+                if ((expiryYear && expiryYear < dateYear) || ((expiryYear && expiryYear == dateYear) && (expiryMonth && expiryMonth < dateMonth))) {
+                    document.getElementById('errorMessage').innerHTML = 'Card expiry date is invalid, date must be in the future.';
+                    return false;
+                }
+
+                if(submitForm) {
+                    if(cardCvcComplete && cardNumberComplete) {
+                        let hideContainer = document.getElementById('container');
+                        hideContainer.style.display = "none";
+                        let showLoader = document.getElementById('loader');
+                        showLoader.style.display = "block";
+                                      
+        
+                        let options = {
+                            expirationMonth: expiryMonth.toString(),
+                            expirationYear: expiryYear.toString()
+                        }
+                        submitForm = false;
+
+                        try{
+                            microform.createToken(options, function(err, token) {
+                                if(err) {
+                                    let hideContainer = document.getElementById('container');
+                                    hideContainer.style.display = "block";
+                                    let showLoader = document.getElementById('loader');
+                                    showLoader.style.display = "none";
+                                    submitForm = true;
+                                    document.getElementById('errorMessage').innerHTML = 'Error has occured. No payment has been taken, please try again.';
+                                    return false;
+                                }
+
+                                cardNumber.unload();
+                                securityCode.unload();
+
+                                document.getElementById("transactionToken").value = "#{dataForPage.transactionToken}";
+                                document.getElementById("paymentToken").value = token;
+                                document.getElementById("captureContext").value = '#{dataForPage.captureContext}';
+                                document.getElementById("submitForm").submit();  
+                            }) 
+                        } catch(err) {
+                            alert(err);
+                        }                    
+  
+                    } else {
+                        document.getElementById('errorMessage').innerHTML = 'Card details are invalid, please fix the errors and try again.';
+                    }
+                }
+            });
+            

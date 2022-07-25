@@ -1,0 +1,16 @@
+doctype html
+html(lang='en')
+	head
+		meta(charset='utf-8')
+		meta(name='viewport' content='width=device-width, initial-scale=1, shrink-to-fit=no')
+		title Unexpected Error
+	body
+		div(id="mainEl" style="text-align:center; margin:auto; width: 100%; height: 400px; position: absolute; top:0; bottom: 0; left: 0; right: 0;")
+			<img style="width: 75%; border-radius: 4px;" src="#{dataForPage.logo}">
+			h2 Transaction Error
+			p An error has been encountered while processing your transaction. Please contact support, referencing the identification code below:
+			p #{dataForPage.transactionToken}
+
+		script.
+			document.getElementById('mainEl').style.color = "#{dataForPage.seven}";
+			document.body.style.backgroundColor = "#{dataForPage.six}";

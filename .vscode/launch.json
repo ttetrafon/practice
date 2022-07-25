@@ -5,13 +5,20 @@
   "version": "0.2.0",
   "configurations": [
     {
-      "type": "pwa-node",
+      "type": "node",
       "request": "launch",
       "name": "Express Server",
       "skipFiles": [
         "<node_internals>/**"
       ],
       "program": "${workspaceFolder}\\js\\express server.js\\server.js"
+    },
+    {
+        "type": "node",
+        "request": "launch",
+        "name": "TP-AS",
+        "program": "${workspaceFolder}\\aws\\js lambda\\scripts\\native.js",
+        "args": []
     }
   ]
 }
