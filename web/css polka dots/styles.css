@@ -1,0 +1,25 @@
+:root {
+  --polka-bg-image:
+    radial-gradient(rgb(255, 0, 0) 26.4%, transparent 26.4%),
+    radial-gradient(rgb(255, 0, 0) 26.4%, transparent 26.4%);
+  --polka-bg-position: 0px 0px, 72px 72px;
+  --polka-bg-size: 144px 144px;
+  --polka-bg-color: rgb(255, 255, 255);
+}
+
+body {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  width: 100%;
+  height: 100vh;
+}
+
+.polka {
+  background-image:
+    radial-gradient(rgb(255, 0, 0) 26.4%, transparent 26.4%),
+    radial-gradient(rgb(255, 0, 0) 26.4%, transparent 26.4%);
+  background-position: 0px 0px, 72px 72px;
+  background-size: 144px 144px;
+  background-color: rgb(255, 255, 255);
+}

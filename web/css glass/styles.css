@@ -1,0 +1,22 @@
+body {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  height: 100vh;
+  width: 100%;
+  background-color: rgb(131, 131, 251);
+}
+
+div {
+  position: absolute;
+  left: 10%;
+  top: 10%;
+  bottom: 10%;
+  right: 10%;
+  background: rgba(254, 251, 77, 0.5);
+  box-shadow: 0 8px 32px 0 rgba(31, 38, 135, 0.37);
+  backdrop-filter: blur(3px);
+  -webkit-backdrop-filter: blur(3px);
+  border-radius: 10px;
+  border: 1px solid rgba(255, 255, 255, 0.18);
+}
