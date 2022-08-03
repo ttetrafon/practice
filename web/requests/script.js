@@ -1,13 +1,13 @@
 console.log("main script started...");
 
-const url = "http://api.forismatic.com/api/1.0/?method=getQuote&lang=en&format=json";
+const url = "https://dog.ceo/api/breeds/image/random";
 
 const headers = {
   "accept": "application/json"
 };
 
 let button = document.querySelector("button");
-let textDisplay = document.querySelector("p");
+let imgDisplay = document.querySelector("img");
 
 button.addEventListener("click", async () => {
   console.log("button clicked :P");
@@ -16,9 +16,12 @@ button.addEventListener("click", async () => {
   let response = await fetch(request);
   console.log("response:", response);
   let data = await response.text();
+  data = JSON.parse(data);
   console.log("data:", data);
+  displayImage(data.message);
 });
 
-function writeText(text) {
-  textDisplay.innerText = text;
+function displayImage(img_url) {
+  console.log(`displayImage(${img_url})`)
+  imgDisplay.src = img_url;
 }
