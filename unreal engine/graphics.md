@@ -1,7 +1,20 @@
 # Lighting
 
+Lighting can be achieved through lights or emmisive materials.
+
+## Light Sources
+* **Directional Light** is like sunlight, covers a whole area falling from a specific angle.
+* **Point Light**
+* **Spotlight**
+* **Rectangle Light**
+* **Sky Light** takes the sky and projects light on the scene depending on the sky texture.
+  * It requires two other components to work (toggle *affects world* setting in case it does not take effect properly):
+    * **Visual Effects -> Sky Atmosphere**
+    * **Lights -> Directional Light**
+
 ## Global Illumination
 
+### Controls
 * **Ctrl+L** allows to manipulate the sunlight.
 
 # Post Processing
@@ -11,8 +24,12 @@
 
 ## Lens
 ### Exposure
-* Metering Mode
+* **Metering Mode**
   * **Auto Exposure** simulates the real life change of exposure of someone's eyes when lighting conditions change abruptly.
+
+## Global Illumination
+* **Method**
+  * **Lumen** is realistic, bouncing illumination.
 
 ## Post Process Volume Settings
 * **Infinite Extend (Unbound)** extends the volume so it can encompass the full scene at once, regardless of its size.
