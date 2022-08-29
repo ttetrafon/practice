@@ -11,11 +11,14 @@ Lighting can be achieved through lights or emmisive materials.
   * It requires two other components to work (toggle *affects world* setting in case it does not take effect properly):
     * **Visual Effects -> Sky Atmosphere**
     * **Lights -> Directional Light**
+  * **Light -> Realtime Capture -> On** when using with Lumen for realtime light conditions.
 
-## Global Illumination
+## Fog
 
-### Controls
-* **Ctrl+L** allows to manipulate the sunlight.
+* Use the following to hide the void of the world:
+  * **Visual Effects -> Exponential Height Fog**
+    * *Start Distance -> max (5000)*, so it does not affect the scene around the camera.
+  * **Visual Effects -> Sky Atmosphere**
 
 # Post Processing
 
