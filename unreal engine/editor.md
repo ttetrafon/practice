@@ -7,3 +7,9 @@
 ## Shortcuts
 * With a game object selected, **Ctrl+B** opens the object's location in the content drawer.
 
+## Useful Tools
+* **Content Drawer -> Content (directory) -> Right Click -> Fix Up Redirectors in Folder** is useful when moving assets between folders, as links to the moved assets may break during the process.
+
+## Project Settings
+* **Enable Virtual Textures -> True**
+* **Support Sky Atmosphere Affecting Height Fog -> True**
