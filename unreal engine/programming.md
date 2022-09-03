@@ -10,5 +10,6 @@ Blueprints need to be children of a C++ class to be connected with its functiona
 ## Events
 Events can be declared in a C++ function which can be captured by blueprints.
 > UFUNCTION(BlueprintImplementationEvent, Category="Weapon")
+>
 > void PlayFireEffects()
 
