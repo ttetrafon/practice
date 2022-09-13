@@ -1,0 +1,3 @@
+# Local Stack
+
+> awslocal ...
