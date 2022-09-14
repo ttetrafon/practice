@@ -59,9 +59,9 @@ io.sockets.on("connection", function (socket) {
     }
   });
 
-  socket.on("creatorname", (room,client) => {
+  socket.on("creatorname", (room, client) => {
     // to all clients in room1 except the sender
-    socket.to(room).emit("mynameis",client);
+    socket.to(room).emit("mynameis", client);
   });
 
   socket.on("ipaddr", function () {

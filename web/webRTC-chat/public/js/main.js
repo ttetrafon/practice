@@ -8,7 +8,7 @@ var datachannel;
 var clientName = "user" + Math.floor(Math.random() * 1000 + 1);
 var remoteclient;
 
-document.getElementById("yourname").innerHTML="You: "+clientName
+document.getElementById("yourname").innerHTML = "You: " + clientName
 
 //Initialize turn/stun server here
 //turnconfig will be defined in public/js/config.js
@@ -47,22 +47,22 @@ socket.on("full", function (room) {
 socket.on("join", function (room, client) {
   console.log(
     "Another peer made a request to join room " +
-      room +
-      " whith name :" +
-      client
+    room +
+    " whith name :" +
+    client
   );
   console.log("This peer is the initiator of room " + room + "!");
   sendmessagebutton.disabled = false;
   isChannelReady = true;
   remoteclient = client;
-  document.getElementById("remotename").innerHTML=client
+  document.getElementById("remotename").innerHTML = client
   socket.emit("creatorname", room, clientName);
 });
 
 socket.on("mynameis", (client) => {
   console.log("The creator's name is " + client);
   remoteclient = client;
-  document.getElementById("remotename").innerHTML=client
+  document.getElementById("remotename").innerHTML = client
 });
 
 //Event - Client has joined the room
