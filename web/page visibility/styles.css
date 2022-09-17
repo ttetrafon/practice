@@ -1,0 +1,10 @@
+body {
+  margin: 10px;
+  padding: 10px;
+  box-sizing: border-box;
+}
+
+#counter {
+  color: orangered;
+  font-style: italic;
+}
