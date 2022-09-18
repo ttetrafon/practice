@@ -1,0 +1,38 @@
+body {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+.custom-counter-list {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+  /* Custom counters can be used with any element, not only list! */
+  counter-reset: my-counter;
+}
+
+.custom-counter-list li {
+  counter-increment: my-counter;
+}
+
+.custom-counter-list li::before {
+  content: counter(my-counter);
+  background-color: #222;
+  font-size: 0.8em;
+  color: #efefef;
+  line-height: 1;
+  font-weight: 900;
+  display: inline-grid;
+  display: -ms-inline-grid;
+  display: -moz-inline-grid;
+  place-items: center;
+  width: 1.5em;
+  aspect-ratio: 1;
+  border: 2px solid orange;
+  border-radius: 50%;
+}
+
+.simple-counter-list li::marker {
+  content: '🔥'
+}
