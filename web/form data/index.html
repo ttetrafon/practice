@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+
+<html lang="en">
+  <head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Form Data</title>
+    <script src="script.js" type="module" defer></script>
+    <link rel="stylesheet" href="styles.css">
+  </head>
+
+  <body>
+    <form enctype="multipart/form-data" method="post" name="fileinfo">
+      <p>
+        <label
+          >Your email address:
+          <input
+            type="email"
+            autocomplete="on"
+            name="userid"
+            placeholder="email"
+            required
+            size="32"
+            maxlength="64" />
+        </label>
+      </p>
+      <p>
+        <label
+          >Custom file label:
+          <input type="text" name="filelabel" size="12" maxlength="32" />
+        </label>
+      </p>
+      <p>
+        <label
+          >File to stash:
+          <input type="file" name="file" required />
+        </label>
+      </p>
+      <p>
+        <input type="submit" value="Stash the file!" />
+      </p>
+    </form>
+  </body>
+</html>
