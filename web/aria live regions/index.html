@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+
+<html lang="en">
+  <head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Aria Live Regions</title>
+    <script src="script.js" type="module" defer></script>
+    <link rel="stylesheet" href="styles.css">
+  </head>
+
+  <body>
+    <p><i><strong>Update dynamically parts of a webpage without reloading the full page through JS.</strong></i></p>
+
+    <fieldset>
+      <legend>Planet information</legend>
+      <label for="planetsSelect">Planet:</label>
+      <select id="planetsSelect" aria-controls="planetInfo">
+        <option value="">Select a planet…</option>
+        <option value="mercury">Mercury</option>
+        <option value="venus">Venus</option>
+        <option value="earth">Earth</option>
+        <option value="mars">Mars</option>
+      </select>
+      <button id="renderPlanetInfoButton">Go</button>
+    </fieldset>
+
+    <div role="region" id="planetInfo" aria-live="polite">
+      <h2 id="planetTitle">No planet selected</h2>
+      <p id="planetDescription">Select a planet to view its description</p>
+    </div>
+
+    <p>
+      <small>
+        Information from
+        <a href="https://en.wikipedia.org/wiki/Solar_System">Wikipedia</a>
+      </small>
+    </p>
+
+  </body>
+</html>
