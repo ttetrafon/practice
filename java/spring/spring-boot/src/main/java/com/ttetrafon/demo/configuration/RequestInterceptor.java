@@ -10,7 +10,7 @@ import javax.servlet.http.HttpServletResponse;
 @Component
 @Slf4j
 public class RequestInterceptor implements HandlerInterceptor {
-//    This class intercepts requests (which ones defined in ...), and accepts/rejects them.
+//    This class intercepts requests (which ones it intercepts are defined in WebMvcConfig), and accepts/rejects them.
 
     @Override
     public boolean preHandle(HttpServletRequest request, HttpServletResponse response, Object handler) {

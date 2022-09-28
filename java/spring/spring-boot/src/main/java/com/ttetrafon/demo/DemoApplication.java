@@ -19,17 +19,17 @@ public class DemoApplication {
 		SpringApplication.run(DemoApplication.class, args);
 	}
 
-	@Bean
-	public CommandLineRunner commandLineRunner(ApplicationContext ctx) {
-		return args -> {
-			System.out.println("Beans provided by Spring Boot:");
-			String[] beanNames = ctx.getBeanDefinitionNames();
-			Arrays.sort(beanNames);
-			for (String beanName : beanNames) {
-				System.out.println("- " + beanName);
-			}
-		};
-	}
+//	@Bean
+//	public CommandLineRunner commandLineRunner(ApplicationContext ctx) {
+//		return args -> {
+//			System.out.println("Beans provided by Spring Boot:");
+//			String[] beanNames = ctx.getBeanDefinitionNames();
+//			Arrays.sort(beanNames);
+//			for (String beanName : beanNames) {
+//				System.out.println("- " + beanName);
+//			}
+//		};
+//	}
 
 	@GetMapping("/hello")
 	public String sayHello(@RequestParam(value = "myName", defaultValue = "World") String name) {
