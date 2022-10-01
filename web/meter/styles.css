@@ -1,0 +1,14 @@
+body {
+  padding: 40px 20px;
+}
+
+label {
+  display: block;
+  margin-top: 15px;
+}
+
+meter {
+  width: 300px;
+  height: 20px;
+}
+
