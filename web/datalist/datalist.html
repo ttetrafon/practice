@@ -1,20 +1,23 @@
 <!DOCTYPE html>
 
 <html lang="en">
-    <head>
-        <script src="script.js" defer></script>
-        <script src="styles.cs"></script>
-    </head>
 
-    <body>
-        <label for="ice-cream-choice">Choose a flavor:</label>
-        <input list="ice-cream-flavors" id="ice-cream-choice" name="ice-cream-choice" />
-        <datalist id="ice-cream-flavors">
-            <option value="Chocolate">
-            <option value="Coconut">
-            <option value="Mint">
-            <option value="Strawberry">
-            <option value="Vanilla">
-        </datalist>
-    </body>
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Native List Search: Datalist</title>
+</head>
+
+<body>
+  <label for="ice-cream-choice">Choose a flavour:</label>
+  <input list="ice-cream-flavors" id="ice-cream-choice" name="ice-cream-choice" type="search" />
+  <datalist id="ice-cream-flavors">
+    <option value="Chocolate">
+    <option value="Coconut">
+    <option value="Mint">
+    <option value="Strawberry">
+    <option value="Vanilla">
+  </datalist>
+</body>
+
 </html>
