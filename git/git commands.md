@@ -1,0 +1,4 @@
+
+## History
+
+* gitk --follow [filename]
