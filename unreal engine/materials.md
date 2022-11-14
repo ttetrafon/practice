@@ -27,6 +27,9 @@
     * **Surface** defines a material that will be applied to a mesh's surface.
     * **Volume** defines a material that will be applied to a mesh's whole volume.
 
+### Shader Usage
+On the left panel, under the **usage** section, select the cases in which the material will be used.
+
 ### Constants
 * **Constant** defines a scalar value.
 * **Constant3Vector** defines a colour.
