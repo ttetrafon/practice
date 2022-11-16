@@ -10,6 +10,9 @@ Specify the default game mode for a project in project editor in *Edit -> Projec
 
 Each level can have its own game mode. This is selected in *Project Settings -> Game Mode Override*.
 
+The game mode class, and all associated subclasses, can be chosen for each level independently.
+With the level open, select the required game mode in *Window -> World Settings -> Game Mode -> Game Mode Override*.
+
 ## Game State
 Global state is held within the `Game Instance` class. A game instance is initiated when the game starts and is destroyed only when the game is closed.
 
