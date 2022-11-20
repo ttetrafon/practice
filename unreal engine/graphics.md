@@ -43,6 +43,9 @@ Lighting can be achieved through lights or emmisive materials.
 * **Lumen Reflections**
   * **High Quality Translucency Reflections** should be turned on for glass and similar materials to properly reflect lumen bounced light.
 
+## Lumen
+  * **Software Ray Tracing Mode**: Detail Tracing
+
 ## Post Process Volume Settings
 * **Infinite Extend (Unbound)** extends the volume so it can encompass the full scene at once, regardless of its size.
 
