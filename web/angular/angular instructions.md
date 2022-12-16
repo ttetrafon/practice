@@ -43,11 +43,10 @@ If angular/cli is installed only locally, use `npm run ng angular-command` inste
 
 ## Build and Publish
 1. Navigate to the root of the project that holds the library.
-2. Run `ng build library-name`. You can add `--watch` to build have it built automatically as you make changes in the source code.
+2. Run `ng build library-name`. You can add `--watch` to have it built automatically as you make changes in the source code.
 3. Create/Login to your npm account, and login in VSCode (`npm login`).
 4. Navigate to the library's folder (at the same level with its `package.json`).
 5. Publish to npm with `npm publish --access=public`; "public" is required because components with a scope are private by default.
 
 ## Include
 To include your library download it as all other libraries from npm (`npm install --save library-name`).
-
