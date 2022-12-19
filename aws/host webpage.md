@@ -7,10 +7,9 @@
       2. Host a static website
       3. Index document: index.html
       4. Error document: index.html
-   4. Note the endpoint created under *static website*. (http://ttetrafon-website-in-construction.s3-website.eu-west-3.amazonaws.com)
-   5. Go to the bucket's *properties -> permissions -> block public access (bucket settings) -> edit*.
+   4. Go to the bucket's *properties -> permissions -> block public access (bucket settings) -> edit*.
       1. Unselect all checkboxes.
-   6. Go to the bucket's *properties -> permissions -> bucket policy -> edit*.
+   5. Go to the bucket's *properties -> permissions -> bucket policy -> edit*.
       1. Paste the bucket policy below (replace BUCKET-NAME with the actual bucket's name).
 2. AWS -> Route 53
    1. Hosted Zones -> Create hosted zone
@@ -44,14 +43,3 @@
     ]
 }
 ```
-
-
-
-
-ns-703.awsdns-23.net.
-
-ns-1088.awsdns-08.org.
-
-ns-380.awsdns-47.com.
-
-ns-1616.awsdns-10.co.uk.
