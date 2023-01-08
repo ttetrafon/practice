@@ -29,6 +29,14 @@ A collection of mappings for input actions.
 
 ## Declare the Use of an Input Mapping Context
 
+* First create a **Player Controller**, if one does not exist, for the inputs to be used by.
+* In the player controller blueprint:
+  * Add an enhanced **input local player subsystem** node.
+  * From the subsystem and the begin play node, create an **Add Mapping Context** node and select the context created above.
+
+##### Notes
+
+* Input contexts can be also removed at any time through the **Remove Mapping Context Node**, so controls can swapped as a whole when needed.
 
 
 ## Nodes
