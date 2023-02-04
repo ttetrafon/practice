@@ -1,6 +1,3 @@
-// operators.cpp : This file contains the 'main' function. Program execution begins and ends there.
-//
-
 #include <iostream>
 
 int main()
@@ -26,6 +23,7 @@ int main()
   // '!a' not
   // 'a && b' and
   // 'a || b' or
+  // 'a ? b : c' ternary (if 'a' then do 'b', else do 'c')
 
   // ASSIGNMENT
   // 'variable = value' assigns a value to variable
