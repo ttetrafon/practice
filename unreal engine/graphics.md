@@ -13,7 +13,7 @@ Lighting can be achieved through lights or emmisive materials.
     * **Lights -> Directional Light**
   * **Light -> Realtime Capture -> On** when using with Lumen for realtime light conditions.
 * **Project settings**
-  * **Enable Virtual Textures -> True**
+  * **Enable Virtual Texture Support -> True**
   * **Support Sky Atmosphere Affecting Height Fog -> True**
 
 ## Fog
