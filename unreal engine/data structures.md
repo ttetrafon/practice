@@ -49,6 +49,7 @@ When creating variables, an existing enumeration can be used as its type.
 
 ### Nodes
 * *Switch On **Enum***: Switch operation based on enumerated value.
+* *Select*: Switch operation based on an enumerated value that returns a specific string.
 
 
 ## Structure

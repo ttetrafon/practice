@@ -1,12 +1,14 @@
 # Flow Control
 
 Various nodes can be used to organise the flow of execution.
+* **Branch**: A simple if-else statement, chooses the execution path depending on a boolean input.
 * **Switch on**: Chooses an execution path by comparing a variable's value to specific values.
 * **Flip Flop**: Executes two execution paths alternating between the two.
 * **Sequence**: Executes all defined execution paths one after the other.
 * **For Each Loop**: Executes specific commands for each and all items in an array. Then triggers the *completed* execution path.
 * **Do Once**: Performs the output pin only once. If triggered again, it won't trigger the output. The node can be reset so it would allow the output to be executed again.
 * **Do N**: As do once, but allows the execution to happen N times before blocking it.
+* **While Loop**: Executes until the condition is false.
 * **Gate**: A gate holds an internal state (open/closed) which allows or disallows execution of the output path. The following pins control the gate's use:
   * *Enter*: Execution trigger.
   * *Open*: Changes the state to open.
