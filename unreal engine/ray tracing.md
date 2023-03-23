@@ -16,7 +16,9 @@ Actors and components need to define how they react to each trace channel and ob
 * **Break Hit Result**: Destructures a trace hit result into the available variables.
 * **Line Trace for Objects**: Tests for collisions along a specified line and returns a hit result for the first matching actor that it hits.
   * *Start*: Defines where the trace line starts.
+    * If the camera is to be used, use the *get player camera manager* to access the current camera.
   * *End*: Defines where the trace line ends.
+    * For a camera trace, go with *camera global position + camera forward vector x some multiplier*.
   * *Object Types*: Specifies the types of objects that collision events will be triggered if hit.
   * *Trace Complex*: If true the trace will test against the actual object mesh, otherwise it will test against simplified geometry.
   * *Actors to Ignore*: Array of specific actors to be ignored by the trace.

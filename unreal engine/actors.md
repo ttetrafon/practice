@@ -21,6 +21,7 @@
    1. In the Viewport:
       1. Add an appropriate mesh under **Mesh**.
       2. If the camera will be following the player, also add a **Spring Arm** and a **Camera** underneath that.
+         1. Set "use pawn control rotation" in the camera details.
 2. In the current **Game Mode**, assign the new character blueprint as the _default pawn class_.
 
 ## Actor Properties
