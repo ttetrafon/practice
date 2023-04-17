@@ -1,0 +1,4 @@
+<resources>
+    <string name="app_name">Receive-Intent</string>
+    <string name="log_tag">PM</string>
+</resources>
