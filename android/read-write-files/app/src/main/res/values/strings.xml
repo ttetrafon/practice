@@ -1,0 +1,5 @@
+<resources>
+    <string name="app_name">read-write-files</string>
+    <string name="logger">TEST</string>
+    <string name="hello_world">Hello World</string>
+</resources>
