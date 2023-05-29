@@ -1,0 +1,56 @@
+body {
+  margin: 10px;
+  padding: 10px;
+  box-sizing: border-box;
+  background-color: azure;
+}
+
+#gameboard {
+  width: 320px;
+  height: 320px;
+  background-color: black;
+  display: flex;
+  flex-wrap: wrap;
+}
+
+#player {
+  font-weight: bold;
+}
+
+.square {
+  height: 40px;
+  width: 40px;
+  position: relative;
+}
+.beige {
+  background-color: darkgray;
+}
+.brown {
+  background-color: brown;
+}
+
+.square svg {
+  height: 30px;
+  width: 30px;
+  margin: 5px;
+  position: relative;
+  z-index: -9;
+  pointer-events: none;
+}
+.black {
+  fill: black;
+}
+.white {
+  fill: whitesmoke;
+}
+
+path {
+  position: relative;
+  z-index: -11;
+  pointer-events: none;
+}
+
+.piece {
+  position: relative;
+  z-index: 9;
+}
