@@ -1,6 +1,6 @@
 # UI
 
-A UI is crafted from **Widget Blueprints**.
+A UI is crafted from **Widget Blueprints (User Widget)**.
 
 A widget blueprint is a collection of UI objects and logic.
 
@@ -26,18 +26,20 @@ The layout is described within a canvas by using anchors, distances, sizes, and 
 
 - Displays some text on the screen.
 
-### Nodes
+#### Nodes
 
 - **Formate Text**: Can be used to inject variables in a string. Variables are denoted with brackets in the string, and each one creates an input pin in the format text node so it can be connected to a variable.
   - For example, `(mana)/(manaMax)` will display 150/200 when you have spent 50 of your mana pool.
-
-#### Nodes
 
 - **Format Text**: Uses {} to create variables in a text line which can then be set from outside. For example, `You scored {number} points during round {roundNumber}!` will create two input nodes named _number_ and _roundNumber_ which can be used to set their values in the text line.
 
 ### Progress Bar
 
 - A progress bar is filled from 0 to 100% depending on some variable (e.g.: a health bar).
+
+## Events
+
+- UI components can react to events.
 
 ## Widget Manipulation
 

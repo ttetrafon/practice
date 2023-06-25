@@ -21,3 +21,16 @@ Global state is held within the `Game Instance` and `Game State` classes. A game
 The game instance can be selected in _Edit -> Project Settings -> Maps & Modes -> Game Instance_.
 
 A game state is similar, but is attached to the level instead of the full game.
+
+## Levels
+
+A level is a distinct game play entity encompassing gameplay. Each level is loaded when needed.
+
+- Default maps can be set in *Project Settings -> Maps & Modes -> Default Maps*.
+
+### Changing Levels
+
+- The **Open Level** node can be used to load another level.
+- **Load Level**
+- **Stream Level**
+
