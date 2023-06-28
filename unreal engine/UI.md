@@ -39,11 +39,24 @@ The layout is described within a canvas by using anchors, distances, sizes, and 
 
 ## Events
 
-- UI components can react to events.
+- UI components can react to events, with logic defined in the widget's blueprint graph.
+  - *Event Pre-Construct* happens when compiling the widget.
+  - *Event Construct* happens when the widget is drawn on the screen.
+  - *Event Tick* happens at every physics tick.
 
 ## Widget Manipulation
 
 - Widgets can be manipulated through blueprints in the graph.
 - To affect a widget, expose it as a variable and use custom events for updates.
   - Can also use bindings to directly bind values on widgets with variables elsewhere. Bindings are updated on tick though.
+
+## Modular UI Elements
+
+- Modular elements can be created by building small widgets (like a button with some text in it) and exposing its required properties.
+  - To expose a property, use its *setter* in the graph, promote the input link to a variable, and set in the variable's properties **instance editable = true** and **expose on spawn = true**.
+  - To expose events, create the appropriate event in the graph, create an event dispatcher, and then link the event to the *dispatcher's call*.
+- Display is usually set to **desired** or **custom**.
+- These can then be added in other widgets through the *User Created Palette*.
+  - Exposed properties can be found in *details -> default* when selecting such a widget.
+  - Event dispatchers can be found in the *details -> events* where they can be manipulated in the parent's graph normally.
 
