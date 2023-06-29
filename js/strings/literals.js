@@ -17,3 +17,8 @@ function lit_fun(strings, ...values) {
 }
 
 console.log(lit_fun`Name: ${person.firstname} ${person.surname}; Birthday: ${person.birthday.toISOString()}`);
+
+
+// ------------------------------------------------------------------------------------------------------------
+// Another way to use literals is the 'String.raw`...`' function.
+console.log(String.raw`C:\Windows\System${16 * 2}`);
