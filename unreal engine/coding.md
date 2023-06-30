@@ -39,6 +39,13 @@ A blueprint can contain variables, as it is a class.
 - A collection of functions/macros that can be used in other blueprints (static functions).
 - These functions can be called by any other blueprint; nodes with the function names are added automatically in the nodes list.
 
+## Blueprint Inheritance
+
+- Inheritance is done through *child blueprints* or by adding a new blueprint and selecting the parent blueprint as its type.
+  - In the parent, we create functions/events that will be shared between all children.
+  - In a child blueprint, we can override the parent's events & functions if needed.
+  - To extend functionality of a parent's function, use the **add call parent function** (from the context menu of the overridden item).
+
 ## Blueprint Communication
 
 Blueprints can access information from and call functions and events of other blueprints.
@@ -64,7 +71,10 @@ A *bind event* node can bind one event to another event or to an event dispatche
 
 ### Interfaces
 
-...
+- Interfaces are abstract classes which contain functions that can be triggered or implemented by other blueprints, creating links between them.
+- To create an interface: *Add -> Blueprint -> Blueprint Interface*.
+- Inside an interface blueprint, create functions. These functions do not contain any logic, they have only their inputs and outputs defined.
+- An interface is added in other blueprints through the *class details panel -> interfaces tab*.
 
 # Blueprints & C++
 

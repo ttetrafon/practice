@@ -37,6 +37,11 @@ The layout is described within a canvas by using anchors, distances, sizes, and 
 
 - A progress bar is filled from 0 to 100% depending on some variable (e.g.: a health bar).
 
+### Size Box
+
+- Useful as a base when there is need to define specific sizes.
+  - By parametrising its properties, it can be used to adapt the widget wherever it is used.
+
 ## Events
 
 - UI components can react to events, with logic defined in the widget's blueprint graph.
@@ -52,7 +57,7 @@ The layout is described within a canvas by using anchors, distances, sizes, and 
 
 ## Modular UI Elements
 
-- Modular elements can be created by building small widgets (like a button with some text in it) and exposing its required properties.
+- Modular elements can be created by building small widgets (like a button with some text in it) and exposing its required properties, or by using inheritance.
   - To expose a property, use its *setter* in the graph, promote the input link to a variable, and set in the variable's properties **instance editable = true** and **expose on spawn = true**.
   - To expose events, create the appropriate event in the graph, create an event dispatcher, and then link the event to the *dispatcher's call*.
 - Display is usually set to **desired** or **custom**.
@@ -60,3 +65,7 @@ The layout is described within a canvas by using anchors, distances, sizes, and 
   - Exposed properties can be found in *details -> default* when selecting such a widget.
   - Event dispatchers can be found in the *details -> events* where they can be manipulated in the parent's graph normally.
 
+### Named Slots
+
+- A *named slot* is a widget that allows extending a widget blueprint by adding additional widgets to their instances.
+- A *named slot* is an element to be added in a widget from the palette.
