@@ -14,6 +14,7 @@
 ### Character
 
 - A specific type of pawn.
+- Has extra functionality required to be used by a player already setup.
 
 #### Character Creation
 

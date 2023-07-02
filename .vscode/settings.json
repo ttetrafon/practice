@@ -1,5 +1,13 @@
 {
   "cSpell.words": [
-    "pylibsrtp"
+    "Blueprintable",
+    "pylibsrtp",
+    "struct",
+    "UCLASS",
+    "UENUM",
+    "UMETA",
+    "UPARAM",
+    "UPROPERTY",
+    "USTRUCT"
   ]
 }

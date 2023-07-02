@@ -27,3 +27,10 @@ Alternatively, right click on the static mesh within the content drawer, and sel
 - Meshes with movable components that physics can be applied to them.
 - Support animations.
 
+## Modelling Tools
+
+- Plugins: **Modelling Tools Editor Mode**, **Static Mesh Modelling Tools**
+- Accessed through **Modelling Mode** (top left in main viewport).
+- Drag a mesh in the level and edit it.
+  - Modelling tools are destructive, they apply to all the mesh's instances.
+- When creating new objects, define _New Asset Location_ and _New Mesh Settings_ to the desired combination.
