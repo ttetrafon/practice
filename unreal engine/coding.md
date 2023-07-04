@@ -106,9 +106,29 @@ UFUNCTION(BlueprintCallable)
 ### Interfaces
 
 - Interfaces are abstract classes which contain functions that can be triggered or implemented by other blueprints, creating links between them.
+
+#### Blueprints
+
 - To create an interface: _Add -> Blueprint -> Blueprint Interface_.
 - Inside an interface blueprint, create functions. These functions do not contain any logic, they have only their inputs and outputs defined.
-- An interface is added in other blueprints through the _class details panel -> interfaces tab_.
+- An interface is added in other blueprints through the _class settings panel -> interfaces tab_, and each function is then implemented separately.
+  - The functions available from the interface will be listed in the blueprint panel.
+  - To add functionality to these functions, _right click on them -> implement event_.
+- The functions of an interface can be called from anywhere, and the appropriate object functionality will be triggered.
+  - The function always requires an actor input, which is the object on which the interface function will be triggered.
+
+#### C++
+
+- In C++, to create an interface go to _tools -> new c++ class -> common classes -> unreal interface_.
+- An interface contains only function definitions (usually `virtual`), like in blueprints.
+- The class needs to be #included in the target actors, and then added as an implementation.
+
+```
+#include "MyInterface.h"
+
+UCLASS()
+class ACPP_TARGET : public AActor, public IMyInterface {}
+```
 
 # Blueprints & C++
 
@@ -146,6 +166,32 @@ public:
     void setSomeVariable(int value);
   UFUNCTION(BlueprintCallable)
     void setSomeVariableByReference(UPARAM(ref) int& value);
+```
+
+- C++ functions can also be implemented in blueprints.
+- Such functions can be found in the _blueprint panel -> functions -> override -> foo_, and then implemented in the blueprint graph.
+
+```
+// .h
+UFUNCTION(BlueprintCallable, BlueprintImplementableEvent)
+  void foo(int bar);
+```
+
+- Similarly, native events can be used to connect C++ and blueprints.
+  - It can be added in a blueprint under _blueprint panel -> functions -> override -> foo_.
+- A function using a native event needs a declaration and an implementation.
+  - To call the C++ implementation, right click on the function node and hit _add call to parent function_.
+
+```
+// .h
+UFUNCTION(BlueprintCallable, BlueprintNativeEvent)
+  void foo(string bar);
+void foo_Implementation (string bar);
+// -----------------------------------------------
+// .cpp
+void foo_Implementation (string bar) {
+  // do stuff here...
+}
 ```
 
 ## Events
