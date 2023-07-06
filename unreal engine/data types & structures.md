@@ -1,3 +1,5 @@
+# Data Types
+
 # Data Structures
 
 ## Containers
@@ -5,6 +7,8 @@
 - A container is a type of data structure whose instances can store collections of values or instances.
 - A container is defined as part of a variable, besides the variable's type.
 - The **containers** and the _related nodes_ are outlined below:
+
+### Nodes
 
 - **Array**: A linear container that can hold a number of similar items.
   - _Add_: Appends an item at the end of the array.
@@ -37,6 +41,27 @@
   - _Keys_: Returns all keys in an array.
   - _Values_: Returns all values in an array.
   - _Make Map_: Creates a map from a number of individual keys and values.
+
+### C++
+
+- **Array**: `TArray<Type> myArray = { initialValue1, initialValue2, ... }`
+  - Allocation:
+    - `.Reserve()`
+  - Info:
+    - `.Num()`
+  - Manipulation:
+    - `.Add()`
+    - `.Emplace()`
+    - `.Remove()`
+    - `.RemoveAt()`
+- **Set**:
+- **Map**: `TMap<KeyType, ValueType> = myMap { { key1, value1 }, { key2, value2 }, ... }`
+  - Allocation:
+  - Info:
+    - `.Num()`
+  - Manipulation:
+    - `["key"]`
+    - `.Add()`
 
 ## Enumeration
 
