@@ -1,10 +1,12 @@
 # Actors
 
+- Anything placed in a _scene_ is an _actor_.
+
 ## Types of Actors
 
 ### Actor
 
-- The generic actor from which all other actor inherit their properties.
+- The generic actor from which all other actors inherit their properties.
 
 ### Pawn
 
@@ -27,16 +29,45 @@
 
 ## Actor Properties
 
-### Components
+### Class Defaults
+
+### Creation & Spawning
+
+- Blueprints need to inherit from `Actor`.
+- C++ inherits from `AActor`.
+
+```
+class AMyActor : public AActor {}
+```
+
+- Stored actors can be spawned during gameplay.
+  - Blueprints use the `Spawn Actor/AI From Class` blueprint nodes to do so.
+  - C++ uses the `SpawnActor<>`, `SpawnActorDeferred<> & FinishSpawning<>`, ... functions.
+- `Attach Actor to Component`: Attaches an actor to the referenced component in the _parent_ input.
+  - Optionally, a _socket name_ can be used to identify the place where the actor will be attached.
 
 ### Constructor Script
 
-## Spawning Actors During Gameplay
+- The constructor script is run at spawn time, or in the editor any time an actor is placed or updated.
+  - _Class Settings -> Blueprint Options -> Run Constructor Script ..._.
+- Construction parameters
+  - In blueprints, they are created as variables, and then exposed by setting to true the _Instance Editable_ and _Expose on Spawn_ options.
+  - In C++ constructor parameters cannot be created. Instead variables can be assigned immediately after their spawning.
 
-Stored actors can be spawned during gameplay.
+### Hit Events
 
-Use the `Spawn Actor/AI From Class` blueprint nodes to do so.
+- Hit events are triggered from collision (`Event Hit`).
+- Hit events are called every frame.
 
-## Nodes
+### Damage Events
 
-- **Attach Actor to Component**: Attaches an actor to the referenced component in the _parent_ input. Optionally, a _socket name_ can be used to identify the place where the actor will be attached.
+- All actors have some basic functionality implemented concerning damage events.
+  - Receiver nodes:
+    - `Event AnyDamage`: Called on any damage event.
+    - `Event PointDamage`: Called on point effects.
+    - `Event RadialDamage`: Called on area effects.
+  - Trigger nodes:
+    - `Apply Damage`:
+    - `Apply PointDamage`:
+    - `Apply RadialDamage`:
+    - `Apply RadialDamage with Falloff`:
