@@ -18,6 +18,9 @@ The game's mode and state are held in specific blueprint classes.
 - Global state is held within the **Game Instance** and **Game State** classes.
 - The **game instance** is initiated when the game starts and is destroyed only when the game is closed.
   - It can be selected in _Edit -> Project Settings -> Maps & Modes -> Game Instance_.
+  - Should be the landing point for logic that always needs to work, even when a level is not loaded properly (networking, saving, file handling, etc).
+  - `Event Init` and `Event Shutdown` are the first and last things triggered during the game's lifetime.
+  - Each game instance in a multiplayer game is individual and not connected to other game instances, meaning that data on it are never replicated.
 - A **game state** is similar, but is attached to the level instead of the full game and exists in every running instance of the game in a multiplayer game.
 
 ## Player State
