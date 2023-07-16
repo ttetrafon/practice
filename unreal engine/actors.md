@@ -4,28 +4,14 @@
 
 ## Types of Actors
 
-### Actor
-
-- The generic actor from which all other actors inherit their properties.
-
-### Pawn
-
-- A pawn is an entity assigned to a player.
+- Actor
+  - The generic actor from which all other actors inherit their properties.
+- Pawn
+  - A pawn is an entity assigned to a player.
 - Pawns react to input events, and are always possessed by a player controller.
-
-### Character
-
-- A specific type of pawn.
-- Has extra functionality required to be used by a player already setup.
-
-#### Character Creation
-
-1. _Add Blueprint -> Blueprint Class -> Character_.
-   1. In the Viewport:
-      1. Add an appropriate mesh under **Mesh**.
-      2. If the camera will be following the player, also add a **Spring Arm** and a **Camera** underneath that.
-         1. Set "use pawn control rotation" in the camera details.
-2. In the current **Game Mode**, assign the new character blueprint as the _default pawn class_.
+- Character:
+  - A specific type of pawn.
+  - Has extra functionality required to be used by a player already setup.
 
 ## Actor Properties
 
@@ -71,3 +57,24 @@ class AMyActor : public AActor {}
     - `Apply PointDamage`:
     - `Apply RadialDamage`:
     - `Apply RadialDamage with Falloff`:
+
+## Pawn Properties
+
+## Character Properties
+
+#### Character Creation
+
+1. _Add Blueprint -> Blueprint Class -> Character_.
+   1. In the Viewport:
+      1. Add an appropriate mesh under **Mesh**.
+      2. If the camera will be following the player, also add a **Spring Arm** and a **Camera** underneath that.
+         1. Set "use pawn control rotation" in the camera details.
+2. In the current **Game Mode**, assign the new character blueprint as the _default pawn class_.
+
+### Movement
+
+- There are a few movement modes already implemented for characters (`Set Movement Mode`):
+  - Walking
+  - Flying
+  - Swimming
+  - Falling
