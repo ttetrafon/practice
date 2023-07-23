@@ -28,3 +28,5 @@ sessionStorage.getItem('Name');
 // - notes: stores the server's IP; is sent with every request
 document.cookie = 'name=ttetrafon; expires=' + new Date(2021, 7, 1).toUTCString()
 document.cookie = 'login="value for login"; expires=' + new Date(9999, 7, 1).toUTCString()
+// A domain parameter can be set in a cookie, so it will be send only to a more generalised path.
+// For example, a cookie from the site 'foo.example.com' can have a domain of 'example.com' so that it will be send to all '*.example.com' paths.
