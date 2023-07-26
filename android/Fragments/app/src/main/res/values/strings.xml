@@ -1,5 +1,11 @@
 <resources>
     <string name="app_name">Fragments</string>
     <!-- TODO: Remove or change this placeholder text -->
-    <string name="hello_blank_fragment">Hello blank fragment</string>
+    <string name="button_1">News!</string>
+    <string name="button_2">Map!</string>
+    <string name="button_3">Settings!</string>
+<!--    fragments-->
+    <string name="fragment_1_title">News fragment…</string>
+    <string name="fragment_2_title">Map fragment…</string>
+    <string name="fragment_3_title">Settings fragment…</string>
 </resources>
