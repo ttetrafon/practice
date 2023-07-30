@@ -1,0 +1,21 @@
+:root {
+  --text-base-size: 1rem;
+  --background: rgb(251, 242, 231);
+  --foreground: rgb(44, 44, 44);
+}
+
+body {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  background-color: var(--background);
+  color: var(--foreground);
+}
+
+h1 {
+  font-size: calc(var(--text-base-size) * 1.5);
+}
+
+p {
+  font-size: var(--text-base-size);
+}
