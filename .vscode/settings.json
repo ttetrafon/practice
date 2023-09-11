@@ -8,6 +8,7 @@
     "UMETA",
     "UPARAM",
     "UPROPERTY",
-    "USTRUCT"
+    "USTRUCT",
+    "Volumetrics"
   ]
 }

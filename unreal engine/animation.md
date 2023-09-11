@@ -8,6 +8,8 @@
 - Create the asset through _New Blueprint -> Animation -> Animation Blueprint_.
   - Select the skeleton that will be used; the skeletal mesh used on the game object to be animated.
   - In the AnimGraph create the logic of the animation.
+- Animations can be build inside Unreal, in _modelling -> weight paint bones_ and _animating using sequencer_.
+- Cloth simulations can be created in the _Cloth Editor_.
 
 ### Animation Graph
 

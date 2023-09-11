@@ -1,6 +1,6 @@
 # Lighting
 
-Lighting can be achieved through lights or emmisive materials.
+- Lighting can be achieved through lights or emmisive materials.
 
 ## Light Sources
 * **Directional Light** is like sunlight, covers a whole area falling from a specific angle.
@@ -24,6 +24,10 @@ Lighting can be achieved through lights or emmisive materials.
     * *Fog Inscaterring Color -> Black*
     * *Directional Inscaterring Color -> Black*
   * **Visual Effects -> Sky Atmosphere**
+
+# Volumetrics
+
+- Volumes can be used to create real clouds, fog clouds, explosions, etc.
 
 # Post Processing
 
