@@ -1,6 +1,7 @@
 # (1) Create: python -m venv env
-#     !`env` is just a name, it can be anything.
+#   !`env` is just a name, it can be anything.
 # (2) Activate: env/Scripts/Activate.ps1
+#   On windows, may need: `Set-ExecutionPolicy Unrestricted -Scope Process` to run the script.
 # (3) Install modules as if globally `pip install <module_name>`
   # (i) Always install 'wheel' in a new environment (`pip install wheel`) first.
 # (4) ... work
