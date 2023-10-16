@@ -10,6 +10,8 @@ to update it to the latest version.
 
 # Use
 
+Docker is used to create autonomous Linux environments within another operating system.
+
 ## Commands
 
 
