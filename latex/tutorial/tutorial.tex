@@ -1,0 +1,118 @@
+\documentclass{article}
+
+% This is the preamble, where metadata and options are set.
+
+% To use a package, just request it here.
+\usepackage{setspace}
+\usepackage{amsmath}
+\usepackage{graphicx}
+\usepackage{subcaption}
+
+% Define document properties & metadata.
+\title{Tutorial Document}
+\date{16/10/2023}
+\author{ttetrafon}
+
+% Main document description starts here.
+\begin{document}
+\pagenumbering{gobble}
+\maketitle
+\newpage
+
+\pagenumbering{arabic}
+
+\tableofcontents
+\newpage
+
+\section{Text}
+Hello World!
+
+\subsection{Sub-Text}
+This is some text.
+
+\paragraph{Paragraph}
+And even some more text!
+
+\subparagraph{Subparagraph:}
+And even more text...
+
+\section{Math}
+This contains some inline math: $f(x) = x^2$
+
+\begin{equation}
+  f(x) = x^2
+\end{equation}
+
+\begin{align*}
+  1 + 2 & = 3     \\
+  1     & = 3 - 2
+\end{align*}
+
+\begin{align}
+  f(x) & = x^2                             \\
+  g(x) & = \frac{1}{x}                     \\
+  h(x) & = \int^a_b \frac{1}{3}x^3         \\
+  k(x) & = \frac{1}{\sqrt{x}}              \\
+  l(x) & = \left(\frac{1}{\sqrt{x}}\right)
+\end{align}
+
+\begin{align*}
+  \left[
+    \begin{matrix}
+      1 & 0 & 0 \\
+      0 & 1 & 0 \\
+      0 & 0 & 1
+    \end{matrix}
+    \right]
+\end{align*}
+
+\section{Pictures}
+
+\begin{figure}[h!] % h makes the picture be added exactly where it was added in the document. Other options are: t (top of page), b (bottom of page), p (on an extra page). The '!' means that the option will be enforced.
+  \includegraphics[width=\linewidth]{cat.jpg}
+  \caption{A cat.}
+  \label{fig:cat}
+\end{figure}
+
+\begin{figure}[h!]
+  \centering
+  \begin{subfigure}[b]{0.4\linewidth}
+    \includegraphics[width=\linewidth]{mouse.jpg}
+    \caption{Mouse.}
+  \end{subfigure}
+  \begin{subfigure}[b]{0.4\linewidth}
+    \includegraphics[width=\linewidth]{mouse.jpg}
+    \caption{A second mouse.}
+  \end{subfigure}
+  \caption{The same mouse. Two times.}
+  \label{fig:mouse}
+\end{figure}
+
+\begin{figure}[h!]
+  \centering
+  \begin{subfigure}[b]{0.2\linewidth}
+    \includegraphics[width=\linewidth]{cat.jpg}
+     \caption{A cat.}
+  \end{subfigure}
+  \begin{subfigure}[b]{0.2\linewidth}
+    \includegraphics[width=\linewidth]{cat.jpg}
+    \caption{More cat.}
+  \end{subfigure}
+  \begin{subfigure}[b]{0.2\linewidth}
+    \includegraphics[width=\linewidth]{cat.jpg}
+    \caption{Tasty cat.}
+  \end{subfigure}
+  \begin{subfigure}[b]{0.5\linewidth}
+    \includegraphics[width=\linewidth]{cat.jpg}
+    \caption{Too much cat.}
+  \end{subfigure}
+  \caption{The same cup of cat. Multiple times.}
+  \label{fig:cat3}
+\end{figure}
+
+\begin{appendix}
+  \listoffigures
+  \listoftables
+\end{appendix}
+
+\end{document}
