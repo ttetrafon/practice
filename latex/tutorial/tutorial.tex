@@ -7,6 +7,7 @@
 \usepackage{amsmath}
 \usepackage{graphicx}
 \usepackage{subcaption}
+\usepackage{float}
 
 % Define document properties & metadata.
 \title{Tutorial Document}
@@ -68,13 +69,14 @@ This contains some inline math: $f(x) = x^2$
 
 \section{Pictures}
 
-\begin{figure}[h!] % h makes the picture be added exactly where it was added in the document. Other options are: t (top of page), b (bottom of page), p (on an extra page). The '!' means that the option will be enforced.
+\begin{figure}[H] % h makes the picture be added exactly where itwas added in the document. Other options are: t (top of page), b (bottom of page), p (on an extra page). The '!' means that the option will be enforced.
+% Similarly, using H from the 'float' package forces the picture to be positions in place, disregarding the float property of images.
   \includegraphics[width=\linewidth]{cat.jpg}
   \caption{A cat.}
   \label{fig:cat}
 \end{figure}
 
-\begin{figure}[h!]
+\begin{figure}[H]
   \centering
   \begin{subfigure}[b]{0.4\linewidth}
     \includegraphics[width=\linewidth]{mouse.jpg}
@@ -88,7 +90,7 @@ This contains some inline math: $f(x) = x^2$
   \label{fig:mouse}
 \end{figure}
 
-\begin{figure}[h!]
+\begin{figure}[H]
   \centering
   \begin{subfigure}[b]{0.2\linewidth}
     \includegraphics[width=\linewidth]{cat.jpg}
