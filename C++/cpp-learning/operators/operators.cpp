@@ -24,6 +24,7 @@ int main()
   // 'a && b' and
   // 'a || b' or
   // 'a ? b : c' ternary (if 'a' then do 'b', else do 'c')
+  // Note that && and || are short-circuited, so if the first argument is false, then the second argument is never evaluated to avoid doing extra work.
 
   // ASSIGNMENT
   // 'variable = value' assigns a value to variable
