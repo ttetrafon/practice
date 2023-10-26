@@ -25,6 +25,10 @@ Multiple instances of the game can be run automatically in the same editor.
   - **Play Options**
     - **Number of Players -> 2 (or more...)**
 
+## Players
+
+- Each player needs their own dedicated *player start* point.
+
 ## Replication
 
 - **Actors** in a scene can be replicated over multiplayer (`Class Details -> Replication`).
@@ -51,8 +55,12 @@ void My_Type::GetLifetimeReplicatedProps(TArray<FLifetimeProperty> &OutLifetimeP
 - For events that need to happen on all clients, but do not really need to be perfectly replicated (like particle effects), an event needs to be set as `Details -> Replicates -> Multicast`.
   - A multicast RPC must be called on the server specifically, otherwise it will run only on the client it has been called. So, a multicast needs to be set as a child of a server RPC.
 - Client RPCs will be called from the server and run only on the specified client.
+  - To make a client's RPC replicate to the server (and other clients), create an extra custom event [`Details -> Replicates -> Run on Server`] to call the final event [`Details -> Replicates -> Multicast`].
+    - e.g.: You want to change a material on a character with the click of a button. It will be set up like this:
+      1. OnClick -> Server_RPC
+      2. Server_PRC -> Client_RPC
+    - This setup is also needed for anything that is not replicated automatically, like the `Play Anim Montage` blueprint.
 
-### C++
 - RPCs in C++ cannot be BlueprintCallable, but can be wrapped in BlueprintCallable functions.
 - First, the function must be declared, and then a secondary, '_implementation' functions needs to be declared and defined with the RPC's code.
 
