@@ -27,6 +27,8 @@ Multiple instances of the game can be run automatically in the same editor.
 
 ## Players
 
+- Multiple PlayerControllers are created in a multiplayer game - one for each player.
+  - Any `Actor` directly assigned to a `Pawn` is automatically associated with that pawn's owner (PlayerController).
 - Each player needs their own dedicated *player start* point.
 
 ## Replication
@@ -47,9 +49,11 @@ void My_Type::GetLifetimeReplicatedProps(TArray<FLifetimeProperty> &OutLifetimeP
 }
 ```
 
+- Anything supposed to be replicated is assigned a priority value, which will determine the order of the replication when the network bandwidth is limited.
+
 ## Remote Procedural Calls (RPC)
 
-- RPCs are used for multiplayer clients to perform server side only actions.
+- RPCs are used for multiplayer clients to perform server-side only actions.
 - Custom events can be used for this purpose, by setting them as `Details -> Replicates -> Run on Server`.
   - `Reliable` requires the actor on which the PRC is called on must be owned by a client, and will be processed in order of calling.
 - For events that need to happen on all clients, but do not really need to be perfectly replicated (like particle effects), an event needs to be set as `Details -> Replicates -> Multicast`.
