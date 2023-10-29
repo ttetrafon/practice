@@ -25,6 +25,13 @@ int main()
   std::cout << "size of float: " << sizeof(bmi) << " bytes" << std::endl;
   std::cout << "size of double: " << sizeof(averageGrade) << " bytes" << std::endl;
 
+  // Floats represent approximations, so math performed on floats have a good chance of being a bit off.
+  float total = 0;
+  for (float a = 0; a < 2; a += 0.01f) {
+    total += a;
+  }
+  std::cout << "total: " << total << " (expected 199)" << std::endl;
+
   // OVERFLOW
   // Increasing the variable constantly will result it in overflowing and starting again from its minimum value.
   std::cout << "Adding +1 to " << INT_MAX << " will result in " << (INT_MAX + 1) << " because of overflow." << std::endl;

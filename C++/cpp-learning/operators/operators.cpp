@@ -12,6 +12,12 @@ int main()
   // '--a' increments (pre)
   // 'a--' decrements (post)
   // '--a' decrements (pre)
+  int a = 1;
+  std::cout << a++ / 2 << std::endl;
+  std::cout << a << std::endl;
+  int b = 1;
+  std::cout << ++b / 2 << std::endl;
+  std::cout << b << std::endl;
 
   // BOOLEAN
   // 'a < b' compares if less
@@ -22,7 +28,7 @@ int main()
   // 'a != b' compares if different
   // '!a' not
   // 'a && b' and
-  // 'a || b' or
+  // 'a || b' or (and has precedence over or)
   // 'a ? b : c' ternary (if 'a' then do 'b', else do 'c')
   // Note that && and || are short-circuited, so if the first argument is false, then the second argument is never evaluated to avoid doing extra work.
 
@@ -34,5 +40,15 @@ int main()
   // 'variable /= value' reassigns the initial value after dividing with the new value
   // 'variable %= value' reassigns the initial value after getting the modulo with the new value
 
-
+  // BITWISE
+  // 'a | b' bitwise or
+  // 'a ^ b' bitwise xor (exclusive or): 0^0=0, 1^0=1, 0^1=1, 1^1=0)
+  // 'a & b' bitwise and
+  // 'a << #' left shift: moves bits # places to the left padding the rightmost digits with 0s
+  //     e.g.: 5 (00000101) << 1 = 80 (01010000)
+  // 'a >> #' right shift
+  int bitA = 5;
+  int bitB = 12;
+  int bitC = bitA | bitB;
+  std::cout << "\na = " << bitA << ", b = " << bitB << ", c = " << bitC << std::endl;
 }
