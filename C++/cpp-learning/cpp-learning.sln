@@ -19,6 +19,8 @@ Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "classes", "classes\classes.
 EndProject
 Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "literals", "literals\literals.vcxproj", "{74C85BFB-7982-469C-A9D7-73CFFF47BB1A}"
 EndProject
+Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "bit-manipulation", "bit-manipulation\bit-manipulation.vcxproj", "{AEF7700C-F679-43D9-B238-96D3C5F08285}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|x64 = Debug|x64
@@ -91,6 +93,14 @@ Global
 		{74C85BFB-7982-469C-A9D7-73CFFF47BB1A}.Release|x64.Build.0 = Release|x64
 		{74C85BFB-7982-469C-A9D7-73CFFF47BB1A}.Release|x86.ActiveCfg = Release|Win32
 		{74C85BFB-7982-469C-A9D7-73CFFF47BB1A}.Release|x86.Build.0 = Release|Win32
+		{AEF7700C-F679-43D9-B238-96D3C5F08285}.Debug|x64.ActiveCfg = Debug|x64
+		{AEF7700C-F679-43D9-B238-96D3C5F08285}.Debug|x64.Build.0 = Debug|x64
+		{AEF7700C-F679-43D9-B238-96D3C5F08285}.Debug|x86.ActiveCfg = Debug|Win32
+		{AEF7700C-F679-43D9-B238-96D3C5F08285}.Debug|x86.Build.0 = Debug|Win32
+		{AEF7700C-F679-43D9-B238-96D3C5F08285}.Release|x64.ActiveCfg = Release|x64
+		{AEF7700C-F679-43D9-B238-96D3C5F08285}.Release|x64.Build.0 = Release|x64
+		{AEF7700C-F679-43D9-B238-96D3C5F08285}.Release|x86.ActiveCfg = Release|Win32
+		{AEF7700C-F679-43D9-B238-96D3C5F08285}.Release|x86.Build.0 = Release|Win32
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

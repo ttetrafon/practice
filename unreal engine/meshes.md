@@ -6,6 +6,10 @@
   - Select **Input Textures -> False** and **Material -> Material Input Method -> Do not create material**, as we will usually use materials already created in the project.
 - Select the object and assign the default material(s).
 
+### Normalisation
+
+- Meshes should be scaled to fit the game's scale when imported.
+
 ## Static Meshes
 
 - Rigid objects that do not change shape/form.
