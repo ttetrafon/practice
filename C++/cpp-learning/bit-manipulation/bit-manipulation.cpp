@@ -94,7 +94,5 @@ int main()
   i.set(2, false); // or .reset(2)
   std::cout << "set(2, false): " << i << " [" << std::bitset<5>(i) << "]" << std::endl;
 
-
-
   return 0;
 }
