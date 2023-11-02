@@ -11,6 +11,11 @@
   - BungeeMan
   - City of Brass: Enemies
   - City Sample Crowds
+  - Customizable Pathfinding
+  - DoN's 3D Pathfinding for Flying AI
+  - Dragon for Boss Monster : Handpainted
+  - Dragon for Boss Monster : PBR
+  - Easy AI Toolkit
 - Animations
   - Advanced AI Spawn System
   - Advanced Locomotion System V4
@@ -21,6 +26,14 @@
   - ARTv1
   - Basic Foot IK System
   - Basic Montage Sequence Manager
+  - Composure Framework
+  - Control Rig Samples Pack
+  - Distance Matching
+  - Dynamic Ragdoll
+  - FACEGOOD FgControlRig
+  - FACEMOTION3D Plugin
+  - Foot IK
+  - Free Bone Snapper
 - Buildings
   - 4 IN 1 Modular Research Facility / Mega Bundle
   - AccuCities 3d City Models Sample
@@ -33,14 +46,20 @@
   - Advanced Fade Objects
   - Advanced Photo Mode
   - CameraShake Editor
+  - Fixed Camera System
 - Controls
   - bHaptics Haptic Manager
   - bHapticsPlugin
+  - Custom Game Only Input Mode
+- Editor Tools
+  - Get Set Editor Camera
 - Graphics
   - Advanced Cel Shader Lite
   - Art of Shader - Film And Special Effects
   - Cartoon Water Shader
   - Colorama
+  - EGraphpicsSTL
+  - Extended Shading
 - Items
   - Ancient Treasures
   - Apartment Tech Props
@@ -56,6 +75,16 @@
   - City of Brass: Environments
   - City of Brass: Props
   - City Street Props
+  - Construction Site VOL. 1 - Supply and Material Props
+  - Construction Site VOL. 2 - Tools, Parts, and Machine Props
+  - Decoration Pack 1
+  - Design Connected: Mini Outdoor Set
+  - Entertainment Pack 1
+  - Food Pack 01
+  - FPS Weapon Bundle
+  - Free Fantasy Weapon Sample Pack
+  - Free Furniture Pack
+  - Freeway Props
 - Levels
   - Async Level Load Plugin With Loading Screen
   - Async Loading Screen
@@ -69,6 +98,11 @@
   - Big Niagara Bundle+
   - Blink and Dash VFX
   - Character Body FX Vol. 1
+  - EP Master Materials
+  - Forest Landscape Materials Vol.I
+  - Forest Landscape Materials Vol. II
+  - FX Variety Pack
+  - gFur 5
 - Media
   - AJA Media Player
   - Ambient and Procedural Sound Design
@@ -78,17 +112,26 @@
   - Blackmagic Design Media Player
   - Bluefish444 Professional Video IO
   - Blueprint Graph Screenshot (Regardless of screen size)
+  - Concord
+  - DELTACAST Media Player
 - Multiplayer
   - 4Players ODIN - Voice Chat SDK
   - Advanced Dedicated Server Matchmaking V3
   - Basic Multiplayer Melee Combat System
   - Blueprint WebSockets
+  - Dynamic Servers Sub-system (DSSLite)
 - Nature
   - Baygall Brush
   - City Park Environment Collection
   - City Park Environment Collection LITE
-- Procedural Generation
-  - Blockmap Editor Tools
+  - Corals
+  - Deep Elder Caves
+  - Dry Grass Collections
+  - Dynamic Ivy Creation Pack
+- Services
+  - Game Client SDK i3D.net
+  - Game Hosting Platform SDK i3D.net
+  - GeoLocation (Android)
 - Sets
   - Automotive Beach Scene
   - Automotive Bridge Scene
@@ -100,10 +143,50 @@
   - Broadcast Studio
   - Brutalist Architecture Office
   - CLOTHING AND SHOE STORES
+  - Downtown West Modular Pack
+  - Dreamscape: Stylized Environment Tower - Stylized Nature Open World Fantasy
+  - Edith Finch: Barbara Room
+  - Edith Finch: Beach Wedding
+  - Edith Finch: Cannery and LowPoly Kingdom
+  - Edith Finch: Classrooms and Bedrooms
+  - Edith Finch: Edie Room
+  - Edith Finch: House and Common Areas
+  - Edith Finch: House Grounds
+  - Edith Finch: Molly Room
+  - Edith Finch: Sam Room
+  - Edith Finch: Twins Room
+  - Electric Dreams Env
+  - English College Level 4 Sample
+  - Epic Zen Garden
+  - Factory Environment Collection
+  - FANTASTIC - Village Pack
+  - Gladiator Arena Environment Kit
 - Settings
   - Blueprintable Developer Settings
   - Blueprints Access To GConfig
   - CheckAppInstance
+- Systems
+  - Advanced Stats with Runes System
+  - Avatar SDK Plugin
+  - Blueprint Cheat Manager
+  - BM Weapon System
+  - Clarus Viewer Asset Support
+  - Clarus Viewer Engine Helpers
+  - Dialogue System X
+  - Dialogue Tree and Quest System
+  - Directional & Planet Gravity
+  - Dynamic Grass System Lite
+  - Dynamic Gravity Character
+  - Easy Locomotion Toolkit
+  - Easy Quests
+  - EasyBallistics Plugin
+  - Elementus Inventory
+  - Factions Extension
+  - First Person Character Controller [C++]
+  - FPS Core
+  - Gameplay Abilities Groundwork
+  - GameplayTags Component
+  - GASAttachEditor
 - Vehicles
   - 2S3 Akatsiya Self-propelled howitzer (East)
   - A10 Attack Fighter (West)
@@ -132,15 +215,20 @@
   - City Subway Train Modular
   - Command 9S552 (East)
   - Commercial Long-Range Aircraft
-- Systems
-  - Advanced Stats with Runes System
-  - Avatar SDK Plugin
-  - Blueprint Cheat Manager
-  - BM Weapon System
-  - Clarus Viewer Asset Support
-  - Clarus Viewer Engine Helpers
+  - Construction Vehicles 1
+  - Drivable M1126 Stryker ICV (West)
+  - Drivable SSN Los Angeles (West)
+  - Enhanced Vehicle Plugin
+  - Fighter EuroFighter (West)
+  - Fighter F/A-18C Hornet (West)
+  - Fighter F15-E (West)
+  - Fighter Su33 (East)
 - UI
   - UI Navigation 2.0
+  - Craft Resources Icons
+  - DzX Radial Menu - UMG
+- Web
+  - Easy JWT
 
 # Programming
 
@@ -154,18 +242,34 @@
   - Blueprint FileSDK
   - Blueprint Node Template
   - Capsule Trace Rotation
+  - Data Table Function Library Lite
+  - DBJson
+  - Default Values
+  - diprossUtility
+  - Easy File Dialog
+  - EasyJsonParser
+  - EasyXMLParser
+  - File Helper Blueprint Library
+  - File System Library
+  - Free Perlin Noise
+  - Game Flow
 - ... both
   - Attributes Extension
   - Base64 Tool
+  - Dynamic QTE System
 
 # Projects
 
 - A Boy and His Kite
 - City Sample
+- Content Examples
+- Cropout Sample Project
+- DMX Previs Sample
+- Elemental Demo
 
 # Tools
 
-- "ArchViz" Explorer: showcase functionality
+- "ArchViz" Explorer
 - Actor Locker
 - Animation Compression Library
 - AnimBlueprint Curve Viewer Node
@@ -179,6 +283,7 @@
 - Backtrace Crash Reporting Plugin
 - Bakerman
 - Blend File Importer
+- Blockmap Editor Tools
 - Blueprint Inspector
 - BugSnag
 - BugSplat
@@ -186,6 +291,30 @@
 - Captury Live Link Plugin
 - Channel Machine
 - ColorPicker On Mouse
+- Console Commands Helper
+- Datasmith Twinmotion Content for Unreal Engine
+- Datasmith Twinmotion Importer Plugin (Beta 4)
+- Debug Function Library Lite
+- Debug Logging Library (For C++ and Blueprints)
+- Depression Marsh Brush
+- Developer Note
+- Dome Swamp Brush
+- Drift Island Plugin
+- Dungeon Generator
+- Dynalips UE Plugin
+- Easy Building System v10
+- EasySynth
+- edddison - create interactive 3D presentations
+- Editor Interface Size
+- Editor Organize Tools and Quality of Life Extension
+- Editor Web Browser
+- Editor Windows Frame
+- Endless Random Procedural Worlds (With Level Streaming)
+- Enhanced Output Log
+- Export PNG
+- EZtracking Live Link Plugin
+- Flat Nodes
+- FPS Wizard
 
 # Learning
 
@@ -206,6 +335,19 @@
 - Build a Detective's Office Game Environment
 - Camera Framework Essentials for Games
 - Chaos Destruction Demo
+- Control Rig Mannequin UE4
+- Creating a First Person Aim Trainer
+- Creating a Level Blockout for Game Development
+- Creating a Scatter Tool with Blueprints
+- Creating Portal To Another Reality
+- Demonstrating Animation Blueprints and AI for Gameplay Designers
+- Designing for Voice
+- Digital Human
+- Dynamic Audio
+- Exploring Level Design for Game Development
+- Gaze and Head Interactions
+- Generating Oddly Oscillating Globe Lenses Yourself
+- Getting Started With Your Paper 2D Project
 
 # Monetisation
 
@@ -213,11 +355,19 @@
   - ADSCore Lite
   - Android Play Billing
   - Bansh Ads
+- Blockchain
+  - Cronos Play for Unreal Engine
+  - Emergence
+  - Enjin SDK
 - Data
   - Appsflyer
+  - Firebase Analytics
+  - Firebase Authentication
+  - GameAnalytics
 
 # VR
 
 - BRUNNER 6DOF Motion Platform Interface
 - CityEngine VR Experience
 - Clarus Viewer Base
+- Face AR Sample
