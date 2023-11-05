@@ -160,7 +160,7 @@
   - Epic Zen Garden
   - Factory Environment Collection
   - FANTASTIC - Village Pack
-  - Gladiator Arena Environment Kit
+  - Gladiator Arena Environment Kit ************************
 - Settings
   - Blueprintable Developer Settings
   - Blueprints Access To GConfig
