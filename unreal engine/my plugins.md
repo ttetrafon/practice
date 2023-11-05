@@ -5,17 +5,25 @@
 - Actors
   - Adventure Character
   - AFRICAN ANIMALS PACK
-  - AI for NPC, MetaHuman - Dialog, actions and general intelligence - by Convai
   - ANIMAL VARIETY PACK
   - ASC Teuthisan
   - BungeeMan
   - City of Brass: Enemies
   - City Sample Crowds
   - Customizable Pathfinding
-  - DoN's 3D Pathfinding for Flying AI
   - Dragon for Boss Monster : Handpainted
   - Dragon for Boss Monster : PBR
+  - Goblin warrior. Modular
+  - Horse Starter Kit
+  - Infinity Blade: Adversaries
+  - Infinity Blade: Warriors
+  - Kraken
+  - Mannequins Pack
+- AI
+  - AI for NPC, MetaHuman - Dialog, actions and general intelligence - by Convai
+  - DoN's 3D Pathfinding for Flying AI
   - Easy AI Toolkit
+  - GOAP NPC: Goal-Oriented Action Planning for Non-Player Characters (Code Plugin)
 - Animations
   - Advanced AI Spawn System
   - Advanced Locomotion System V4
@@ -34,6 +42,9 @@
   - FACEMOTION3D Plugin
   - Foot IK
   - Free Bone Snapper
+  - HEAT Beta plug-in
+  - iFacialMocap Plugin
+  - MagicTwoBoneIK
 - Buildings
   - 4 IN 1 Modular Research Facility / Mega Bundle
   - AccuCities 3d City Models Sample
@@ -41,6 +52,10 @@
   - Advanced Village Pack
   - Assetsville Town
   - City Sample Buildings
+  - House Of Changwon
+  - Infinity Blade: Castle
+  - Jejumok Gwana
+  - Medieval Houses Modular Vol 2
 - Camera
   - Action Camera Manager
   - Advanced Fade Objects
@@ -51,8 +66,21 @@
   - bHaptics Haptic Manager
   - bHapticsPlugin
   - Custom Game Only Input Mode
+  - Input Sequence
+- Debugging
+  - Live Blueprint Debugger
+  - Log & Debug Tools
+  - Log Viewer
 - Editor Tools
   - Get Set Editor Camera
+  - Graph Formatter
+  - Graph Printer
+  - Icon Handler
+  - ImageResizUEr
+  - LEVEL DESIGN ASSISTANT
+  - Light Explorer
+  - Livelink for Blender
+  - MapSync Plugin
 - Graphics
   - Advanced Cel Shader Lite
   - Art of Shader - Film And Special Effects
@@ -60,6 +88,7 @@
   - Colorama
   - EGraphpicsSTL
   - Extended Shading
+  - Interior Mapping Shader
 - Items
   - Ancient Treasures
   - Apartment Tech Props
@@ -85,9 +114,26 @@
   - Free Fantasy Weapon Sample Pack
   - Free Furniture Pack
   - Freeway Props
+  - Halloween Pumpkins / 10+ Variations & Vegetation
+  - High Tech Pack 1
+  - Hollywood Movie Props VOL.3
+  - Hospitality Pack
+  - Industry Props Pack 6
+  - Infinity Blade: Props
+  - Infinity Blade: Weapons
+  - LPGenericPropsSet02
+  - LPGenericPropsSet04
+  - LPGenericPropsSet06
+  - LPGenericPropsSet08
+  - LPGenericPropsSet10
+  - MEDA Furniture Pack
 - Levels
   - Async Level Load Plugin With Loading Screen
   - Async Loading Screen
+  - Landscape Spline Helper Plugin
+  - LevelController (Transform Levels At Runtime In Realtime)
+- Lighting
+  - IES Light Profile Pack
 - Materials & Effects
   - 4K Materials: Wood Flooring Vol.01
   - Advanced Glass Material Pack
@@ -103,6 +149,19 @@
   - Forest Landscape Materials Vol. II
   - FX Variety Pack
   - gFur 5
+  - Grass Landscape Material Vol. I
+  - HLSL Material
+  - Infinity Blade: Effects
+  - Landscape Pro 2.0 Auto-Generated Material
+  - M5 VFX Vol2. Fire and Flames(Niagara)
+  - Megascans - Asphalt
+  - Megascans - Asphalt Coarse Vol. 1
+  - Megascans - Asphalt Cracked Vol. 1
+  - Megascans - Asphalt Dried Vol. 1
+  - Megascans - Asphalt Fine Vol. 1
+  - Megascans - Asphalt Patch Vol. 1
+  - Megascans - Asphalt Vol. 1
+  - Megascans - Blood
 - Media
   - AJA Media Player
   - Ambient and Procedural Sound Design
@@ -114,6 +173,9 @@
   - Blueprint Graph Screenshot (Regardless of screen size)
   - Concord
   - DELTACAST Media Player
+  - GME
+  - Human Vocalizations
+  - Interface & Item Sounds Pack
 - Multiplayer
   - 4Players ODIN - Voice Chat SDK
   - Advanced Dedicated Server Matchmaking V3
@@ -128,11 +190,64 @@
   - Deep Elder Caves
   - Dry Grass Collections
   - Dynamic Ivy Creation Pack
+  - GOOD SKY
+  - interactive Open World Foliage
+  - interactive stylized Lowpoly Grass
+  - Landscape Backgrounds
+  - Lava Field Collections
+  - Landscape Mountains
+  - MAE Oak Forest
+  - mediterranean Vegetation: giant Reed
+  - Mediterranean Vegetation: Plant Pack I
+  - Mediterranean Vegetation: Plant Pack II
+- Programming
+  - Actions Extension
+  - AGR PRO
+  - Array Helper Blueprint Library
+  - Attributes Extension
+  - Base64 Tool
+  - Blueprint CSV Parsing
+  - Blueprint FileSDK
+  - Blueprint Node Template
+  - C++ Module Generator
+  - Capsule Trace Rotation
+  - Data Table Function Library Lite
+  - DBJson
+  - Default Values
+  - diprossUtility
+  - Dynamic QTE System
+  - Easy File Dialog
+  - EasyJsonParser
+  - EasyXMLParser
+  - File Helper Blueprint Library
+  - File System Library
+  - Free Perlin Noise
+  - Game Flow
+  - GMP(GenericMessagePlugin)
+  - IPFS
+  - Json Blueprint
+  - LE Extended Standard Library
+  - M.J.'s Dynamic Asset Library
+  - Magic Node
+  - Math Extension Nodes and Functions
+  - MD5 Encrypt
+- Projects
+  - A Boy and His Kite
+  - City Sample
+  - Content Examples
+  - Cropout Sample Project
+  - DMX Previs Sample
+  - Elemental Demo
+  - Hex Blocks Game - Code vs Blueprints
+  - ICVFX Production Test
+  - Infiltrator Demo
+  - Lyra Starter Game
+  - Meerkat Demo
 - Services
   - Game Client SDK i3D.net
   - Game Hosting Platform SDK i3D.net
   - GeoLocation (Android)
-- Sets
+- Sets & Environments
   - Automotive Beach Scene
   - Automotive Bridge Scene
   - Automotive Salt Flats
@@ -160,7 +275,25 @@
   - Epic Zen Garden
   - Factory Environment Collection
   - FANTASTIC - Village Pack
-  - Gladiator Arena Environment Kit ************************
+  - Gladiator Arena Environment Kit
+  - Hillside Sample
+  - Indoor Shooting Range
+  - Infinity Blade: Fire Lands
+  - Infinity Blade: Grass Lands
+  - Infinity Blade: Hideout
+  - Infinity Blade: Ice Lands
+  - Infinity Blade: Temple
+  - Isometric - Interiors
+  - Isometric World : Sky Temple
+  - Loft Office (Modular)
+  - Low Poly Medieval Interior and Constructions
+  - Low Poly Style Deluxe 2: Tropical Environment
+  - Low Poly Viking World
+  - Lowpoly Handpainted Environment
+  - Medieval Dungeon
+  - Medieval Game Environment
+  - Mediterranean Rustic Interior
+  - Megascans - Abandoned Factory
 - Settings
   - Blueprintable Developer Settings
   - Blueprints Access To GConfig
@@ -187,6 +320,21 @@
   - Gameplay Abilities Groundwork
   - GameplayTags Component
   - GASAttachEditor
+  - Interaction System
+  - Interaction System Starter Pack
+  - Interactive World
+  - Inventory System
+  - Lock On Target
+  - Look At Actor
+  - Mantling System
+  - Maze Dungeon Generator Plugin
+- Templates
+  - Horror Engine
+  - jRPG Template
+  - Kenney.nl Platformer
+  - FPS Wizard
+  - Low Poly Core
+  - MaxQ Spaceflight Toolkit
 - Vehicles
   - 2S3 Akatsiya Self-propelled howitzer (East)
   - A10 Attack Fighter (West)
@@ -223,49 +371,41 @@
   - Fighter F/A-18C Hornet (West)
   - Fighter F15-E (West)
   - Fighter Su33 (East)
+  - IFV BMP3 (East)
+  - IFV M1134 ATGM Stryker (West)
+  - IMV Tigr-M (East)
+  - Ka-52 Alligator (East)
+  - LAVIFV Infantry Fighting Vehicle
+  - LCAC (Landing Craft, Air Cushion) (West)
+  - Los Angeles-class SSN (West)
+  - LUV-3151 (East)
+  - M109 howitzer(West)
+  - M1126 Stryker ICV (West)
+  - M1130 CV Stryker (West)
+  - M1133 Stryker MEV (West)
+  - M777 Howitzer Artillery (West)
+  - M923 Truck (West)
+  - Medic MT-LB (East)
 - UI
   - UI Navigation 2.0
   - Craft Resources Icons
   - DzX Radial Menu - UMG
+  - Inline Styling Decorator for Rich Text Block
+  - Kantan Charts
+  - KC-135R Air Tanker (West)
+  - KKDamageUI
+- Utilities
+  - Hardware Information
+  - Hash And Encrypt Tools
+- VR
+  - BRUNNER 6DOF Motion Platform Interface
+  - CityEngine VR Experience
+  - Clarus Viewer Base
+  - Face AR Sample
 - Web
   - Easy JWT
-
-# Programming
-
-- C++
-  - Actions Extension
-  - AGR PRO
-  - C++ Module Generator
-- Blueprints
-  - Array Helper Blueprint Library
-  - Blueprint CSV Parsing
-  - Blueprint FileSDK
-  - Blueprint Node Template
-  - Capsule Trace Rotation
-  - Data Table Function Library Lite
-  - DBJson
-  - Default Values
-  - diprossUtility
-  - Easy File Dialog
-  - EasyJsonParser
-  - EasyXMLParser
-  - File Helper Blueprint Library
-  - File System Library
-  - Free Perlin Noise
-  - Game Flow
-- ... both
-  - Attributes Extension
-  - Base64 Tool
-  - Dynamic QTE System
-
-# Projects
-
-- A Boy and His Kite
-- City Sample
-- Content Examples
-- Cropout Sample Project
-- DMX Previs Sample
-- Elemental Demo
+  - HPTcpSocketPlugin
+  - HTTP Requests for Blueprints
 
 # Tools
 
@@ -314,7 +454,9 @@
 - Export PNG
 - EZtracking Live Link Plugin
 - Flat Nodes
-- FPS Wizard
+- Gm Enhanced Debugging Tool
+- Logic Driver Lite - State Machine Blueprint Editor
+- Luminance
 
 # Learning
 
@@ -348,6 +490,17 @@
 - Gaze and Head Interactions
 - Generating Oddly Oscillating Globe Lenses Yourself
 - Getting Started With Your Paper 2D Project
+- Implement UI with UX Tools and UMG
+- Implementing Level Design with Blueprints
+- Implementing UI for Level Design
+- Improving C++ Workflows Using Data
+- In Camera VFX Example
+- Incorporate Hand Interactions with UX Tools
+- Independent Filmmaking With Unreal Engine
+- Intro to Virtual Cinematography
+- Introducing Post Processing
+- Landscape Essential Concepts
+- Live Link for Performance Capture
 
 # Monetisation
 
@@ -359,15 +512,10 @@
   - Cronos Play for Unreal Engine
   - Emergence
   - Enjin SDK
+  - Holochain Client
+  - HttpGPT - GPT Integration (ChatGPT and DALL-E)
 - Data
   - Appsflyer
   - Firebase Analytics
   - Firebase Authentication
   - GameAnalytics
-
-# VR
-
-- BRUNNER 6DOF Motion Platform Interface
-- CityEngine VR Experience
-- Clarus Viewer Base
-- Face AR Sample
