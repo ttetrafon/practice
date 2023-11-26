@@ -445,6 +445,7 @@
   - Megascans - Urban Alleyway Vol. 1
   - Megascans - Urban Alleyway Vol. 2
   - Megascans Abandoned Apartment
+  - Megascans Goddess Temple
 - Settings
   - Blueprintable Developer Settings
   - Blueprints Access To GConfig
