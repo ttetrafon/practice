@@ -1,0 +1,15 @@
+body {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+div {
+  width: 500px;
+}
+
+img {
+  float: left;
+  width: 50%;
+  padding: 10px;
+}
