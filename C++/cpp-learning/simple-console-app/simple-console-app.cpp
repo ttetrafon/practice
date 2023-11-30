@@ -3,10 +3,11 @@
 
 // When including standard C libraries, use the .h extension.
 
+// To select the standard, Debuger Dropdown -> 'app-name' Debug Properties -> Configuration Properties -> General -> C++ Language Standard
+
 #include <iostream>
 #include <math.h>
 
-int main()
-{
+int main() {
     std::cout << "Hello World!" << std::endl;
 }
