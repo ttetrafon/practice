@@ -1,0 +1,19 @@
+body {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+.lang-en {
+  display: none;
+}
+.lang-gr {
+  display: inherit;
+}
+
+#toggle-language:checked ~ .lang-en {
+  display: inherit;
+}
+#toggle-language:checked ~ .lang-gr {
+  display: none;
+}
