@@ -17,3 +17,10 @@ body {
 #toggle-language:checked ~ .lang-gr {
   display: none;
 }
+
+#toggle-language:checked ~ .lang-en, #toggle-language:checked ~ main .lang-en {
+  display: inherit;
+}
+#toggle-language:checked ~ .lang-gr, #toggle-language:checked ~ main .lang-gr {
+  display: none;
+}
