@@ -19,11 +19,16 @@
   - Infinity Blade: Warriors
   - Kraken
   - Mannequins Pack
+  - Military Character Dark
+  - Military Character Silver
+  - Military Style Mannequins
+  - Ninja Character Plugin
 - AI
   - AI for NPC, MetaHuman - Dialog, actions and general intelligence - by Convai
   - DoN's 3D Pathfinding for Flying AI
   - Easy AI Toolkit
   - GOAP NPC: Goal-Oriented Action Planning for Non-Player Characters (Code Plugin)
+  - Procedural NPC Crowds v2
 - Animations
   - Advanced AI Spawn System
   - Advanced Locomotion System V4
@@ -45,6 +50,8 @@
   - HEAT Beta plug-in
   - iFacialMocap Plugin
   - MagicTwoBoneIK
+  - MetaHuman Plugin
+  - n00dEmotes 2.0
   - ReMoCapp plugin
 - Buildings
   - 4 IN 1 Modular Research Facility / Mega Bundle
@@ -65,12 +72,18 @@
   - Megascans - Fantasy Fort Vol. 1
   - Megascans - Fantasy Fort Vol. 2
   - Megascans - Temples of Angkor Wat
+  - Modular Victorian House
+  - Modern House
+  - Modular Building Set
+  - Modular Gothic Temple (medieval/winter/snow)
+  - Modular Sci-Fi Village
 - Camera
   - Action Camera Manager
   - Advanced Fade Objects
   - Advanced Photo Mode
   - CameraShake Editor
   - Fixed Camera System
+  - Open RTS Camera
 - Controls
   - bHaptics Haptic Manager
   - bHapticsPlugin
@@ -91,6 +104,10 @@
   - Light Explorer
   - Livelink for Blender
   - MapSync Plugin
+  - New C++ Module tool
+  - Object Inspection
+  - ObjectDeliverer
+  - Outliner Shortcuts
 - Graphics
   - Advanced Cel Shader Lite
   - Art of Shader - Film And Special Effects
@@ -160,6 +177,80 @@
   - Megascans - Rustic Hardware
   - Megascans - Vegetables
   - Megascans - Wooden Decorative
+  - Military Weapons Dark
+  - Military Weapons Silver
+  - Missile 9K121 Vikhr (East)
+  - Missile 9M317 (East)
+  - Missile 9M55 (East)
+  - Missile AGM-65 (West)
+  - Missile AGM114 [West]
+  - Missile AGM88 (West)
+  - Missile AIM-120 (West)
+  - Missile BGM-109 (West)
+  - Missile FFAR (West)
+  - Missile Kh-29T (East)
+  - Missile Kh-31P (East)
+  - Missile M26 (West)
+  - Missile MIM104 (West)
+  - Missile P270 (East)
+  - Missile R77 (East)
+  - Missile S5 (East)
+  - Missile SM-3 (West)
+  - Musical Pack 1
+  - Old West - VOL 1 - Interior Furniture
+  - Old West - VOL 2 - Tradesmen Tools and Props
+  - Old West - VOL 4 - Goods and Supplies
+  - Old West - VOL 5 - Town Props
+  - Old West VOL. 6 - Town and Industrial
+  - Old West VOL.3 - Travel Supplies and Goods
+- Learning
+  - 3D Map Navigation in Virtual Reality
+  - Accessible Design with Unreal Engine
+  - Action RPG
+  - AEC Blueprints by Example
+  - An In-Depth look at Environment Artist Based Tools
+  - Animation Ecosystem for Game Development
+  - Animation for Virtual Production
+  - Audio-Driven Gameplay
+  - Blueprint Communication
+  - Blueprint Runtime Saving and Loading
+  - Blueprints
+  - Blueprints and Gameplay for Game Designers
+  - Breaking Down the Components of Gameplay
+  - Broadcast Sample
+  - Build a Detective's Office Game Environment
+  - Camera Framework Essentials for Games
+  - Chaos Destruction Demo
+  - Control Rig Mannequin UE4
+  - Creating a First Person Aim Trainer
+  - Creating a Level Blockout for Game Development
+  - Creating a Scatter Tool with Blueprints
+  - Creating Portal To Another Reality
+  - Demonstrating Animation Blueprints and AI for Gameplay Designers
+  - Designing for Voice
+  - Digital Human
+  - Dynamic Audio
+  - Exploring Level Design for Game Development
+  - Gaze and Head Interactions
+  - Generating Oddly Oscillating Globe Lenses Yourself
+  - Getting Started With Your Paper 2D Project
+  - Implement UI with UX Tools and UMG
+  - Implementing Level Design with Blueprints
+  - Implementing UI for Level Design
+  - Improving C++ Workflows Using Data
+  - In Camera VFX Example
+  - Incorporate Hand Interactions with UX Tools
+  - Independent Filmmaking With Unreal Engine
+  - Intro to Virtual Cinematography
+  - Introducing Post Processing
+  - Landscape Essential Concepts
+  - Live Link for Performance Capture
+  - Multi-User Experiences with Azure Spatial Anchors
+  - Multiplayer Shootout
+  - Northwood
+  - Old West Learning
+  - Online Learning Kit
+  - Online Learning: Automotive
 - Levels
   - Async Level Load Plugin With Loading Screen
   - Async Loading Screen
@@ -167,7 +258,9 @@
   - LevelController (Transform Levels At Runtime In Realtime)
 - Lighting
   - IES Light Profile Pack
+  - MetaHuman Lighting
 - Machine Learning
+  - MindMaker Machine Learning AI Plugin
   - Unray Plugin for RL
 - Materials & Effects
   - 4K Materials: Wood Flooring Vol.01
@@ -269,6 +362,12 @@
   - Megascans - Street Tiles
   - Megascans - Ultimate Facades
   - Megascans - Ultimate Wood Veneers
+  - Melee Trace
+  - Mesic Flatwoods Habitat Brush
+  - Necro's Utility Material Pack
+  - Niagara Footstep VFX
+  - Niagara Mega VFX Pack vol. I
+  - Niagara UI Renderer
 - Media
   - AJA Media Player
   - Ambient and Procedural Sound Design
@@ -283,12 +382,18 @@
   - GME
   - Human Vocalizations
   - Interface & Item Sounds Pack
+  - Mo-Sys VP Free
+- Meshes
+  - Mesh Morpher Lite
 - Multiplayer
   - 4Players ODIN - Voice Chat SDK
   - Advanced Dedicated Server Matchmaking V3
   - Basic Multiplayer Melee Combat System
   - Blueprint WebSockets
   - Dynamic Servers Sub-system (DSSLite)
+  - Multiplayer Action Combat System - CPP Classes
+  - Multiplayer Ragdoll
+  - Multiplayer Shooter Plugin
   - Network Clock
 - Nature
   - Baygall Brush
@@ -304,6 +409,7 @@
   - Landscape Backgrounds
   - Lava Field Collections
   - Landscape Mountains
+  - Lush
   - MAE Oak Forest
   - mediterranean Vegetation: giant Reed
   - Mediterranean Vegetation: Plant Pack I
@@ -319,6 +425,7 @@
   - Megascans - Stump
   - Megascans - Valley
   - Megascans - Wasteland
+  - Moab Desert Collections
 - Programming
   - Actions Extension
   - AGR PRO
@@ -349,7 +456,13 @@
   - M.J.'s Dynamic Asset Library
   - Magic Node
   - Math Extension Nodes and Functions
+  - Mersenne Twister Random Simple Plugin
   - MD5 Encrypt
+  - Moneytalks
+  - MySQL and MariaDB Integration
+  - MySQL Connect
+  - Nav Mesh Reloader Function
+  - Numbskull Serialization
   - Sorting Array
 - Projects
   - A Boy and His Kite
@@ -363,6 +476,10 @@
   - Infiltrator Demo
   - Lyra Starter Game
   - Meerkat Demo
+  - MetaHumans
+  - MissionAR
+  - ML Deformer Sample
+  - Oculus VR Darts Game
 - Services
   - GameFuse
   - Game Client SDK i3D.net
@@ -398,6 +515,7 @@
   - Factory Environment Collection
   - FANTASTIC - Village Pack
   - Gladiator Arena Environment Kit
+  - Greek Island
   - Hillside Sample
   - Indoor Shooting Range
   - Infinity Blade: Fire Lands
@@ -446,6 +564,18 @@
   - Megascans - Urban Alleyway Vol. 2
   - Megascans Abandoned Apartment
   - Megascans Goddess Temple
+  - Mission to Minerva
+  - Modular Concert Stage
+  - Modular Gothic/Fantasy Environment
+  - Modular Military Operation Urban Training Environment
+  - Modular Military Operation Urban Training Environment - Civilian Pack
+  - Modular Neighbourhood Pack
+  - Modular SciFi Season 1 Starter Bundle
+  - Modular Scifi Season 2 Starter Bundle
+  - Museum Environment Kit
+  - Open World Demo Collection
+  - Opera House Kit
+  - PalaceHall
 - Settings
   - Blueprintable Developer Settings
   - Blueprints Access To GConfig
@@ -463,6 +593,7 @@
   - Directional & Planet Gravity
   - Dynamic Grass System Lite
   - Dynamic Gravity Character
+  - Easy Combo Buffering
   - Easy Locomotion Toolkit
   - Easy Quests
   - EasyBallistics Plugin
@@ -481,6 +612,14 @@
   - Look At Actor
   - Mantling System
   - Maze Dungeon Generator Plugin
+  - MMO Kit Code
+  - Modular Game Features - Extra Actions
+  - Mountea Framework: Actor Interaction Plugin
+  - MoveIt! Multiplayer Locomotion System (V2.0)
+  - NPC Optimizator - automatic optimize NPC for you game
+  - Omega Game Framework
+  - Open Virtual Film Project
+  - PaperZD
 - Templates
   - Horror Engine
   - jRPG Template
@@ -489,6 +628,7 @@
   - Low Poly Core
   - MaxQ Spaceflight Toolkit
   - Survivors Roguelike: Multiplayer
+  - Open World RPG Toolkit
 - Vehicles
   - 2S3 Akatsiya Self-propelled howitzer (East)
   - A10 Attack Fighter (West)
@@ -540,6 +680,10 @@
   - M777 Howitzer Artillery (West)
   - M923 Truck (West)
   - Medic MT-LB (East)
+  - Mi8T Hip (East)
+  - MLRS 9k58 Smerch (East)
+  - MLRS M270 (West)
+  - MRAP Oshkosh (West)
 - UI
   - UI Navigation 2.0
   - Craft Resources Icons
@@ -548,14 +692,24 @@
   - Kantan Charts
   - KC-135R Air Tanker (West)
   - KKDamageUI
+  - Menu Builder Carousel
+  - MSL Toolkit
 - Utilities
   - Hardware Information
   - Hash And Encrypt Tools
-- VR
+  - Mod Browser & Manager by mod.io
+  - Monitor Utilities
+- VR & AR
   - BRUNNER 6DOF Motion Platform Interface
   - CityEngine VR Experience
   - Clarus Viewer Base
   - Face AR Sample
+  - Microsoft OpenXR
+  - MiVRy 3D Gesture Recognition
+  - Mixed Reality Toolkit Hub
+  - Mixed Reality UX Tools
+  - Ncam AR Suite Lite
+  - Oculus VR Assets Only
 - Web
   - Easy JWT
   - HPTcpSocketPlugin
@@ -611,50 +765,6 @@
 - Gm Enhanced Debugging Tool
 - Logic Driver Lite - State Machine Blueprint Editor
 - Luminance
-
-# Learning
-
-- 3D Map Navigation in Virtual Reality
-- Accessible Design with Unreal Engine
-- Action RPG
-- AEC Blueprints by Example
-- An In-Depth look at Environment Artist Based Tools
-- Animation Ecosystem for Game Development
-- Animation for Virtual Production
-- Audio-Driven Gameplay
-- Blueprint Communication
-- Blueprint Runtime Saving and Loading
-- Blueprints
-- Blueprints and Gameplay for Game Designers
-- Breaking Down the Components of Gameplay
-- Broadcast Sample
-- Build a Detective's Office Game Environment
-- Camera Framework Essentials for Games
-- Chaos Destruction Demo
-- Control Rig Mannequin UE4
-- Creating a First Person Aim Trainer
-- Creating a Level Blockout for Game Development
-- Creating a Scatter Tool with Blueprints
-- Creating Portal To Another Reality
-- Demonstrating Animation Blueprints and AI for Gameplay Designers
-- Designing for Voice
-- Digital Human
-- Dynamic Audio
-- Exploring Level Design for Game Development
-- Gaze and Head Interactions
-- Generating Oddly Oscillating Globe Lenses Yourself
-- Getting Started With Your Paper 2D Project
-- Implement UI with UX Tools and UMG
-- Implementing Level Design with Blueprints
-- Implementing UI for Level Design
-- Improving C++ Workflows Using Data
-- In Camera VFX Example
-- Incorporate Hand Interactions with UX Tools
-- Independent Filmmaking With Unreal Engine
-- Intro to Virtual Cinematography
-- Introducing Post Processing
-- Landscape Essential Concepts
-- Live Link for Performance Capture
 
 # Monetisation
 
