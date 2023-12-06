@@ -1,5 +1,3 @@
-# Assets
-
 - Achievements
   - Achievement System (Blueprint Compatible)
 - Actors
@@ -23,12 +21,59 @@
   - Military Character Silver
   - Military Style Mannequins
   - Ninja Character Plugin
+  - Paragon:
+    - Aurora
+    - Boris
+    - Countess
+    - Crunch
+    - Dekker
+    - Drongo
+    - Feng Mao
+    - Gadget
+    - Gideon
+    - Greystone
+    - GRMIM.exe
+    - Grux
+    - Howitzer
+    - Iggy & Scotch
+    - Kallari
+    - Khaimera
+    - Kwang
+    - Lt. Belica
+    - Minions
+    - Morigesh
+    - Murdock
+    - Muriel
+    - Narbash
+    - Phase
+    - Rampage
+    - Revenant
+    - Riktor
+    - Serath
+    - Sevarog
+    - Shinibi
+    - Sparrow
+    - Steel
+    - Terra
+    - The Fey
+    - Twinblast
+    - Wraith
+    - Wukong
+    - Yin
+    - Zinx
+  - Pirate
+  - Posed Humans 1
+  - Posed Humans Children Pack 1
+  - Posed Humans Shopping Pack 1
+  - Posed Humans Winter Pack 1
+  - Quadruped Fantasy Creatures
 - AI
   - AI for NPC, MetaHuman - Dialog, actions and general intelligence - by Convai
   - DoN's 3D Pathfinding for Flying AI
   - Easy AI Toolkit
   - GOAP NPC: Goal-Oriented Action Planning for Non-Player Characters (Code Plugin)
   - Procedural NPC Crowds v2
+  - Perception Extension
 - Animations
   - Advanced AI Spawn System
   - Advanced Locomotion System V4
@@ -53,6 +98,8 @@
   - MetaHuman Plugin
   - n00dEmotes 2.0
   - ReMoCapp plugin
+  - Passive Ragdoll
+  - Power IK
 - Buildings
   - 4 IN 1 Modular Research Facility / Mega Bundle
   - AccuCities 3d City Models Sample
@@ -64,19 +111,22 @@
   - Infinity Blade: Castle
   - Jejumok Gwana
   - Medieval Houses Modular Vol 2
-  - Megascans - Castle Ruins
-  - Megascans - Castle Stair Vol. 1
-  - Megascans - Castle Structure Vol. 1
-  - Megascans - Castle Wall Vol. 1
-  - Megascans - Chapel Vol. 1
-  - Megascans - Fantasy Fort Vol. 1
-  - Megascans - Fantasy Fort Vol. 2
-  - Megascans - Temples of Angkor Wat
+  - Megascans:
+    - Castle Ruins
+    - Castle Stair Vol. 1
+    - Castle Structure Vol. 1
+    - Castle Wall Vol. 1
+    - Chapel Vol. 1
+    - Fantasy Fort Vol. 1
+    - Fantasy Fort Vol. 2
+    - Temples of Angkor Wat
   - Modular Victorian House
   - Modern House
   - Modular Building Set
   - Modular Gothic Temple (medieval/winter/snow)
   - Modular Sci-Fi Village
+  - Procedural Building Generator
+  - Procedural Rooms
 - Camera
   - Action Camera Manager
   - Advanced Fade Objects
@@ -94,6 +144,7 @@
   - Live Blueprint Debugger
   - Log & Debug Tools
   - Log Viewer
+  - Property Debug Editor
 - Editor Tools
   - Get Set Editor Camera
   - Graph Formatter
@@ -108,6 +159,15 @@
   - Object Inspection
   - ObjectDeliverer
   - Outliner Shortcuts
+  - Physical Layout Tool
+  - PlayerStartPlugin
+  - Plugin Builder
+  - Plugin Downloader
+  - Prefabricator
+  - ProjectCleaner
+  - ProjectVersionFromGit
+  - Property Transfer Tool
+  - Safe Delete
 - Graphics
   - Advanced Cel Shader Lite
   - Art of Shader - Film And Special Effects
@@ -155,28 +215,29 @@
   - LPGenericPropsSet08
   - LPGenericPropsSet10
   - MEDA Furniture Pack
-  - Megascans - Brick Debris Vol. 1
-  - Megascans - Brick Rough Vol. 1
-  - Megascans - Brick Rubble Vol. 1
-  - Megascans - Cardboard Box Vol. 1
-  - Megascans - Cement Vol. 1
-  - Megascans - City Curbs
-  - Megascans - City Street Vol. 1
-  - Megascans - City Street Vol. 2
-  - Megascans - City Street Vol. 3
-  - Megascans - City Street Vol. 4
-  - Megascans - Clean Bricks
-  - Megascans - Clean Interior Tiles
-  - Megascans - Concrete Barriers
-  - Megascans - Construction Misc Vol. 1
-  - Megascans - Crumbled Walls
-  - Megascans - Definitive Breads
-  - Megascans - Definitive Fruits
-  - Megascans - Modular Pipes
-  - Megascans - Plastic Containers
-  - Megascans - Rustic Hardware
-  - Megascans - Vegetables
-  - Megascans - Wooden Decorative
+  - Megascans:
+    - Brick Debris Vol. 1
+    - Brick Rough Vol. 1
+    - Brick Rubble Vol. 1
+    - Cardboard Box Vol. 1
+    - Cement Vol. 1
+    - City Curbs
+    - City Street Vol. 1
+    - City Street Vol. 2
+    - City Street Vol. 3
+    - City Street Vol. 4
+    - Clean Bricks
+    - Clean Interior Tiles
+    - Concrete Barriers
+    - Construction Misc Vol. 1
+    - Crumbled Walls
+    - Definitive Breads
+    - Definitive Fruits
+    - Modular Pipes
+    - Plastic Containers
+    - Rustic Hardware
+    - Vegetables
+    - Wooden Decorative
   - Military Weapons Dark
   - Military Weapons Silver
   - Missile 9K121 Vikhr (East)
@@ -251,6 +312,11 @@
   - Old West Learning
   - Online Learning Kit
   - Online Learning: Automotive
+  - Physics Based Shotviz
+  - Platformer Game
+  - Prepare Unreal Engine for Mixed Reality Development
+  - Real-Time Compositing Basics
+  - Retrieving Camera Data
 - Levels
   - Async Level Load Plugin With Loading Screen
   - Async Loading Screen
@@ -259,8 +325,12 @@
 - Lighting
   - IES Light Profile Pack
   - MetaHuman Lighting
+  - Ray Traced Cinematic Lighting for Exteriors
+  - Ray Traced Cinematic Lighting for Interiors
+  - Realtime Global Illumination Spotlight
 - Machine Learning
   - MindMaker Machine Learning AI Plugin
+  - Runtime Text Translation AI
   - Unray Plugin for RL
 - Materials & Effects
   - 4K Materials: Wood Flooring Vol.01
@@ -282,92 +352,96 @@
   - Infinity Blade: Effects
   - Landscape Pro 2.0 Auto-Generated Material
   - M5 VFX Vol2. Fire and Flames(Niagara)
-  - Megascans - Asphalt
-  - Megascans - Asphalt Coarse Vol. 1
-  - Megascans - Asphalt Cracked Vol. 1
-  - Megascans - Asphalt Dried Vol. 1
-  - Megascans - Asphalt Fine Vol. 1
-  - Megascans - Asphalt Patch Vol. 1
-  - Megascans - Asphalt Vol. 1
-  - Megascans - Blood
-  - Megascans - Brick Floor Vol. 1
-  - Megascans - Brick Grout Vol. 1
-  - Megascans - Brick Modern Vol. 1
-  - Megascans - Brushes Print Vol. 1
-  - Megascans - Brushes Stain Vol. 1
-  - Megascans - Brushes Traditional Vol. 1
-  - Megascans - Bush Branch Vol. 1
-  - Megascans - Bush Branch Vol. 2
-  - Megascans - Bush Flower Vol. 1
-  - Megascans - Bush Leaf Vol. 1
-  - Megascans - Bush Vol. 1
-  - Megascans - Climber Leaf Vol. 1
-  - Megascans - Climber Vine Vol. 1
-  - Megascans - Climber Vine Vol. 1
-  - Megascans - Climber Vol. 1
-  - Megascans - Concrete Damaged Vol. 1
-  - Megascans - Concrete Dirty Vol. 1
-  - Megascans - Concrete Dirty Vol. 2
-  - Megascans - Concrete Plaster Vol. 1
-  - Megascans - Concrete Rough Vol. 1
-  - Megascans - Concrete Rough Vol. 2
-  - Megascans - Concrete Rough Vol. 3
-  - Megascans - Concrete Rough Vol. 4
-  - Megascans - Concrete Slab Vol. 1
-  - Megascans - Concrete Smooth Vol. 1
-  - Megascans - Concrete Smooth Vol. 2
-  - Megascans - Concrete Vol. 1
-  - Megascans - Concrete Vol. 1
-  - Megascans - Concrete Vol. 2
-  - Megascans - Concrete Vol. 2
-  - Megascans - Concrete Vol. 3
-  - Megascans - Concrete Vol. 4
-  - Megascans - Construction Brick Vol. 1
-  - Megascans - Construction Mud Vol. 1
-  - Megascans - Construction Old Vol. 1
-  - Megascans - Creature Feather Vol. 1
-  - Megascans - Creature Fur Vol. 1
-  - Megascans - Creature Gut Vol. 1
-  - Megascans - Creature Skin Vol. 1
-  - Megascans - Damages
-  - Megascans - Debris Construction Vol. 1
-  - Megascans - Debris Dirt Vol. 1
-  - Megascans - Debris Food Vol. 1
-  - Megascans - Debris Manmade Vol. 1
-  - Megascans - Debris Nature Vol. 1
-  - Megascans - Debris Nature Vol. 2
-  - Megascans - Debris Nature Vol. 3
-  - Megascans - Debris Nature Vol. 4
-  - Megascans - Debris Nature Vol. 5
-  - Megascans - Debris Paper Vol. 1
-  - Megascans - Debris Trash Vol. 1
-  - Megascans - Debris Vol. 1
-  - Megascans - Debris Vol. 2
-  - Megascans - Furniture Textiles
-  - Megascans - Industrial Metals
-  - Megascans - Leakages
-  - Megascans - Marble Tiles
-  - Megascans - Middle Eastern Surfaces
-  - Megascans - Modern Stucco
-  - Megascans - Moss
-  - Megascans - Polished Parquets Vol. 1
-  - Megascans - Polished Parquets Vol. 2
-  - Megascans - Pristine Granite
-  - Megascans - Pristine Marbles
-  - Megascans - Pristine Metals
-  - Megascans - Roofs
-  - Megascans - Sands
-  - Megascans - Snow
-  - Megascans - Stone Floors
-  - Megascans - Street Tiles
-  - Megascans - Ultimate Facades
-  - Megascans - Ultimate Wood Veneers
+  - Megascans:
+    - Asphalt
+    - Asphalt Coarse Vol. 1
+    - Asphalt Cracked Vol. 1
+    - Asphalt Dried Vol. 1
+    - Asphalt Fine Vol. 1
+    - Asphalt Patch Vol. 1
+    - Asphalt Vol. 1
+    - Blood
+    - Brick Floor Vol. 1
+    - Brick Grout Vol. 1
+    - Brick Modern Vol. 1
+    - Brushes Print Vol. 1
+    - Brushes Stain Vol. 1
+    - Brushes Traditional Vol. 1
+    - Bush Branch Vol. 1
+    - Bush Branch Vol. 2
+    - Bush Flower Vol. 1
+    - Bush Leaf Vol. 1
+    - Bush Vol. 1
+    - Climber Leaf Vol. 1
+    - Climber Vine Vol. 1
+    - Climber Vine Vol. 1
+    - Climber Vol. 1
+    - Concrete Damaged Vol. 1
+    - Concrete Dirty Vol. 1
+    - Concrete Dirty Vol. 2
+    - Concrete Plaster Vol. 1
+    - Concrete Rough Vol. 1
+    - Concrete Rough Vol. 2
+    - Concrete Rough Vol. 3
+    - Concrete Rough Vol. 4
+    - Concrete Slab Vol. 1
+    - Concrete Smooth Vol. 1
+    - Concrete Smooth Vol. 2
+    - Concrete Vol. 1
+    - Concrete Vol. 1
+    - Concrete Vol. 2
+    - Concrete Vol. 2
+    - Concrete Vol. 3
+    - Concrete Vol. 4
+    - Construction Brick Vol. 1
+    - Construction Mud Vol. 1
+    - Construction Old Vol. 1
+    - Creature Feather Vol. 1
+    - Creature Fur Vol. 1
+    - Creature Gut Vol. 1
+    - Creature Skin Vol. 1
+    - Damages
+    - Debris Construction Vol. 1
+    - Debris Dirt Vol. 1
+    - Debris Food Vol. 1
+    - Debris Manmade Vol. 1
+    - Debris Nature Vol. 1
+    - Debris Nature Vol. 2
+    - Debris Nature Vol. 3
+    - Debris Nature Vol. 4
+    - Debris Nature Vol. 5
+    - Debris Paper Vol. 1
+    - Debris Trash Vol. 1
+    - Debris Vol. 1
+    - Debris Vol. 2
+    - Furniture Textiles
+    - Industrial Metals
+    - Leakages
+    - Marble Tiles
+    - Middle Eastern Surfaces
+    - Modern Stucco
+    - Moss
+    - Polished Parquets Vol. 1
+    - Polished Parquets Vol. 2
+    - Pristine Granite
+    - Pristine Marbles
+    - Pristine Metals
+    - Roofs
+    - Sands
+    - Snow
+    - Stone Floors
+    - Street Tiles
+    - Ultimate Facades
+    - Ultimate Wood Veneers
   - Melee Trace
   - Mesic Flatwoods Habitat Brush
   - Necro's Utility Material Pack
   - Niagara Footstep VFX
   - Niagara Mega VFX Pack vol. I
   - Niagara UI Renderer
+  - Particle Effects
+  - Point Cloud Kit
+  - Realistic Starter VFX Pack Vol 2
 - Media
   - AJA Media Player
   - Ambient and Procedural Sound Design
@@ -383,8 +457,16 @@
   - Human Vocalizations
   - Interface & Item Sounds Pack
   - Mo-Sys VP Free
+  - Paragon:
+    - Male Announcer
+  - Procedural Midi
+  - Quartz Music System
+  - Runtime Audio Importer
+  - Runtime Image & GIF Loader
+  - Runtime Speech Recognizer
 - Meshes
   - Mesh Morpher Lite
+  - Realtime Mesh Component Core
 - Multiplayer
   - 4Players ODIN - Voice Chat SDK
   - Advanced Dedicated Server Matchmaking V3
@@ -395,6 +477,8 @@
   - Multiplayer Ragdoll
   - Multiplayer Shooter Plugin
   - Network Clock
+  - Pin Multiplayer Chat Time System
+  - Runtime Transformer Tool (Gizmo)
 - Nature
   - Baygall Brush
   - City Park Environment Collection
@@ -414,18 +498,23 @@
   - mediterranean Vegetation: giant Reed
   - Mediterranean Vegetation: Plant Pack I
   - Mediterranean Vegetation: Plant Pack II
-  - Megascans - Dead Stumps
-  - Megascans - Dry Grassland
-  - Megascans - Forest Path
-  - Megascans - Forest Undergrowth
-  - Megascans - Garden Lawn
-  - Megascans - Lava Field
-  - Megascans - Lush Plants
-  - Megascans - Meadow Pack
-  - Megascans - Stump
-  - Megascans - Valley
-  - Megascans - Wasteland
+  - Megascans:
+    - Dead Stumps
+    - Dry Grassland
+    - Forest Path
+    - Forest Undergrowth
+    - Garden Lawn
+    - Lava Field
+    - Lush Plants
+    - Meadow Pack
+    - Quarry Collections
+    - Stump
+    - Valley
+    - Wasteland
   - Moab Desert Collections
+  - Procedural Biomes
+  - Procedural Nature Pack Vol.1
+  - Reef Kit
 - Programming
   - Actions Extension
   - AGR PRO
@@ -464,6 +553,12 @@
   - Nav Mesh Reloader Function
   - Numbskull Serialization
   - Sorting Array
+  - Platform Functions
+  - Read & write text file
+  - ReadlocalTXT
+  - Regex in Blueprints
+  - Runtime Archiver
+  - Ryan's Helpful Helpers
 - Projects
   - A Boy and His Kite
   - City Sample
@@ -480,11 +575,15 @@
   - MissionAR
   - ML Deformer Sample
   - Oculus VR Darts Game
+  - Pixel Streaming Demo
 - Services
   - GameFuse
   - Game Client SDK i3D.net
   - Game Hosting Platform SDK i3D.net
   - GeoLocation (Android)
+  - PLATEAU SDK for Unreal
+  - PlayFab SDK
+  - Salesforce Blueprints
 - Sets
   - Automotive Beach Scene
   - Automotive Bridge Scene
@@ -534,36 +633,36 @@
   - Medieval Dungeon
   - Medieval Game Environment
   - Mediterranean Rustic Interior
-  - Megascans - Abandoned Factory
-  - Modular Gothic/Fantasy Environment
-  - Megascans - Cyberpunk Environment Vol. 1
-  - Megascans - Cyberpunk Environment Vol. 2
-  - Megascans - Desert Warzone Vol. 1
-  - Megascans - Desert Warzone Vol. 2
-  - Megascans - Iceland Vol. 1
-  - Megascans - Iceland Vol. 2
-  - Megascans - Iceland Vol. 3
-  - Megascans - Mountain Slope
-  - Megascans - Natural Scatter Debris
-  - Megascans - Nordic Forest Vol. 1
-  - Megascans - Nordic Forest Vol. 2
-  - Megascans - Nordic Forest Vol. 3
-  - Megascans - Nordic Forest Vol. 4
-  - Megascans - Pine Essentials
-  - Megascans - Post-Apocalyptic Street
-  - Megascans - Quarry
-  - Megascans - Rocky Grassland
-  - Megascans - Roman Empire Vol. 1
-  - Megascans - Roman Empire Vol. 2
-  - Megascans - Roman Empire Vol. 3
-  - Megascans - Rubble
-  - Megascans - Sandstone Desert
-  - Megascans - Scary Restroom
-  - Megascans - Sci-Fi Landscape
-  - Megascans - Urban Alleyway Vol. 1
-  - Megascans - Urban Alleyway Vol. 2
-  - Megascans Abandoned Apartment
-  - Megascans Goddess Temple
+  - Megascans:
+    - Abandoned Factory
+    - Cyberpunk Environment Vol. 1
+    - Cyberpunk Environment Vol. 2
+    - Desert Warzone Vol. 1
+    - Desert Warzone Vol. 2
+    - Iceland Vol. 1
+    - Iceland Vol. 2
+    - Iceland Vol. 3
+    - Mountain Slope
+    - Natural Scatter Debris
+    - Nordic Forest Vol. 1
+    - Nordic Forest Vol. 2
+    - Nordic Forest Vol. 3
+    - Nordic Forest Vol. 4
+    - Pine Essentials
+    - Post-Apocalyptic Street
+    - Quarry
+    - Rocky Grassland
+    - Roman Empire Vol. 1
+    - Roman Empire Vol. 2
+    - Roman Empire Vol. 3
+    - Rubble
+    - Sandstone Desert
+    - Scary Restroom
+    - Sci-Fi Landscape
+    - Urban Alleyway Vol. 1
+    - Urban Alleyway Vol. 2
+    - Abandoned Apartment
+    - Goddess Temple
   - Mission to Minerva
   - Modular Concert Stage
   - Modular Gothic/Fantasy Environment
@@ -576,6 +675,12 @@
   - Open World Demo Collection
   - Opera House Kit
   - PalaceHall
+  - Paragon:
+    - Agora and Monolith Environment
+  - Polar Sci-Fi Facility
+  - Realtime Archviz AssetPack - Bistro Restaurant Scene
+  - Rural Australia
+  - Safe House
 - Settings
   - Blueprintable Developer Settings
   - Blueprints Access To GConfig
@@ -620,6 +725,16 @@
   - Omega Game Framework
   - Open Virtual Film Project
   - PaperZD
+  - Particles and Wind Control System
+  - Photo Mode & Animation Poses
+  - Physical Interaction System
+  - Player Statistics (Blueprint Compatible)
+  - Procedural Environment Generator Lite
+  - Psychokinesis Force
+  - Quest Editor Plugin
+  - Reaction Quest
+  - Riding System
+  - RPG Stats
 - Templates
   - Horror Engine
   - jRPG Template
@@ -629,6 +744,7 @@
   - MaxQ Spaceflight Toolkit
   - Survivors Roguelike: Multiplayer
   - Open World RPG Toolkit
+  - PLATFORMER - Stylized Cube World
 - Vehicles
   - 2S3 Akatsiya Self-propelled howitzer (East)
   - A10 Attack Fighter (West)
@@ -684,6 +800,8 @@
   - MLRS 9k58 Smerch (East)
   - MLRS M270 (West)
   - MRAP Oshkosh (West)
+  - Radar Patriot (West)
+  - S400 Radar (East)
 - UI
   - UI Navigation 2.0
   - Craft Resources Icons
@@ -694,11 +812,14 @@
   - KKDamageUI
   - Menu Builder Carousel
   - MSL Toolkit
+  - Pin RPG Icon Set 01 - 267+ Icons
+  - Pin RPG Potion
 - Utilities
   - Hardware Information
   - Hash And Encrypt Tools
   - Mod Browser & Manager by mod.io
   - Monitor Utilities
+  - Parametric Cornell Box
 - VR & AR
   - BRUNNER 6DOF Motion Platform Interface
   - CityEngine VR Experience
@@ -714,6 +835,9 @@
   - Easy JWT
   - HPTcpSocketPlugin
   - HTTP Requests for Blueprints
+  - Restful with Blueprints
+  - RICOH Live Streaming Client SDK for Windows
+  - Runtime Files Downloader
 
 # Tools
 
