@@ -802,6 +802,7 @@
   - MRAP Oshkosh (West)
   - Radar Patriot (West)
   - S400 Radar (East)
+  - SAM Buk-M1-2 (East)
 - UI
   - UI Navigation 2.0
   - Craft Resources Icons
