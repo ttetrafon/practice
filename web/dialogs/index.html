@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="height=device-height, width=device-width, initial-scale=1.0, minimum-scale=1.0, maximum-scale=2.0,
+      user-scalable=yes, target-densitydpi=device-dpi">
+  <title>Dialog</title>
+  <script src="script.js" type="module" defer></script>
+  <link rel="stylesheet" href="styles.css">
+  <link rel="icon" type="image/x-icon" href="./img/avatar.jpg">
+</head>
+
+<body>
+  <dialog id="favDialog">
+    <form>
+      <p>
+        <label>
+          Favourite animal:
+          <select>
+            <option value="default">Choose…</option>
+            <option>Brine shrimp</option>
+            <option>Red panda</option>
+            <option>Spider monkey</option>
+          </select>
+        </label>
+      </p>
+      <div>
+        <button value="cancel" formmethod="dialog">Cancel</button>
+        <button id="confirmBtn" value="default">Confirm</button>
+      </div>
+    </form>
+  </dialog>
+  <p>
+    <button id="showDialog">Show the dialog (handle output)</button>
+  </p>
+  <output id="output1"></output>
+
+  <dialog id="dialog">
+    <form method="dialog">
+      <p>
+        <label>
+          Favourite fruit:
+          <input type="text" required />
+        </label>
+      </p>
+      <div>
+        <input type="submit" id="normal-close" value="Normal close" />
+        <input
+          type="submit"
+          id="novalidate-close"
+          value="Novalidate close"
+          formnovalidate />
+        <input type="submit" id="js-close" value="JS close" />
+      </div>
+    </form>
+  </dialog>
+  <p>
+    <button id="show-dialog">Show the dialog (validate form)</button>
+  </p>
+  <output></output>
+</body>
+
+</html>
