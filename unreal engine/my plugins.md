@@ -67,6 +67,13 @@
   - Posed Humans Shopping Pack 1
   - Posed Humans Winter Pack 1
   - Quadruped Fantasy Creatures
+  - Scanned 3D People Pack
+  - ScannedReality Player
+  - Sci-Fi Character 08 (Renegade)
+  - Stylized Character Kit: Casual 01
+  - Undead Pack
+  - Windwalker Echo
+  - Wizard for Battle Polyart
 - AI
   - AI for NPC, MetaHuman - Dialog, actions and general intelligence - by Convai
   - DoN's 3D Pathfinding for Flying AI
@@ -74,6 +81,7 @@
   - GOAP NPC: Goal-Oriented Action Planning for Non-Player Characters (Code Plugin)
   - Procedural NPC Crowds v2
   - Perception Extension
+  - VisAI - Community - Modern AI Framework
 - Animations
   - Advanced AI Spawn System
   - Advanced Locomotion System V4
@@ -99,7 +107,10 @@
   - n00dEmotes 2.0
   - ReMoCapp plugin
   - Passive Ragdoll
+  - Pose Driver Connect
   - Power IK
+  - Simple Crouch Animations
+  - Slay Animation Sample
 - Buildings
   - 4 IN 1 Modular Research Facility / Mega Bundle
   - AccuCities 3d City Models Sample
@@ -127,6 +138,10 @@
   - Modular Sci-Fi Village
   - Procedural Building Generator
   - Procedural Rooms
+  - Sun Temple
+  - Sunset - Modular Medieval Brick Buildings
+  - UE4All: City
+  - UE4All: Pivot Building
 - Camera
   - Action Camera Manager
   - Advanced Fade Objects
@@ -134,18 +149,22 @@
   - CameraShake Editor
   - Fixed Camera System
   - Open RTS Camera
+  - Technocrane Tracker
+  - Universal Camera
 - Controls
   - bHaptics Haptic Manager
   - bHapticsPlugin
   - Custom Game Only Input Mode
   - Input Sequence
   - Localised Keybindings
+  - Virtual Input
 - Debugging
   - Live Blueprint Debugger
   - Log & Debug Tools
   - Log Viewer
   - Property Debug Editor
 - Editor Tools
+  - Custom Details Sections
   - Get Set Editor Camera
   - Graph Formatter
   - Graph Printer
@@ -168,6 +187,16 @@
   - ProjectVersionFromGit
   - Property Transfer Tool
   - Safe Delete
+  - Scene Fusion - Real-time Remote Collaboration
+  - Simple Color Wheel
+  - Sirius Utility Nodes
+  - Slate Icon Browser
+  - SweejTech Audio Inspector
+  - Tab Restore - Easy Editor Life Improvement
+  - Time Clock
+  - UV-Packer
+  - Visual Studio Integration Tool
+  - Visualize Input Event Plugin (VIEPlugin)
 - Graphics
   - Advanced Cel Shader Lite
   - Art of Shader - Film And Special Effects
@@ -176,6 +205,16 @@
   - EGraphpicsSTL
   - Extended Shading
   - Interior Mapping Shader
+  - ScreenFade Plugin
+  - Shader Optimization Tool
+  - Shader Reader
+  - Stylized Rendering
+  - UTC Shader Library
+- Integrations
+  - Storyline Importer
+  - Telegram Message
+  - Text Translation
+  - Unreal Datasmith
 - Items
   - Ancient Treasures
   - Apartment Tech Props
@@ -264,6 +303,12 @@
   - Old West - VOL 5 - Town Props
   - Old West VOL. 6 - Town and Industrial
   - Old West VOL.3 - Travel Supplies and Goods
+  - Sports Equipment Pack 1
+  - Sports Equipment Pack 2
+  - SRBM Iskander-M (East)
+  - SRBM Iskander (West)
+  - Storages Pack I
+  - VP Real Food and Coffee Bakery
 - Learning
   - 3D Map Navigation in Virtual Reality
   - Accessible Design with Unreal Engine
@@ -317,6 +362,14 @@
   - Prepare Unreal Engine for Mixed Reality Development
   - Real-Time Compositing Basics
   - Retrieving Camera Data
+  - Shooter Game
+  - Sound and Space
+  - Spatial Audio Temple
+  - Teaching with Unreal Engine
+  - Wave Function Collapse Demo
+  - Whirl Panels
+  - Working with Data in Blueprint Part One
+  - Working with Data in Blueprint Part Two
 - Levels
   - Async Level Load Plugin With Loading Screen
   - Async Loading Screen
@@ -332,6 +385,7 @@
   - MindMaker Machine Learning AI Plugin
   - Runtime Text Translation AI
   - Unray Plugin for RL
+  - Velox Neuro - Neural Network Inference Engine
 - Materials & Effects
   - 4K Materials: Wood Flooring Vol.01
   - Advanced Glass Material Pack
@@ -347,6 +401,7 @@
   - Forest Landscape Materials Vol. II
   - FX Variety Pack
   - gFur 5
+  - Gradient Generator
   - Grass Landscape Material Vol. I
   - HLSL Material
   - Infinity Blade: Effects
@@ -442,7 +497,21 @@
   - Particle Effects
   - Point Cloud Kit
   - Realistic Starter VFX Pack Vol 2
+  - Scrub Habitat Brush
+  - Scrubby Flatwoods Habitat Brush
+  - Shapes Visualizer
+  - Specialty Materials for Games Collections
+  - Stylized Materials Pack
+  - Subtropical Waterbody Habitat Brush
+  - Translucent Material Light Ray
+  - UE4All: Sculpture
+  - UI Material Lab
+  - Water Materials
+  - Wet Flatwoods Habitat Brush
+  - Xeric Hammock Habitat Brush
 - Media
+  - Agora RTC Voice SDK
+  - Agora RTC Video SDK
   - AJA Media Player
   - Ambient and Procedural Sound Design
   - Auto Footstep Tool
@@ -464,9 +533,16 @@
   - Runtime Audio Importer
   - Runtime Image & GIF Loader
   - Runtime Speech Recognizer
+  - Sound Phenomenon Fantasy Orchestra
+  - Storyboard Tool
+  - Voice SDK
 - Meshes
   - Mesh Morpher Lite
   - Realtime Mesh Component Core
+  - Spline Area Mesh
+  - SplineCraft Lite
+  - SplineSweepMesh
+  - SuperGrid Starter pack
 - Multiplayer
   - 4Players ODIN - Voice Chat SDK
   - Advanced Dedicated Server Matchmaking V3
@@ -479,6 +555,11 @@
   - Network Clock
   - Pin Multiplayer Chat Time System
   - Runtime Transformer Tool (Gizmo)
+  - SCUE4 Anti-Cheat Solution
+  - Simplified Real Time Data Sharing
+  - STOMP Over Web Sockets BP
+  - VaultIt! Multiplayer Vaulting System
+  - Wait For Players System
 - Nature
   - Baygall Brush
   - City Park Environment Collection
@@ -493,7 +574,7 @@
   - Landscape Backgrounds
   - Lava Field Collections
   - Landscape Mountains
-  - Lush
+  - Lush: Stylized Environment Set
   - MAE Oak Forest
   - mediterranean Vegetation: giant Reed
   - Mediterranean Vegetation: Plant Pack I
@@ -515,6 +596,21 @@
   - Procedural Biomes
   - Procedural Nature Pack Vol.1
   - Reef Kit
+  - Stone Pine Forest
+  - Stylized - Dynamic Nature
+  - Stylized Nature Pack
+  - Temperate Vegetation: conifer Bushes & Saplings I
+  - Temperate Vegetation: Fern Collection
+  - temperate Vegetation: Foliage Collection
+  - temperate Vegetation: Ground Foliage
+  - temperate Vegetation: Meadow Flowers
+  - temperate Vegetation: optimized Grass Library
+  - temperate Vegetation: Spruce Forest
+  - Temperate Vegetation: Wild Berries
+  - Tree Bark Collection
+  - tropical Vegetation: Banana Plants
+  - tropical Vegetation: Ground Plants
+  - tropical Vegetation: Pandanus Plants
 - Programming
   - Actions Extension
   - AGR PRO
@@ -552,13 +648,21 @@
   - MySQL Connect
   - Nav Mesh Reloader Function
   - Numbskull Serialization
-  - Sorting Array
   - Platform Functions
+  - Ranc Utilities
   - Read & write text file
   - ReadlocalTXT
   - Regex in Blueprints
   - Runtime Archiver
   - Ryan's Helpful Helpers
+  - SaveGameable Do Once
+  - SHA256 Hash Functions
+  - Simple SQLite
+  - Simple XML
+  - Sorting Array
+  - Ultimate Pack
+  - UniversalInterface
+  - UPFileDialog
 - Projects
   - A Boy and His Kite
   - City Sample
@@ -576,6 +680,11 @@
   - ML Deformer Sample
   - Oculus VR Darts Game
   - Pixel Streaming Demo
+  - Stack O Bot
+  - Strategy Game
+  - Turn Based Strategy
+  - Tutorial Hallways AGX Dynamics for Unreal
+  - Valley of the Ancient
 - Services
   - GameFuse
   - Game Client SDK i3D.net
@@ -624,6 +733,7 @@
   - Infinity Blade: Temple
   - Isometric - Interiors
   - Isometric World : Sky Temple
+  - Korean Traditional Heritage Props
   - Loft Office (Modular)
   - Low Poly Medieval Interior and Constructions
   - Low Poly Style Deluxe 2: Tropical Environment
@@ -681,6 +791,23 @@
   - Realtime Archviz AssetPack - Bistro Restaurant Scene
   - Rural Australia
   - Safe House
+  - Scifi Hallway
+  - Shanty Town Slums
+  - SICKA MANSION
+  - SimPoly Town
+  - Soul: Cave
+  - Soul: City
+  - Spaceship Interior Environment Set
+  - Storage House Set
+  - Stylized Eastern Village
+  - Stylized Egypt
+  - Stylized Fantasy Provencal ( Stylized , Fantasy , Provencal)
+  - Stylized winter city environment
+  - The Bazaar
+  - Triplex House Villa
+  - Underwater World / 70 Assets
+  - Venice - fast building
+  - Vintage Room
 - Settings
   - Blueprintable Developer Settings
   - Blueprints Access To GConfig
@@ -735,6 +862,19 @@
   - Reaction Quest
   - Riding System
   - RPG Stats
+  - SenseSystem
+  - Shooter Helper
+  - Simple Stamina Component
+  - SOverlay
+  - Surface Footstep System
+  - Target System Component Plugin
+  - The Targeting System: C++ Plugin
+  - Topdown/RTS-Camera with CharacterBase
+  - Ultimate FPS Puzzle Kit
+  - Ultra Combo System
+  - UtilityAI with Replicated Weapon, Stat, and Status Effect Systems
+  - VaFogOfWar
+  - Weather System
 - Templates
   - Horror Engine
   - jRPG Template
@@ -745,6 +885,13 @@
   - Survivors Roguelike: Multiplayer
   - Open World RPG Toolkit
   - PLATFORMER - Stylized Cube World
+  - Survivors Roguelike - Multiplayer Game Template
+  - The Immersive Template
+  - Visual Novel Framework - Full System
+  - Voice SDK
+- Textures & Sprites
+  - The Vagrant: Background Construction Pack 01
+  - The Vagrant: Background Construction Pack 02
 - Vehicles
   - 2S3 Akatsiya Self-propelled howitzer (East)
   - A10 Attack Fighter (West)
@@ -803,6 +950,23 @@
   - Radar Patriot (West)
   - S400 Radar (East)
   - SAM Buk-M1-2 (East)
+  - Sovremenny-class destroyer (East)
+  - Stylized Truck Pack (Gasoline Truck, Box Truck, Trunk Truck, Drivable Truck)
+  - Su25 Bomber (East)
+  - Su30 Fighter (West)
+  - Tank T72B (East)
+  - Truck M983 HEMTT (West)
+  - UAV MQ-1 Predator (West)
+  - UAV MQ-9 Reaper (West)
+  - UCAV Orion (East)
+  - UH60A Blackhawk (West)
+  - Ultimate Ship Package / 110+ Assets
+  - Ural Typhoon MRAP (East)
+  - Vehicle Variety Pack
+  - Vehicle Variety Pack Volume
+  - Voxel Cars
+  - ZU-23-2 AA autocannon (East)
+  - Zubr LCAC (East)
 - UI
   - UI Navigation 2.0
   - Craft Resources Icons
@@ -815,6 +979,12 @@
   - MSL Toolkit
   - Pin RPG Icon Set 01 - 267+ Icons
   - Pin RPG Potion
+  - Typewriter effect
+  - UI Effect Function Library
+  - UI Navigation 3.0
+  - UI Particle System
+  - UITouch
+  - WindowsDialogBox
 - Utilities
   - Hardware Information
   - Hash And Encrypt Tools
@@ -832,6 +1002,9 @@
   - Mixed Reality UX Tools
   - Ncam AR Suite Lite
   - Oculus VR Assets Only
+  - Showdown VR Demo
+  - VR Tunnelling Pro
+  - World Locking Tools
 - Web
   - Easy JWT
   - HPTcpSocketPlugin
@@ -839,6 +1012,10 @@
   - Restful with Blueprints
   - RICOH Live Streaming Client SDK for Windows
   - Runtime Files Downloader
+  - Singularity - web3 made easy
+  - TCP Socket Plugin
+  - TCPClient Plugin
+  - VaRest
 
 # Tools
 
@@ -903,6 +1080,7 @@
   - Enjin SDK
   - Holochain Client
   - HttpGPT - GPT Integration (ChatGPT and DALL-E)
+  - web3.unreal by Game7
 - Data
   - Appsflyer
   - Firebase Analytics
