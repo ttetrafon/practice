@@ -14,7 +14,7 @@
    3.
 1. **S3** -> Create Bucket
    1. Choose name (must be the same as the domain, without 'www') & region, leave the rest as-is.
-   2. Upload files (index.html, styles.css, background.jpg) in the bucket.
+   2. Upload files (index.html, styles.css, background.jpg, ...) in the bucket.
 2. **CloudFront** -> *Create Distribution*
    1. Origin Domain: select the bucket that contains the website
    2. Origin Access: origin access control settings (buckets can restrict access to only CloudFront)
@@ -23,7 +23,6 @@
    5. WAF -> Do not enable
    6. Settings
       1. Alternate Domain Names: add the required domain names
-         1.
       2. Custom SSL Certificate: select the certificate from above
       3. Supported HTTP versions: HTTP/2, HTTP/3 (as needed)
       4. Default root object: index.html (or whatever the entry point is)
@@ -33,7 +32,7 @@
       2. Select *simple routing*
       3. Hit *define simple record*
          1. Record type: A
-         3. Value/Route traffic to: Alias to S3 website endpoint
-         4. Region: same as the bucket
-         5. Url: the bucket should appear when you click in the box
-         6. Evaluate target health: No
+         2. Value/Route traffic to: Alias to S3 website endpoint
+         3. Region: same as the bucket
+         4. Url: the bucket should appear when you click in the box
+         5. Evaluate target health: No
