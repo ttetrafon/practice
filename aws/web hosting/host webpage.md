@@ -11,7 +11,6 @@
    1. NS & SOA are automatically created when registering a domain
       1. Check if the NS (name-server) record has the same name-servers with the ones form any WHOIS check (https://who.is/whois/). If not, update the name-servers in the NS record to match the ones in the domain.
    2. (if there is no CNAME record created automatically by the certificate authority) *Create Record* -> CNAME -> name/value copied from the certificate above
-   3.
 4. **S3** -> Create Bucket
    1. Choose name (must be the same as the domain, without 'www') & region, leave the rest as-is.
    2. Upload files (index.html, styles.css, background.jpg, ...) in the bucket.
@@ -32,7 +31,13 @@
       2. Select *simple routing*
       3. Hit *define simple record*
          1. Record type: A
-         2. Value/Route traffic to: Alias to S3 website endpoint
-         3. Region: same as the bucket
-         4. Url: the bucket should appear when you click in the box
+         2. Value/Route traffic to: Alias to CloudFront distribution
+         3. Region: same as the distribution/bucket
+         4. Url: the distribution should appear in the list
          5. Evaluate target health: No
+7. **Route 53** -> Hosted Zones -> Domain's Hosted Zone -> *Create Record* (do this for all required subdomains (`www.my_domain.com`)
+      1. Hit *switch to wizard*
+      2. Select *simple routing*
+      3. Hit *define simple record*
+         1. Record type: CNAME
+         2. Value/Route traffic to: "main domain"
