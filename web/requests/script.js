@@ -1,3 +1,5 @@
+// https://developer.mozilla.org/en-US/docs/Web/API/Fetch_API/Using_Fetch
+
 console.log("main script started...");
 
 const url = "https://dog.ceo/api/breeds/image/random";
