@@ -564,6 +564,7 @@
   - Baygall Brush
   - City Park Environment Collection
   - City Park Environment Collection LITE
+  - Clouds & Skies
   - Corals
   - Deep Elder Caves
   - Dry Grass Collections
@@ -707,21 +708,23 @@
   - Cropout Sample Project
   - Downtown West Modular Pack
   - Dreamscape: Stylized Environment Tower - Stylized Nature Open World Fantasy
-  - Edith Finch: Barbara Room
-  - Edith Finch: Beach Wedding
-  - Edith Finch: Cannery and LowPoly Kingdom
-  - Edith Finch: Classrooms and Bedrooms
-  - Edith Finch: Edie Room
-  - Edith Finch: House and Common Areas
-  - Edith Finch: House Grounds
-  - Edith Finch: Molly Room
-  - Edith Finch: Sam Room
-  - Edith Finch: Twins Room
+  - Edith Finch
+    - Barbara Room
+    - Beach Wedding
+    - Cannery and LowPoly Kingdom
+    - Classrooms and Bedrooms
+    - Edie Room
+    - House and Common Areas
+    - House Grounds
+    - Molly Room
+    - Sam Room
+    - Twins Room
   - Electric Dreams Env
   - English College Level 4 Sample
   - Epic Zen Garden
   - Factory Environment Collection
   - FANTASTIC - Village Pack
+  - Fantasy Bundle Environment Kit 3 in 1
   - Gladiator Arena Environment Kit
   - Greek Island
   - Hillside Sample
@@ -733,6 +736,7 @@
   - Infinity Blade: Temple
   - Isometric - Interiors
   - Isometric World : Sky Temple
+  - Ithris Cemetery
   - Korean Traditional Heritage Props
   - Loft Office (Modular)
   - Low Poly Medieval Interior and Constructions
@@ -836,10 +840,12 @@
   - Gameplay Abilities Groundwork
   - GameplayTags Component
   - GASAttachEditor
+  - Gathering Resources
   - Interaction System
   - Interaction System Starter Pack
   - Interactive World
   - Inventory System
+  - Line of Sight Dynamic Mesh
   - Lock On Target
   - Look At Actor
   - Mantling System
