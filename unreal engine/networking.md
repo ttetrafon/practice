@@ -29,7 +29,8 @@ Multiple instances of the game can be run automatically in the same editor.
 
 - Multiple PlayerControllers are created in a multiplayer game - one for each player.
   - Any `Actor` directly assigned to a `Pawn` is automatically associated with that pawn's owner (PlayerController).
-- Each player needs their own dedicated *player start* point.
+- Each player needs their own dedicated *player start* point, unless multiple players start on the same starting point.
+  - When having multiple player starts, override `ChoosePlayerStart` function inside the `GameMode`. (a simple way is to use the `Player Start Tag`, set it to *Used* when a player start has been used, and later loop over all of them until one not used is found).
 
 ## Replication
 
