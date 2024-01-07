@@ -27,17 +27,17 @@
       4. Default root object: index.html (or whatever the entry point is)
 6. **S3** -> domain bucket -> Permissions -> update the policy with the details provided by CloudFront
 7. **Route 53** -> Hosted Zones -> Domain's Hosted Zone -> *Create Record* (do this for the domain (`my_domain.com`) and all required subdomains (`www.my_domain.com`))
-      1. Hit *switch to wizard*
-      2. Select *simple routing*
-      3. Hit *define simple record*
-         1. Record type: A
-         2. Value/Route traffic to: Alias to CloudFront distribution
-         3. Region: same as the distribution/bucket
-         4. Url: the distribution should appear in the list
-         5. Evaluate target health: No
-7. **Route 53** -> Hosted Zones -> Domain's Hosted Zone -> *Create Record* (do this for all required subdomains (`www.my_domain.com`)
-      1. Hit *switch to wizard*
-      2. Select *simple routing*
-      3. Hit *define simple record*
-         1. Record type: CNAME
-         2. Value/Route traffic to: "main domain"
+   1. Hit *switch to wizard*
+   2. Select *simple routing*
+   3. Hit *define simple record*
+      1. Record type: A
+      2. Value/Route traffic to: Alias to CloudFront distribution
+      3. Region: same as the distribution/bucket
+      4. Url: the distribution should appear in the list
+      5. Evaluate target health: No
+8. **Route 53** -> Hosted Zones -> Domain's Hosted Zone -> *Create Record* (do this for all required subdomains (`www.my_domain.com`)
+   1. Hit *switch to wizard*
+   2. Select *simple routing*
+   3. Hit *define simple record*
+      1. Record type: CNAME
+      2. Value/Route traffic to: "main domain"
