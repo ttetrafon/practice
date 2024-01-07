@@ -58,6 +58,11 @@ UFUNCTION(BlueprintCallable)
 - A blueprint can contain variables, as it is a class.
 - _Expose on spawn_: Allows a blueprint variable to be modified in scripts on in the editor.
 
+### Pure vs Impure Nodes
+
+- Pure (green, with execution pin) nodes always run when encountered.
+- Impure (blue, no execution pin) nodes cache their output after first encountered.
+
 ## Blueprint Use
 
 ### Instantiate
