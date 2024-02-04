@@ -2,6 +2,17 @@
 
 The game's mode and state are held in specific blueprint classes.
 
+## Game State
+
+- Global state is held within the **Game Instance** and **Game State** classes.
+- The **Game Instance** is initiated when the game starts and is destroyed only when the game is closed.
+  - It can be selected in _Edit -> Project Settings -> Maps & Modes -> Game Instance_.
+  - Is responsible for handling all the high level data that persists across level changes or game sessions.
+  - Should be the landing point for logic that always needs to work, even when a level is not loaded properly (networking, saving, file handling, etc).
+  - `Event Init` and `Event Shutdown` are the first and last things triggered during the game's lifetime.
+  - Each game instance in a multiplayer game is individual and not connected to other game instances, meaning that data on it are never replicated.
+- A **game state** is similar, but is attached to the level instead of the full game and exists in every running instance of the game in a multiplayer game.
+
 ## Game Mode
 
 - The **GameModeBase** is the parent class responsible for creating the game mode. The **Game Mode** class is used to define the rules of the game and specifies the default classes used for the creation of **Pawn**, **Player Controller**, **Game State Base**, **HUD**, etc.
@@ -12,16 +23,6 @@ The game's mode and state are held in specific blueprint classes.
   With the level open, select the required game mode in _Window -> World Settings -> Game Mode -> Game Mode Override_.
 - The **game mode** exists only on the server of the game when running a multiplayer game (`Possess`).
 - Subclasses can be swapped in runtime - mostly used when the player needs to change the character they are controlling.
-
-## Game State
-
-- Global state is held within the **Game Instance** and **Game State** classes.
-- The **game instance** is initiated when the game starts and is destroyed only when the game is closed.
-  - It can be selected in _Edit -> Project Settings -> Maps & Modes -> Game Instance_.
-  - Should be the landing point for logic that always needs to work, even when a level is not loaded properly (networking, saving, file handling, etc).
-  - `Event Init` and `Event Shutdown` are the first and last things triggered during the game's lifetime.
-  - Each game instance in a multiplayer game is individual and not connected to other game instances, meaning that data on it are never replicated.
-- A **game state** is similar, but is attached to the level instead of the full game and exists in every running instance of the game in a multiplayer game.
 
 ## Player State
 
