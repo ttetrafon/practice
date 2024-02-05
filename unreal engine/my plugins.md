@@ -76,6 +76,10 @@
   - Undead Pack
   - Windwalker Echo
   - Wizard for Battle Polyart
+- Advertising
+  - ADSCore Lite
+  - Android Play Billing
+  - Bansh Ads
 - AI
   - AI for NPC, MetaHuman - Dialog, actions and general intelligence - by Convai
   - DoN's 3D Pathfinding for Flying AI
@@ -113,6 +117,14 @@
   - Power IK
   - Simple Crouch Animations
   - Slay Animation Sample
+- Blockchain
+  - Cronos Play for Unreal Engine
+  - Emergence
+  - Enjin SDK
+  - Holochain Client
+  - HttpGPT - GPT Integration (ChatGPT and DALL-E)
+  - Thugz Blockchain Plugin
+  - web3.unreal by Game7
 - Buildings
   - 4 IN 1 Modular Research Facility / Mega Bundle
   - AccuCities 3d City Models Sample
@@ -138,6 +150,7 @@
   - Modular Building Set
   - Modular Gothic Temple (medieval/winter/snow)
   - Modular Sci-Fi Village
+  - NHA - Unhyeongung Palace
   - Procedural Building Generator
   - Procedural Rooms
   - Sun Temple
@@ -158,14 +171,22 @@
   - bHapticsPlugin
   - Custom Game Only Input Mode
   - Input Sequence
+    - Enhanced Input Sequence
   - Localised Keybindings
   - Virtual Input
+- Data Analytics
+  - Appsflyer
+  - Firebase Analytics
+  - Firebase Authentication
+  - GameAnalytics
 - Debugging
   - Live Blueprint Debugger
   - Log & Debug Tools
   - Log Viewer
   - Property Debug Editor
 - Editor Tools
+  - Blueprint Screenshot Tool
+  - Crystal Nodes
   - Custom Details Sections
   - Editor Tools and Quaility Of Life Extension
   - Get Set Editor Camera
@@ -214,6 +235,7 @@
   - Stylized Rendering
   - UTC Shader Library
 - Integrations
+  - E3DS Automation Tool
   - Storyline Importer
   - Telegram Message
   - Text Translation
@@ -670,6 +692,7 @@
   - Ultimate Pack
   - UniversalInterface
   - UPFileDialog
+  - XRFeitoria
 - Projects
   - A Boy and His Kite
   - City Sample
@@ -838,6 +861,7 @@
   - Blueprints Access To GConfig
   - CheckAppInstance
 - Systems
+  - Advanced Interactin System
   - Advanced Stats with Runes System
   - Avatar SDK Plugin
   - Blueprint Cheat Manager
@@ -913,6 +937,7 @@
   - Survivors Roguelike: Multiplayer
   - Open World RPG Toolkit
   - PLATFORMER - Stylized Cube World
+  - Side Scroller Template - 2D Movement/Camera Starter Kit (Multiplayer-Ready)
   - Survivors Roguelike - Multiplayer Game Template
   - The Immersive Template
   - Visual Novel Framework - Full System
@@ -1005,6 +1030,7 @@
   - KKDamageUI
   - Menu Builder Carousel
   - MSL Toolkit
+  - Narative Common UI
   - Pin RPG Icon Set 01 - 267+ Icons
   - Pin RPG Potion
   - Typewriter effect
@@ -1095,22 +1121,3 @@
 - Gm Enhanced Debugging Tool
 - Logic Driver Lite - State Machine Blueprint Editor
 - Luminance
-
-# Monetisation
-
-- Advertisements
-  - ADSCore Lite
-  - Android Play Billing
-  - Bansh Ads
-- Blockchain
-  - Cronos Play for Unreal Engine
-  - Emergence
-  - Enjin SDK
-  - Holochain Client
-  - HttpGPT - GPT Integration (ChatGPT and DALL-E)
-  - web3.unreal by Game7
-- Data
-  - Appsflyer
-  - Firebase Analytics
-  - Firebase Authentication
-  - GameAnalytics
