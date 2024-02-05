@@ -24,10 +24,14 @@ The game's mode and state are held in specific blueprint classes.
 - The **game mode** exists only on the server of the game when running a multiplayer game (`Possess`).
 - Subclasses can be swapped in runtime - mostly used when the player needs to change the character they are controlling.
 
-## Player State
+### Player Controller
+
+- Handles input and controls the player's character (`Pawn`/`Character`).
+
+### Player State
 
 - Belongs to each individual player, but is replicated to all running game instances in multiplayer.
-- Used to hold all information that every player needs to know about other players.
+- Used to hold all information that every player needs to know about their own character and other players.
 
 ## Levels
 
