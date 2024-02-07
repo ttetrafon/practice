@@ -153,6 +153,7 @@
   - NHA - Unhyeongung Palace
   - Procedural Building Generator
   - Procedural Rooms
+  - Replicated Building System
   - Sun Temple
   - Sunset - Modular Medieval Brick Buildings
   - UE4All: City
@@ -413,6 +414,7 @@
   - Velox Neuro - Neural Network Inference Engine
 - Materials & Effects
   - 4K Materials: Wood Flooring Vol.01
+  - Advanced CRT TV - VCR - VHS Effects
   - Advanced Glass Material Pack
   - Animated Rain - Waterdrop Material & FX
   - Animated Texture with GIF Importer
@@ -625,6 +627,7 @@
   - Reef Kit
   - Stone Pine Forest
   - Stylized - Dynamic Nature
+  - Stylized Modular Mine
   - Stylized Nature Pack
   - Temperate Vegetation: conifer Bushes & Saplings I
   - Temperate Vegetation: Fern Collection
@@ -754,6 +757,7 @@
   - Factory Environment Collection
   - FANTASTIC - Village Pack
   - Fantasy Bundle Environment Kit 3 in 1
+  - Fantasy Interior Environment
   - Gladiator Arena Environment Kit
   - Greek Island
   - Hillside Sample
@@ -918,6 +922,7 @@
   - Shooter Helper
   - Simple Stamina Component
   - SOverlay
+  - Stats & Achievements Integration
   - Surface Footstep System
   - Target System Component Plugin
   - The Targeting System: C++ Plugin
