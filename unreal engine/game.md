@@ -15,8 +15,62 @@ The game's mode and state are held in specific blueprint classes.
 
 ## Game Mode
 
-- The **GameModeBase** is the parent class responsible for creating the game mode. The **Game Mode** class is used to define the rules of the game and specifies the default classes used for the creation of **Pawn**, **Player Controller**, **Game State Base**, **HUD**, etc.
-  Define these (custom) classes in the _class defaults_ of **Game Mode**.
+- The **GameModeBase** is the parent class responsible for creating the game mode. The **Game Mode** class is used to define the rules of the game and specifies the default classes used for the creation of **Pawn**, **Player Controller**, **Game State Base**, **HUD**, etc. Define these (custom) classes in the _class defaults_ of **Game Mode**.
+  - In C++, the default subclasses can declared like this:
+
+`MyCharacter.h`
+
+`MyCharacter.cpp`
+
+`MyGameInstance.h`
+
+`MyGameInstance.cpp`
+
+`MyGameMode.h`
+```
+#include "CoreMinimal.h"
+#include "GameFramework/GameMode.h"
+#include "MyGameMode.generated.h"
+
+UCLASS()
+class SHADOWSOFTHELICHLORD_API AMyGameMode : public AGameMode
+{
+	GENERATED_BODY()
+public:
+	AMyGameMode();
+};
+```
+
+`MyGameMode.cpp`
+```
+#include "MyGameMode.h"
+#include "MyGameState.h"
+#include "MyPlayerController.h"
+#include "MyPlayerState.h"
+#include "MyCharacter.h"
+#include "UObject/ConstructorHelpers.h"
+
+AMyGameMode::AMyGameMode() {
+  GameStateClass = AMyGameState::StaticClass();
+  PlayerStateClass = AMyPlayerState::StaticClass();
+  PlayerControllerClass = AMyPlayerController::StaticClass();
+
+  static ConstructorHelpers::FClassFinder<APawn> PlayerPawnBPClass(TEXT("/Game/Blueprints/BP_Character"));
+  if (PlayerPawnBPClass.Class != nullptr) {
+    DefaultPawnClass = PlayerPawnBPClass.Class;
+  }
+}
+
+```
+
+`MyGameState.h`
+
+`MyGameState.cpp`
+
+`MyPlayerState.h`
+
+`MyPlayerState.cpp`
+
 - Specify the default game mode for a project in project editor in _Edit -> Project Settings -> Default Game Mode_.
 - Each level can have its own game mode. This is selected in _Project Settings -> Game Mode Override_.
 - The **game mode** class, and all associated subclasses, can be chosen for each level independently.

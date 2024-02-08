@@ -64,12 +64,13 @@ class AMyActor : public AActor {}
 
 #### Character Creation
 
-1. _Add Blueprint -> Blueprint Class -> Character_.
-   1. In the Viewport:
-      1. Add an appropriate mesh under **Mesh**.
-      2. If the camera will be following the player, also add a **Spring Arm** and a **Camera** underneath that.
-         1. Set "use pawn control rotation" in the camera details.
-2. In the current **Game Mode**, assign the new character blueprint as the _default pawn class_.
+- (BP) _Add Blueprint -> Blueprint Class -> Character_.
+   - In the Viewport:
+      - Add an appropriate mesh under **Mesh**.
+      - If the camera will be following the player, also add a **Spring Arm** and a **Camera** underneath that.
+         - Set "use pawn control rotation" in the camera details.
+- (C++) *Tools -> New C++ Class -> All Classes tab -> Character*
+- In the current **Game Mode**, assign the new character blueprint as the _default pawn class_.
 
 ### Movement
 

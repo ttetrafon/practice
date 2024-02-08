@@ -6,10 +6,26 @@
 - To create a C++ file use _Tools -> New C++ Class_.
 - A C++ class (as expected) is accompanied by a header class, where all definitions exist, and which is used by the engine to get information about the class.
 
+## Basic Syntax
+
+- Forward declaration (pointer to the class instead of linking the class itself) of properties/methods can be used with either raw pointers or **TObjectPtr**.
+```
+// Normal declaration
+UCameraComponent Camera;
+// Forward declaration (raw pointer)
+UCameraComponent* Camera;
+// Forward declaration
+TObjectPtr<class UCameraComponent> Camera;
+```
+
 ## Macros
 
 - Pre-specified C++ macros can be used for various purposes in an Unreal project.
 - Unreal macros accept arguments (called **specifiers**), which modify how their children operate.
+
+### Useful Macros
+
+- `FORCEINLINE` can be used to force a method's code to be inlined, to avoid repeated function calls, which will result in a bit of performance gain.
 
 ## Reflection
 
@@ -19,7 +35,12 @@
   - `UCLASS()`: Generates reflection data for classes deriving from `UObject`.
   - `USTRUCT()`: Generates reflection data for a `struct`.
   - `GENERATED_BODY()`: Creates all boilerplate code for the type.
-  - `UPROPERTY()`: Provides the additional features an Unreal property has (Blueprint accessibility, replication, etc).
+  - `UPROPERTY()`: Provides the additional features an Unreal property has (Blueprint accessibility, replication, etc) [[docs](https://docs.unrealengine.com/4.27/en-US/ProgrammingAndScripting/GameplayArchitecture/Properties/Specifiers/)].
+    - `VisibleAnywhere`: The properly can be inspected in all related Unreal windows, but not modified.
+    - `BlueprintReadOnly`: The property can be read by blueprints but not modified.
+    - `Category`: Specifies the category of the property when displayed in the blueprints details panel.
+    - `meta`: Controls how the property interacts with other unreal systems.
+      - `AllowPrivateAccess = "true"` allows a private member to be accessible from a blueprint.
   - `UFUNCTION()`: Provides the additional features an Unreal function/method has (extending in Blueprints, override Blueprint functions, etc).
 
 ## Garbage Collection

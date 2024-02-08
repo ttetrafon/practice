@@ -85,6 +85,7 @@
   - DoN's 3D Pathfinding for Flying AI
   - Easy AI Toolkit
   - GOAP NPC: Goal-Oriented Action Planning for Non-Player Characters (Code Plugin)
+  - Luma AI
   - Procedural NPC Crowds v2
   - Perception Extension
   - VisAI - Community - Modern AI Framework
@@ -190,6 +191,7 @@
   - Crystal Nodes
   - Custom Details Sections
   - Editor Tools and Quaility Of Life Extension
+  - Extended Debug Library
   - Get Set Editor Camera
   - Graph Formatter
   - Graph Printer
@@ -737,6 +739,7 @@
   - Broadcast Studio
   - Brutalist Architecture Office
   - CLOTHING AND SHOE STORES
+  - Cigar Room Environment
   - Cropout Sample Project
   - Downtown West Modular Pack
   - Dreamscape: Stylized Environment Tower - Stylized Nature Open World Fantasy
@@ -883,6 +886,7 @@
   - Easy Quests
   - EasyBallistics Plugin
   - Elementus Inventory
+  - Entity Counting System
   - Factions Extension
   - First Person Character Controller [C++]
   - FPS Core
