@@ -1,4 +1,4 @@
-# Instructions
+# Host Static Webpage
 1. **Route 53** -> Domains -> Registered Domains -> Register Domains (my_domain.com)
 2. **Certificate Manager** -> Request a Certificate (must be in area US-East-1!)
    1. Public
@@ -41,3 +41,17 @@
    3. Hit *define simple record*
       1. Record type: CNAME
       2. Value/Route traffic to: "main domain"
+
+# Work Mail
+
+- AWS WorkMail can be used to host email services for custom domains.
+1. **Route 53** -> Domains -> Registered Domains -> Register Domains (my_domain.com)
+2. **WorkMail**
+   1. *Create Organisation* -> Existing Route53 domain
+      1. Route53 hosted zone: domain's hosted zone
+      2. Alias: any alias
+   2. Organisations -> select the organisation
+      2. Domains
+         1. select the domain -> *Set As Default*
+         2. enter the domain details -> Updated all in Route53 (to automatically add appropriate DNS entries)
+      3. Users -> *Add User* -> populate fields as needed
