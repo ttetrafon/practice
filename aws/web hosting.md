@@ -53,5 +53,12 @@
    2. Organisations -> select the organisation
       2. Domains
          1. select the domain -> *Set As Default*
-         2. enter the domain details -> Updated all in Route53 (to automatically add appropriate DNS entries)
+         2. enter the domain details
+            1. Updated all in Route53 (to automatically add appropriate DNS entries)
+            2. Improved email delivery -> configure at SES -> Custom MAIL FROM domain -> Edit
       3. Users -> *Add User* -> populate fields as needed
+
+<!-- https://docs.aws.amazon.com/workmail/latest/userguide/using_IMAP.html -->
+<!-- https://docs.aws.amazon.com/ses/latest/dg/smtp-credentials.html -->
+<!-- https://docs.aws.amazon.com/workmail/latest/userguide/outlook-client.html#connect-outlook-client -->
+<!-- https://docs.aws.amazon.com/workmail/latest/adminguide/autodiscover.html -->
