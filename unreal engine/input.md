@@ -2,22 +2,25 @@
 
 https://docs.unrealengine.com/5.1/en-US/enhanced-input-in-unreal-engine/
 
+- To use the EnhancedInput system in C++, import the system in the build file (**ShadowsOfTheLichLord.Build.cs**).
+```
+PublicDependencyModuleNames.AddRange(new string[] { ..., "EnhancedInput" });
+```
+
 ## Create Input Actions
 
-Two things are required, _input actions_ and _input mapping context_.
-
-Both are created as objects (_Content Browser -> Add -> Input -> ..._).
+- Two things are required, _input actions_ and _input mapping context_.
+- Both are created as objects (_Content Browser -> Add -> Input -> ..._).
 
 ### Input Action
 
-Create one for each input action.
-
-- **Consume Input**: Determines if this input is usable.
-- **Value Type**: Determines the type of values the input returns.
-  - **Digital**: Simple keypress.
-  - **Axis1D**: -1 & +1
-  - **Axis2D**
-  - **Axis3D**
+- Create one for each input action.
+  - **Consume Input**: Determines if this input is usable.
+  - **Value Type**: Determines the type of values the input returns.
+    - **Digital**: Simple keypress.
+    - **Axis1D**: -1 & +1
+    - **Axis2D**
+    - **Axis3D**
 
 ### Input Mapping Context
 
