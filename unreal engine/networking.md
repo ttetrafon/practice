@@ -34,6 +34,9 @@ Multiple instances of the game can be run automatically in the same editor.
 
 ## Replication
 
+- **Actor Relevancy** determines which actors in the game world should be replicated to which clients based on their current locations, and which actors are relevant to the player's current view/area. The actor is relevant
+  1. If **bAlwaysRelevant = true**, is owned by the Pawn or PlayerController, is the Pawn object, or the Pawn is the instigator of an action concerning the actor.
+  2.
 - **Actors** in a scene can be replicated over multiplayer (`Class Details -> Replication`).
 - **Variables** can also be replicated (`(Variable) Details -> Replication -> Replicated`).
   - During initialisation, there may be a delay for variables to be replicated, as this will be done on the next replication cycle. To avoid this, have such variables only be created on the server.

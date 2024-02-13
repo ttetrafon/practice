@@ -81,6 +81,12 @@ AMyGameMode::AMyGameMode() {
 ### Player Controller
 
 - Handles input and controls the player's character (`Pawn`/`Character`).
+- In a multiplayer game, each connection (including the server) owns its own player controller.
+  - To access the player controller in a multiplayer game, the following should be used:
+    - AActor::GetOwner(): Returns the owner of the actor's instance.
+    - APawn::GetController(): Returns the controller of the pawn/character instance.
+    - AController::GetPawn(): Returns the pawn possessed by the controller.
+    - APlayerState::GetPlayerController(): Returns the controller that created the player state instance. Remote clients will return *null*.
 
 ### Player State
 

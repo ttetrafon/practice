@@ -13,6 +13,12 @@
   - A specific type of pawn.
   - Has extra functionality required to be used by a player already setup.
 
+## Ownership
+
+- Each actor has an owner, which determines how each connection (in a multiplayer game) handles the actor's replication and updates.
+- Children of an actor usually have the same owner as their parent.
+- Components look at the outer (highest parent) component's parent actor to determine ownership.
+
 ## Actor Properties
 
 ### Class Defaults
