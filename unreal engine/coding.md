@@ -42,6 +42,7 @@ TObjectPtr<class UCameraComponent> Camera;
     - `meta`: Controls how the property interacts with other unreal systems.
       - `AllowPrivateAccess = "true"` allows a private member to be accessible from a blueprint.
   - `UFUNCTION()`: Provides the additional features an Unreal function/method has (extending in Blueprints, override Blueprint functions, etc).
+    - `BlueprintNativeEvent`: The function can be overwritten in a blueprint, but it has a default C++ implementation. The method's default must must be named with the suffix `_Implementation` in this case.
 
 ## Garbage Collection
 

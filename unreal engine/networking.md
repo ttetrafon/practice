@@ -34,9 +34,13 @@ Multiple instances of the game can be run automatically in the same editor.
 
 ## Replication
 
-- **Actor Relevancy** determines which actors in the game world should be replicated to which clients based on their current locations, and which actors are relevant to the player's current view/area. The actor is relevant
-  1. If **bAlwaysRelevant = true**, is owned by the Pawn or PlayerController, is the Pawn object, or the Pawn is the instigator of an action concerning the actor.
-  2.
+- **Actor Relevancy** determines which actors in the game world should be replicated to which clients based on their current locations, and which actors are relevant to the player's current view/area. The actor's relevancy is determine by the following checks, in order:
+  1. If **bAlwaysRelevant = true**, is owned by the Pawn or PlayerController, is the Pawn object, or the Pawn is the instigator of an action concerning the actor, it is relevant.
+  2. If the actor has **bNetUseOwnerRelevancy = true** and the actor itself has an owner, the owner's relevancy will be used.
+  3. If the actor has **bOnlyRelevantToOwner = true** and it does not pass the 1st check, then it is not relevant.
+  4. If the actor is attached to another actor's skeleton, then relevancy is determined by its parent.
+  5. If the actor has **bHidden = true** and the root component is not colliding with the checking actor, then the actor is not relevant.
+  6. If **AGameNetworkManager** is set to use *distance-based* relevancy, the actor is relevant if it is closer than the culling distance.
 - **Actors** in a scene can be replicated over multiplayer (`Class Details -> Replication`).
 - **Variables** can also be replicated (`(Variable) Details -> Replication -> Replicated`).
   - During initialisation, there may be a delay for variables to be replicated, as this will be done on the next replication cycle. To avoid this, have such variables only be created on the server.
@@ -70,7 +74,7 @@ void My_Type::GetLifetimeReplicatedProps(TArray<FLifetimeProperty> &OutLifetimeP
     - This setup is also needed for anything that is not replicated automatically, like the `Play Anim Montage` blueprint.
 
 - RPCs in C++ cannot be BlueprintCallable, but can be wrapped in BlueprintCallable functions.
-- First, the function must be declared, and then a secondary, '_implementation' functions needs to be declared and defined with the RPC's code.
+- First, the function must be declared, and then a secondary, '_Implementation' functions needs to be declared and defined with the RPC's code.
 
 ```
 UFUNCTION(Server, Reliable)
@@ -85,7 +89,7 @@ void TestServerRPC_CPP_Implementation() {
 ```
 
 - The RPC UFUNCTION can also use the parameter `WithValidation`. For this an extra function needs to be declared and defined.
-- The result of this function determines if the *_implementation()* will run or not.
+- The result of this function determines if the *_Implementation()* will run or not.
 
 ```
 bool TestServerRPC_CPP_Validate() {
