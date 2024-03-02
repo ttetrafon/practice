@@ -119,21 +119,42 @@ enum FruitList {
 
 ### C++
 
-- The name of the structure must always be prefixed by F.
+- To create a structure, use *Tools -> New C++ Class -> Parent Class: None*.
+  - In the IDE, in the .h file change *class -> struct*.
+  - Add `#include "structure_name.generated.h"`
+  - Add `USTRUCT(BlueprintType)` before the structure definition.
+  - Add `GENERATED_BODY()` in the beginning of the structure.
+  - Add an `F` before the structure name and the constructor/destructor names.
 
+> `MyStruct.h`
 ```
+#pragma once
+
+#include "CoreMinimal.h"
+#include "MyStruct.generated.h"
+
 USTRUCT(BlueprintType)
-struct FBook {
-  GENERATED_USTRUCT_BODY()
-  UPROPERTY(BlueprintReadOnly)
-    FString ISBN;
-  UPROPERTY(BlueprintReadOnly)
-    FString Name;
-  UPROPERTY(BlueprintReadWrite)
-    float Rating;
-  UPROPERTY(BlueprintReadOnly)
-    int NumberOfPages;
+struct CURRENT_PROJECT_API FMyStruct {
+	GENERATED_BODY()
+
+	int MyVariable;
+
+public:
+	FMyStruct();
+	~FMyStruct();
+};
+```
+> `MyStruct.cpp`
+```
+#include "MyStruct.h"
+
+FMyStruct::FMyStruct() {
+  MyVariable = 10;
 }
+
+FMyStruct::~FMyStruct() {
+}
+
 ```
 
 ## Data Table

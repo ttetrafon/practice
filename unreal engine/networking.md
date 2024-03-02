@@ -59,6 +59,21 @@ void My_Type::GetLifetimeReplicatedProps(TArray<FLifetimeProperty> &OutLifetimeP
 
 - Anything supposed to be replicated is assigned a priority value, which will determine the order of the replication when the network bandwidth is limited.
 
+## Authority
+
+- Authority refers to which instance of the game has the final say on the game state. The concept of authority ensures game state consistency over all clients.
+  - Usually the server has authority over game mechanics like player movement, damage calculation, and so on.
+  - When a client requests to perform an action, the server calculates its validity, updates the game state accordingly, and then informs all connected clients about the change.
+- Actors can be locally or remotely controlled, which determines who has authority in each case. Locally controlled characters have authority over their actions, while the server holds authority on remotely controlled ones.
+  - The **Role** and **Remote Role** actor properties provide information about authority and replication. Possible roles are:
+    - ROLE_Authority: The running instance has authoritative control over the actor.
+    - ROLE_AutonomousProxy: The running instance is an autonomous proxy of the actor.
+      - When an actor is controlled by a *PlayerController*, `Role = ROLE_AutonomousProxy` may be used, so that despite the server having authority, predictions will occur based on player input to limit erratic behaviour over the network.
+    - ROLE_SimulatedProxy: The running instance is a locally simulated proxy of the actor.
+      - This can be used so movement and other actions are predicted locally so that server updates do not end up in erratic behaviour.
+    - ROLE_None: The role is irrelevant.
+  - Regardless of the role selected, clients will never replicate actors to servers. This means that only the server will have `Role = ROLE_Authority` and `RemoteRole = ROLE_AutonomousProxy/ROLE_SimulatedProxy`.
+
 ## Remote Procedural Calls (RPC)
 
 - RPCs are used for multiplayer clients to perform server-side only actions.
