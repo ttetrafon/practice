@@ -152,6 +152,7 @@
   - Modular Gothic Temple (medieval/winter/snow)
   - Modular Sci-Fi Village
   - NHA - Unhyeongung Palace
+  - NHA - Yeonkyungdang
   - Procedural Building Generator
   - Procedural Rooms
   - Replicated Building System
@@ -174,6 +175,7 @@
   - Custom Game Only Input Mode
   - Input Sequence
     - Enhanced Input Sequence
+  - Interhaptics SDK
   - Localised Keybindings
   - Virtual Input
 - Data Analytics
@@ -201,6 +203,7 @@
   - Light Explorer
   - Livelink for Blender
   - MapSync Plugin
+  - MatHelper
   - New C++ Module tool
   - Object Inspection
   - ObjectDeliverer
@@ -243,6 +246,7 @@
   - Telegram Message
   - Text Translation
   - Unreal Datasmith
+  - XGLoginClient
 - Items
   - Ancient Treasures
   - Apartment Tech Props
@@ -859,6 +863,7 @@
   - Stylized Fantasy Provencal ( Stylized , Fantasy , Provencal)
   - Stylized winter city environment
   - The Bazaar
+  - The Provisional Capital Memorial Hall
   - Triplex House Villa
   - Underwater World / 70 Assets
   - Venice - fast building
@@ -877,6 +882,7 @@
   - Clarus Viewer Engine Helpers
   - Defender: Animated Dialogue System
   - Dialogue System X
+  - Dialogue Tree
   - Dialogue Tree and Quest System
   - Directional & Planet Gravity
   - Dynamic Grass System Lite
@@ -895,6 +901,7 @@
   - GameplayTags Component
   - GASAttachEditor
   - Gathering Resources
+  - Gm Fish Movement Template
   - Interaction System
   - Interaction System Starter Pack
   - Interactive World
@@ -1081,7 +1088,6 @@
   - VaRest
 
 # Tools
-
 - "ArchViz" Explorer
 - Actor Locker
 - Animation Compression Library
@@ -1130,3 +1136,4 @@
 - Gm Enhanced Debugging Tool
 - Logic Driver Lite - State Machine Blueprint Editor
 - Luminance
+- SimpleLog

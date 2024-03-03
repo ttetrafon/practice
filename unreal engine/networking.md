@@ -42,7 +42,8 @@ Multiple instances of the game can be run automatically in the same editor.
   5. If the actor has **bHidden = true** and the root component is not colliding with the checking actor, then the actor is not relevant.
   6. If **AGameNetworkManager** is set to use *distance-based* relevancy, the actor is relevant if it is closer than the culling distance.
 - **Actors** in a scene can be replicated over multiplayer (`Class Details -> Replication`).
-- **Variables** can also be replicated (`(Variable) Details -> Replication -> Replicated`).
+  - Any class deriving from `APawn` or `ACharacter` has `bReplicates = true` as a default value.
+- **Variables/Properties** can also be replicated (`(Variable) Details -> Replication -> Replicated`).
   - During initialisation, there may be a delay for variables to be replicated, as this will be done on the next replication cycle. To avoid this, have such variables only be created on the server.
     - Can be done by creating the value in a server class (e.g.: `Game Mode`).
     - Can also be done by checking with `Is Server` and aborting creation on clients.
@@ -51,13 +52,38 @@ Multiple instances of the game can be run automatically in the same editor.
     - In addition, must add the following function inside the class employing the replicated variable.
 
 ```
-void My_Type::GetLifetimeReplicatedProps(TArray<FLifetimeProperty> &OutLifetimeProps) const {
+UPROPERTY(Replicated)
+int32 score;
+```
+
+- A callback can be defined for when a property's value is updated through the network.
+  - The callback method, or at least a wrapper for it, must be defined in the same class with the property.
+
+```
+UPROPERTY(ReplicatedUsing="OnRep_Score")
+int32 score;
+```
+
+```
+UFUNCTION()
+void OnRep_Score()
+```
+
+- All replicated properties must be declared within the `AActor::GetLifetimeReplicatedProps()` function by using the `DOREPLIFETIME()` macro.
+  - A property registered for replication cannot be unregistered later during the runtime.
+  - By using the `DOREPLIFETIME_CONDITION()` instead, properties can only replicate under specified conditions, either predefined (`COND_OwnerOnly`) or defined in the code (with `DOREPLIFETIME_ACTIVE_OVERRIDE()`).
+
+```
+void My_Class_Type::GetLifetimeReplicatedProps(TArray<FLifetimeProperty> &OutLifetimeProps) const {
   Super::GetLifetimeReplicatedProps(&OutLifetimeProps);
-  DOREPLIFETIME(My_Type, My_Replicated_Variable);
+  DOREPLIFETIME(My_Class_Type, My_Replicated_Variable);
 }
 ```
 
 - Anything supposed to be replicated is assigned a priority value, which will determine the order of the replication when the network bandwidth is limited.
+- Network **Actors** can be referenced (in the code) only if they are set up for networking.
+  - A replicated actor or component, can be replicated as a reference.
+  - Non-replicated actors and components need to be **stably named** (Stably named means that the actor has the same name in both server and client. This usually happens if the actor has not been spawned during gameplay but was loaded directly in the level from a package) in order to be replicated as references.
 
 ## Authority
 
