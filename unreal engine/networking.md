@@ -103,8 +103,22 @@ void My_Class_Type::GetLifetimeReplicatedProps(TArray<FLifetimeProperty> &OutLif
 ## Remote Procedural Calls (RPC)
 
 - RPCs are used for multiplayer clients to perform server-side only actions.
+- There are three types of RPCs in unreal:
+  - **Server**: Called by an object on a client but is executed only on the server version of the same object. The client must own the object that triggers the call for this to work.
+  - **Client**: Called on the server by an object but executed only on the client version that owns the object calling it.
+  - **NetMulticast**: Can be called on the server by an object and executed both on the server and all client versions of the object calling it. If called by a client, only the local client will execute it.
+
+```
+UFUNCTION(Client)
+void DoSomething_Client()
+
+UFUNCTION(Server)
+void DoSomething_Server()
+```
+
 - Custom events can be used for this purpose, by setting them as `Details -> Replicates -> Run on Server`.
-  - `Reliable` requires the actor on which the PRC is called on must be owned by a client, and will be processed in order of calling.
+  - `Reliable` requires the actor on which the PRC is called on to be owned by a client, and will be processed in order of calling.
+    - *Reliable RPCs should be avoided in the tick method or in input bindings, as they may cause an overflow of the network queue causing issues in the networking performance.*
 - For events that need to happen on all clients, but do not really need to be perfectly replicated (like particle effects), an event needs to be set as `Details -> Replicates -> Multicast`.
   - A multicast RPC must be called on the server specifically, otherwise it will run only on the client it has been called. So, a multicast needs to be set as a child of a server RPC.
 - Client RPCs will be called from the server and run only on the specified client.
@@ -113,7 +127,6 @@ void My_Class_Type::GetLifetimeReplicatedProps(TArray<FLifetimeProperty> &OutLif
       1. OnClick -> Server_RPC
       2. Server_PRC -> Client_RPC
     - This setup is also needed for anything that is not replicated automatically, like the `Play Anim Montage` blueprint.
-
 - RPCs in C++ cannot be BlueprintCallable, but can be wrapped in BlueprintCallable functions.
 - First, the function must be declared, and then a secondary, '_Implementation' functions needs to be declared and defined with the RPC's code.
 
@@ -130,10 +143,15 @@ void TestServerRPC_CPP_Implementation() {
 ```
 
 - The RPC UFUNCTION can also use the parameter `WithValidation`. For this an extra function needs to be declared and defined.
-- The result of this function determines if the *_Implementation()* will run or not.
+  - Validation is used so that RPCs are never executed with bad input/data.
+  - The result of this function determines if the *_Implementation()* will run or not.
 
 ```
 bool TestServerRPC_CPP_Validate() {
   // ... validate here!
+  if (failure) {
+    return false;
+  }
+  return true;
 }
 ```
