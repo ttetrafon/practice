@@ -67,6 +67,7 @@
   - Posed Humans Children Pack 1
   - Posed Humans Shopping Pack 1
   - Posed Humans Winter Pack 1
+  - Primitive Characters (Pack)
   - Replicated Tickable UObjects
   - Quadruped Fantasy Creatures
   - Scanned 3D People Pack
@@ -725,6 +726,7 @@
   - Tutorial Hallways AGX Dynamics for Unreal
   - Valley of the Ancient
 - Services
+  - DLC In Blueprints V3
   - GameFuse
   - Game Client SDK i3D.net
   - Game Hosting Platform SDK i3D.net
@@ -820,6 +822,7 @@
   - Mission to Minerva
   - Modular Concert Stage
   - Modular Gothic/Fantasy Environment
+  - Modular Medieval Town with Interior
   - Modular Military Operation Urban Training Environment
   - Modular Military Operation Urban Training Environment - Civilian Pack
   - Modular Neighbourhood Pack
@@ -866,6 +869,7 @@
   - The Provisional Capital Memorial Hall
   - Triplex House Villa
   - Underwater World / 70 Assets
+  - Ultimate Farming
   - Venice - fast building
   - Vintage Room
 - Settings
@@ -953,6 +957,7 @@
   - Survivors Roguelike: Multiplayer
   - Open World RPG Toolkit
   - PLATFORMER - Stylized Cube World
+  - Renovation simulator
   - Side Scroller Template - 2D Movement/Camera Starter Kit (Multiplayer-Ready)
   - Survivors Roguelike - Multiplayer Game Template
   - The Immersive Template
