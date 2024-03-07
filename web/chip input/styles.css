@@ -8,6 +8,7 @@
 
 body {
   display: flex;
+  flex-flow: column;
   align-items: center;
   justify-content: center;
   min-height: 100vh;
@@ -57,14 +58,20 @@ input {
 }
 
 .choices {
-  width: 100%;
+  position: absolute;
+  bottom: 0;
+  right: 50%;
+  transform: translate(50%, 100%);
   text-align: center;
   border-radius: 5px;
   border: 1px solid black;
   max-height: 200px;
+  background-color: lightgoldenrodyellow;
+  overflow-x: auto;
 }
 .choices p {
-  padding: 3px;
+  padding: 5px;
+  margin-right: 20px;
   border-radius: 5px;
   cursor: pointer;
 }

@@ -10,7 +10,17 @@ const choices = [
   "js",
   "css",
   "java",
-  "python"
+  "python",
+  "css1",
+  "css2",
+  "css3",
+  "css4",
+  "css5",
+  "css6",
+  "css7",
+  "css8",
+  "css9",
+  "css0"
 ];
 
 function clearChildren(parent) {
