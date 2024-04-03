@@ -9,7 +9,8 @@
 ## Basic Syntax
 
 - Forward declaration (pointer to the class instead of linking the class itself) of properties/methods can be used with either raw pointers or **TObjectPtr**.
-```
+
+```cpp
 // Normal declaration
 UCameraComponent Camera;
 // Forward declaration (raw pointer)
@@ -65,14 +66,14 @@ TObjectPtr<class UCameraComponent> Camera;
 - All input parameters with types relevant to Unreal must always be passed as references.
 - This is done by using the **UPARAM(ref)** macro.
 
-```
+```cpp
 void foo(UPARAM) (UPARAM(ref) AActor& actorRef)
 ```
 
 - Functions can be assigned multiple outputs by setting the appropriate parameters as references.
 - In the example below, param1 is copied as input, param2 is passed as input by reference, while param3 and param4 will be exposed as outputs on the blueprint.
 
-```
+```cpp
 UFUNCTION(BlueprintCallable)
   void someFunction(int param1, UPARAM(ref) int& param2, int& param3, int& param4);
 ```
@@ -108,6 +109,10 @@ UFUNCTION(BlueprintCallable)
 ### Instantiate
 
 - To instantiate a blueprint use the node **Construct Object from Class**.
+
+### Notes
+
+- Many blueprints (like _Destroy Actor_) accept arrays of objects, although that is not indicated in the UI.
 
 ## Blueprint Function/Macro Library
 
@@ -168,7 +173,7 @@ UFUNCTION(BlueprintCallable)
 - An interface contains only function definitions (usually `virtual`), like in blueprints.
 - The class needs to be #included in the target actors, and then added as an implementation.
 
-```
+```cpp
 #include "MyInterface.h"
 
 UCLASS()
@@ -184,14 +189,14 @@ class ACPP_TARGET : public AActor, public IMyInterface {}
 - Blueprints need to be children of a C++ class to be connected with its functionality.
 - A C++ class can be made inheritable by blueprints by declaring thus in the UCLASS() macro.
 
-```
+```cpp
 UCLASS(Blueprintable)
 ```
 
 - Class properties can be accessed (get/set) in blueprints by making them public and defining the proper specifiers.
 - The specifier _EditAnywhere_ allows the variable's default value to be accessed in the editor.
 
-```
+```cpp
 public:
   UPROPERTY(BlueprintReadOnly/BlueprintWriteOnly/BlueprintReadWrite, EditAnywhere)
     int thisIsSomeVariable;
@@ -201,7 +206,7 @@ public:
   - A _BlueprintPure_ function does not feature execution triggers when used as a blueprint.
   - A _BlueprintCallable_ function features execution triggers when used as a blueprint.
 
-```
+```cpp
 private:
   int thisIsSomeVariable;
 public:
@@ -216,7 +221,7 @@ public:
 - C++ functions can also be implemented in blueprints.
 - Such functions can be found in the _blueprint panel -> functions -> override -> foo_, and then implemented in the blueprint graph.
 
-```
+```cpp
 // .h
 UFUNCTION(BlueprintCallable, BlueprintImplementableEvent)
   void foo(int bar);
@@ -227,7 +232,7 @@ UFUNCTION(BlueprintCallable, BlueprintImplementableEvent)
 - A function using a native event needs a declaration and an implementation.
   - To call the C++ implementation, right click on the function node and hit _add call to parent function_.
 
-```
+```cpp
 // .h
 UFUNCTION(BlueprintCallable, BlueprintNativeEvent)
   void foo(string bar);
@@ -243,7 +248,7 @@ void foo_Implementation (string bar) {
 
 - Events can be declared in a C++ function, and then captured by blueprints.
 
-```
+```cpp
 UFUNCTION(BlueprintImplementationEvent, Category="Weapon")
 void PlayFireEffects()
 ```
