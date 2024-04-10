@@ -11,7 +11,7 @@ class HtmlTemplate extends HTMLElement {
 
   attributeChangedCallback(property, oldValue, newValue) {
     if (oldValue === newValue) return;
-    this[ property ] = newValue;
+    this[property] = newValue;
   }
 
   connectedCallback() {
@@ -20,12 +20,12 @@ class HtmlTemplate extends HTMLElement {
       template = document.getElementById('html-template').content.cloneNode(true),
       hwMsg = `Hello ${ this.name }`;
 
-    Array.from( template.querySelectorAll('.hw-text') )
-      .forEach( n => n.textContent = hwMsg );
+    Array.from(template.querySelectorAll('.hw-text'))
+      .forEach(n => n.textContent = hwMsg);
 
-    shadow.append( template );
+    shadow.append(template);
   }
 
 }
 
-customElements.define( 'html-template', HtmlTemplate );
+customElements.define('html-template', HtmlTemplate);
