@@ -47,3 +47,7 @@ hr {
 #container .box:nth-last-child(n + 6):nth-last-child(-n + 9):first-child ~ .box {
   background-color: red;
 }
+
+body:has(#container .box:nth-last-child(n + 6):nth-last-child(-n + 9):first-child) {
+  background-color: yellow;
+}
