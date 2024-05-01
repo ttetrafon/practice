@@ -1,0 +1,16 @@
+@font-face {
+  font-family: 'Ubuntu';
+  src: url('./Ubuntu-Regular.ttf') format('ttf');
+  font-weight: 600;
+  font-style: normal;
+}
+
+.hello {
+  font-family: 'Ubuntu';
+  color: red;
+}
+
+img {
+  width: 100px;
+  aspect-ratio: 1;
+}
