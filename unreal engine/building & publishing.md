@@ -3,14 +3,13 @@
 ## Optimise Graphic Settings
 
 - *Settings -> Engine Scalability Setting*
-
-Selecting *Auto* will have the game detect the running machine's capability and adjust these settings depending on its findings.
+  - Selecting *Auto* will have the game detect the running machine's capability and adjust these settings depending on its findings.
 
 ## Build
 
 ### Define Settings
 
-- *Settings -> Project Settings*
+- *Edit -> Project Settings*
   - *Description*
   - *Maps & Modes*
   - *Windows* (or other appropriate target system)
