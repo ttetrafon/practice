@@ -1,11 +1,13 @@
 # Math
 
 ## Transform (position, rotation, scale)
+
 An actor class holds a *Transform* structure which contains three variables (3D vectors), location, rotation, and scale.
 
 When a blueprint has actor components, the transforms of these components are known as *relative transforms* because they are relative to the parent's transform.
 
 ### Nodes
+
 * **Get Actor Location**
 * **Set Actor Location**: Places the actor to the specified position in the world.
 * **Add Actor Offset**: Moves the actor relatively to their current position.
@@ -18,8 +20,8 @@ When a blueprint has actor components, the transforms of these components are kn
 * **Get Relative Location**
 * **Set Relative Location**
 
-
 ## Math Nodes
+
 * **Vector Length**
 * **Normalize**
 * **Dot Product**

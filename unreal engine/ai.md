@@ -9,6 +9,7 @@
   - To use the navigation systems, add the module `"NavigationSystem"` in the `.Build.cs` file under the PublicDependencyModuleNames.
 
 ## AI Actors
+
 - An AI actor's class is a child of `Character`.
 - An AI actor requires the following properties usually:
   - `TObjectPtr<class UPawnSensingComponent> PawnSense;`: Controls how the actor senses pawns.

@@ -1,6 +1,7 @@
 # Flow Control
 
 Various nodes can be used to organise the flow of execution.
+
 - **Branch**: A simple if-else statement, chooses the execution path depending on a boolean input.
 - **Switch on**: Chooses an execution path by comparing a variable's value to specific values.
 - **Flip Flop**: Executes two execution paths alternating between the two.

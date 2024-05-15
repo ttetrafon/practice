@@ -27,7 +27,8 @@ The game's mode and state are held in specific blueprint classes.
 `MyGameInstance.cpp`
 
 `MyGameMode.h`
-```
+
+```c++
 #include "CoreMinimal.h"
 #include "GameFramework/GameMode.h"
 #include "MyGameMode.generated.h"
@@ -35,14 +36,15 @@ The game's mode and state are held in specific blueprint classes.
 UCLASS()
 class SHADOWSOFTHELICHLORD_API AMyGameMode : public AGameMode
 {
-	GENERATED_BODY()
+  GENERATED_BODY()
 public:
-	AMyGameMode();
+  AMyGameMode();
 };
 ```
 
 `MyGameMode.cpp`
-```
+
+```c++
 #include "MyGameMode.h"
 #include "MyGameState.h"
 #include "MyPlayerController.h"
@@ -86,7 +88,7 @@ AMyGameMode::AMyGameMode() {
     - AActor::GetOwner(): Returns the owner of the actor's instance.
     - APawn::GetController(): Returns the controller of the pawn/character instance.
     - AController::GetPawn(): Returns the pawn possessed by the controller.
-    - APlayerState::GetPlayerController(): Returns the controller that created the player state instance. Remote clients will return *null*.
+    - APlayerState::GetPlayerController(): Returns the controller that created the player state instance. Remote clients will return _null_.
 
 ### Player State
 

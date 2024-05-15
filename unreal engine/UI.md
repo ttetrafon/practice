@@ -5,6 +5,7 @@ A UI is crafted from **Widget Blueprints (User Widget)**.
 A widget blueprint is a collection of UI objects and logic.
 
 To display the UI, add it within any appropriate blueprint (level, player controller, character, camera, etc). This needs the following nodes in order:
+
 1. **Create Widget**: Creates an instance of the UI element, which should usually be referenced as a variable also.
 2. **Add to Viewport**: Appends the widget to the viewport so it is shown.
    - Can instead use **Add to Player Screen**, which is useful when creating a split screen interface.
@@ -31,7 +32,7 @@ The layout is described within a canvas by using anchors, distances, sizes, and 
 - **Formate Text**: Can be used to inject variables in a string. Variables are denoted with brackets in the string, and each one creates an input pin in the format text node so it can be connected to a variable.
   - For example, `(mana)/(manaMax)` will display 150/200 when you have spent 50 of your mana pool.
 
-- **Format Text**: Uses {} to create variables in a text line which can then be set from outside. For example, `You scored {number} points during round {roundNumber}!` will create two input nodes named _number_ and _roundNumber_ which can be used to set their values in the text line.
+- **Format Text**: Uses {} to create variables in a text line which can then be set from outside. For example, `You scored {number} points during round {roundNumber}!` will create two input nodes named *number* and *roundNumber* which can be used to set their values in the text line.
 
 ### Progress Bar
 

@@ -1,9 +1,11 @@
 # Ray Tracing
+
 A trace is a projected vector from a point of origin towards a specified direction that looks for collisions with specific objects on its path.
 
 The collision is controlled by the channel on which the trace belongs, while the specified types of objects are the only ones that will trigger a collision event.
 
 ## Trace Settings
+
 The channels and object types can be changed in *Project Settings -> Engine -> Collision*
 
 The default channels are **Visibility** and **Camera**.
@@ -13,6 +15,7 @@ The default object types are **World Static**, **World Dynamic**, **Pawn**, **Ph
 Actors and components need to define how they react to each trace channel and object type. The response can be *ignore*, *overlap*, or *block*.
 
 ## Nodes
+
 * **Break Hit Result**: Destructures a trace hit result into the available variables.
 * **Line Trace for Objects**: Tests for collisions along a specified line and returns a hit result for the first matching actor that it hits.
   * *Start*: Defines where the trace line starts.

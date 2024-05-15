@@ -67,10 +67,9 @@ On the left panel, under the **usage** section, select the cases in which the ma
 - A material is created to change property values on a material without the need to rebuild it every time something changes.
 - Parameters are set that can control the properties above.
 - In shader graph:
-   - Select property to expose as parameter.
-   - _Mouse1 -> Convert to Parameter_.
+  - Select property to expose as parameter.
+  - _Mouse1 -> Convert to Parameter_.
 
 ## Material Interfaces
 
-- The standardised set of material properties within a *material function* can be called a *material interface*. The parameters have default names that will be the same across all materials.
-
+- The standardised set of material properties within a _material function_ can be called a _material interface_. The parameters have default names that will be the same across all materials.

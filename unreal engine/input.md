@@ -1,9 +1,10 @@
 # Input
 
-https://docs.unrealengine.com/5.1/en-US/enhanced-input-in-unreal-engine/
+[Input Docs](https://docs.unrealengine.com/5.1/en-US/enhanced-input-in-unreal-engine/)
 
 - To use the EnhancedInput system in C++, import the system in the build file (**ShadowsOfTheLichLord.Build.cs**).
-```
+
+```c++
 PublicDependencyModuleNames.AddRange(new string[] { ..., "EnhancedInput" });
 ```
 
@@ -34,9 +35,6 @@ A collection of mappings for input actions.
 - In the player controller blueprint:
   - Add an enhanced **input local player subsystem** node.
   - From the subsystem and the begin play node, create an **Add Mapping Context** node and select the context created above.
-
-##### Notes
-
 - Input contexts can be also removed at any time through the **Remove Mapping Context Node**, so controls can swapped as a whole when needed.
 
 ## Nodes

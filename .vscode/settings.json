@@ -6,6 +6,7 @@
     "struct",
     "UCLASS",
     "UENUM",
+    "UFUNCTION",
     "UMETA",
     "UPARAM",
     "UPROPERTY",
