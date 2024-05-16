@@ -1,42 +1,51 @@
 <!DOCTYPE html>
 
 <html lang="en">
-  <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Text Editor (deprecated)</title>
-    <script src="script.js" defer></script>
-    <link rel="stylesheet" href="styles.css">
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css" integrity="sha512-iBBXm8fW90+nuLcSKlbmrPcLa0OT92xO1BIsZ+ywDWZCvqsWgccV3gFoRBv0z+8dLJgyAHIhR35VZc2oM/gI1w==" crossorigin="anonymous" />
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/brands.min.css" integrity="sha512-apX8rFN/KxJW8rniQbkvzrshQ3KvyEH+4szT3Sno5svdr6E/CP0QE862yEeLBMUnCqLko8QaugGkzvWS7uNfFQ==" crossorigin="anonymous" />
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/fontawesome.min.css" integrity="sha512-OdEXQYCOldjqUEsuMKsZRj93Ht23QRlhIb8E/X0sbwZhme8eUw6g8q7AdxGJKakcBbv7+/PX0Gc2btf7Ru8cZA==" crossorigin="anonymous" />
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/regular.min.css" integrity="sha512-Nqct4Jg8iYwFRs/C34hjAF5og5HONE2mrrUV1JZUswB+YU7vYSPyIjGMq+EAQYDmOsMuO9VIhKpRUa7GjRKVlg==" crossorigin="anonymous" />
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/solid.min.css" integrity="sha512-jQqzj2vHVxA/yCojT8pVZjKGOe9UmoYvnOuM/2sQ110vxiajBU+4WkyRs1ODMmd4AfntwUEV4J+VfM6DkfjLRg==" crossorigin="anonymous" />
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="height=device-height, width=device-width, initial-scale=1.0, minimum-scale=1.0, maximum-scale=2.0,
+      user-scalable=yes, target-densitydpi=device-dpi">
+  <title>Text Editor (split view)</title>
+  <script src="script.js" type="module" defer></script>
+  <link rel="stylesheet" href="styles.css">
+  <link rel="icon" type="image/x-icon" href="./img/avatar.jpg">
 </head>
 
-  <body>
-
-    <div class="main-content">
-
+<body>
+  <article>
+    <section>
       <div class="text-editor-header">
-        <button type="button" class="btn" data-element="bold"><i class="fa fa-bold"></i></button>
-        <button type="button" class="btn" data-element="italic"><i class="fa fa-italic"></i></button>
-        <button type="button" class="btn" data-element="underline"><i class="fa fa-underline"></i></button>
-        <button type="button" class="btn" data-element="insertUnorderedList"><i class="fa fa-list-ul"></i></button>
-        <button type="button" class="btn" data-element="insertOrderedList"><i class="fa fa-list-ol"></i></button>
-        <button type="button" class="btn" data-element="createLink"><i class="fa fa-link"></i></button>
-        <button type="button" class="btn" data-element="insertImage"><i class="fa fa-image"></i></button>
-        <button type="button" class="btn" data-element="justifyLeft"><i class="fa fa-align-left"></i></button>
-        <button type="button" class="btn" data-element="justifyCenter"><i class="fa fa-align-center"></i></button>
-        <button type="button" class="btn" data-element="justifyRight"><i class="fa fa-align-right"></i></button>
-        <button type="button" class="btn" data-element="justifyFull"><i class="fa fa-align-justify"></i></button>
-        <button type="button" class="btn" data-element="custom-left"><i class="fa fa-arrow-left"></i></button>
-        <button type="button" class="btn" data-element="custom-right"><i class="fa fa-arrow-right"></i></button>
+        <!-- <button id="" title=""><img src="./img" /></button> -->
+        <span class="separator"></span>
+        <button id="heading1" title="Heading 1"><img src="./img/format_h1_24dp_FILL0_wght400_GRAD0_opsz24.svg" /></button>
+        <button id="heading2" title="Heading 2"><img src="./img/format_h2_24dp_FILL0_wght400_GRAD0_opsz24.svg" /></button>
+        <button id="heading3" title="Heading 3"><img src="./img/format_h3_24dp_FILL0_wght400_GRAD0_opsz24.svg" /></button>
+        <button id="heading4" title="Heading 4"><img src="./img/format_h4_24dp_FILL0_wght400_GRAD0_opsz24.svg" /></button>
+        <button id="heading5" title="Heading 5"><img src="./img/format_h5_24dp_FILL0_wght400_GRAD0_opsz24.svg" /></button>
+        <button id="heading6" title="Heading 6"><img src="./img/format_h6_24dp_FILL0_wght400_GRAD0_opsz24.svg" /></button>
+        <button id="text" title="Text"><img src="./img/text_24dp_FILL0_wght400_GRAD0_opsz24.svg" /></button>
+        <button id="quote" title="Quote"><img src="./img/format_quote_24dp_FILL0_wght400_GRAD0_opsz24.svg" /></button>
+        <span class="separator"></span>
+        <button id="bold" title="Bold"><img src="./img/format_bold_24dp_FILL0_wght400_GRAD0_opsz24.svg" /></button>
+        <button id="italic" title="Italic"><img src="./img/format_italic_24dp_FILL0_wght400_GRAD0_opsz24.svg" /></button>
+        <button id="underline" title="Underline"><img src="./img/format_underlined_24dp_FILL0_wght400_GRAD0_opsz24.svg" /></button>
+        <span class="separator"></span>
+        <button id="unordered-list" title="Unordered List"><img src="./img/format_list_bulleted_24dp_FILL0_wght400_GRAD0_opsz24.svg" /></button>
+        <button id="ordered-list" title="Ordered List"><img src="./img/format_list_numbered_24dp_FILL0_wght400_GRAD0_opsz24.svg" /></button>
+        <span class="separator"></span>
+        <button id="link" title="Link"><img src="./img/link_24dp_FILL0_wght400_GRAD0_opsz24.svg" /></button>
+        <button id="image" title="Image"><img src="./img/image_24dp_FILL0_wght400_GRAD0_opsz24.svg" /></button>
+        <span class="separator"></span>
+        <button id="justify-left" title="Justify Left"><img src="./img/format_align_left_24dp_FILL0_wght400_GRAD0_opsz24.svg" /></button>
+        <button id="justify-center" title="Justify Center"><img src="./img/format_align_center_24dp_FILL0_wght400_GRAD0_opsz24.svg" /></button>
+        <button id="justify-right" title="Justify Right"><img src="./img/format_align_right_24dp_FILL0_wght400_GRAD0_opsz24.svg" /></button>
+        <button id="justufy-full" title="Justify Full"><img src="./img/format_align_justify_24dp_FILL0_wght400_GRAD0_opsz24.svg" /></button>
+        <span class="separator"></span>
       </div>
+      <div id="text-area"></div>
+    </section>
+  </article>
+</body>
 
-      <div class="content" contenteditable="true"></div>
-
-    </div>
-
-  </body>
 </html>

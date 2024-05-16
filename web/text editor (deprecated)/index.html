@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Text Editor (deprecated)</title>
+  <script src="script.js" defer></script>
+  <link rel="stylesheet" href="styles.css">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css"
+    integrity="sha512-iBBXm8fW90+nuLcSKlbmrPcLa0OT92xO1BIsZ+ywDWZCvqsWgccV3gFoRBv0z+8dLJgyAHIhR35VZc2oM/gI1w=="
+    crossorigin="anonymous" />
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/brands.min.css"
+    integrity="sha512-apX8rFN/KxJW8rniQbkvzrshQ3KvyEH+4szT3Sno5svdr6E/CP0QE862yEeLBMUnCqLko8QaugGkzvWS7uNfFQ=="
+    crossorigin="anonymous" />
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/fontawesome.min.css"
+    integrity="sha512-OdEXQYCOldjqUEsuMKsZRj93Ht23QRlhIb8E/X0sbwZhme8eUw6g8q7AdxGJKakcBbv7+/PX0Gc2btf7Ru8cZA=="
+    crossorigin="anonymous" />
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/regular.min.css"
+    integrity="sha512-Nqct4Jg8iYwFRs/C34hjAF5og5HONE2mrrUV1JZUswB+YU7vYSPyIjGMq+EAQYDmOsMuO9VIhKpRUa7GjRKVlg=="
+    crossorigin="anonymous" />
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/solid.min.css"
+    integrity="sha512-jQqzj2vHVxA/yCojT8pVZjKGOe9UmoYvnOuM/2sQ110vxiajBU+4WkyRs1ODMmd4AfntwUEV4J+VfM6DkfjLRg=="
+    crossorigin="anonymous" />
+</head>
+
+<body>
+
+  <div class="main-content">
+
+    <div class="text-editor-header">
+      <button type="button" class="btn" data-element="bold"><i class="fa fa-bold"></i></button>
+      <button type="button" class="btn" data-element="italic"><i class="fa fa-italic"></i></button>
+      <button type="button" class="btn" data-element="underline"><i class="fa fa-underline"></i></button>
+      <button type="button" class="btn" data-element="insertUnorderedList"><i class="fa fa-list-ul"></i></button>
+      <button type="button" class="btn" data-element="insertOrderedList"><i class="fa fa-list-ol"></i></button>
+      <button type="button" class="btn" data-element="createLink"><i class="fa fa-link"></i></button>
+      <button type="button" class="btn" data-element="insertImage"><i class="fa fa-image"></i></button>
+      <button type="button" class="btn" data-element="justifyLeft"><i class="fa fa-align-left"></i></button>
+      <button type="button" class="btn" data-element="justifyCenter"><i class="fa fa-align-center"></i></button>
+      <button type="button" class="btn" data-element="justifyRight"><i class="fa fa-align-right"></i></button>
+      <button type="button" class="btn" data-element="justifyFull"><i class="fa fa-align-justify"></i></button>
+      <button type="button" class="btn" data-element="custom-left"><i class="fa fa-arrow-left"></i></button>
+      <button type="button" class="btn" data-element="custom-right"><i class="fa fa-arrow-right"></i></button>
+    </div>
+
+    <div class="content" contenteditable="true"></div>
+
+  </div>
+
+</body>
+
+</html>
