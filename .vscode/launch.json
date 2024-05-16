@@ -19,6 +19,19 @@
         "name": "TP-AS",
         "program": "${workspaceFolder}\\aws\\js lambda\\scripts\\native.js",
         "args": []
+    },
+    {
+        "type": "debugpy",
+        "request": "launch",
+        "name": "FastAPI (aws lambda)",
+        "module": "uvicorn",
+        "python": "${workspaceFolder}\\python\\fastapi-lambda\\venv\\Scripts\\python.exe",
+        "cwd": "${workspaceFolder}\\python\\fastapi-lambda",
+        "console": "integratedTerminal",
+        "args": [
+          "app.main:app",
+          // "--reload"
+        ]
     }
   ]
 }

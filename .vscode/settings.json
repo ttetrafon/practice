@@ -1,11 +1,14 @@
 {
   "cSpell.words": [
     "aiohttp",
+    "autopep",
     "Blueprintable",
     "Changelists",
+    "fastapi",
     "Lightmass",
     "OFPA",
     "pylibsrtp",
+    "pylint",
     "struct",
     "UCLASS",
     "UENUM",
@@ -14,6 +17,7 @@
     "UPARAM",
     "UPROPERTY",
     "USTRUCT",
+    "venv",
     "Volumetrics"
   ]
 }
