@@ -8,6 +8,11 @@
 - A **normal map** needs _Compression -> Compression Setting -> NormalMap_ and _Texture -> sRGB -> false_.
 - A **roughness map** requires _Compression -> Compression Setting -> GrayScale_ and _Texture -> sRGB -> false_.
 
+### Procedural Textures
+
+- Textures can be generated procedurally with the use of the **Texture Graph** plugin.
+- First, create the texture result by use of the available nodes, and then export the resulting texture to be used in materials.
+
 ## Shader Graph
 
 ### Controls
