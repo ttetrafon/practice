@@ -26,13 +26,20 @@ python -m pip install --upgrade pip
 4. ... work
 5. Deactivate: deactivate
 
-## For git
+### For git
 
 1. Add the environment folder in .gitignore
 2. Deactivate the environment (if active)
 3. Run `pip freeze > requirements.txt` to store any installed packages.
 4. Commit this file with the repository.
 5. Others can install the same dependencies by using `pip install -r requirements.txt`.
+
+## For Specific Python Versions (Windows)
+
+1. Install the version needed.
+2. Rename python.exe to pythonXXX.exe
+3. Add the new python/ and python/scripts into path.
+4. Use the new pythonXXX as a command for that specific python version.
 
 ## Formatting
 
