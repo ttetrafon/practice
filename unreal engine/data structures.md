@@ -86,6 +86,7 @@ enum FruitList {
 - A structure is a composite data type that can group variables of different types into a single type.
 - A structure is created as a **Structure** blueprint or with the **USTRUCT(BlueprintType)**, **GENERATED_USTRUCT_BODY()**, and **UPROPERTY()** macros in C++.
 - When creating variables, an existing structure can be used as its type.
+- When a change is made in a structure blueprint, anything that uses it must be recompiled.
 
 - Nodes:
   - _Make_: Combines individual input values to create a structure.
