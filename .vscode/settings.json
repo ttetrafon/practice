@@ -8,6 +8,7 @@
     "fastapi",
     "Lightmass",
     "OFPA",
+    "premade",
     "pylibsrtp",
     "pylint",
     "struct",
