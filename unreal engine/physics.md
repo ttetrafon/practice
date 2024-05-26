@@ -1,19 +1,24 @@
 # Physics
 
+- Actors (mesh components) must have **Simulate Physics = True** to be manipulated through the physics system.
+
 ## Movement
 
 - Physical movement happens through application of force on the actor.
+- Useful Nodes:
+  - **Add Force**
+  - **Add Torque**
+- Inside an actor blueprint, a **Physics Thruster** component can be used to apply force to the mesh itself at a specific point.
+  - Related nodes: **Set Active (Physics Thruster)**, **Get/Set Thruster Strength**.
 
 ### Space
 
 - Links:
   - [Physics Based Spaceship Movement](https://www.youtube.com/watch?v=sf_vesVOBIg)
-  - [Revealing the Secret to Flying the Millennium Falcon in Unreal Engine 5!](https://www.youtube.com/watch?v=jryE6dQV0Yw)
+  - ~~[Revealing the Secret to Flying the Millennium Falcon in Unreal Engine 5!](https://www.youtube.com/watch?v=jryE6dQV0Yw)~~
   - [Unlocking the Secret of Intergalactic Exploration: The Unreal Engine 5 spaceship Tutorial! [Part 1]](https://www.youtube.com/watch?v=QbW6LTW4_3Y)
   - [Unlocking the Secret of Intergalactic Exploration: The Unreal Engine 5 spaceship Tutorial! [Part 2]](https://www.youtube.com/watch?v=fIWiv_OjP2U)
   - [Unlocking the Secret of Intergalactic Exploration: The Unreal Engine 5 spaceship Tutorial! [Part 3]](https://www.youtube.com/watch?v=cGi31Tqs0Tw)
-
-- a
 
 ## Gravity
 

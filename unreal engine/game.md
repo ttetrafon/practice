@@ -83,6 +83,7 @@ AMyGameMode::AMyGameMode() {
 ### Player Controller
 
 - Handles input and controls the player's character (`Pawn`/`Character`).
+- An AI controller exists, which does the same for computer controlled pawns.
 - In a multiplayer game, each connection (including the server) owns its own player controller.
   - To access the player controller in a multiplayer game, the following should be used:
     - AActor::GetOwner(): Returns the owner of the actor's instance.
@@ -111,8 +112,3 @@ A level is a distinct game play entity encompassing gameplay. Each level is load
 
 - **_Running_**: The gameplay loop is running normally.
 - **_Paused_**: A game can be paused by using the `Set Game Paused` Blueprint. During the paused state the gameplay loop stops running.
-
-## (Player) Controller
-
-- The controller is attached on pawns and handles input.
-- An AI controller exists, which does the same for computer controlled pawns.

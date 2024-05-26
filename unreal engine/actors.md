@@ -4,14 +4,9 @@
 
 ## Types of Actors
 
-- Actor
-  - The generic actor from which all other actors inherit their properties.
-- Pawn
-  - A pawn is an entity assigned to a player.
-- Pawns react to input events, and are always possessed by a player controller.
-- Character:
-  - A specific type of pawn.
-  - Has extra functionality required to be used by a player already setup.
+- Actor: The generic actor from which all other actors inherit their properties.
+- Pawn: A pawn is an entity assigned to a player.
+- Character: A specific type of pawn. Has extra functionality required to be used by a player.
 
 ## Ownership
 
@@ -64,7 +59,16 @@ class AMyActor : public AActor {}
     - `Apply RadialDamage`:
     - `Apply RadialDamage with Falloff`:
 
+## Hierarchies
+
+- Actors can be attached to other actors directly (**Attach Actor to Actor** node).
+  - This makes the child actor follow the parent at all times.
+  - A **Mesh Socket** is required for attachment, as the child will be put on the specific socket when being attached.
+
 ## Pawn Properties
+
+- Pawns react to input events, and are always possessed by a controller (Player or AI).
+  - A pawn can be possessed by a different entity at any time, giving control of the pawn to that entity (**Possess** and **Un-Possess** nodes).
 
 ## Character Properties
 

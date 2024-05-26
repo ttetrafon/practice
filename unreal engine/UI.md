@@ -54,7 +54,8 @@ The layout is described within a canvas by using anchors, distances, sizes, and 
 
 - Widgets can be manipulated through blueprints in the graph.
 - To affect a widget, expose it as a variable and use custom events for updates.
-  - Can also use bindings to directly bind values on widgets with variables elsewhere. Bindings are updated on tick though.
+- Can also use bindings to directly bind values on widgets with variables elsewhere.
+  - Bindings are updated on tick though. For optimisation purposes, bindings should be used only for widgets that need to be updated in realtime and not only on specific events.
 
 ## Modular UI Elements
 
