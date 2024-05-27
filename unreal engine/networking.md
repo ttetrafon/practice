@@ -1,18 +1,29 @@
 # Networking
 
+- Links:
+  - [https://www.youtube.com/playlist?list=PLNb7FZ2Nw2HTcJ9Qvy8n2Ou-ZVbsDOMFh](https://www.youtube.com/playlist?list=PLNb7FZ2Nw2HTcJ9Qvy8n2Ou-ZVbsDOMFh)
+
 - Star model, meaning there is a server and players connected to it.
 - Communication between clients always happens through the server.
 - Two types of server:
   - listen: acts as a player and server simultaneously
   - dedicated: acts only as the server and does not feature a player controller
 
+## Online Subsystem
+
+- At the bottom of Unreal's multiplayer lies the [Online Subsystem](https://dev.epicgames.com/documentation/en-us/unreal-engine/online-subsystem-in-unreal-engine?application_version=5.4).
+
 ## Basic Setup
 
-- Multiplayer resolves around _sessions_.
-  - `Create Session`: (do not pass a _player controller_ for a dedicated server]
-    - Following a create session, must come an `Open Level`, with the option of `listen`.
+- Multiplayer resolves around *sessions*.
+  - `Create Session`: (do not pass a *player controller* for a dedicated server)
+    - Following a create session, must come an `Open Level`, with the option of *listen*.
+    - *Public Connections* is the maximum number of players allowed to connect to the session.
   - `Find Sessions`
   - `Join Session`
+    - Only handle the *failure* output - on a *success* Unreal automatically loads the session's level
+  - `Destroy Session`: Terminates the session. For the clients, does it for themselves only, for the host, terminates it for all connected clients. Again, it needs to be followed by an `Open Level`, which determines where
+- Info on the session is provided through the `Get Server Name` (the Steam/Epic username, or PC name for a local session), `Get Current Players`, `Get Max Players`, and `Get Ping in Ms` nodes.
 - These nodes can only be used in the `Game Instance` or the `Player Controller`, they will fail anywhere else.
 - In C++ `#include "Net/UnrealNetwork.h"`.
 
@@ -29,8 +40,8 @@ Multiple instances of the game can be run automatically in the same editor.
 
 - Multiple PlayerControllers are created in a multiplayer game - one for each player.
   - Any `Actor` directly assigned to a `Pawn` is automatically associated with that pawn's owner (PlayerController).
-- Each player needs their own dedicated _player start_ point, unless multiple players start on the same starting point.
-  - When having multiple player starts, override `ChoosePlayerStart` function inside the `GameMode`. (a simple way is to use the `Player Start Tag`, set it to _Used_ when a player start has been used, and later loop over all of them until one not used is found).
+- Each player needs their own dedicated *player start* point, unless multiple players start on the same starting point.
+  - When having multiple player starts, override `ChoosePlayerStart` function inside the `GameMode`. (a simple way is to use the `Player Start Tag`, set it to *Used* when a player start has been used, and later loop over all of them until one not used is found).
 
 ## Replication
 
@@ -40,7 +51,7 @@ Multiple instances of the game can be run automatically in the same editor.
   3. If the actor has **bOnlyRelevantToOwner = true** and it does not pass the 1st check, then it is not relevant.
   4. If the actor is attached to another actor's skeleton, then relevancy is determined by its parent.
   5. If the actor has **bHidden = true** and the root component is not colliding with the checking actor, then the actor is not relevant.
-  6. If **AGameNetworkManager** is set to use _distance-based_ relevancy, the actor is relevant if it is closer than the culling distance.
+  6. If **AGameNetworkManager** is set to use *distance-based* relevancy, the actor is relevant if it is closer than the culling distance.
 - **Actors** in a scene can be replicated over multiplayer (`Class Details -> Replication`).
   - Any class deriving from `APawn` or `ACharacter` has `bReplicates = true` as a default value.
 - **Variables/Properties** can also be replicated (`(Variable) Details -> Replication -> Replicated`).
@@ -94,7 +105,7 @@ void My_Class_Type::GetLifetimeReplicatedProps(TArray<FLifetimeProperty> &OutLif
   - The **Role** and **Remote Role** actor properties provide information about authority and replication. Possible roles are:
     - ROLE_Authority: The running instance has authoritative control over the actor.
     - ROLE_AutonomousProxy: The running instance is an autonomous proxy of the actor.
-      - When an actor is controlled by a _PlayerController_, `Role = ROLE_AutonomousProxy` may be used, so that despite the server having authority, predictions will occur based on player input to limit erratic behaviour over the network.
+      - When an actor is controlled by a *PlayerController*, `Role = ROLE_AutonomousProxy` may be used, so that despite the server having authority, predictions will occur based on player input to limit erratic behaviour over the network.
     - ROLE_SimulatedProxy: The running instance is a locally simulated proxy of the actor.
       - This can be used so movement and other actions are predicted locally so that server updates do not end up in erratic behaviour.
     - ROLE_None: The role is irrelevant.
@@ -118,7 +129,7 @@ void DoSomething_Server()
 
 - Custom events can be used for this purpose, by setting them as `Details -> Replicates -> Run on Server`.
   - `Reliable` requires the actor on which the PRC is called on to be owned by a client, and will be processed in order of calling.
-    - _Reliable RPCs should be avoided in the tick method or in input bindings, as they may cause an overflow of the network queue causing issues in the networking performance._
+    - *Reliable RPCs should be avoided in the tick method or in input bindings, as they may cause an overflow of the network queue causing issues in the networking performance.*
 - For events that need to happen on all clients, but do not really need to be perfectly replicated (like particle effects), an event needs to be set as `Details -> Replicates -> Multicast`.
   - A multicast RPC must be called on the server specifically, otherwise it will run only on the client it has been called. So, a multicast needs to be set as a child of a server RPC.
 - Client RPCs will be called from the server and run only on the specified client.
@@ -144,7 +155,7 @@ void TestServerRPC_CPP_Implementation() {
 
 - The RPC UFUNCTION can also use the parameter `WithValidation`. For this an extra function needs to be declared and defined.
   - Validation is used so that RPCs are never executed with bad input/data.
-  - The result of this function determines if the __Implementation()_ will run or not.
+  - The result of this function determines if the _*Implementation()* will run or not.
 
 ```c++
 bool TestServerRPC_CPP_Validate() {
