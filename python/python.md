@@ -16,8 +16,8 @@ python -m pip install --upgrade pip
 
 ## Virtual Environment
 
-1. Create: `python -m venv venv`
-   1. !`venv` is just a name, it can be anything.
+1. Create: `python -m venv .venv`
+   1. !`.venv` is just a name, it can be anything.
 2. Activate: `venv/Scripts/Activate.ps1`
    1. On windows, may need: `Set-ExecutionPolicy Unrestricted -Scope CurrentUser` to run the script.
    2. Use `Process` instead of `CurrentUser` for a limited effect on the above command.

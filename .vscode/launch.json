@@ -14,24 +14,37 @@
       "program": "${workspaceFolder}\\js\\express server.js\\server.js"
     },
     {
-        "type": "node",
-        "request": "launch",
-        "name": "TP-AS",
-        "program": "${workspaceFolder}\\aws\\js lambda\\scripts\\native.js",
-        "args": []
+      "type": "node",
+      "request": "launch",
+      "name": "TP-AS",
+      "program": "${workspaceFolder}\\aws\\js lambda\\scripts\\native.js",
+      "args": []
     },
     {
-        "type": "debugpy",
-        "request": "launch",
-        "name": "FastAPI (aws lambda)",
-        "module": "uvicorn",
-        "python": "${workspaceFolder}\\python\\fastapi-lambda\\venv\\Scripts\\python.exe",
-        "cwd": "${workspaceFolder}\\python\\fastapi-lambda",
-        "console": "integratedTerminal",
-        "args": [
-          "app.main:app",
-          // "--reload"
-        ]
+      "type": "debugpy",
+      "request": "launch",
+      "name": "FastAPI",
+      "module": "uvicorn",
+      "python": "${workspaceFolder}\\python\\fastapi\\.venv\\Scripts\\python.exe",
+      "cwd": "${workspaceFolder}\\python\\fastapi",
+      "console": "integratedTerminal",
+      "args": [
+        "app.main:app",
+        "--reload"
+      ]
+    },
+    {
+      "type": "debugpy",
+      "request": "launch",
+      "name": "FastAPI (aws lambda)",
+      "module": "uvicorn",
+      "python": "${workspaceFolder}\\python\\fastapi-lambda\\venv\\Scripts\\python.exe",
+      "cwd": "${workspaceFolder}\\python\\fastapi-lambda",
+      "console": "integratedTerminal",
+      "args": [
+        "app.main:app",
+        // "--reload"
+      ]
     }
   ]
 }
