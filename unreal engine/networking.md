@@ -52,13 +52,14 @@ Multiple instances of the game can be run automatically in the same editor.
   4. If the actor is attached to another actor's skeleton, then relevancy is determined by its parent.
   5. If the actor has **bHidden = true** and the root component is not colliding with the checking actor, then the actor is not relevant.
   6. If **AGameNetworkManager** is set to use *distance-based* relevancy, the actor is relevant if it is closer than the culling distance.
-- **Actors** in a scene can be replicated over multiplayer (`Class Details -> Replication`).
+- **Actors** in a scene can be replicated over multiplayer (`Class Details -> Replication = True, Replicate Movement = True`).
   - Any class deriving from `APawn` or `ACharacter` has `bReplicates = true` as a default value.
 - **Variables/Properties** can also be replicated (`(Variable) Details -> Replication -> Replicated`).
   - During initialisation, there may be a delay for variables to be replicated, as this will be done on the next replication cycle. To avoid this, have such variables only be created on the server.
     - Can be done by creating the value in a server class (e.g.: `Game Mode`).
     - Can also be done by checking with `Is Server` and aborting creation on clients.
-  - For clients to set replicated variables, RPCs must be used, or the replication type must be set to `Details -> Replication -> RepNotify` and then `Set w/Notify` used to update them.
+  - For clients to set replicated variables, RPCs must be used, or the replication type must be set to `Details -> Replication -> Replicated/RepNotify` and then `Set w/Notify` used to update them.
+    - When set on `RepNotify`, a blueprint function will be created (`OnRep_veriable_name`). This function will be then called every time the variable is updated over the network.
   - **C++** variables can be replicated with the use of `UPROPERTY(Replicated)`.
     - In addition, must add the following function inside the class employing the replicated variable.
 
@@ -130,16 +131,16 @@ void DoSomething_Server()
 - Custom events can be used for this purpose, by setting them as `Details -> Replicates -> Run on Server`.
   - `Reliable` requires the actor on which the PRC is called on to be owned by a client, and will be processed in order of calling.
     - *Reliable RPCs should be avoided in the tick method or in input bindings, as they may cause an overflow of the network queue causing issues in the networking performance.*
-- For events that need to happen on all clients, but do not really need to be perfectly replicated (like particle effects), an event needs to be set as `Details -> Replicates -> Multicast`.
-  - A multicast RPC must be called on the server specifically, otherwise it will run only on the client it has been called. So, a multicast needs to be set as a child of a server RPC.
+  - For events that need to happen on all clients, but do not really need to be perfectly replicated (like particle effects), an event needs to be set as `Details -> Replicates -> Multicast`.
+    - A multicast RPC must be called on the server specifically, otherwise it will run only on the client it has been called. So, a multicast needs to be set as a child of a server RPC.
 - Client RPCs will be called from the server and run only on the specified client.
   - To make a client's RPC replicate to the server (and other clients), create an extra custom event [`Details -> Replicates -> Run on Server`] to call the final event [`Details -> Replicates -> Multicast`].
     - e.g.: You want to change a material on a character with the click of a button. It will be set up like this:
       1. OnClick -> Server_RPC
       2. Server_PRC -> Client_RPC
-    - This setup is also needed for anything that is not replicated automatically, like the `Play Anim Montage` blueprint.
+    - *This setup is also needed for anything that is not replicated automatically, like the `Play Anim Montage` blueprint.*
 - RPCs in C++ cannot be BlueprintCallable, but can be wrapped in BlueprintCallable functions.
-- First, the function must be declared, and then a secondary, '_Implementation' functions needs to be declared and defined with the RPC's code.
+  - First, the function must be declared, and then a secondary, '_Implementation' functions needs to be declared and defined with the RPC's code.
 
 ```c++
 UFUNCTION(Server, Reliable)
