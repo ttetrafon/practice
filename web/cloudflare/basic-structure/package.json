@@ -1,0 +1,11 @@
+{
+  "dependencies": {
+    "aws4fetch": "^1.0.18"
+  },
+  "devDependencies": {
+    "wrangler": "^3.57.2"
+  },
+  "scripts": {
+    "local-dev": "npx wrangler pages dev ./public"
+  }
+}
