@@ -26,11 +26,11 @@ The layout is described within a canvas by using anchors, distances, sizes, and 
 ### Text
 
 - Displays some text on the screen.
-
-#### Nodes
-
-- **Formate Text**: Can be used to inject variables in a string. Variables are denoted with brackets in the string, and each one creates an input pin in the format text node so it can be connected to a variable.
-  - For example, `(mana)/(manaMax)` will display 150/200 when you have spent 50 of your mana pool.
+- Text can be formatted in various ways, depending on where the input comes from.
+  - **Formate Text**: Can be used to inject variables in a string. Variables are denoted with brackets in the string, and each one creates an input pin in the format text node so it can be connected to a variable.
+    - For example, `(mana)/(manaMax)` will display 150/200 when you have spent 50 of your mana pool.
+  - `To Text` nodes allow for fine manipulation of the output text.
+    - e.g.: `Float to Text` has a *minimum integer digits* input that can be set at 2 when displaying times so that they are always written as XX:XX:XX (for example 02:14:41).
 
 - **Format Text**: Uses {} to create variables in a text line which can then be set from outside. For example, `You scored {number} points during round {roundNumber}!` will create two input nodes named *number* and *roundNumber* which can be used to set their values in the text line.
 
