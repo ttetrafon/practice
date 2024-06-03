@@ -6,6 +6,6 @@
     "wrangler": "^3.57.2"
   },
   "scripts": {
-    "local-dev": "npx wrangler pages dev ./public"
+    "local-dev": "npx wrangler pages dev --local-protocol=https ./public"
   }
 }
