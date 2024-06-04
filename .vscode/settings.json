@@ -21,6 +21,7 @@
     "UPROPERTY",
     "USTRUCT",
     "venv",
-    "Volumetrics"
+    "Volumetrics",
+    "WORKDIR"
   ]
 }
