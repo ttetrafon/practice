@@ -4,6 +4,7 @@
     "autopep",
     "Blueprintable",
     "Changelists",
+    "configmap",
     "DOREPLIFETIME",
     "Emmisive",
     "fastapi",

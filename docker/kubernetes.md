@@ -32,13 +32,15 @@
   - Usually it's better to have a single app inside each pod (e.g.: a server, a db, etc).
   - Pods are ephemeral, and they can be stopped/destroyed for various reasons.
   - Each pod has its own *IP* within the cluster. However, a new IP address is assigned to the pod if it is recreated/restarted for any reason.
-- **Service (svg)**: A service is a static IP address that can be attached to each pod.
+- **Service (svc)**: A service is a static IP address that can be attached to each pod.
   - Services are either *internal* (default, `http://service-ip:port`) or *external* (`http://node-ip:port`), which means they can be accessed only from within the cluster in the first case or from the outside too in the later.
   - **Ingress(ing)**: Operates an an *https endpoint* (`http://my-app.com`) for an external service.
   - A service operates as a load balancer, directing requests to whichever pod is least busy.
 - **ConfigMap (cm)**: Stores application configuration externally to the applications themselves (e.g.: `BD_URL = mongo-db-service`).
   - Each config map is connected to a specific pod, which can then retrieve and use the configuration.
-  - **Secret**: Used for confidential configuration properties, like passwords and API keys. [Secrets are not encrypted by default though](https://kubernetes.io/docs/concepts/configuration/secret/), so encryption must be enabled in some way or another.
+  - **Secret**: Used for confidential configuration properties, like passwords and API keys.
+    - Values in a secret must be base64 encoded and not in plain text.
+    - [Secrets are not encrypted by default though](https://kubernetes.io/docs/concepts/configuration/secret/), so encryption must be enabled in some way or another.
 - **Volume (vol)**: Volumes are used to keep persistent data (data stored in a DB, logs, etc).
   - A volume attaches a physical storage device on a pod.
   - The storage device can be either on the local or on a remote machine.
@@ -47,3 +49,144 @@
   - In essence, a deployment is an abstraction on top of a pod.
   - Deployments are used only for stateless components (e.g.: web-app).
 - **StatefulSet (sts)**: Just like a deployment, but for stateful pods (e.g.: DB).
+
+### Configuration
+
+- All configuration goes through the API Server (within a master node).
+- Each component has its own configuration (can be a single file for each component).
+- Configuration files can be either in *.yaml* or in *.json* format.
+- A configuration file has three parts, (1) *metadata*, (2) *specification*, and (3) *status*.
+  - The *specification* region has entries related to the specific component.
+  - The *status* is generated automatically and added by k8s itself.
+- **labels** are used to allow finding replicas running the same stuff; they do not provide uniqueness.
+  - **matchLabels** determines which deployments include which pods.
+
+```yaml
+kind: ConfigMap
+apiVersion: v1
+metadata:
+  name: CM
+  namespace: default
+data:
+  key: default
+---
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name:  MYAPP
+  namespace: default
+  labels:
+    app:  MYAPP
+spec:
+  selector:
+    matchLabels:
+      app: MYAPP
+  replicas: 1
+  strategy:
+    rollingUpdate:
+      maxSurge: 25%
+      maxUnavailable: 25%
+    type: RollingUpdate
+  template:
+    metadata:
+      labels:
+        app:  MYAPP
+    spec:
+      # initContainers:
+        # Init containers are exactly like regular containers, except:
+          # - Init containers always run to completion.
+          # - Each init container must complete successfully before the next one starts.
+      containers:
+      - name:  MYAPP
+        image:  MYAPP:latest
+        resources:
+          requests:
+            cpu: 100m
+            memory: 100Mi
+          limits:
+            cpu: 100m
+            memory: 100Mi
+        livenessProbe:
+          tcpSocket:
+            port: 80
+          initialDelaySeconds: 5
+          timeoutSeconds: 5
+          successThreshold: 1
+          failureThreshold: 3
+          periodSeconds: 10
+        readinessProbe:
+          httpGet:
+            path: /_status/healthz
+            port: 80
+          initialDelaySeconds: 5
+          timeoutSeconds: 2
+          successThreshold: 1
+          failureThreshold: 3
+          periodSeconds: 10
+        env:
+        - name: DB_HOST
+          valueFrom:
+            configMapKeyRef:
+              name: MYAPP
+              key: DB_HOST
+        ports:
+        - containerPort:  9345
+          name:  MYAPP
+        volumeMounts:
+        - name: localtime
+          mountPath: /etc/localtime
+      volumes:
+        - name: localtime
+          hostPath:
+            path: /usr/share/zoneinfo/Asia/Shanghai
+      restartPolicy: Always
+---
+apiVersion: v1
+kind: Service
+metadata:
+  name: MYAPP
+  namespace: default
+spec:
+  selector:
+    app: MYAPP
+  type: NodePort
+  sessionAffinity: None
+  sessionAffinityConfig:
+    clientIP:
+      timeoutSeconds: 10800
+  ports:
+  - name: MYAPP
+    protocol: TCP
+    port: 8080
+    targetPort: 9345
+    nodePort: 30303
+```
+
+## K8s Systems
+
+- [kubectl](https://kubernetes.io/docs/reference/kubectl/)
+- [Minicube](https://minikube.sigs.k8s.io/docs/)
+- [K3d](https://k3d.io/)
+
+### kubectl
+
+- CLI (is also installed with Docker Desktop) tool to interact with a cluster.
+- Create stuff in the cluster:
+  - `kubectl apply -f FILENAME.yaml` deploys a configuration file.
+  - Resources referenced elsewhere (ConfigMaps, Secrets, DBs, etc) need to be applied before anything that references them.
+- Get info on stuff on the cluster:
+  - `kubectl get pod/configmap/secret/svc`
+    - `-o wide` gives more info.
+  - `kubectl describe POD_NAME/POD_ID`
+  - `kubectl logs POD_NAME/POD_ID`
+    - `-f` streams the logs.
+
+### Minikube
+
+- Installs a single node that can host a full cluster on a single machine; useful for testing.
+- First, install minikube and add it to path.
+- `minikube start` starts minikube on the system.
+  - `--driver DRIVER` can be used to select between *docker*, hyperv, ssh, etc drivers to run minikube on.
+- `minikube status`
+- `minikube stop`
+- `minikube ip` returns the cluster's IP address which can be used to access services on the cluster.
