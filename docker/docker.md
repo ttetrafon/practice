@@ -3,6 +3,8 @@
 - Links:
   - [Dive Into Docker](https://diveintodocker.com/ref-dfp)
   - [Docker Crash Course for Absolute Beginners](https://www.youtube.com/watch?v=pg19Z8LL06w)
+  - [Ultimate Docker Compose Tutorial](https://www.youtube.com/watch?v=SXwC9fSwct8)
+  - [Using Images, Dockerfiles, and Docker Compose](https://containers.dev/guide/dockerfile)
 - Virtualisation software, helps with developing and deploying applications exactly in the same way within a team and along different systems.
   - Packages the application with all necessary dependencies, configuration, system tools, and runtime in a **Docker Image**, ensuring it always operates the same.
   - Running an image on docker service creates a **container** based on that image.
@@ -35,6 +37,9 @@ docker ps
 
 - To find community images, look into [Docker Hub](https://hub.docker.com/).
 - Instead of the public registry (Docker Hub), images can be uploaded and retrieved from private registries (e.g.: AWS ECR, Google Container Registry, Nexus, ...).
+  - To interact with a private repository, `docker login` is needed (depends on the specific registry).
+  - To store an image on a registry, first build it locally.
+  - Then push it in the registry with `docker push REGISTRY_NAME/IMAGE_NAME:TAG`.
 - To download an image:
 
 ```bash
@@ -45,7 +50,8 @@ docker pull IMAGE_NAME:TAG
   - If the image has not already been downloaded, docker will run `pull` on its own.
   - `-d` runs the container detached from the parent terminal.
     - When running detached, logs can be retrieved through `docker logs CONTAINER_ID`.
-  - `--name` can be used to determine the container's name.
+  - `--name` can be used to determine the container's name. *Useful for referencing the container later.*
+  - `-e ENVIRONMENT_VARIABLE=VALUE` defines an environment variable on the container.
 - Stopping a container is done through `docker stop CONTAINER_ID`.
 - A stopped container can be restarted with `docker start CONTAINER_ID`.
 - *All commands can use CONTAINER_NAME in place of CONTAINER_ID*.
@@ -62,6 +68,16 @@ docker run IMAGE_NAME:TAG
 # The following binds and exposes nginx's port 80 to localhost:9000.
 docker run -d -p 9000:80 nginx:1.23
 ```
+
+- A docker network helps containers on the same environment to communicate with each other and with the external world.
+
+```bash
+docker network create NETWORK_NAME
+```
+
+- `docker network ls`
+- When running a container, we can add it to a network with `--network NETWORK_NAME`.
+- `docker rm RESOURCE_NAME/RESOURCE_ID` deletes the specified resource (image, container, network, etc).
 
 ## Docker Files
 
@@ -86,3 +102,53 @@ CMD ["node", "server.js"]
 
 - `docker build -t NAME:TAG /path/to/dockerfile` uses the Dockerfile to build the image.
   - The image can then be either used locally or uploaded to a registry to be used elsewhere.
+
+## Docker Compose
+
+- [Docker Compose documentation](https://docs.docker.com/compose/)
+- Tool to define and run multi-container applications in a single environment.
+- Uses a single *compose.yaml* file to create configurations for multiple containers and deploys all simultaneously.
+- When a compose file is run, a docker network is created automatically and all services are added to it.
+  - Communication between containers can be done by referencing the container names.
+  - Alternatively, a custom docker network can be created within the composer file.
+- `depends_on` can be used to defer initialisation of a container after its dependencies are up and running.
+- `build` can be used to point to a dockerfile, replacing a prebuilt image with one built at the time of deployment.
+- For secrets, it's better to [secrets](https://docs.docker.com/compose/use-secrets/).
+
+```yaml
+services:
+  mongodb:
+    image: mongo
+    ports:
+      - 27017:27017 # host:container
+    environment:
+      - MONGO_INITDB_ROOT_USERNAME=admin
+      - MONGO_INITDB_ROOT_PASSWORD=some_password
+  mongo-express:
+    image: mongo-express
+    ports:
+      - 8081:8081
+    environment:
+      - MONGO_CONFIG_MONGODB_ADMINUSERNAME=admin
+      - MONGO_CONFIG_MONGODB_ADMINPASSWORD=some_password
+      - MONGO_CONFIG_MONGODB_SERVER=mongodb
+    depends_on:
+      - mongodb
+  webapp:
+    build: ./path/to/dockerfile
+    ports:
+      - 3000:3000
+    environment:
+      - MONGODB_ADMINUSERNAME=admin
+      - MONGODB_ADMINPASSWORD=some_password
+      - MONGODB_SERVER=mongodb
+    depends_on:
+      - mongodb
+```
+
+- `docker compose -f compose.yaml` is the base command for running the configuration found in *compose.yaml*.
+  - `up -d` builds and starts everything.
+  - `down` stops the full system and removes all resources.
+  - `start/stop` starts or stops all services.
+  - `--project-name NAME` replaces the default resource prefix (folder name) with the specified one.
+- Images can also be grabbed from private repositories (`image: REGISTRY_NAME/IMAGE_NAME:TAG`), but you need to be logged in appropriate registry to succeed.
