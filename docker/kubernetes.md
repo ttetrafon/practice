@@ -175,7 +175,7 @@ spec:
   - `kubectl apply -f FILENAME.yaml` deploys a configuration file.
   - Resources referenced elsewhere (ConfigMaps, Secrets, DBs, etc) need to be applied before anything that references them.
 - Get info on stuff on the cluster:
-  - `kubectl get pod/configmap/secret/svc`
+  - `kubectl get pod/configmap/secret/svc/services`
     - `-o wide` gives more info.
   - `kubectl describe POD_NAME/POD_ID`
   - `kubectl logs POD_NAME/POD_ID`
@@ -183,10 +183,22 @@ spec:
 
 ### Minikube
 
+- Links:
+  - [Docs](https://minikube.sigs.k8s.io/docs/)
 - Installs a single node that can host a full cluster on a single machine; useful for testing.
 - First, install minikube and add it to path.
 - `minikube start` starts minikube on the system.
   - `--driver DRIVER` can be used to select between *docker*, hyperv, ssh, etc drivers to run minikube on.
+  - `--v=7 --alsologtosderr` enabled debug logging
 - `minikube status`
 - `minikube stop`
 - `minikube ip` returns the cluster's IP address which can be used to access services on the cluster.
+- `minikube delete`
+
+#### Deploying on Minikube
+
+#### Watching Minikube
+
+- `kubectl proxy` starts an access proxy for the cluster (must be left alive in the terminal).
+  - Use `curl http://localhost:8001/version` to check if the proxy is running!
+- When the proxy is running, the cluster's API server automatically creates an endpoint for each pod.
