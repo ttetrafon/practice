@@ -75,6 +75,10 @@ On the left panel, under the **usage** section, select the cases in which the ma
   - Select property to expose as parameter.
   - _Mouse1 -> Convert to Parameter_.
 
+- Material instances can also be created at runtime, so that material properties are changed programmatically during gameplay ([example](https://youtu.be/VX98R3zNKxU?t=2341)).
+  - The `Create Dynamic Material Instance` creates a material instance from a static mesh (will need a loop for multiple materials on the same mesh).
+  - Properties on the dynamic material are manipulated through `Set TYPE Parameter Value`, with the parameter name matching the appropriate input name in the material.
+
 ## Material Interfaces
 
 - The standardised set of material properties within a _material function_ can be called a _material interface_. The parameters have default names that will be the same across all materials.

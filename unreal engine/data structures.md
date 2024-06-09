@@ -89,8 +89,8 @@ enum FruitList {
 - When a change is made in a structure blueprint, anything that uses it must be recompiled.
 
 - Nodes:
-  - _Make_: Combines individual input values to create a structure.
-  - _Break_: Separates the elements of a structure into individual items.
+  - `Make`: Combines individual input values to create a structure.
+  - `Break`: Separates the elements of a structure into individual items.
 
 - C++:
   - To create a structure, use _Tools -> New C++ Class -> Parent Class: None_.
