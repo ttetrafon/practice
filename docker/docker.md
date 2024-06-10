@@ -86,7 +86,8 @@ docker network create NETWORK_NAME
 - Must (generally) start with a base image (`FROM image:tag`), which will be modified to our liking.
 - Application source files are then copied (`COPY source_dir destination_dir`).
 - Then we ask to install dependencies and/or to build source files (`RUN ...`).
-- We can change where the commands are being run with `WORKDIR selected_directory`
+- We can change where the commands are being run with `WORKDIR selected_directory`.
+- Environment variables are set with `ENV env_name env_value`.
 - The last command is often `CMD [params]`, which will start the application itself.
 
 *For example, for a node express server (files located in ./src/, package.json in ./), we will use the following Dockerfile:*
