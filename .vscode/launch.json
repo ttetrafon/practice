@@ -5,25 +5,25 @@
   "version": "0.2.0",
   "configurations": [
     {
+      "name": "Express Server",
       "type": "node",
       "request": "launch",
-      "name": "Express Server",
       "skipFiles": [
         "<node_internals>/**"
       ],
       "program": "${workspaceFolder}\\js\\express server.js\\server.js"
     },
     {
+      "name": "Authenticated Service",
       "type": "node",
       "request": "launch",
-      "name": "TP-AS",
       "program": "${workspaceFolder}\\aws\\js lambda\\scripts\\native.js",
       "args": []
     },
     {
+      "name": "FastAPI",
       "type": "debugpy",
       "request": "launch",
-      "name": "FastAPI",
       "module": "uvicorn",
       "python": "${workspaceFolder}\\python\\fastapi\\.venv\\Scripts\\python.exe",
       "cwd": "${workspaceFolder}\\python\\fastapi",
@@ -34,9 +34,9 @@
       ]
     },
     {
+      "name": "FastAPI (aws lambda)",
       "type": "debugpy",
       "request": "launch",
-      "name": "FastAPI (aws lambda)",
       "module": "uvicorn",
       "python": "${workspaceFolder}\\python\\fastapi-lambda\\venv\\Scripts\\python.exe",
       "cwd": "${workspaceFolder}\\python\\fastapi-lambda",

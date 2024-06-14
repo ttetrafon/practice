@@ -1,22 +1,9 @@
 from fastapi import APIRouter, HTTPException
 from pydantic import BaseModel
 from typing import List
+from app.models.models import User, All_Users
 
 router = APIRouter()
-
-
-class User(BaseModel):
-    # For non-required fields, add a default value
-    user_id: str
-    is_active: bool = True
-    first_name: str
-    family_name: str
-
-
-class All_Users(BaseModel):
-    total: int
-    users: List[User]
-
 
 users: List[User] = []
 
