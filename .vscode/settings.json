@@ -10,6 +10,7 @@
     "Emmisive",
     "fastapi",
     "fastapicontainer",
+    "initialdir",
     "kubelet",
     "Lightmass",
     "OFPA",
