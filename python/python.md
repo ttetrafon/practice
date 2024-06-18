@@ -26,6 +26,13 @@ python -m pip install --upgrade pip
 4. ... work
 5. Deactivate: deactivate
 
+## Upgrading packages
+
+```bash
+pip list --outdated
+pip install PACKAGE==VERSION
+```
+
 ### For git
 
 1. Add the environment folder in .gitignore

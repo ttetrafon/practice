@@ -1,7 +1,7 @@
 from fastapi import FastAPI
 from app.api.api_v1.api import router as api_router
 
-app = FastAPI(title="FastAPILambda")
+app = FastAPI(title="FastAPI")
 
 @app.get("/")
 async def root():
