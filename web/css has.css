@@ -1,0 +1,5 @@
+/* has() allows styling on parents depending on their children state */
+form:has(input:disabled) {
+  background-color: red;
+  cursor: not-allowed;
+}

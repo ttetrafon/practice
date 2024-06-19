@@ -1,0 +1,11 @@
+/*
+The following with :is(), is equivalent to:
+
+section h1, section h2, section h3,
+article h1, article h2, article h3,
+aside h1, aside h2, aside h3 {}
+
+*/
+:is(section, article, aside) :is(h1, h2, h3) {
+  color: blue;
+}

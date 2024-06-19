@@ -1,0 +1,15 @@
+form {
+  display: flex;
+
+  &.disabled { /* => form.disabled */
+    display: none;
+  }
+
+  label { /* => form label */
+    font-size: 13px;
+
+    input { /* form label input */
+      margin-top: 5px;
+    }
+  }
+}
