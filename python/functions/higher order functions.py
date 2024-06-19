@@ -1,4 +1,6 @@
 from functools import partial
+from typing import Callable
+
 # https://www.youtube.com/watch?v=CnbgMnUCsUM
 
 
@@ -23,3 +25,15 @@ amount_specs(7)
 amount_specs(21)
 colour_and_amount_specs('cat')
 
+# instead of partials, for simple setups, carrying can be done with the use of callables
+def multiply_setup(a: float) -> Callable:
+    def multiply(b: float) -> float:
+        return a * b
+    return multiply
+
+double: Callable = multiply_setup(2)
+triple: Callable = multiply_setup(3)
+
+print(double(123))
+print(double(743))
+print(triple(456))
