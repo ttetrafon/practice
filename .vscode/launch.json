@@ -30,7 +30,7 @@
       "console": "integratedTerminal",
       "args": [
         "app.main:app",
-        "--reload"
+        // "--reload"
       ]
     },
     {

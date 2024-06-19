@@ -5,6 +5,7 @@
   - [Docker Crash Course for Absolute Beginners](https://www.youtube.com/watch?v=pg19Z8LL06w)
   - [Ultimate Docker Compose Tutorial](https://www.youtube.com/watch?v=SXwC9fSwct8)
   - [Using Images, Dockerfiles, and Docker Compose](https://containers.dev/guide/dockerfile)
+  - [How to Connect Docker Compose Services To Each Other](https://erik-ekberg.medium.com/docker-compose-connecting-services-by-hostname-or-alias-b4f1a53d8d95)
 - Virtualisation software, helps with developing and deploying applications exactly in the same way within a team and along different systems.
   - Packages the application with all necessary dependencies, configuration, system tools, and runtime in a **Docker Image**, ensuring it always operates the same.
   - Running an image on docker service creates a **container** based on that image.
@@ -111,6 +112,7 @@ CMD ["node", "server.js"]
 - Uses a single *compose.yaml* file to create configurations for multiple containers and deploys all simultaneously.
 - When a compose file is run, a docker network is created automatically and all services are added to it.
   - Communication between containers can be done by referencing the container names.
+    - URLs are resolved as `http://{{service-name}}:{{listening-port}}/`.
   - Alternatively, a custom docker network can be created within the composer file.
 - `depends_on` can be used to defer initialisation of a container after its dependencies are up and running.
 - `build` can be used to point to a dockerfile, replacing a prebuilt image with one built at the time of deployment.
@@ -149,6 +151,7 @@ services:
 
 - `docker compose -f compose.yaml` is the base command for running the configuration found in *compose.yaml*.
   - `up -d` builds and starts everything.
+  - `up --force-recreate --build -d` rebuilds and starts everything.
   - `down` stops the full system and removes all resources.
   - `start/stop` starts or stops all services.
   - `--project-name NAME` replaces the default resource prefix (folder name) with the specified one.

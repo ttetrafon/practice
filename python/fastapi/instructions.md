@@ -2,6 +2,7 @@
 
 - Resources:
   - [FastAPI](https://fastapi.tiangolo.com/)
+  - [Content Management](https://fastapi.tiangolo.com/fa/advanced/events/)
 
 - To install fastapi, we need the `fastapi` (the framework) and `uvicorn` (the server) modules.
 
