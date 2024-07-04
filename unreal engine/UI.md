@@ -71,3 +71,32 @@ The layout is described within a canvas by using anchors, distances, sizes, and 
 
 - A *named slot* is a widget that allows extending a widget blueprint by adding additional widgets to their instances.
 - A *named slot* is an element to be added in a widget from the palette.
+
+## Icons
+
+- Resources:
+  - [How To Create An Icon Of Any Mesh In Unreal Engine 5](https://www.youtube.com/watch?v=EpthBJJ9S-o)
+
+### "Photograph" 3D Objects
+
+- In the project, create a folder to store the rendered targets.
+  - Inside the folder, create a `Render Target` blueprint.
+    - Set its resolution as needed (256 x 256 for example if creating icons)
+- Create a material for the icons.
+  - Set:
+    - **Material Domain -> User Interface**.
+    - **Blend Mode -> Translucent**
+  - Import the render target as `Texture Sample`.
+    - Connect:
+      - *RGB* channel to the *Final Colour*.
+      - *A* channel to `One Minus` and to *Opacity*.
+- An actor can be used to capture 2D images of 3D objects, either in game or in the editor.
+  - Add a `Scene Capture 2D` component to the actor.
+    - Select the previously created render target as the component's **texture target**.
+  - Add a static mesh component to the actor, and select the mesh to capture.
+  - Add two planes, named *Icon* (for preview) and *Background* (if needed).
+    - Add the icon material to the Icon plane.
+- Finally **Render Target -> Create a Static Texture**.
+  - Set:
+    - **Min Alpha = 1**
+    - **Max Alpha = 0**
