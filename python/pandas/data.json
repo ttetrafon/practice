@@ -1,0 +1,26 @@
+{
+  "code": 0,
+  "message": "Ok",
+  "events_map": [
+    {
+      "PSEventName": "Test Team 1 v Test Team 2",
+      "PSEventID": "90000001",
+      "PSCompetition": "Test League",
+      "PSCategory": "Test Sport",
+      "StartTime": "2024-05-08T21:00:00Z",
+      "BFEventName": "Test Team 1 v Test Team 2",
+      "BFEventID": "20000002",
+      "OpenDateGMT": "2024-05-08T21:00:00Z"
+    },
+    {
+      "PSEventName": "Test Team 3 v Test Team 4",
+      "PSEventID": "90000007",
+      "PSCompetition": "Test League",
+      "PSCategory": "Test Sport",
+      "StartTime": "2024-05-08T21:00:00Z",
+      "BFEventName": "Test Team 3 v Test Team 4",
+      "BFEventID": "20000005",
+      "OpenDateGMT": "2024-05-08T21:00:00Z"
+    }
+  ]
+}
