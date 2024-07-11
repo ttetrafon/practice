@@ -1,4 +1,4 @@
-import my_module
+from my_module import my_module
 
 def main():
     my_module.check()
