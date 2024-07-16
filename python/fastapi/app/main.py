@@ -1,9 +1,9 @@
-from fastapi import FastAPI, Request
+from fastapi import FastAPI, Request, WebSocket, WebSocketDisconnect
 from contextlib import asynccontextmanager
 from httpx import AsyncClient
 import asyncio, time
 from app.api.v1.api import router as api_router
-from app.requests import requests_handler as rh
+from app.requests import requests_handler as rh, websockets as ws
 
 app = FastAPI(title="FastAPI", lifespan=rh.lifespan)
 
@@ -48,6 +48,23 @@ def sleep_3():
     print("Started...")
     asyncio.sleep(5)
     print("... finished")
+
+
+
+# Websocket control
+ws_manager: ws.ConnectionManager = ws.ConnectionManager()
+
+@app.websocket("/ws/{client_id}")
+async def websocket_endpoint(websocket: WebSocket, client_id: str):
+    await ws_manager.connect(websocket)
+    try:
+        while True:
+            data = await websocket.receive_text()
+            await ws_manager.send_personal_message(f"[You] {data}", websocket)
+            await ws_manager.broadcast_message(f"[{client_id}] {data}")
+    except WebSocketDisconnect:
+        ws_manager.disconnect(websocket)
+        await ws_manager.broadcast_message(f"[Server] Client {client_id} has disconnected...")
 
 
 app.include_router(api_router, prefix="/api/v1")
