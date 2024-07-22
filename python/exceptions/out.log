@@ -1,1 +1,8 @@
 user raised exception
+Traceback (most recent call last):
+  File "C:\Users\ttetr\OneDrive\Projects\self-practice\python\exceptions\print exception.py", line 8, in <module>
+    raiser()
+  File "C:\Users\ttetr\OneDrive\Projects\self-practice\python\exceptions\print exception.py", line 4, in raiser
+    raise Exception("user raised exception")
+Exception: user raised exception
+
