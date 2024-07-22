@@ -73,10 +73,10 @@ data:
 apiVersion: apps/v1
 kind: Deployment
 metadata:
-  name:  MYAPP
+  name: MYAPP
   namespace: default
   labels:
-    app:  MYAPP
+    app: MYAPP
 spec:
   selector:
     matchLabels:
@@ -90,15 +90,15 @@ spec:
   template:
     metadata:
       labels:
-        app:  MYAPP
+        app: MYAPP
     spec:
       # initContainers:
         # Init containers are exactly like regular containers, except:
           # - Init containers always run to completion.
           # - Each init container must complete successfully before the next one starts.
       containers:
-      - name:  MYAPP
-        image:  MYAPP:latest
+      - name: MYAPP
+        image: MYAPP:latest
         resources:
           requests:
             cpu: 100m
@@ -130,8 +130,8 @@ spec:
               name: MYAPP
               key: DB_HOST
         ports:
-        - containerPort:  9345
-          name:  MYAPP
+        - containerPort: 9345
+          name: MYAPP
         volumeMounts:
         - name: localtime
           mountPath: /etc/localtime
@@ -202,3 +202,18 @@ spec:
 - `kubectl proxy` starts an access proxy for the cluster (must be left alive in the terminal).
   - Use `curl http://localhost:8001/version` to check if the proxy is running!
 - When the proxy is running, the cluster's API server automatically creates an endpoint for each pod.
+
+### AWS EKS
+
+- EKS is a managed k8s service provided by AWS.
+
+```bash
+kubectl create namespace MY_NAMESPACE
+kubectl apply -f CONFIG_FILE.yaml
+
+kubectl get all -n MY_NAMESPACE
+kubectl get nodes
+```
+
+- When creating a nodegroup, assign a key pair to be able to connect with ssh.
+  - Username: ec2-user

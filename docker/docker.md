@@ -79,6 +79,7 @@ docker network create NETWORK_NAME
 - `docker network ls`
 - When running a container, we can add it to a network with `--network NETWORK_NAME`.
 - `docker rm RESOURCE_NAME/RESOURCE_ID` deletes the specified resource (image, container, network, etc).
+- All stopped containers can be removed with `docker container prune`.
 
 ## Docker Files
 
