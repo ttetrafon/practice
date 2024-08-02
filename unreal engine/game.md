@@ -112,3 +112,11 @@ A level is a distinct game play entity encompassing gameplay. Each level is load
 
 - **_Running_**: The gameplay loop is running normally.
 - **_Paused_**: A game can be paused by using the `Set Game Paused` Blueprint. During the paused state the gameplay loop stops running.
+- The gameplay loop is divided into **event ticks**.
+  - How many event ticks (**framerate**) happen in the unit of time depends on how the game's performance is.
+  - The `Event Tick` blueprint outputs the *delta seconds*, which is the actual time that the previous tick took to complete. This can be used to normalise actions happening on the tick, as not all event ticks have the same duration.
+  - Event ticks can be enabled/disabled on specific actors with the use of `Set Actor Tick Enabled`.
+    - If used on the level blueprint, they control all actors???
+  - Custom event ticks can be created by using a `Custom Event` connected to a `Set Timer by Event` (with *looping = true*).
+    - The `Clear and Invalidate Timer by Handle` can be used to stop the custom tick.
+      - This can even be hooked to a `Delay` (`Set Timer by Event -> Delay -> Clear and Invalidate Timer by Handle`) to automatically stop it after a certain period of time.
