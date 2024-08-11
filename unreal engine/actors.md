@@ -79,6 +79,7 @@ class AMyActor : public AActor {}
     - Add an appropriate mesh under **Mesh**.
     - If the camera will be following the player, also add a **Spring Arm** and a **Camera** underneath that.
       - Set "use pawn control rotation" in the camera details.
+    - Can also enable **camera lag** and/or **camera rotation lag** for a more realistic approach (useful mostly in vehicle cameras).
 - (C++) _Tools -> New C++ Class -> All Classes tab -> Character_
 - In the current **Game Mode**, assign the new character blueprint as the _default pawn class_.
 
