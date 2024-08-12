@@ -55,3 +55,27 @@ A collection of mappings for input actions.
   - **Set Input Mode Game Only**: Only the player controller receives input events.
   - **Set Input Mode UI Only**: Only the UI receives input events.
   - **Set Input Mode Game and UI**: Both player controller and UI receive input events, with UI enjoying priority.
+
+### Useful Procedures
+
+#### Get Mouse Position from Center of Screen
+
+- **Get Mouse Position on Viewport** -> split output to X (1) and Y (2)
+- **Get Viewport Size** -> **Multiply** by 0.5 -> split output to X (3) and Y (4)
+- Subtract (3) from (1) -> (5)
+- Subtract (4) from (2) -> (6)
+- Combine (5) and (6) to a vector or output them individually as needed.
+
+#### Create an Input Dead Zone at the Center of the Screen
+
+- **Get Mouse Position on Viewport** -> split output to X (1) and Y (2)
+- **Get Viewport Size** -> **Multiply** by 0.5 -> split output to X (3) and Y (4)
+- Subtract (3) from (1) -> (5)
+- Subtract (4) from (2) -> (6)
+- (5) **Less Than** a value (in px) -> (7)
+- (6) **Less Than** a value (in px) -> (8)
+- (7|8): true means we are in the dead zone, so input should not execute
+
+#### Create an Input Dead Zone at the Edge of the Screen
+
+- ...

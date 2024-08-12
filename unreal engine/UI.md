@@ -22,6 +22,8 @@ The layout is described within a canvas by using anchors, distances, sizes, and 
 
 - A canvas is required as the base for all other UI elements.
 - *Fill Screen/Custom/...* determines how the canvas fits within the screen.
+- Nodes:
+  - `Set Render Transform Angle` rotates the full canvas.
 
 ### Text
 
@@ -42,6 +44,10 @@ The layout is described within a canvas by using anchors, distances, sizes, and 
 
 - Useful as a base when there is need to define specific sizes.
   - By parametrising its properties, it can be used to adapt the widget wherever it is used.
+
+### Common Properties
+
+- **Cursor** can be used to define how the cursor looks when hovering about the specific UI element.
 
 ## Events
 
@@ -100,3 +106,16 @@ The layout is described within a canvas by using anchors, distances, sizes, and 
   - Set:
     - **Min Alpha = 1**
     - **Max Alpha = 0**
+
+## Useful Procedures
+
+### Custom Cursor
+
+- Use the **Set Show Mouse Cursor** node to make the cursor visible.
+- Create a *png* image with the desired cursor shape.
+- Create a new `User Widget` blueprint.
+- Insert a **Canvas** and set its size to *custom*.
+- Set the dimensions a typical cursor size (72px * 72px for example).
+- In the UI canvas, create an **Image** and assign the cursor image to it.
+  - Position the image in the canvas so that the pointer is exactly at the middle of the canvas.
+- In **Project Settings -> Software Cursors** assign (type of cursor as needed) the widget from above.
