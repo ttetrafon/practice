@@ -65,12 +65,12 @@ class AMyActor : public AActor {}
   - This makes the child actor follow the parent at all times.
   - A **Mesh Socket** is required for attachment, as the child will be put on the specific socket when being attached.
 
-## Pawn Properties
+## Pawns
 
 - Pawns react to input events, and are always possessed by a controller (Player or AI).
   - A pawn can be possessed by a different entity at any time, giving control of the pawn to that entity (**Possess** and **Un-Possess** nodes).
 
-## Character Properties
+## Characters
 
 ### Character Creation
 

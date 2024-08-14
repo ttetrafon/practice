@@ -1,5 +1,13 @@
 # Meshes
 
+## Creating a Mesh
+
+- Meshes can be created either in Unreal with the modelling tools (limited functionality) or in separate, dedicated application (like Blender).
+
+### Preparing a Mesh for Use
+
+- After building a mesh, assign to its whole a single shiny material to check if there are any reflection or lighting issues.
+
 ## Importing a Mesh
 
 - Drag and drop a mesh (fbx) into the _Content Drawer_ to import a mesh.

@@ -178,6 +178,7 @@ class ACPP_TARGET : public AActor, public IMyInterface {}
 ## Blueprints & C++
 
 - A project can utilise both C++ code and Blueprints.
+- This is usually the best way, as logic can go in the C++ parts while anything visual goes in the Blueprint parts.
 
 ### Links
 

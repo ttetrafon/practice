@@ -1,11 +1,19 @@
 # Input
 
-[Input Docs](https://docs.unrealengine.com/5.1/en-US/enhanced-input-in-unreal-engine/)
+- Useful links:
+  - [Input Docs](https://docs.unrealengine.com/5.1/en-US/enhanced-input-in-unreal-engine/)
+  - [Enhanced Input and Pawns with C++ in Unreal Engine 5](https://www.youtube.com/watch?v=4wWIjlkSj2wlist=PL6xERJAemtxumiNY50T57DPN67EoWGS0V&index=8&)
 
-- To use the EnhancedInput system in C++, import the system in the build file (**ShadowsOfTheLichLord.Build.cs**).
+- To use the EnhancedInput system in C++, import the system in the build file (**ProjectName.Build.cs**).
 
 ```c++
 PublicDependencyModuleNames.AddRange(new string[] { ..., "EnhancedInput" });
+```
+
+- Also include the public directory for enhanced input.
+
+```C++
+PublicIncludePaths.AddRange(new String[] { ..., "EnhancedInput/Public"});
 ```
 
 ## Create Input Actions
