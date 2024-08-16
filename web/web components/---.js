@@ -1,6 +1,6 @@
 const template = document.createElement('template');
 
-template.innerHTML = `
+template.innerHTML = /*html*/`
   <style>
   </style>
 
@@ -9,7 +9,6 @@ template.innerHTML = `
 class Component extends HTMLElement {
   constructor() {
     super();
-
     this._shadowRoot = this.attachShadow({ mode: 'closed' });
     this._shadowRoot.appendChild(template.content.cloneNode(true));
 
