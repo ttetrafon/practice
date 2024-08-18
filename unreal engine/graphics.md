@@ -49,6 +49,7 @@
       - **Auto Exposure** simulates the real life change of exposure of someone's eyes when lighting conditions change abruptly.
     - **Manual** is better for static scenes, where the intensity of light should not be adjusted.
     - Use the **Exposure Compensation** to adjust the light intensity in the scene.
+    - Use **Min/Max Brightness** to better control the exposure's result.
 - Global Illumination
   - **Method: Lumen** is realistic, bouncing illumination.
 - Reflections

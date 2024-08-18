@@ -60,6 +60,8 @@ Multiple instances of the game can be run automatically in the same editor.
     - Can also be done by checking with `Is Server` and aborting creation on clients.
   - For clients to set replicated variables, RPCs must be used, or the replication type must be set to `Details -> Replication -> Replicated/RepNotify` and then `Set w/Notify` used to update them.
     - When set on `RepNotify`, a blueprint function will be created (`OnRep_veriable_name`). This function will be then called every time the variable is updated over the network.
+    - `RepNotify` is also triggered out of time when a client connects to the server, even if the change of value has happened much earlier.
+  - **Net Cull Distance**, **Net Update Frequency** (has a real-life max of 60???), and **Min Net Update Frequency** are useful to control how much effort the server has to do for these specific variables.
   - **C++** variables can be replicated with the use of `UPROPERTY(Replicated)`.
     - In addition, must add the following function inside the class employing the replicated variable.
 
