@@ -16,6 +16,7 @@ The game's mode and state are held in specific blueprint classes.
 ## Game Mode
 
 - The **GameModeBase** is the parent class responsible for creating the game mode. The **Game Mode** class is used to define the rules of the game and specifies the default classes used for the creation of **Pawn**, **Player Controller**, **Game State Base**, **HUD**, etc. Define these (custom) classes in the _class defaults_ of **Game Mode**.
+  - The **Game Mode** is better used in multiplayer games, as it has more features than the **Game Mode Base**.
   - In C++, the default subclasses can declared like this:
 
 `MyCharacter.h`
@@ -114,9 +115,9 @@ A level is a distinct game play entity encompassing gameplay. Each level is load
 - **_Paused_**: A game can be paused by using the `Set Game Paused` Blueprint. During the paused state the gameplay loop stops running.
 - The gameplay loop is divided into **event ticks**.
   - How many event ticks (**framerate**) happen in the unit of time depends on how the game's performance is.
-  - The `Event Tick` blueprint outputs the *delta seconds*, which is the actual time that the previous tick took to complete. This can be used to normalise actions happening on the tick, as not all event ticks have the same duration.
+  - The `Event Tick` blueprint outputs the _delta seconds_, which is the actual time that the previous tick took to complete. This can be used to normalise actions happening on the tick, as not all event ticks have the same duration.
   - Event ticks can be enabled/disabled on specific actors with the use of `Set Actor Tick Enabled`.
     - If used on the level blueprint, they control all actors???
-  - Custom event ticks can be created by using a `Custom Event` connected to a `Set Timer by Event` (with *looping = true*).
+  - Custom event ticks can be created by using a `Custom Event` connected to a `Set Timer by Event` (with _looping = true_).
     - The `Clear and Invalidate Timer by Handle` can be used to stop the custom tick.
       - This can even be hooked to a `Delay` (`Set Timer by Event -> Delay -> Clear and Invalidate Timer by Handle`) to automatically stop it after a certain period of time.
