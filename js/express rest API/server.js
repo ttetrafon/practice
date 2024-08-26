@@ -1,4 +1,6 @@
-const express = require("express");
+import express from "express";
+// https://expressjs.com/en/starter/examples.html
+
 const app = express();
 const port = 3000;
 
@@ -7,9 +9,9 @@ app.get('/', (request, response) => {
     response.send("Hello World!");
 });
 
-app.post('/', (request, resposne) => {
+app.post('/', (request, response) => {
     console.log("post request received: ", request);
-    resposne.send("Hello World!");
+    response.send("Hello World!");
 });
 
 app.put('/', (request, response) => {
