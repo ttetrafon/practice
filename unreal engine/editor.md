@@ -24,6 +24,7 @@
     - **Shift+A** aligns them at the left.
     - **Shift+D** aligns them at the right.
 - **Ctrl+P**: Open the lookup window to search all assets in the game.
+- **Ctrl+Click** on a property selects all objects currently in the scene with that property and value.
 
 ## Useful Tools
 

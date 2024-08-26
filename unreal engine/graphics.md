@@ -1,5 +1,9 @@
 # Graphics
 
+## Debugging
+
+- An analysis of VRAM use in the scene can be found in *Tools -> Render Resource Viewer*.
+
 ## Lighting
 
 - Lighting can be achieved through lights or emmisive materials.
@@ -12,6 +16,7 @@
 
 ### Light Sources
 
+- All required lighting settings can be found in *Window -> Env. Light Mixer*.
 - **Directional Light** is like sunlight, covers a whole area falling from a specific angle.
 - **Point Light**
 - **Spotlight**
@@ -56,5 +61,7 @@
   - **Lumen Reflections: High Quality Translucency Reflections** should be turned on for glass and similar materials to properly reflect lumen bounced light.
 - Lumen
   - **Software Ray Tracing Mode: Detail Tracing**
+- Local Exposure
+  - Local exposure can be used to fine-tune exposure settings on the scene.
 
 ## Shader Building

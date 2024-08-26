@@ -24,15 +24,21 @@
 
 ### Nanite
 
-The nanite system is dynamically changing the polygons of a static mesh for better visualisation depending on the distance from the camera.
-
-To enable nanites on a static mesh, open its details, set **Nanite Settings -> Enable Nanite Support -> True**, and click **Apply Changes**.
-
-Alternatively, right click on the static mesh within the content drawer, and select **Static Mesh Actions -> Nanite -> Enable**.
+- The nanite system is dynamically changing the polygons of a static mesh for better visualisation depending on the distance from the camera.
+- To enable nanites on a static mesh, open its details, set **Nanite Settings -> Enable Nanite Support -> True**, and click **Apply Changes**.
+- Alternatively, right click on the static mesh within the content drawer, and select **Static Mesh Actions -> Nanite -> Enable**.
+- To check problems with nanite in a scene, change it to display in _Nanite Visualisation -> Pixel Programmable / Overdraw_.
 
 #### Nanite Settings
 
-- ...
+- **Nanite Displacement/Tessellation** is off by default and needs to be enabled.
+- **Nanite Vertex** can be used to store information, like curvature, ambient occlusion, and normals, reducing texture overhead.
+- **Nanite Splines**... and **Spline Mesh Actor**... (**Nanite Settings -> Max Edge Length Factor** can be used to smooth out issues with low-poly nanite splines)
+- **Preserve Area** can be set to true so that really small details are not removed when the camera gets too far away (important with foliage for example, when tree leaves will disappear when the camera moves away).
+
+#### Nanite Blueprints
+
+- `(Material) Nanite Pass Switch` returns true if the mesh has nanite enabled.
 
 ## Skeletal Meshes
 

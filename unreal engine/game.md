@@ -99,8 +99,7 @@ AMyGameMode::AMyGameMode() {
 
 ## Levels
 
-A level is a distinct game play entity encompassing gameplay. Each level is loaded when needed.
-
+- A level is a distinct game play entity encompassing gameplay. Each level is loaded when needed.
 - Default maps can be set in _Project Settings -> Maps & Modes -> Default Maps_.
 
 ### Changing Levels
@@ -121,3 +120,8 @@ A level is a distinct game play entity encompassing gameplay. Each level is load
   - Custom event ticks can be created by using a `Custom Event` connected to a `Set Timer by Event` (with _looping = true_).
     - The `Clear and Invalidate Timer by Handle` can be used to stop the custom tick.
       - This can even be hooked to a `Delay` (`Set Timer by Event -> Delay -> Clear and Invalidate Timer by Handle`) to automatically stop it after a certain period of time.
+
+### Gameplay Tags
+
+- Can be used to easily compare variables with values.
+  - A variable can be set as a query for a tag, automatic the logic that hides behind that lookup.
