@@ -1,20 +1,25 @@
 # UI
 
-A UI is crafted from **Widget Blueprints (User Widget)**.
-
-A widget blueprint is a collection of UI objects and logic.
-
-To display the UI, add it within any appropriate blueprint (level, player controller, character, camera, etc). This needs the following nodes in order:
-
-1. **Create Widget**: Creates an instance of the UI element, which should usually be referenced as a variable also.
-2. **Add to Viewport**: Appends the widget to the viewport so it is shown.
-   - Can instead use **Add to Player Screen**, which is useful when creating a split screen interface.
-
-It is usually better to create a UI screen on a persistent object, like the level blueprint or the player controller, but in some cases it could be tied to some other actor. For example, a single player game where you change between a human on foot, then drive a car, and then fly a spaceship may be better suited having a different UI for each of these modes, each one created with the object in question.
+- Links:
+  - [Unreal Engine 5 Tutorial - Widgets Part 1: Canvas Panel](https://www.youtube.com/watch?v=u4tfL6UpRWE)
+- A UI is crafted from **Widget Blueprints (User Widget)**
+- A widget blueprint is a collection of UI objects and logic.
+- To display the UI, add it within any appropriate blueprint (level, player controller, character, camera, etc). This needs the following nodes in order:
+  1. **Create Widget**: Creates an instance of the UI element, which should usually be referenced as a variable also.
+  2. **Add to Viewport**: Appends the widget to the viewport so it is shown.
+     - Can instead use **Add to Player Screen**, which is useful when creating a split screen interface.
+- It is usually better to create a UI screen on a persistent object, like the level blueprint, the player controller, or the HUD, but in some cases it could be tied to some other actor.
+  - For example, a single player game where you change between a human on foot, then drive a car, and then fly a spaceship may be better suited having a different UI for each of these modes, each one tied to a different actor or even better the HUD (see Layout below).
 
 ## Layout
 
-The layout is described within a canvas by using anchors, distances, sizes, and alignments for each widget under the canvas.
+- The layout is described within a canvas by using anchors, distances, sizes, and alignments for each widget under the canvas.
+- A **HUD** blueprint can be used to organise stuff in the screen.
+  - A HUD needs to be assigned in the Game Mode.
+  - `Create Widget` nodes can go in the HUD class then instead of other gameplay classes, for better control.
+  - `Client Set HUD` updates/changes the HUD during runtime, allowing for changes in the UI when needed.
+  - A HUD can be accessed programmatically from through `Game Controller` -> `Get HUD`.
+- The *ZOrder* property can be used to layout different widgets vertically, allowing for overlaps.
 
 ## Widgets
 
@@ -45,6 +50,10 @@ The layout is described within a canvas by using anchors, distances, sizes, and 
 - Useful as a base when there is need to define specific sizes.
   - By parametrising its properties, it can be used to adapt the widget wherever it is used.
 
+### Retainer Box
+
+- Can be used to lower the render frequency of its child.
+
 ### Common Properties
 
 - **Cursor** can be used to define how the cursor looks when hovering about the specific UI element.
@@ -56,8 +65,22 @@ The layout is described within a canvas by using anchors, distances, sizes, and 
   - *Event Construct* happens when the widget is drawn on the screen.
   - *Event Tick* happens at every physics tick.
 
+## Animations
+
+- Widget animations are controlled through the **animations drawer** (at the bottom of the screen).
+- To create an animation:
+  1. *Add Animation* and name it.
+  2. On the *Tracks* panel, *Add* the component to be animated.
+     1. On the track itself, click *+* to add the property(ies) to animate.
+     2. Select the property and adjust it as needed in the graph.
+     3. Add keys as needed for more complex transitions.
+     4. Don't forget to adjust the starting properties in the details (when the animation is not selected).
+  3. Finally, link appropriate events with to `Play Animation (Forward/Reverse)` nodes as needed.
+
 ## Widget Manipulation
 
+- Links:
+  - [Unreal Engine 5 Tutorial - Widgets Part 2: Bindings](https://www.youtube.com/watch?v=wX11aU6mZYU)
 - Widgets can be manipulated through blueprints in the graph.
 - To affect a widget, expose it as a variable and use custom events for updates.
 - Can also use bindings to directly bind values on widgets with variables elsewhere.
@@ -67,7 +90,7 @@ The layout is described within a canvas by using anchors, distances, sizes, and 
 
 - Modular elements can be created by building small widgets (like a button with some text in it) and exposing its required properties, or by using inheritance.
   - To expose a property, use its *setter* in the graph, promote the input link to a variable, and set in the variable's properties **instance editable = true** and **expose on spawn = true**.
-  - To expose events, create the appropriate event in the graph, create an event dispatcher, and then link the event to the *dispatcher's call*.
+  - To expose events, create the appropriate event in the graph, create an event dispatcher, and then link the event to the *dispatcher's call*. If the widget is set as a variable, the event dispatchers will appear under the events details section.
 - Display is usually set to **desired** or **custom**.
 - These can then be added in other widgets through the *User Created Palette*.
   - Exposed properties can be found in *details -> default* when selecting such a widget.
@@ -82,6 +105,19 @@ The layout is described within a canvas by using anchors, distances, sizes, and 
 
 - Resources:
   - [How To Create An Icon Of Any Mesh In Unreal Engine 5](https://www.youtube.com/watch?v=EpthBJJ9S-o)
+
+## Useful Procedures
+
+### Custom Cursor
+
+- Use the **Set Show Mouse Cursor** node to make the cursor visible.
+- Create a *png* image with the desired cursor shape.
+- Create a new `User Widget` blueprint.
+- Insert a **Canvas** and set its size to *custom*.
+- Set the dimensions a typical cursor size (72px * 72px for example).
+- In the UI canvas, create an **Image** and assign the cursor image to it.
+  - Position the image in the canvas so that the pointer is exactly at the middle of the canvas.
+- In **Project Settings -> Software Cursors** assign (type of cursor as needed) the widget from above.
 
 ### "Photograph" 3D Objects
 
@@ -106,16 +142,3 @@ The layout is described within a canvas by using anchors, distances, sizes, and 
   - Set:
     - **Min Alpha = 1**
     - **Max Alpha = 0**
-
-## Useful Procedures
-
-### Custom Cursor
-
-- Use the **Set Show Mouse Cursor** node to make the cursor visible.
-- Create a *png* image with the desired cursor shape.
-- Create a new `User Widget` blueprint.
-- Insert a **Canvas** and set its size to *custom*.
-- Set the dimensions a typical cursor size (72px * 72px for example).
-- In the UI canvas, create an **Image** and assign the cursor image to it.
-  - Position the image in the canvas so that the pointer is exactly at the middle of the canvas.
-- In **Project Settings -> Software Cursors** assign (type of cursor as needed) the widget from above.

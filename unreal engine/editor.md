@@ -30,6 +30,7 @@
 
 - **Content Browser -> Other Filters -> Show Redirectors** can reveal all redirectors within the assets window.
 - **Content Drawer -> Content (directory) -> Right Click -> Fix Up Redirectors in Folder** is useful when moving assets between folders, as links to the moved assets may break during the process.
+- In the colour picker, colours can be saved in presets for later. These presets are shared with the game and can be accessed from any colour picker anywhere.
 
 ## Project Settings
 
