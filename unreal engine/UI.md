@@ -2,6 +2,7 @@
 
 - Links:
   - [Unreal Engine 5 Tutorial - Widgets Part 1: Canvas Panel](https://www.youtube.com/watch?v=u4tfL6UpRWE)
+  - [How to create Modular and Scalable UI systems in Unreal Engine](https://www.youtube.com/watch?v=v9k-J2GeEKI)
 - A UI is crafted from **Widget Blueprints (User Widget)**
 - A widget blueprint is a collection of UI objects and logic.
 - To display the UI, add it within any appropriate blueprint (level, player controller, character, camera, etc). This needs the following nodes in order:
@@ -20,6 +21,9 @@
   - `Client Set HUD` updates/changes the HUD during runtime, allowing for changes in the UI when needed.
   - A HUD can be accessed programmatically from through `Game Controller` -> `Get HUD`.
 - The *ZOrder* property can be used to layout different widgets vertically, allowing for overlaps.
+- Use layers for when many different UI widgets need to alternate quickly (like an inventory screen, a quests list, a map, and so on).
+- When a widget needs to be hidden, change its visibility to *collapsed*, a state which does not consume any resources.
+- For visible widgets that are not interactable, make their visibility to *not hit-testable (self & children)*.
 
 ## Widgets
 
@@ -29,6 +33,7 @@
 - *Fill Screen/Custom/...* determines how the canvas fits within the screen.
 - Nodes:
   - `Set Render Transform Angle` rotates the full canvas.
+- Canvas panels should be used sparingly, as they consume a lot of system resources.
 
 ### Text
 
@@ -54,7 +59,19 @@
 
 - Can be used to lower the render frequency of its child.
 
-### Common Properties
+### Invalidation Box
+
+- Wraps any widget that needs to be updated only some of its properties is changed.
+
+### Named Slot
+
+- A named slot keeps a place empty where another widget can be added later.
+
+### Spacer
+
+- Cheap widget to be used to add space between other widgets in boxes.
+
+## Common Properties
 
 - **Cursor** can be used to define how the cursor looks when hovering about the specific UI element.
 
@@ -76,6 +93,12 @@
      3. Add keys as needed for more complex transitions.
      4. Don't forget to adjust the starting properties in the details (when the animation is not selected).
   3. Finally, link appropriate events with to `Play Animation (Forward/Reverse)` nodes as needed.
+- Animations on materials should be animated through the materials and not the sequencer for better performance.
+
+## Icons
+
+- For better performance, UI icons can be loaded from a *custom icon font* sheet and be used through their unicode values.
+  - Can use [Font Forge](https://fontforge.org/en-US/) to create such fonts easily.
 
 ## Widget Manipulation
 
@@ -85,6 +108,7 @@
 - To affect a widget, expose it as a variable and use custom events for updates.
 - Can also use bindings to directly bind values on widgets with variables elsewhere.
   - Bindings are updated on tick though. For optimisation purposes, bindings should be used only for widgets that need to be updated in realtime and not only on specific events.
+- When creating & Destroying widgets make sure that references are not left behind; otherwise the garbage collector won't clean them up.
 
 ## Modular UI Elements
 
@@ -95,16 +119,19 @@
 - These can then be added in other widgets through the *User Created Palette*.
   - Exposed properties can be found in *details -> default* when selecting such a widget.
   - Event dispatchers can be found in the *details -> events* where they can be manipulated in the parent's graph normally.
+- Use the **View-Model** to update data in modular elements, as it completely decouples the code with the view.
+- For multiple, similar widgets, use an **SMeshWidget**.
+  - Art is passed to the widget through the **Slate Vector Art Data**.
+  - In the mesh widget, use the `Draw Mesh` and `Enable Instancing` functions.
+  - Parameters and position of the mesh widget are controlled through the `FVector4 Data` property.
+    - X, Y: screen position
+    - Z: Scale
+    - W: Address
 
 ### Named Slots
 
 - A *named slot* is a widget that allows extending a widget blueprint by adding additional widgets to their instances.
 - A *named slot* is an element to be added in a widget from the palette.
-
-## Icons
-
-- Resources:
-  - [How To Create An Icon Of Any Mesh In Unreal Engine 5](https://www.youtube.com/watch?v=EpthBJJ9S-o)
 
 ## Useful Procedures
 
@@ -121,6 +148,7 @@
 
 ### "Photograph" 3D Objects
 
+- [How To Create An Icon Of Any Mesh In Unreal Engine 5](https://www.youtube.com/watch?v=EpthBJJ9S-o)
 - In the project, create a folder to store the rendered targets.
   - Inside the folder, create a `Render Target` blueprint.
     - Set its resolution as needed (256 x 256 for example if creating icons)

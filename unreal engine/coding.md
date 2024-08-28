@@ -106,6 +106,10 @@ UFUNCTION(BlueprintCallable)
 - Pure (green, with execution pin) nodes always run when encountered.
 - Impure (blue, no execution pin) nodes cache their output after first encountered.
 
+#### References
+
+- When creating variables anywhere in blueprints, create them as "soft # references" when the reference won't always need to load (for example, in a UI character choice menu).
+
 ### Blueprint Use
 
 #### Instantiate
