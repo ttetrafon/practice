@@ -59,11 +59,13 @@
 
 - Can be used to lower the render frequency of its child.
 
-### Invalidation Box
+### [Invalidation Box](https://dev.epicgames.com/documentation/en-us/unreal-engine/using-the-invalidation-box-for-umg-in-unreal-engine)
 
 - Wraps any widget that needs to be updated only some of its properties is changed.
+- Invalidation boxes should be used to wrap any UI widgets that won't change much, or at all.
+  - If used on a fast-changing component, they will worsen performance instead.
 
-### Named Slot
+### [Named Slot](https://dev.epicgames.com/documentation/en-us/unreal-engine/using-named-slot-widgets-for-ui-templates-in-unreal-engine)
 
 - A named slot keeps a place empty where another widget can be added later.
 

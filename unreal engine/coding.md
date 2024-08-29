@@ -164,6 +164,7 @@ UFUNCTION(BlueprintCallable)
 - Inside an interface blueprint, create functions. These functions do not contain any logic, they have only their inputs and outputs defined.
 - An interface is added in other blueprints through the _class settings panel -> interfaces tab_, and each function is then implemented separately.
   - The functions available from the interface will be listed in the blueprint panel.
+  - To invoke them, look for the event trigger in the context menu.
   - To add functionality to these functions, _right click on them -> implement event_.
 - The functions of an interface can be called from anywhere, and the appropriate object functionality will be triggered.
   - The function always requires an actor input, which is the object on which the interface function will be triggered.

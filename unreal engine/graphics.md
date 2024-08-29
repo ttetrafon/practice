@@ -65,3 +65,9 @@
   - Local exposure can be used to fine-tune exposure settings on the scene.
 
 ## Shader Building
+
+...
+
+## Graphic Settings
+
+- Graphic settings can be easily changed as a whole with `Get Game User Settings` -> `Set Overall Scalability Level` -> `Apply Settings`.
