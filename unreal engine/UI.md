@@ -3,6 +3,7 @@
 - Links:
   - [Unreal Engine 5 Tutorial - Widgets Part 1: Canvas Panel](https://www.youtube.com/watch?v=u4tfL6UpRWE)
   - [How to create Modular and Scalable UI systems in Unreal Engine](https://www.youtube.com/watch?v=v9k-J2GeEKI)
+  - [Mastering UI Panels and Pop-ups in Unreal Engine](https://www.youtube.com/watch?v=_0aNOo2JVSI)
 - A UI is crafted from **Widget Blueprints (User Widget)**
 - A widget blueprint is a collection of UI objects and logic.
 - To display the UI, add it within any appropriate blueprint (level, player controller, character, camera, etc). This needs the following nodes in order:
@@ -24,6 +25,7 @@
 - Use layers for when many different UI widgets need to alternate quickly (like an inventory screen, a quests list, a map, and so on).
 - When a widget needs to be hidden, change its visibility to *collapsed*, a state which does not consume any resources.
 - For visible widgets that are not interactable, make their visibility to *not hit-testable (self & children)*.
+- For screens that change a lot, use an overlay as a HUD, with appropriate areas for stacks of widgets (layers). Then create abstract methods that can push/pop widgets in/from these layers.
 
 ## Widgets
 
@@ -72,6 +74,10 @@
 ### Spacer
 
 - Cheap widget to be used to add space between other widgets in boxes.
+
+### Overlay
+
+- Allows widgets to be stacked on top of each other.
 
 ## Common Properties
 
