@@ -47,6 +47,17 @@ TObjectPtr<class UCameraComponent> Camera;
   - `UFUNCTION()`: Provides the additional features an Unreal function/method has (extending in Blueprints, override Blueprint functions, etc).
     - `BlueprintNativeEvent`: The function can be overwritten in a blueprint, but it has a default C++ implementation. The method's default must must be named with the suffix `_Implementation` in this case.
 
+### Assertions
+
+- Links:
+  - [Assertions in C++ for Unreal Engine in 3 Minutes!](https://www.youtube.com/watch?v=ecUtw52c428)
+- Assertions can be used to make sure class functionality is setup properly or as-expected.
+  - All assertions are triggered only in the editor or in a debug session.
+- check(actor): blocks execution
+- verify(function): blocks execution
+- ensure(obj): does not block execution, logs an error the first time it is encountered
+- ensureAlways(obj): does not block execution, logs an error every time it is encountered
+
 ### Garbage Collection
 
 - Unreal has a garbage collection system in place.
@@ -151,23 +162,29 @@ UFUNCTION(BlueprintCallable)
 - Actions and events that happen in a specific level are usually created within the level blueprint.
 - Within the level blueprint, references to actors in the level can be easily created and used.
 
-### Event Dispatchers
+### [Event Dispatchers](https://dev.epicgames.com/documentation/en-us/unreal-engine/event-dispatchers-in-unreal-engine)
 
 - An event dispatcher allows a blueprint to inform other blueprints that an event has happened.
 - A **bind event** node can bind one event to another event or to an event dispatcher. When an event between these is triggered, all bound events are also triggered.
+  - A binding can be used either from a child blueprint (a child blueprint exposes dispatchers in the details panel) or from a spawned actor (`Spawn Actor` has a return value of type actor from which a binding can be derived).
+- An event dispatcher can carry params (values/references), which are exposed to the consumer of the event.
+- When creating a one-to-many event dispatcher, it is better to keep a reference of the event trigger in each target, and there use the dispatcher's event as needed.
+  - For example, on a day-night cycle, to trigger all lights in the scene when night comes, each of the lights can have a component that holds a reference to the sky object, and the sky object will trigger the night event when appropriate, allowing the matching event to be triggered in all the scene's lights simultaneously.
+- Event dispatcher triggered events can be also be unbound with `Unbind Event from ...`.
 
-### Interfaces
+### [Interfaces](https://dev.epicgames.com/documentation/en-us/unreal-engine/blueprint-interface-in-unreal-engine)
 
 - Interfaces are abstract classes which contain functions that can be triggered or implemented by other blueprints, creating links between them.
 
 - To create an interface: _Add -> Blueprint -> Blueprint Interface_.
 - Inside an interface blueprint, create functions. These functions do not contain any logic, they have only their inputs and outputs defined.
-- An interface is added in other blueprints through the _class settings panel -> interfaces tab_, and each function is then implemented separately.
+- An interface is added in other blueprints through the _class settings panel -> interfaces tab_, and each required function is then implemented separately.
   - The functions available from the interface will be listed in the blueprint panel.
   - To invoke them, look for the event trigger in the context menu.
   - To add functionality to these functions, _right click on them -> implement event_.
 - The functions of an interface can be called from anywhere, and the appropriate object functionality will be triggered.
-  - The function always requires an actor input, which is the object on which the interface function will be triggered.
+  - The function always requires an actor input, which is the object on which the interface function will be triggered. This input can be generic (like an actor from a hit trace) and do not need to be cast to the specific target of the interface.
+  - `Does Implement Interface` can be used to check if the target indeed implements the interface in question.
 
 - In C++, to create an interface go to _tools -> new c++ class -> common classes -> unreal interface_.
 - An interface contains only function definitions (usually `virtual`), like in blueprints.
@@ -264,3 +281,30 @@ void PlayFireEffects()
   - Recreate structures and enums used in the blueprint on their own.
   - Recreate functionality of the blueprint in the C++ code; all nodes are available within various Unreal header files.
   - Replace the functional nodes in the blueprint with the functions created in C++.
+
+## Programming Patterns
+
+### Inheritance
+
+- Pattern in which a class (child) inherits from another class (parent).
+- The child class inherits the parent's full functionality, which it can augment and/or override.
+
+### Composition
+
+- Links:
+  - [Understanding "Components" in Unreal Engine | UE5 Explained](https://www.youtube.com/watch?v=xo0sbSeWKe4)
+- Composition is a pattern where we build a class by combining individual, reusable, single responsibility **components** into one.
+- Each component is independent of each other, but come together as a whole in the class they are contained within.
+  - For example, a creature class could have the following components in it, defining its operation:
+    - behaviour tree
+    - animations
+    - health
+    - move
+    - attack
+    - inventory
+    - communication
+- Components can implement an interface (specific functions that return specific arguments), so that they can be replaced in different classes with ease.
+- **Actor Components** are specific blueprints that can be used for this purpose.
+  - Functions can be called from the parent actor to trigger functionality in the component.
+  - Event dispatchers can be used inside a component to trigger functionality in the actor parent.
+  - A component can reference its owner actor with `Get Owner`.

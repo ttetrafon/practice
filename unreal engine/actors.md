@@ -41,6 +41,23 @@ class AMyActor : public AActor {}
   - In blueprints, they are created as variables, and then exposed by setting to true the _Instance Editable_ and _Expose on Spawn_ options.
   - In C++ constructor parameters cannot be created. Instead variables can be assigned immediately after their spawning.
 
+### Structure
+
+- An actor is composed of many different components, separated in **Scene Components** and **Actor Components**.
+  - Scene components are the ones that are placed in the scene and define the actor in the 3D space.
+  - Actor components are the ones that encapsulate the actor's functionality.
+
+```C++
+class USceneComponent : public UActorComponent {}
+class UActorComponent {}
+```
+
+- Components in an actor can be added programmatically with `Add Component by Class`.
+- Useful components:
+  - A **widget** is a placeholder for an actual **User Widget** to be used in 3D space.
+    - A widget's render properties are defined through `Set Draw Size`, `Set Widget Space`, and `Set Collision Enabled`.
+    - The **User Widget** is then attached to the **Widget** through `Create Widget` and `Set Widget`.
+
 ### Hit Events
 
 - Hit events are triggered from collision (`Event Hit`).
