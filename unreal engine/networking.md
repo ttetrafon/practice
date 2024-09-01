@@ -40,8 +40,12 @@ Multiple instances of the game can be run automatically in the same editor.
 
 - Multiple PlayerControllers are created in a multiplayer game - one for each player.
   - Any `Actor` directly assigned to a `Pawn` is automatically associated with that pawn's owner (PlayerController).
+  - All player controllers are created in the server, while each client has only its owned player controller spawn.
+  - To allow only relevant processes to run, use `Is Local Player Controller`.
 - Each player needs their own dedicated *player start* point, unless multiple players start on the same starting point.
   - When having multiple player starts, override `ChoosePlayerStart` function inside the `GameMode`. (a simple way is to use the `Player Start Tag`, set it to *Used* when a player start has been used, and later loop over all of them until one not used is found).
+- `Is Locally Controlled` can be used to prevent events and/or processes from happening wherever they should be.
+  - *For example, a **character**'s `begin play` will run in all instances of a multiplayer game, meaning that the same process will be triggered multiple times, although each client needs to only run their own character's begin play process.*
 
 ## Replication
 
