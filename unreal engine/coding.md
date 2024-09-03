@@ -196,18 +196,6 @@ UCLASS()
 class ACPP_TARGET : public AActor, public IMyInterface {}
 ```
 
-### [Tags](https://dev.epicgames.com/documentation/en-us/unreal-engine/using-gameplay-tags-in-unreal-engine)
-
-- Tags can be used to mark actors for specific reasons.
-- Tags live in the project and can be edited within _Project Settings -> Project -> Gameplay Tags_.
-- Each tag can be used to derive allowed/disallowed functionality and interactions.
-- A **gameplay tag container** public variable is required to contain the tags on an actor.
-  - `Has Tag` checks if a tag container includes a specific tag.
-- A container's tags can be added (`Add Gameplay Tag`) or removed (`Remove Gameplay Tag`) during gameplay.
-- A good practice is to:
-  - Create an Interface with a function to get a target's tag container.
-  - Attach an actor component to all actors with basic tag functionality.
-
 ## Blueprints & C++
 
 - A project can utilise both C++ code and Blueprints.

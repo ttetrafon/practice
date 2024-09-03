@@ -121,7 +121,19 @@ AMyGameMode::AMyGameMode() {
     - The `Clear and Invalidate Timer by Handle` can be used to stop the custom tick.
       - This can even be hooked to a `Delay` (`Set Timer by Event -> Delay -> Clear and Invalidate Timer by Handle`) to automatically stop it after a certain period of time.
 
-### Gameplay Tags
+### [Gameplay Tags](https://dev.epicgames.com/documentation/en-us/unreal-engine/using-gameplay-tags-in-unreal-engine)
 
-- Can be used to easily compare variables with values.
+- Tags can be used to mark actors for specific reasons.
+- Tags live in the project settings and can be edited within _Project Settings -> Project -> Gameplay Tags_.
+- Each tag can be used to derive allowed/disallowed functionality and interactions.
+- Single tags can be used to easily compare variables with values.
   - A variable can be set as a query for a tag, automatic the logic that hides behind that lookup.
+  - `Tag.MatchesTag(Tag)`, `Tag.MatchesAny(Tags)`, `TagMatchesAll(Tags)` can be used for comparisons of single tags.
+- A **gameplay tag container** public variable is required to contain the tags on an actor.
+  - `Container.HasTag(Tag)`, `Container.HasAny(Tags)`, and `Container.HasAll(Tags)` can be used to check if a tag container includes a specific tags.
+- A container's tags can be added (`Add Gameplay Tag`) or removed (`Remove Gameplay Tag`) during gameplay.
+- A good practice is to:
+  - Create an Interface with a function to get a target's tag container.
+  - Attach an actor component to all actors with basic tag functionality.
+  - Use a tag container to store tags that change during gameplay.
+- More complex tag lookups can be achieved with `FGameplayTagQuery`.
