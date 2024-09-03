@@ -102,10 +102,13 @@ UFUNCTION(BlueprintCallable)
 
 - A function can be created within any blueprint, as a set of blueprints that will be reused.
 - Functions can have a number of inputs, any number of blueprints to execute, and outputs.
+- A function without any execution pins in its body can be marked as **pure**. When used, this function won't feature input & output execution pins at all.
+- Marking a function with **call in editor = true** shows a button in the details of an actor implementing the function, which can be pressed in the editor to invoke its functionality.
 
 #### Blueprint Macros
 
 - Macros are like functions but can never be called from outside the specific blueprint.
+- A macro does not come with input/output execution nodes by default, but any number of these can be defined in it.
 
 #### Variables
 
@@ -130,12 +133,6 @@ UFUNCTION(BlueprintCallable)
 #### Notes
 
 - Many blueprints (like _Destroy Actor_) accept arrays of objects, although that is not indicated in the UI.
-
-### Blueprint Function/Macro Library
-
-- Blueprint: _Blueprint Function Library_.
-- A collection of functions/macros that can be used in other blueprints (static functions).
-- These functions can be called by any other blueprint; nodes with the function names are added automatically in the nodes list.
 
 ### Blueprint Inheritance
 
@@ -184,7 +181,9 @@ UFUNCTION(BlueprintCallable)
   - To add functionality to these functions, _right click on them -> implement event_.
 - The functions of an interface can be called from anywhere, and the appropriate object functionality will be triggered.
   - The function always requires an actor input, which is the object on which the interface function will be triggered. This input can be generic (like an actor from a hit trace) and do not need to be cast to the specific target of the interface.
-  - `Does Implement Interface` can be used to check if the target indeed implements the interface in question.
+    - Despite this fact, interfaces do not need a specific type of class to be sent to, instead the target can be anything. For example, a hit target from a trace does not need to be cast to a specific actor/class to be used as the target of an interface function.
+  - `Does Implement Interface` can be used to check if the target indeed implements the interface in question, but this may be relevant only rarely, as the target will handle the event if they implement the interface, or ignore it if not.
+- Sometimes it may be useful to have an input reference to the initiator of an action. For example, a pawn interacting with a pickable item can be referenced to the item is added immediately to their inventory.
 
 - In C++, to create an interface go to _tools -> new c++ class -> common classes -> unreal interface_.
 - An interface contains only function definitions (usually `virtual`), like in blueprints.
@@ -196,6 +195,18 @@ UFUNCTION(BlueprintCallable)
 UCLASS()
 class ACPP_TARGET : public AActor, public IMyInterface {}
 ```
+
+### [Tags](https://dev.epicgames.com/documentation/en-us/unreal-engine/using-gameplay-tags-in-unreal-engine)
+
+- Tags can be used to mark actors for specific reasons.
+- Tags live in the project and can be edited within _Project Settings -> Project -> Gameplay Tags_.
+- Each tag can be used to derive allowed/disallowed functionality and interactions.
+- A **gameplay tag container** public variable is required to contain the tags on an actor.
+  - `Has Tag` checks if a tag container includes a specific tag.
+- A container's tags can be added (`Add Gameplay Tag`) or removed (`Remove Gameplay Tag`) during gameplay.
+- A good practice is to:
+  - Create an Interface with a function to get a target's tag container.
+  - Attach an actor component to all actors with basic tag functionality.
 
 ## Blueprints & C++
 
@@ -281,6 +292,14 @@ void PlayFireEffects()
   - Recreate structures and enums used in the blueprint on their own.
   - Recreate functionality of the blueprint in the C++ code; all nodes are available within various Unreal header files.
   - Replace the functional nodes in the blueprint with the functions created in C++.
+
+### Function/Macro Libraries
+
+- Blueprint: _Blueprint Function Library_.
+- A collection of functions/macros that can be used in other blueprints (static functions).
+- These functions can be called by any other blueprint; nodes with the function names are added automatically in the nodes list.
+- (TODO) in C++...
+- Macro libraries are derived from a parent class and have access to that class's members. Because of this, a macro library is only accessible from the parent class and from any other class that inherits from that specific parent.
 
 ## Programming Patterns
 
