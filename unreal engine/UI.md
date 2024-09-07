@@ -141,6 +141,57 @@
 - A *named slot* is a widget that allows extending a widget blueprint by adding additional widgets to their instances.
 - A *named slot* is an element to be added in a widget from the palette.
 
+## [View Models](https://dev.epicgames.com/documentation/en-us/unreal-engine/umg-viewmodel)
+
+- Links:
+  - [UE5.3 Viewmodel Tutorial "Overview" (Fancy Binding Tool for UMG)](https://www.youtube.com/watch?v=RHt4DakPRcw)
+- Binding system between variables/game state and the UI widgets.
+  - Requires the **UMG Viewmodel** plugin.
+- To enable model view, set in project settings:
+  - **Editor - Widget Designer (Team) -> Property Binding Rule = Prevent and Warn**
+  - **Plugins - Model View Viewmodel -> Allow Binding from Detail View = false**
+- To use the viewmodel:
+  - Create a blueprint from **MVVMViewModelBase (MVVM Base Viewmodel)**.
+  - In the MVVM base blueprint:
+    - Add variables to be displayed in the UI.
+      - A variable's `Field Notify` can be used to update other variables in the model when it itself is updated.
+      - Custom functions (in this class) can be used with field notify, as long as they meet the following requirements:
+        - Set **Advanced -> Constant = true** and **Pure = true** in the function's details.
+        - Add an output variable appropriate to the variable to be updated.
+        - Set **Field Notify = true** in the function's details.
+  - Open the UI widget that will incorporate these values.
+    - Open **Window -> Viewmodels**.
+      - In the viewmodels panel, add the MVVM blueprint created above.
+      - Select the **creation type** for the MVVM.
+        - **Manual**: The viewmodel can be referenced but initially is set to null, so it must be referenced before being used. This introduces a MVVM input variable to this widget's creation node.
+          - An MVVM object can be created anywhere needed with `Construct Object from Class`.
+          - This variable needs then to be assigned to the *Viewmodel Subsystem* through the `Get MVVM Game Subsystem` -> `Get Viewmodel Collection` -> `Add Viewmodel Instance (split Set Context input and set 'Context Class = the MVVM class created before' and any context name as needed)`.
+          - To get the MVVM class use:
+            - `Get MVVM Game Subsystem` -> `Find View Model Instance (set the context class and name as above)`
+            - `Get MVVM Game Subsystem` -> `Find First View Model Instance of Type`
+        - **Create Instance**: A local instance MVVM instance will be created for this widget.
+        - **Global View Model Collection**: Creates a global MVVM instance (stored in the Game Instance), which works as a singleton for all widgets that implement this viewmodel.
+        - **Property Path**: ...
+        - **Resolver**: ...
+    - Open **Window -> View Bindings**.
+      - Select the component that needs a binding.
+      - Hit **Add Widget ...** in the View Bindings panel.
+      - Select the property of the component to be bound to a value.
+      - Select the direction of the binding.
+        - *One Time to Widget*: Will update the property of the widget once.
+        - *One Way to Widget*: Will update the property of the widget when the value in the viewmodel changes.
+        - *One Way to View Model*: will update the viewmodel when the bound property's value is updated in the widget component.
+        - *Two Way*: Will update both ways, as above.
+      - Select for the field the appropriate variable from the MVVM class attached to the widget.
+        - Select or create a function to convert between types if needed.
+      - Select the execution policy:
+        - *Immediate*: Updates as soon as the value has changed, regardless of the render process's current position.
+        - *Delayed*: Executes at the end of the frame, before the drawing phase, but only if the value has changed.
+        - *Tick*: Executes at the end of each frame.
+        - *Auto*: Selects delayed, if the value has a single update source, or immediate if it has multiple update sources.
+  - Values in the MVVM can be updated inside any widget, accessed through the MVVM variable we created before, or by finding the MVVM object assigned in the View Model Subsystem.
+    - `Set <Variable> (w/Broadcast)` can be used to update the variable at runtime.
+
 ## Useful Procedures
 
 ### Custom Cursor

@@ -24,6 +24,7 @@
     "kubelet",
     "levelname",
     "Lightmass",
+    "MVVM",
     "Nakis",
     "OFPA",
     "pickable",
@@ -42,6 +43,8 @@
     "USTRUCT",
     "uvicorn",
     "venv",
+    "Viewmodel",
+    "Viewmodels",
     "Volumetrics",
     "WORKDIR"
   ]
