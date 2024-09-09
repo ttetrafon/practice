@@ -1,3 +1,6 @@
+from collections.abc import Generator, Iterator
+from typing import Any
+
 # Python generators are used in cases where you need to be able to consume some data in a loop,
 # but the size of the data set is potentially large enough to crash your program if you load it
 # into memory. Generators allow the set of things to be iterated to be unbounded.
@@ -120,3 +123,34 @@ numbers = FiveNumbers()
 print([x for x in numbers])
 print([x for x in numbers])
 
+
+# Generator inside a generator
+# https://www.youtube.com/watch?v=sHCRglj6qtA
+# https://stackoverflow.com/questions/9708902/in-practice-what-are-the-main-uses-for-the-yield-from-syntax-in-python-3-3
+def numbers(n: int) -> Generator[str, None, None]:
+    for i in range(n):
+        yield f'numbers: {i}'
+
+number_gen: Generator[str, None, None] = numbers(4)
+print(next(number_gen)) # prints `numbers: 0`
+print(next(number_gen)) # prints `numbers: 1`
+print(next(number_gen)) # prints `numbers: 2`
+print(next(number_gen)) # prints `numbers: 3`
+print(next(number_gen)) # throws StopIteration exception
+
+def wrapper(g: Generator) -> Generator[Any, None, None]:
+    yield "wrapper: started"
+    yield from g
+    # "yield for" is equivalent:
+    # for element in g:
+    #     yield element
+    yield "wrapper: finished"
+
+gen: Generator[Any, None, None] = wrapper(numbers(3))
+print(next(gen)) # prints `"wrapper: started"`
+print(next(gen)) # prints `numbers: 0`
+print(next(gen)) # prints `numbers: 1`
+print(next(gen)) # prints `numbers: 2`
+print(next(gen)) # prints `wrapper: finished`
+print(next(gen)) # throws StopIteration exception
+# Note that the inner generator does not thrown an exception inside the wrapper when its values have finished, instead only the wrapper's yields are important for the iteration
