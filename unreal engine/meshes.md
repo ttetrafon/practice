@@ -11,7 +11,7 @@
 ## Importing a Mesh
 
 - Drag and drop a mesh (fbx) into the _Content Drawer_ to import a mesh.
-  - Select **Input Textures -> False** and **Material -> Material Input Method -> Do not create material**, as we will usually use materials already created in the project.
+  - Select **Material -> Input Textures -> False** and **Material -> Material Input Method -> Do not create material**, as we will usually use materials already created in the project.
 - Select the object and assign the default material(s).
 
 ### Normalisation
