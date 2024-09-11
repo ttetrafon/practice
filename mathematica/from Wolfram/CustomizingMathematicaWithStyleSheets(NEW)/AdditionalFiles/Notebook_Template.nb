@@ -1,0 +1,143 @@
+(* Content-type: application/vnd.wolfram.mathematica *)
+
+(*** Wolfram Notebook File ***)
+(* http://www.wolfram.com/nb *)
+
+(* CreatedBy='Mathematica 13.0' *)
+
+(*CacheID: 234*)
+(* Internal cache information:
+NotebookFileLineBreakTest
+NotebookFileLineBreakTest
+NotebookDataPosition[       158,          7]
+NotebookDataLength[      4514,        135]
+NotebookOptionsPosition[      2379,         85]
+NotebookOutlinePosition[      2820,        102]
+CellTagsIndexPosition[      2777,         99]
+WindowTitle->Notebook Template
+WindowFrame->Normal*)
+
+(* Beginning of Notebook Content *)
+Notebook[{
+
+Cell[CellGroupData[{
+Cell["Title", "Title",ExpressionUUID->"e35c9b90-aeff-4e42-8b0a-b3b884c26ee8"],
+
+Cell["Subtitle", "Subtitle",ExpressionUUID->"d924c789-53e2-4683-be91-db52329b38e2"],
+
+Cell[CellGroupData[{
+
+Cell["Chapter", "Chapter",ExpressionUUID->"29c6bdfd-b84c-49f5-a6a1-72777d734930"],
+
+Cell[CellGroupData[{
+
+Cell["Section", "Section",ExpressionUUID->"587e0420-9e0b-48a7-9f15-57743dae0bbe"],
+
+Cell[CellGroupData[{
+
+Cell["Subsection", "Subsection",ExpressionUUID->"a237bd38-7342-4f23-a2e7-1f1b7763dea9"],
+
+Cell[CellGroupData[{
+
+Cell["Subsection", "Subsubsection",ExpressionUUID->"3019772b-1444-4b83-9e3d-4dd612e0697c"],
+
+Cell[CellGroupData[{
+
+Cell["Subsubsection", "Subsubsubsection",ExpressionUUID->"2be4eae4-0ae5-4b3d-ad96-b7dd69a2a51d"],
+
+Cell["Text", "Text",ExpressionUUID->"98a3f265-0d01-479a-8d99-6781756d69c2"],
+
+Cell["CodeText", "CodeText",ExpressionUUID->"a5afc449-9cd3-462b-b88c-558c626fec75"],
+
+Cell[CellGroupData[{
+
+Cell["Item", "Item",ExpressionUUID->"e6fd99f3-cd84-4ba4-9c0a-417927cb7a73"],
+
+Cell["Subitem", "Subitem",ExpressionUUID->"df6898b2-439a-43c0-92c6-931d4dc38687"]
+}, Open  ]],
+
+Cell[CellGroupData[{
+
+Cell["ItemNumbered", "ItemNumbered",ExpressionUUID->"406615e5-f1e6-4177-9852-107a8469e943"],
+
+Cell[CellGroupData[{
+
+Cell["SubitemNumbered", "SubitemNumbered",ExpressionUUID->"48bb366e-17ed-474d-affa-79311bd7e703"],
+
+Cell[CellGroupData[{
+
+Cell[BoxData["input"], "Input",
+ CellLabel->"In[3]:=",ExpressionUUID->"590bae3b-1fa6-4350-9e26-6824c5a227f2"],
+
+Cell[BoxData["output"], "Output",
+ CellLabel->"Out[4]=",ExpressionUUID->"220be7d9-0e4e-433a-8302-e70988433c70"]
+}, Open  ]],
+
+Cell[BoxData["code"], "Code",ExpressionUUID->"665188ab-a4ec-4998-90b2-a4d2d615657c"]
+}, Open  ]]
+}, Open  ]]
+}, Open  ]]
+}, Open  ]]
+}, Open  ]]
+}, Open  ]]
+}, Open  ]]
+}, Open  ]]
+},
+WindowSize->{718.5, 735},
+WindowMargins->{{249, Automatic}, {-815.25, Automatic}},
+WindowTitle->"Notebook Template",
+FrontEndVersion->"13.3 for Microsoft Windows (64-bit) (March 17, 2023)",
+StyleDefinitions->"Default.nb",
+ExpressionUUID->"268965e8-2867-4bf9-851f-ec4fea355905"
+]
+(* End of Notebook Content *)
+
+(* Internal cache information *)
+(*CellTagsOutline
+CellTagsIndex->{}
+*)
+(*CellTagsIndex
+CellTagsIndex->{}
+*)
+(*NotebookFileOutline
+Notebook[{
+Cell[CellGroupData[{
+Cell[611, 23, 77, 0, 98, "Title",ExpressionUUID->"e35c9b90-aeff-4e42-8b0a-b3b884c26ee8"],
+Cell[691, 25, 83, 0, 53, "Subtitle",ExpressionUUID->"d924c789-53e2-4683-be91-db52329b38e2"],
+Cell[CellGroupData[{
+Cell[799, 29, 81, 0, 69, "Chapter",ExpressionUUID->"29c6bdfd-b84c-49f5-a6a1-72777d734930"],
+Cell[CellGroupData[{
+Cell[905, 33, 81, 0, 67, "Section",ExpressionUUID->"587e0420-9e0b-48a7-9f15-57743dae0bbe"],
+Cell[CellGroupData[{
+Cell[1011, 37, 87, 0, 54, "Subsection",ExpressionUUID->"a237bd38-7342-4f23-a2e7-1f1b7763dea9"],
+Cell[CellGroupData[{
+Cell[1123, 41, 90, 0, 45, "Subsubsection",ExpressionUUID->"3019772b-1444-4b83-9e3d-4dd612e0697c"],
+Cell[CellGroupData[{
+Cell[1238, 45, 96, 0, 32, "Subsubsubsection",ExpressionUUID->"2be4eae4-0ae5-4b3d-ad96-b7dd69a2a51d"],
+Cell[1337, 47, 75, 0, 35, "Text",ExpressionUUID->"98a3f265-0d01-479a-8d99-6781756d69c2"],
+Cell[1415, 49, 83, 0, 38, "CodeText",ExpressionUUID->"a5afc449-9cd3-462b-b88c-558c626fec75"],
+Cell[CellGroupData[{
+Cell[1523, 53, 75, 0, 32, "Item",ExpressionUUID->"e6fd99f3-cd84-4ba4-9c0a-417927cb7a73"],
+Cell[1601, 55, 81, 0, 26, "Subitem",ExpressionUUID->"df6898b2-439a-43c0-92c6-931d4dc38687"]
+}, Open  ]],
+Cell[CellGroupData[{
+Cell[1719, 60, 91, 0, 32, "ItemNumbered",ExpressionUUID->"406615e5-f1e6-4177-9852-107a8469e943"],
+Cell[CellGroupData[{
+Cell[1835, 64, 97, 0, 26, "SubitemNumbered",ExpressionUUID->"48bb366e-17ed-474d-affa-79311bd7e703"],
+Cell[CellGroupData[{
+Cell[1957, 68, 109, 1, 28, "Input",ExpressionUUID->"590bae3b-1fa6-4350-9e26-6824c5a227f2"],
+Cell[2069, 71, 111, 1, 32, "Output",ExpressionUUID->"220be7d9-0e4e-433a-8302-e70988433c70"]
+}, Open  ]],
+Cell[2195, 75, 84, 0, 50, "Code",ExpressionUUID->"665188ab-a4ec-4998-90b2-a4d2d615657c"]
+}, Open  ]]
+}, Open  ]]
+}, Open  ]]
+}, Open  ]]
+}, Open  ]]
+}, Open  ]]
+}, Open  ]]
+}, Open  ]]
+}
+]
+*)
+
