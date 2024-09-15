@@ -3,3 +3,20 @@ form:has(input:disabled) {
   background-color: red;
   cursor: not-allowed;
 }
+
+
+/* Can also be used to stop scrolling on the page. */
+/* ... with a custom attribute */
+html:has([data-disable-document-scroll="true"]) {
+  overflow: hidden;
+}
+
+/* ... with a modal */
+html:has(:modal) {
+  overflow: hidden;
+}
+
+/* ... or with a dialog */
+html:has(dialog[open]) {
+  overflow: hidden;
+}
