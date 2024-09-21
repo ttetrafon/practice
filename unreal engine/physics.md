@@ -28,6 +28,7 @@
 
 - Links:
   - [Unreal Engine 5 Tutorial - Custom Gravity UE5.4 Preview](https://www.youtube.com/watch?v=CZK7QplEbJs)
+  - [Well… CUSTOM GRAVITY in Unreal Engine 5.4 is 🤯](https://www.youtube.com/watch?v=Jw4Q27ZurO4)
 
 - Blueprints
   - To define gravitational vectors, we can create a gravity field actor.
