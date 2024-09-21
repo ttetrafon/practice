@@ -9,8 +9,10 @@ public class Main {
 
 //        MinMaxSum.miniMaxSum(List.of(1, 14, 7, 9, 5)); // expected result: `22 35`
 
-        String res = TimeConversion.timeConversion("12:45:54PM");
-        System.out.println(res);
+//        String res = TimeConversion.timeConversion("12:45:54PM");
+//        System.out.println(res);
 
+        int res = LonelyInteger.lonelyInteger(List.of(0, 0, 1, 2, 1));
+        System.out.println(res);
     }
 }

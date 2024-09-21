@@ -5,11 +5,10 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="711edb98-3981-4f10-89f5-90f7d8f87fd0" name="Changes" comment="">
-      <change afterPath="$PROJECT_DIR$/src/main/java/com/ttetrafon/hackerrank/Main.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/com/ttetrafon/hackerrank/MinMaxSum.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/com/ttetrafon/hackerrank/NumberCounting.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/com/ttetrafon/hackerrank/TimeConversion.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/com/ttetrafon/hackerrank/LonelyInteger.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/ttetrafon/hackerrank/Main.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/ttetrafon/hackerrank/Main.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/com/ttetrafon/hackerrank/Main.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/com/ttetrafon/hackerrank/Main.class" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
