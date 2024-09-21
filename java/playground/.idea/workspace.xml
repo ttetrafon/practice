@@ -4,8 +4,8 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="711edb98-3981-4f10-89f5-90f7d8f87fd0" name="Changes" comment="">
-      <change afterPath="$PROJECT_DIR$/src/main/java/com/ttetrafon/hackerrank/LonelyInteger.java" afterDir="false" />
+    <list default="true" id="711edb98-3981-4f10-89f5-90f7d8f87fd0" name="Changes" comment="[java] hacker-rank++">
+      <change afterPath="$PROJECT_DIR$/src/main/java/com/ttetrafon/hackerrank/DiagonalDifference.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/com/ttetrafon/hackerrank/Main.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/ttetrafon/hackerrank/Main.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/target/classes/com/ttetrafon/hackerrank/Main.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/com/ttetrafon/hackerrank/Main.class" afterDir="false" />
@@ -26,6 +26,18 @@
   <component name="Git.Settings">
     <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$/../.." />
   </component>
+  <component name="GitHubPullRequestSearchHistory"><![CDATA[{
+  "lastFilter": {
+    "state": "OPEN",
+    "assignee": "ttetrafon"
+  }
+}]]></component>
+  <component name="GithubPullRequestsUISettings"><![CDATA[{
+  "selectedUrlAndAccountId": {
+    "url": "https://github.com/ttetrafon/practice.git",
+    "accountId": "11740eaf-3978-4981-bed3-06b3b6dd5bf8"
+  }
+}]]></component>
   <component name="MarkdownSettingsMigration">
     <option name="stateVersion" value="1" />
   </component>
@@ -144,9 +156,31 @@
       <option name="presentableId" value="Default" />
       <updated>1679057707370</updated>
     </task>
+    <task id="LOCAL-00001" summary="[java] hacker-rank++">
+      <option name="closed" value="true" />
+      <created>1726920111221</created>
+      <option name="number" value="00001" />
+      <option name="presentableId" value="LOCAL-00001" />
+      <option name="project" value="LOCAL" />
+      <updated>1726920111221</updated>
+    </task>
+    <option name="localTasksCounter" value="2" />
     <servers />
+  </component>
+  <component name="Vcs.Log.Tabs.Properties">
+    <option name="TAB_STATES">
+      <map>
+        <entry key="MAIN">
+          <value>
+            <State />
+          </value>
+        </entry>
+      </map>
+    </option>
   </component>
   <component name="VcsManagerConfiguration">
     <option name="ADD_EXTERNAL_FILES_SILENTLY" value="true" />
+    <MESSAGE value="[java] hacker-rank++" />
+    <option name="LAST_COMMIT_MESSAGE" value="[java] hacker-rank++" />
   </component>
 </project>

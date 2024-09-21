@@ -12,7 +12,14 @@ public class Main {
 //        String res = TimeConversion.timeConversion("12:45:54PM");
 //        System.out.println(res);
 
-        int res = LonelyInteger.lonelyInteger(List.of(0, 0, 1, 2, 1));
+//        int res = LonelyInteger.lonelyInteger(List.of(0, 0, 1, 2, 1));
+//        System.out.println(res);
+
+        int res = DiagonalDifference.diagonalDifference(List.of(
+                List.of(1, 2, 3),
+                List.of(4, 5, 6),
+                List.of(9, 8, 9)
+        ));
         System.out.println(res);
     }
 }
