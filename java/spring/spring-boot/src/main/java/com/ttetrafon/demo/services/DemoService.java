@@ -18,6 +18,4 @@ public class DemoService {
 
         return DemoResponseObjectBuilder.buildDemoResponse(request);
     }
-
-
 }

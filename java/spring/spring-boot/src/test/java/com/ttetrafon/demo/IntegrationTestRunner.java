@@ -1,7 +1,6 @@
 package com.ttetrafon.demo;
 
 import com.github.tomakehurst.wiremock.stubbing.StubMapping;
-import com.ttetrafon.demo.utils.WiremockStub;
 import com.ttetrafon.demo.wiremock.WiremockHelper;
 import lombok.extern.slf4j.Slf4j;
 import org.junit.jupiter.api.AfterAll;
@@ -11,7 +10,6 @@ import org.junit.jupiter.api.TestInstance;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.autoconfigure.web.servlet.AutoConfigureMockMvc;
 import org.springframework.boot.test.context.SpringBootTest;
-import org.springframework.http.HttpMethod;
 import org.springframework.test.annotation.DirtiesContext;
 import org.springframework.test.context.ActiveProfiles;
 import org.springframework.test.context.TestPropertySource;
@@ -28,11 +26,11 @@ import java.util.List;
 @ActiveProfiles("test")
 @Slf4j
 public class IntegrationTestRunner {
-  @Autowired public WiremockHelper wiremockHelper;
+  @Autowired public static WiremockHelper wiremockHelper = new WiremockHelper();
   @Autowired public MockMvc mockMvc;
 
   @BeforeAll
-  public void init() {
+  public static void init() {
     wiremockHelper.startServer();
   }
 
@@ -42,13 +40,11 @@ public class IntegrationTestRunner {
   }
 
   @AfterAll
-  public void clean() {
+  public static void clean() {
     wiremockHelper.stopServer();
   }
 
   public List<StubMapping> showStubs() {
     return wiremockHelper.wireMockServer().getStubMappings();
   }
-
-
 }

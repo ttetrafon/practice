@@ -34,5 +34,4 @@ class DemoApplicationTests {
 				.andExpect(status().isOk())
 				.andExpect(content().string(equalTo("Hello World!")));
 	}
-
 }
