@@ -137,3 +137,14 @@ AMyGameMode::AMyGameMode() {
   - Attach an actor component to all actors with basic tag functionality.
   - Use a tag container to store tags that change during gameplay.
 - More complex tag lookups can be achieved with `FGameplayTagQuery`.
+
+### [Gameplay Ability System (GAS)](https://dev.epicgames.com/documentation/en-us/unreal-engine/gameplay-ability-system-for-unreal-engine?application_version=5.2)
+
+- A system to create reusable abilities for characters and/or pawns.
+- Ability blueprints can be used as components in actors, where they can be triggered/executed as needed.
+  - Abilities can be added with `Give Ability` where applicable. _For example, a specific sword attack can be given to the actor when they equip the sword in question_.
+  - An ability can be activated with `Try Activate Ability by Class` or `Try Activate Ability by Tag`
+
+#### [Gameplay Attributes & Effects](https://dev.epicgames.com/documentation/en-us/unreal-engine/gameplay-attributes-and-gameplay-effects?application_version=4.27)
+
+- Attributes and Effects complete GAS.

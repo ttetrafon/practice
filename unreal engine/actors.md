@@ -66,15 +66,21 @@ class UActorComponent {}
 ### Damage Events
 
 - All actors have some basic functionality implemented concerning damage events.
-  - Receiver nodes:
-    - `Event AnyDamage`: Called on any damage event.
-    - `Event PointDamage`: Called on point effects.
-    - `Event RadialDamage`: Called on area effects.
   - Trigger nodes:
     - `Apply Damage`:
     - `Apply PointDamage`:
     - `Apply RadialDamage`:
     - `Apply RadialDamage with Falloff`:
+    - Common inputs:
+      - _Damage Causer_ is the actor that initiated the damage event, and will be referenced to the event target.
+      - _Instigated by Controller_ is the player/AI controller that started the event, and will be referenced to the event target.
+      - _Damage Type_ is ???
+  - Receiver nodes:
+    - `Event AnyDamage`: Called on any damage event.
+    - `Event PointDamage`: Called on point effects only.
+    - `Event RadialDamage`: Called on area effects only.
+    - Common outputs:
+      - _Hit Info_ is a structure with the ray-tracing information used to trigger the damage event on the target actor.
 
 ## Hierarchies
 
@@ -97,6 +103,10 @@ class UActorComponent {}
     - If the camera will be following the player, also add a **Spring Arm** and a **Camera** underneath that.
       - Set "use pawn control rotation" in the camera details.
     - Can also enable **camera lag** and/or **camera rotation lag** for a more realistic approach (useful mostly in vehicle cameras).
+    - Camera shake can be added through the **CameraShake** blueprint.
+      - Create a new **CameraShakeBase** blueprint.
+      - Set the **Details -> Camera Shake Patter** as required.
+      - In any graph, the camera shake can be used through `Client Start Camera Shake` node (input is the _Player Controller_).
 - (C++) _Tools -> New C++ Class -> All Classes tab -> Character_
 - In the current **Game Mode**, assign the new character blueprint as the _default pawn class_.
 
