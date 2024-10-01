@@ -6,10 +6,10 @@
 - npm install package_name --save: adds the package_name as a dependency
 - npm install package_name --save-dev: adds the package_name as a dev dependency
 - npm outdated: lists packages that can be updated in the project
-  - Versions are defined as X.Y.Z
-    - X: major - to allow major updates define a package version as '*' or 'x'
-    - Y: minor - to allow minor updates define a package version as '1' or '1.x' or '^1.0.4'
-    - Z: patch - to allow patch updates define a package version as '1.0' or '1.0.x' or '~1.0.4'
+- Versions are defined as X.Y.Z
+  - X: major - to allow major updates define a package version as '*' or 'x'
+  - Y: minor - to allow minor updates define a package version as '1' or '1.x' or '^1.0.4'
+  - Z: patch - to allow patch updates define a package version as '1.0' or '1.0.x' or '~1.0.4'
 
 - npm list -g: lists all packages installed in root
 - npm list: lists all packages installed in the current project
