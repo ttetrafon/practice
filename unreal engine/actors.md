@@ -117,3 +117,7 @@ class UActorComponent {}
   - Flying
   - Swimming
   - Falling
+- Movement is controlled by a **Movement** Component.
+  - Simple movement can be added through the **Floating Pawn Movement**.
+  - `Add Movement Input`, with a direction (`Get Actor Forward/Up/Right Direction`), can be used to move the actor based on input events.
+- Rotation ...

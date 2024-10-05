@@ -3,6 +3,7 @@
 - *Edit -> Editor Preferences*
   - **Invert Middle Mouse Pan** controls the direction of the pan while holding Mouse3 in the viewport.
 - In **Viewport -> Snap**, can add/change the predefined grid snap distances.
+- Set **Editor Preferences -> General - Appearance -> Asset Editor Open Location** to preference; *Main Window* will dock new tabs automatically.
 
 ## Shortcuts
 
