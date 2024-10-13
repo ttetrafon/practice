@@ -58,6 +58,13 @@ First, a built object needs to be positioned. There are two useful things to do 
     - `Custom Event (SubmitChat; params: PlayerName *text*, ChatMessage *text*; replicates = Run on Server; reliable = true)` -> `For Each Loop (array = Get Game State -> Get Player Array)` -> `Cast to Custom Player Controller (object = For Each Loop array element -> Get Player Controller)` -> `ClientUpdateChat (target = Cast output; player name / message = SubmitChat outputs)`.
     - `Custom Event (ClientUpdateChat; params: PlayerName *text*, ChatMessage *text*; replicates = Run on Owning Client; reliable = true)` -> `Get Chat Panel (validated)` -> `Update Chat event (target = Get Chat Panel's output; player name / message = ClientUpdateChat's outputs)`.
 
+## Selection through Click
+
+- Implement a click event.
+- In the character/pawn/player controller:
+  - `On Click (finished)`, add a `Get Actor Under Cursor for Objects/?`, linked to the player controller.
+  - Use the hit event to trigger an interface message as appropriate.
+
 ## Vision
 
 - Links:
