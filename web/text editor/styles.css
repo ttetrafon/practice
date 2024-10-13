@@ -38,6 +38,7 @@ section {
   border-radius: 5px;
   background-color: whitesmoke;
   border: 1px solid black;
+  min-width: 500px;
 }
 
 button {
@@ -58,10 +59,45 @@ button img {
   aspect-ratio: 1;
 }
 
-#text-area {
+.editor {
   width: 100%;
-  padding: 5px;
+  margin-top: 10px;
+  min-height: 50px;
+  padding: 10px;
   display: flex;
   flex-flow: column nowrap;
   align-items: stretch;
+  box-shadow: 0 0 5px darkslategray inset;
+  border-radius: 5px;
+}
+
+
+
+/* TEST STYLES */
+h1 {
+  color: red;
+  font-size: 1.5rem;
+}
+h2 {
+  color: blue;
+  font-size: 1.25rem;
+}
+h3 {
+  color: green;
+  font-size: 1.15rem;
+}
+h4 {
+  color: yellow;
+  font-size: 1.1rem;
+}
+h5 {
+  color: brown;
+  font-size: 1.1rem;
+}
+h6 {
+  color: purple;
+  font-size: 1.1rem;
+}
+p {
+  font-size: 1rem;
 }
