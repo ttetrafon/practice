@@ -53,35 +53,41 @@ function getCurrentBlock() {
 /**
  * Recursively travels upwards the dom tree from the input node to find the first enclosing span.
  * @param { HTMLElement } node
- * @returns { HTMLElement }
+ * @returns { Object } { span: enclosing-span, block: enclosing-block }
  */
 function findEnclosingSpan(node) {
-}
-
-/**
- * Looks for the element that defines the current span, depending on the caret's current position.
- * @returns { HTMLElement }
- */
-function getCurrentSpan() {
-  console.log("---> getCurrentSpan()");
-  let node = window.getSelection();
-
+  console.log("---> findEnclosingSpan()", node);
+  let res = node.parentElement;
+  if (spanElements.includes(res.nodeName.toLowerCase())) {
+    return {
+      "span": res
+    };
+  }
+  else if (blockElements.includes(res.nodeName.toLowerCase())) {
+    return {
+      "block": res
+    };
+  }
+  else {
+    console.log("... moving to parent");
+    return findEnclosingSpan(res);
+  }
 }
 
 /**
  *
- * @returns
+ * @returns { Object }
  */
 function getSelectionRange() {
   console.log("---> getSelectionRange()");
-  const selection = window.getSelection();
+  let selection = window.getSelection();
   console.log(selection);
-  let res;
-  if (selection.rangeCount > 0) {
-    res = selection.getRangeAt(0);
-  }
-  console.log(`selection: ${res}`);
-  return res;
+
+  return {
+    "type": selection.type,
+    "anchorNode": selection.anchorNode,
+    "range": selection.type == "Range" ? selection.getRangeAt(0) : undefined
+  };
 }
 
 /**
@@ -122,6 +128,45 @@ function blockEvent(nodeName) {
   replaceTag(currentBlock, nodeName);
 }
 
+/**
+ * Triggered from a span event from the appropriate button.
+ * Two possibilities:
+ * (1) Selection has occurred (type = "Range")
+ * (2) Caret is at specific position (type = "Caret").
+ * @param { String } nodeName
+ */
+function spanEvent(nodeName) {
+  console.log(`---> spanEvent(${nodeName})`);
+  let selection = getSelectionRange();
+  console.log("selection:", selection);
+
+  if (selection.type == "Caret") {
+    let currentSpan = findEnclosingSpan(selection.anchorNode);
+    console.log("currentSpan:", currentSpan);
+    // may find either a span or a block
+    // ... on a span, we replace, if it is the same, we remove it and finish
+    if (currentSpan.span && currentSpan.span.nodeName.toLowerCase() == nodeName) {
+      console.log("... removing span!");
+      while (currentSpan.span.firstChild) {
+        currentSpan.span.parentElement.insertBefore(currentSpan.span.firstChild, currentSpan.span);
+      }
+      currentSpan.span.remove();
+    }
+    else {
+      // ... on a block, first check if there are other similar spans inside to remove them, and then enclose all the block's contents in the appropriate span
+
+    }
+
+  }
+
+
+
+
+  // const selectedText = range.extractContents();
+  // let wrapper = document.createElement("b");
+  // wrapper.appendChild(selectedText);
+  // range.insertNode(wrapper);
+}
 
 const h1Btn = document.getElementById("heading1");
 const h2Btn = document.getElementById("heading2");
@@ -131,6 +176,8 @@ const h5Btn = document.getElementById("heading5");
 const h6Btn = document.getElementById("heading6");
 const textBtn = document.getElementById("text");
 const boldBtn = document.getElementById("bold");
+const italicBtn = document.getElementById("italic");
+const underlineBtn = document.getElementById("underline");
 
 h1Btn.addEventListener("click", (event) => {
   event.stopPropagation();
@@ -163,12 +210,13 @@ text.addEventListener("click", (event) => {
 
 boldBtn.addEventListener("click", (event) => {
   event.stopPropagation();
-
-  let range = getSelectionRange();
-  if (!range) return;
-
-  const selectedText = range.extractContents();
-  let wrapper = document.createElement("b");
-  wrapper.appendChild(selectedText);
-  range.insertNode(wrapper);
+  spanEvent("b");
+});
+italicBtn.addEventListener("click", (event) => {
+  event.stopPropagation();
+  spanEvent("i");
+});
+underlineBtn.addEventListener("click", (event) => {
+  event.stopPropagation();
+  spanEvent("u");
 });
