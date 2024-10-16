@@ -139,33 +139,45 @@ function spanEvent(nodeName) {
   console.log(`---> spanEvent(${nodeName})`);
   let selection = getSelectionRange();
   console.log("selection:", selection);
+  let enclosingSpan = findEnclosingSpan(selection.anchorNode);
+  console.log("enclosingSpan:", enclosingSpan);
 
   if (selection.type == "Caret") {
-    let currentSpan = findEnclosingSpan(selection.anchorNode);
-    console.log("currentSpan:", currentSpan);
+    console.log(`... type=${selection.type}: caret`);
     // may find either a span or a block
     // ... on a span, we replace, if it is the same, we remove it and finish
-    if (currentSpan.span && currentSpan.span.nodeName.toLowerCase() == nodeName) {
+    if (enclosingSpan.span && enclosingSpan.span.nodeName.toLowerCase() == nodeName) {
       console.log("... removing span!");
-      while (currentSpan.span.firstChild) {
-        currentSpan.span.parentElement.insertBefore(currentSpan.span.firstChild, currentSpan.span);
+      while (enclosingSpan.span.firstChild) {
+        enclosingSpan.span.parentElement.insertBefore(enclosingSpan.span.firstChild, enclosingSpan.span);
       }
-      currentSpan.span.remove();
+      enclosingSpan.span.remove();
     }
     else {
-      // ... on a block, first check if there are other similar spans inside to remove them, and then enclose all the block's contents in the appropriate span
-
+      // ... on a block, extract the contents and wrap them in the appropriate tag
+      // TODO: decide if this is better or not, maybe combined with automatically applying the span formatting above if the span is not the one selected.
     }
-
   }
+  else {
+    // https://developer.mozilla.org/en-US/docs/Web/API/Range
+    console.log("range:", selection.range);
 
+    // first check if there are other similar spans inside to remove them, and then enclose all the block's contents in the appropriate span
 
+    // ... check also if there are adjustment similar spans to merge with the new one
 
-
-  // const selectedText = range.extractContents();
-  // let wrapper = document.createElement("b");
-  // wrapper.appendChild(selectedText);
-  // range.insertNode(wrapper);
+    // ... otherwise, just switch on/off the span
+    if (enclosingSpan.block) {
+      console.log("... inside a block, we can just create the span:", enclosingSpan.block);
+      // const selectedText = selection.range.extractContents();
+      // let wrapper = document.createElement("b");
+      // wrapper.appendChild(selectedText);
+      // selection.range.insertNode(wrapper);
+    }
+    else {
+      console.log("... inside a span:", enclosingSpan.span);
+    }
+  }
 }
 
 const h1Btn = document.getElementById("heading1");
