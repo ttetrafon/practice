@@ -8,6 +8,23 @@
 
 - After building a mesh, assign to its whole a single shiny material to check if there are any reflection or lighting issues.
 
+### AI Concept Art to Model
+
+- Start with an AI generator for concept art.
+  - [Leonardo AI](https://app.leonardo.ai)
+    - Find an appropriate art style and note down the _seed_ and _element_ values.
+- Feed that image to a 3D generation tool.
+  - [NeROIC](https://zfkuang.github.io/NeROIC/)
+  - [Sloyd](https://www.sloyd.ai/)
+  - [Hyperhuman Rodin](https://hyperhuman.deemos.com/rodin)
+    - Play with the tags that result in the best geometry, and note them down.
+    - Before confirming, select the target _number of polygons_ and _hyper_ if needed.
+  - [Meshy](https://www.meshy.ai/)
+  - [Masterpiece X](https://www.masterpiecex.com/)
+  - [Rokoko Vision](https://www.rokoko.com/products/vision)
+  - [Spline](https://spline.design/)
+  - [Dream Machine](https://lumalabs.ai/dream-machine)
+
 ## Importing a Mesh
 
 - Drag and drop a mesh (fbx) into the _Content Drawer_ to import a mesh.
