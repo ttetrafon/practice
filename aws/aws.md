@@ -3,7 +3,7 @@
 - Isolated **regions** all over the world, each split in multiple **availability zones (AZ)**. Both regions and AZs are independent of each other; no data replication happens automatically between them. AZs in the same region are connected with fibre cables for efficient communication.
   - Services should be deployed in multiple AZs simultaneously for resiliency against failure scenarios.
 
-# Core Technologies
+## Core Technologies
 
 - Compute
   - EC2 (Elastic Compute Service)
