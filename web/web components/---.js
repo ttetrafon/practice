@@ -1,9 +1,9 @@
 const template = document.createElement('template');
 
 template.innerHTML = /*html*/`
-  <style>
-    @import './styles.css';
-  </style>
+<style>
+  @import './styles.css';
+</style>
 
 <div>...</div>
 `;
@@ -11,10 +11,10 @@ template.innerHTML = /*html*/`
 class Component extends HTMLElement {
   constructor() {
     super();
-    this._shadowRoot = this.attachShadow({ mode: 'closed' });
+    this._shadow = this.attachShadow({ mode: 'closed' });
     // The mode can be set to 'open' if we need the document to be able to access the shadow-dom internals.
     // Access happens through ths `shadowroot` property in the host.
-    this._shadowRoot.appendChild(template.content.cloneNode(true));
+    this._shadow.appendChild(template.content.cloneNode(true));
   }
 
   // Attributes need to be observed to be tied to the lifecycle change callback.

@@ -55,8 +55,8 @@ function getCurrentBlock() {
  * @param { HTMLElement } node
  * @returns { Object } { span: enclosing-span, block: enclosing-block }
  */
-function findEnclosingSpan(node) {
-  console.log("---> findEnclosingSpan()", node);
+function findEnclosingElement(node) {
+  console.log("---> findEnclosingElement()", node);
   let res = node.parentElement;
   if (spanElements.includes(res.nodeName.toLowerCase())) {
     return {
@@ -70,7 +70,7 @@ function findEnclosingSpan(node) {
   }
   else {
     console.log("... moving to parent");
-    return findEnclosingSpan(res);
+    return findEnclosingElement(res);
   }
 }
 
@@ -139,19 +139,19 @@ function spanEvent(nodeName) {
   console.log(`---> spanEvent(${nodeName})`);
   let selection = getSelectionRange();
   console.log("selection:", selection);
-  let enclosingSpan = findEnclosingSpan(selection.anchorNode);
-  console.log("enclosingSpan:", enclosingSpan);
+  let enclosingElement = findEnclosingElement(selection.anchorNode);
+  console.log("enclosingElement:", enclosingElement);
 
   if (selection.type == "Caret") {
     console.log(`... type=${selection.type}: caret`);
     // may find either a span or a block
     // ... on a span, we replace, if it is the same, we remove it and finish
-    if (enclosingSpan.span && enclosingSpan.span.nodeName.toLowerCase() == nodeName) {
+    if (enclosingElement.span && enclosingElement.span.nodeName.toLowerCase() == nodeName) {
       console.log("... removing span!");
-      while (enclosingSpan.span.firstChild) {
-        enclosingSpan.span.parentElement.insertBefore(enclosingSpan.span.firstChild, enclosingSpan.span);
+      while (enclosingElement.span.firstChild) {
+        enclosingElement.span.parentElement.insertBefore(enclosingElement.span.firstChild, enclosingElement.span);
       }
-      enclosingSpan.span.remove();
+      enclosingElement.span.remove();
     }
     else {
       // ... on a block, extract the contents and wrap them in the appropriate tag
@@ -167,15 +167,15 @@ function spanEvent(nodeName) {
     // ... check also if there are adjustment similar spans to merge with the new one
 
     // ... otherwise, just switch on/off the span
-    if (enclosingSpan.block) {
-      console.log("... inside a block, we can just create the span:", enclosingSpan.block);
+    if (enclosingElement.block) {
+      console.log("... inside a block, we can just create the span:", enclosingElement.block);
       // const selectedText = selection.range.extractContents();
       // let wrapper = document.createElement("b");
       // wrapper.appendChild(selectedText);
       // selection.range.insertNode(wrapper);
     }
     else {
-      console.log("... inside a span:", enclosingSpan.span);
+      console.log("... inside a span:", enclosingElement.span);
     }
   }
 }
@@ -231,4 +231,23 @@ italicBtn.addEventListener("click", (event) => {
 underlineBtn.addEventListener("click", (event) => {
   event.stopPropagation();
   spanEvent("u");
+});
+
+
+
+const jf = document.getElementById("justify-full");
+jf.addEventListener("click", (event) => {
+  event.stopPropagation();
+
+  let selection = window.getSelection();
+  console.log(selection);
+
+  let tree = document.createTreeWalker(selection.anchorNode.parentElement);
+  console.log(tree);
+  // console.log(tree.parentNode());
+  // console.log(tree.firstChild());
+  // console.log(tree.lastChild());
+  // console.log(tree.previousSibling());
+  // console.log(tree.nextSibling());
+  // console.log(tree.nextNode());
 });
