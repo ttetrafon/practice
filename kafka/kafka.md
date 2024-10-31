@@ -174,3 +174,5 @@ KafkaClient {
 - Pass the JAAS config file location the the client: `-Djava.security.auth.login.config=/etc/kafka/kafka_client_jaas.conf`
 
 ## [Authorisation](https://kafka.apache.org/documentation/#security_authz)
+
+- [Confluence docs on ACLs](https://docs.confluent.io/platform/current/security/authorization/acls/overview.html)
