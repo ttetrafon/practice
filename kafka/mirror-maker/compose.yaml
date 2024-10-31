@@ -38,22 +38,32 @@ services:
       - "9093:9093"
       - "9095:9095"
     environment:
+      # KRAFT
       KAFKA_CFG_KRAFT_MODE: true
       KAFKA_CFG_NODE_ID: 1
       KAFKA_CFG_PROCESS_ROLES: controller,broker
-      KAFKA_CFG_LISTENERS: CLIENT://:9093,INTERNAL://:9095,CONTROLLER://:29093
-      KAFKA_CFG_ADVERTISED_LISTENERS: CLIENT://kafka-destination:9093,INTERNAL://kafka-destination:9095
-      KAFKA_CFG_LISTENER_SECURITY_PROTOCOL_MAP: CLIENT:SASL_PLAINTEXT,INTERNAL:PLAINTEXT,CONTROLLER:PLAINTEXT
-      KAFKA_CFG_SASL_ENABLED_MECHANISMS: PLAIN
-      KAFKA_CFG_LISTENER_NAME_CLIENT_SASL_ENABLED_MECHANISMS: PLAIN
-      KAFKA_CFG_INTER_BROKER_LISTENER_NAME: INTERNAL
       KAFKA_CFG_CONTROLLER_QUORUM_VOTERS: 1@kafka-destination:29093
+      # Listeners
+      KAFKA_CFG_LISTENERS: CLIENT://:9093,INTERNAL://:9095,CONTROLLER://:29093
       KAFKA_CFG_CONTROLLER_LISTENER_NAMES: CONTROLLER
-      KAFKA_CFG_OFFSETS_TOPIC_REPLICATION_FACTOR: 1
-      KAFKA_CFG_LISTENER_NAME_CLIENT_PLAIN_SASL_JAAS_CONFIG: org.apache.kafka.common.security.plain.PlainLoginModule required username="admin" password="this_is_the_admin_secret" user_admin="this_is_the_admin_secret" user_mirror="this_is_the_mirror_secret";
-      KAFKA_CFG_SUPER_USERS: User:admin;User:ANONYMOUS # ANONYMOUS is here to avoid configuring authentication for the internal communications
+      KAFKA_CFG_INTER_BROKER_LISTENER_NAME: INTERNAL
+      KAFKA_CFG_LISTENER_SECURITY_PROTOCOL_MAP: CLIENT:SASL_PLAINTEXT,INTERNAL:PLAINTEXT,CONTROLLER:PLAINTEXT
+      KAFKA_CFG_ADVERTISED_LISTENERS: CLIENT://kafka-destination:9093,INTERNAL://kafka-destination:9095
+      KAFKA_CFG_EARLY_START_LISTENERS: CONTROLLER
+      # SASL
+      KAFKA_CFG_SASL_ENABLED_MECHANISMS: PLAIN
+      KAFKA_CFG_SASL_MECHANISM_INTER_BROKER_PROTOCOL: PLAIN
+      KAFKA_CFG_SASL_MECHANISM_CONTROLLER_PROTOCOL: PLAIN
+      KAFKA_CFG_SECURITY_PROTOCOL: SASL_PLAINTEXT
+      KAFKA_CFG_LISTENER_NAME_CLIENT_SASL_ENABLED_MECHANISMS: PLAIN
+      # ACL
       KAFKA_CFG_AUTHORIZER_CLASS_NAME: org.apache.kafka.metadata.authorizer.StandardAuthorizer
+      KAFKA_CFG_SUPER_USERS: User:admin;User:ANONYMOUS # ANONYMOUS is here to avoid configuring authentication for the internal communications
       KAFKA_CFG_ALLOW_EVERYONE_IF_NO_ACL_FOUND: true # Set to true so initialisation works. Will need to add ACLs for everything though, to secure the broker.
+      KAFKA_CFG_LISTENER_NAME_CLIENT_PLAIN_SASL_JAAS_CONFIG: org.apache.kafka.common.security.plain.PlainLoginModule required username="admin" password="this_is_the_admin_secret" user_admin="this_is_the_admin_secret" user_mirror="this_is_the_mirror_secret";
+      # Topics
+      KAFKA_CFG_OFFSETS_TOPIC_REPLICATION_FACTOR: 1
+      # General Settings
       BITNAMI_DEBUG: true
 
   kafdrop-destination:
