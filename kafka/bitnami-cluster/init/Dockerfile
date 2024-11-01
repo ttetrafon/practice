@@ -1,0 +1,3 @@
+FROM bitnami/kafka:latest
+USER root
+RUN install_packages netcat-openbsd

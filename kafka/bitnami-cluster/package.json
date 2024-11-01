@@ -1,0 +1,9 @@
+{
+    "scripts": {
+        "run": "docker compose -f compose.yaml up --force-recreate --build -d",
+        "start": "docker compose -f compose.yaml start",
+        "stop": "docker compose -f compose.yaml stop",
+        "down": "docker compose -f compose.yaml down",
+        "restart": "npm run down && npm run run"
+    }
+}
