@@ -58,8 +58,8 @@ services:
       KAFKA_CFG_LISTENER_NAME_CLIENT_SASL_ENABLED_MECHANISMS: PLAIN
       # ACL
       KAFKA_CFG_AUTHORIZER_CLASS_NAME: org.apache.kafka.metadata.authorizer.StandardAuthorizer
-      KAFKA_CFG_SUPER_USERS: User:admin;User:ANONYMOUS # ANONYMOUS is here to avoid configuring authentication for the internal communications
-      KAFKA_CFG_ALLOW_EVERYONE_IF_NO_ACL_FOUND: true # Set to true so initialisation works. Will need to add ACLs for everything though, to secure the broker.
+      KAFKA_CFG_SUPER_USERS: User:admin;User:ANONYMOUS # ANONYMOUS is here to avoid configuring authentication for the internal communications.
+      KAFKA_CFG_ALLOW_EVERYONE_IF_NO_ACL_FOUND: true # Set to true so initialisation works. Will need to add ACLs for everything though, to secure the broker - probably wont' be needed if we break controller from broker.
       KAFKA_CFG_LISTENER_NAME_CLIENT_PLAIN_SASL_JAAS_CONFIG: org.apache.kafka.common.security.plain.PlainLoginModule required username="admin" password="this_is_the_admin_secret" user_admin="this_is_the_admin_secret" user_mirror="this_is_the_mirror_secret";
       # Topics
       KAFKA_CFG_OFFSETS_TOPIC_REPLICATION_FACTOR: 1
@@ -83,17 +83,6 @@ services:
     entrypoint: [ '/bin/sh', '-c' ]
     command: |
       "
-      while ! nc -z kafka-destination 9095; do
-        echo 'Waiting for Destination to be ready...'
-        sleep 1
-      done
-
-      echo 'Creating ACLs on destination...'
-      kafka-acls.sh --bootstrap-server kafka-destination:9095 --add --allow-principal User:mirror --operation All --topic mm2 --topic source --topic destination --resource-pattern-type prefixed
-
-      echo 'Creating destination topic...'
-      kafka-topics.sh --bootstrap-server kafka-destination:9095 --create --if-not-exists --topic destination-topic --partitions 1 --replication-factor 1
-
       while ! nc -z kafka-source 9092; do
         echo 'Waiting for Source to be ready...'
         sleep 1
@@ -101,6 +90,18 @@ services:
 
       echo 'Creating source topic...'
       kafka-topics.sh --bootstrap-server kafka-source:9092 --create --if-not-exists --topic source-topic --partitions 1 --replication-factor 1
+
+      while ! nc -z kafka-destination 9095; do
+        echo 'Waiting for Destination to be ready...'
+        sleep 1
+      done
+
+      echo 'Creating destination topic...'
+      kafka-topics.sh --bootstrap-server kafka-destination:9095 --create --if-not-exists --topic destination-topic --partitions 1 --replication-factor 1
+
+      echo 'Creating ACLs on destination...'
+      kafka-acls.sh --bootstrap-server kafka-destination:9095 --add --allow-principal User:mirror --operation All --topic mm2 --topic source --resource-pattern-type prefixed
+      kafka-acls.sh --bootstrap-server kafka-destination:9095 --add --allow-principal User:mirror --operation Read --operation Write --operation Describe --operation DescribeConfigs --operation Alter --topic destination --resource-pattern-type prefixed
 
       echo 'Waiting 30 sec to send test messages...'
       sleep 30
