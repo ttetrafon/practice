@@ -101,7 +101,7 @@ services:
 
       echo 'Creating ACLs on destination...'
       kafka-acls.sh --bootstrap-server kafka-destination:9095 --add --allow-principal User:mirror --operation All --topic mm2 --topic source --resource-pattern-type prefixed
-      kafka-acls.sh --bootstrap-server kafka-destination:9095 --add --allow-principal User:mirror --operation Read --operation Write --operation Describe --operation DescribeConfigs --operation Alter --topic destination --resource-pattern-type prefixed
+      kafka-acls.sh --bootstrap-server kafka-destination:9095 --add --allow-principal User:mirror --operation Read --operation Write --operation Describe --operation DescribeConfigs --topic destination --resource-pattern-type prefixed
 
       echo 'Waiting 30 sec to send test messages...'
       sleep 30
