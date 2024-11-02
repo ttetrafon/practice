@@ -19,6 +19,38 @@ const spanElements = [ // Formatting elements.
   "i",
   "u"
 ];
+const terminatingChars = [ // Characters that terminate words.
+  " ",
+  ".",
+  ",",
+  "<",
+  ">",
+  "/",
+  "?",
+  ";",
+  ":",
+  "'",
+  "",
+  "#",
+  "~",
+  "[",
+  "]",
+  "{",
+  "}",
+  "+",
+  "=",
+  "!",
+  "\"",
+  "£",
+  "$",
+  "%",
+  "€",
+  "%",
+  "^",
+  "&",
+  "(",
+  ")"
+];
 
 /**
  * Recursively travels upwards the dom tree from the input node to find the first enclosing block.
@@ -86,6 +118,7 @@ function getSelectionRange() {
   return {
     "type": selection.type,
     "anchorNode": selection.anchorNode,
+    "anchorOffset": selection.anchorOffset,
     "range": selection.type == "Range" ? selection.getRangeAt(0) : undefined
   };
 }
@@ -138,15 +171,19 @@ function blockEvent(nodeName) {
 function spanEvent(nodeName) {
   console.log(`---> spanEvent(${nodeName})`);
   let selection = getSelectionRange();
+  let anchorNode = selection.anchorNode;
+  let anchorOffset = selection.anchorOffset;
   console.log("selection:", selection);
-  let enclosingElement = findEnclosingElement(selection.anchorNode);
+  if (!anchorNode) return;
+  let enclosingElement = findEnclosingElement(anchorNode);
   console.log("enclosingElement:", enclosingElement);
 
   if (selection.type == "Caret") {
-    console.log(`... type=${selection.type}: caret`);
+    console.log(`... type=${selection.type}: caret at '${anchorOffset}'`);
     // may find either a span or a block
     // ... on a span, we replace, if it is the same, we remove it and finish
     if (enclosingElement.span && enclosingElement.span.nodeName.toLowerCase() == nodeName) {
+      // TODO: move up also to find the first span of the same styling (for example, clicked on bold and we have the caret within an <i> which is within a <b>)
       console.log("... removing span!");
       while (enclosingElement.span.firstChild) {
         enclosingElement.span.parentElement.insertBefore(enclosingElement.span.firstChild, enclosingElement.span);
@@ -154,30 +191,79 @@ function spanEvent(nodeName) {
       enclosingElement.span.remove();
     }
     else {
-      // ... on a block, extract the contents and wrap them in the appropriate tag
-      // TODO: decide if this is better or not, maybe combined with automatically applying the span formatting above if the span is not the one selected.
+      // ... on a word, wrap it in the appropriate tag
+      console.log("... enclosing word");
+      console.log(anchorNode);
+      if (anchorNode.nodeName == "#text") {
+        console.log("... we are in #text!");
+        let text = anchorNode.textContent;
+        if (terminatingChars.includes(text[anchorOffset])) {
+          console.log("we are at a terminating character, nothing to do!");
+          return;
+        }
+        let terminatingCharAfter = -1;
+        for (let i = anchorOffset; i < text.length; i++) {
+          if (terminatingChars.includes(text[i])) {
+            terminatingCharAfter = i;
+            break;
+          }
+        }
+        let terminatingCharBefore = -1;
+        for (let i = anchorOffset; i >= 0; i--) {
+          if (terminatingChars.includes(text[i])) {
+            terminatingCharBefore = i + 1;
+            break;
+          }
+        }
+        let phrases = [
+          text.substring(0, terminatingCharBefore),
+          `<${nodeName}>${text.substring(terminatingCharBefore, terminatingCharAfter)}</${nodeName}>`,
+          text.substring(terminatingCharAfter, text.length)
+        ];
+        console.log("phrases:", phrases);
+        let tempNode = document.createElement("div");
+        tempNode.innerHTML = `${text.substring(0, terminatingCharBefore)}<${nodeName}>${text.substring(terminatingCharBefore, terminatingCharAfter)}</${nodeName}>${text.substring(terminatingCharAfter, text.length)}`;
+        while (tempNode.firstChild) {
+          console.log("inserting:", tempNode.firstChild);
+          if (enclosingElement.span) {
+            enclosingElement.span.insertBefore(tempNode.firstChild, anchorNode);
+            tempNode.removeChild(tempNode.firstChild);
+          }
+          else if (enclosingElement.block) {
+            console.log(enclosingElement.block);
+            enclosingElement.block.insertBefore(tempNode.firstChild, anchorNode);
+          }
+          else {
+            console.error("could not find an enclosing element!");
+          }
+        }
+        anchorNode.remove();
+      }
+      else {
+        console.warn("unhandled case!");
+      }
     }
   }
-  else {
-    // https://developer.mozilla.org/en-US/docs/Web/API/Range
-    console.log("range:", selection.range);
+  // else {
+  //   // https://developer.mozilla.org/en-US/docs/Web/API/Range
+  //   console.log("range:", selection.range);
 
-    // first check if there are other similar spans inside to remove them, and then enclose all the block's contents in the appropriate span
+  //   // first check if there are other similar spans inside to remove them, and then enclose all the block's contents in the appropriate span
 
-    // ... check also if there are adjustment similar spans to merge with the new one
+  //   // ... check also if there are adjustment similar spans to merge with the new one
 
-    // ... otherwise, just switch on/off the span
-    if (enclosingElement.block) {
-      console.log("... inside a block, we can just create the span:", enclosingElement.block);
-      // const selectedText = selection.range.extractContents();
-      // let wrapper = document.createElement("b");
-      // wrapper.appendChild(selectedText);
-      // selection.range.insertNode(wrapper);
-    }
-    else {
-      console.log("... inside a span:", enclosingElement.span);
-    }
-  }
+  //   // ... otherwise, just switch on/off the span
+  //   if (enclosingElement.block) {
+  //     console.log("... inside a block, we can just create the span:", enclosingElement.block);
+  //     // const selectedText = selection.range.extractContents();
+  //     // let wrapper = document.createElement("b");
+  //     // wrapper.appendChild(selectedText);
+  //     // selection.range.insertNode(wrapper);
+  //   }
+  //   else {
+  //     console.log("... inside a span:", enclosingElement.span);
+  //   }
+  // }
 }
 
 const h1Btn = document.getElementById("heading1");
