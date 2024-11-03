@@ -27,16 +27,15 @@ class Component extends HTMLElement {
   set data(value) { this.setAttribute('data', value); }
   set label(value) { this.setAttribute('label', value); }
 
-  // Attribute value changes can be tied to any type of functionality through the lifecycle methods.
+  // A web component implements the following lifecycle methods.
   attributeChangedCallback(name, oldVal, newVal) {
+    // Attribute value changes can be tied to any type of functionality through the lifecycle methods.
     if (oldVal == newVal) return;
     switch(name) {
       default:
         break;
     }
   }
-
-  // A web component implements the following lifecycle methods.
   connectedCallback() {
     // Triggered when the component is added to the DOM.
   }

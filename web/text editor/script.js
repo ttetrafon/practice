@@ -85,24 +85,30 @@ function getCurrentBlock() {
 /**
  * Recursively travels upwards the dom tree from the input node to find the first enclosing span.
  * @param { HTMLElement } node
- * @returns { Object } { span: enclosing-span, block: enclosing-block }
+ * @param { Object } recursive return from previous
+ * @returns { Object } { span: enclosing-span, spans-list: [enclosing-spans up to block], block: enclosing-block }
  */
-function findEnclosingElement(node) {
-  console.log("---> findEnclosingElement()", node);
-  let res = node.parentElement;
-  if (spanElements.includes(res.nodeName.toLowerCase())) {
-    return {
-      "span": res
-    };
+function findEnclosingElement(btnNodeName, node, res) {
+  console.log("---> findEnclosingElement()", node, res);
+  let parent = node.parentElement;
+  res = res ? res : {
+    "span": undefined,
+    "spans-list": [],
+    "block": undefined
   }
-  else if (blockElements.includes(res.nodeName.toLowerCase())) {
-    return {
-      "block": res
-    };
+  if (spanElements.includes(parent.nodeName.toLowerCase())) {
+    res["span"] = res["span"] ? res["span"] : (parent.nodeName.toLowerCase() == btnNodeName ? parent : undefined);
+    res["spans-list"].push(parent);
+    // we continue until we find the final enclosing block
+    return findEnclosingElement(btnNodeName, parent, res);
+  }
+  else if (blockElements.includes(parent.nodeName.toLowerCase())) {
+    res["block"] = parent;
+    return res;
   }
   else {
     console.log("... moving to parent");
-    return findEnclosingElement(res);
+    return findEnclosingElement(btnNodeName, parent, res);
   }
 }
 
@@ -175,7 +181,7 @@ function spanEvent(nodeName) {
   let anchorOffset = selection.anchorOffset;
   console.log("selection:", selection);
   if (!anchorNode) return;
-  let enclosingElement = findEnclosingElement(anchorNode);
+  let enclosingElement = findEnclosingElement(nodeName, anchorNode);
   console.log("enclosingElement:", enclosingElement);
 
   if (selection.type == "Caret") {
@@ -197,6 +203,13 @@ function spanEvent(nodeName) {
       if (anchorNode.nodeName == "#text") {
         console.log("... we are in #text!");
         let text = anchorNode.textContent;
+        console.log("textContent:", text);
+        console.log(`current char: ${text[anchorOffset]}`);
+        if (!text[anchorOffset]) {
+          console.warn("we got caret out of the selected text...");
+          // TODO: need to find where we are, or maybe just ignore this case!
+          return;
+        }
         if (terminatingChars.includes(text[anchorOffset])) {
           console.log("we are at a terminating character, nothing to do!");
           return;
@@ -223,6 +236,7 @@ function spanEvent(nodeName) {
         console.log("phrases:", phrases);
         let tempNode = document.createElement("div");
         tempNode.innerHTML = `${text.substring(0, terminatingCharBefore)}<${nodeName}>${text.substring(terminatingCharBefore, terminatingCharAfter)}</${nodeName}>${text.substring(terminatingCharAfter, text.length)}`;
+        console.log(tempNode);
         while (tempNode.firstChild) {
           console.log("inserting:", tempNode.firstChild);
           if (enclosingElement.span) {
@@ -336,4 +350,7 @@ jf.addEventListener("click", (event) => {
   // console.log(tree.previousSibling());
   // console.log(tree.nextSibling());
   // console.log(tree.nextNode());
+
+  let enclosingElement = findEnclosingElement("span.jf", selection.anchorNode);
+  console.log(enclosingElement);
 });
