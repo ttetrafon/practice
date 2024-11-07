@@ -168,6 +168,18 @@ function blockEvent(nodeName) {
 }
 
 /**
+ *
+ * @param { HTMLElement } currentNode
+ * @param { string } targetNodeName
+ * @returns { HTMLElement | null }
+ */
+function findFirstElementUpwards(currentNode, targetNodeName) {
+  console.log(`---> findFirstElementUpwards(currentNode, ${targetNodeName})`, currentNode);
+  if (!currentNode || currentNode.id == "editor") return null;
+  return currentNode.nodeName.toLowerCase() == targetNodeName ? currentNode : findFirstElementUpwards(currentNode.parentNode, targetNodeName);
+}
+
+/**
  * Triggered from a span event from the appropriate button.
  * Two possibilities:
  * (1) Selection has occurred (type = "Range")
@@ -176,88 +188,120 @@ function blockEvent(nodeName) {
  */
 function spanEvent(nodeName) {
   console.log(`---> spanEvent(${nodeName})`);
-  let selection = getSelectionRange();
-  let anchorNode = selection.anchorNode;
-  let anchorOffset = selection.anchorOffset;
+  let selection = window.getSelection();
   console.log("selection:", selection);
-  if (!anchorNode) return;
-  let enclosingElement = findEnclosingElement(nodeName, anchorNode);
-  console.log("enclosingElement:", enclosingElement);
+  if (!selection.anchorNode || selection.rangeCount == 0) return;
 
-  if (selection.type == "Caret") {
-    console.log(`... type=${selection.type}: caret at '${anchorOffset}'`);
-    // may find either a span or a block
-    // ... on a span, we replace, if it is the same, we remove it and finish
-    if (enclosingElement.span && enclosingElement.span.nodeName.toLowerCase() == nodeName) {
-      // TODO: move up also to find the first span of the same styling (for example, clicked on bold and we have the caret within an <i> which is within a <b>)
-      console.log("... removing span!");
-      while (enclosingElement.span.firstChild) {
-        enclosingElement.span.parentElement.insertBefore(enclosingElement.span.firstChild, enclosingElement.span);
+  if (selection.type == "Range") {
+    // --- got a selection ---
+    console.log("--- got a selection ---");
+    if (selection.anchorNode == selection.focusNode) {
+      console.log("... within a single node");
+      const range = selection.getRangeAt(0);
+      const selectedContent = range.extractContents();
+      let wrapper;
+      switch(nodeName) {
+        case "b":
+        case "i":
+        case "u":
+          wrapper = document.createElement(nodeName);
+          break;
+        default:
+          wrapper = document.createElement("span");
       }
-      enclosingElement.span.remove();
+      wrapper.appendChild(selectedContent);
+      range.insertNode(wrapper);
     }
     else {
-      // ... on a word, wrap it in the appropriate tag
-      console.log("... enclosing word");
-      console.log(anchorNode);
-      if (anchorNode.nodeName == "#text") {
-        console.log("... we are in #text!");
-        let text = anchorNode.textContent;
-        console.log("textContent:", text);
-        console.log(`current char: ${text[anchorOffset]}`);
-        if (!text[anchorOffset]) {
-          console.warn("we got caret out of the selected text...");
-          // TODO: need to find where we are, or maybe just ignore this case!
-          return;
-        }
-        if (terminatingChars.includes(text[anchorOffset])) {
-          console.log("we are at a terminating character, nothing to do!");
-          return;
-        }
-        let terminatingCharAfter = -1;
-        for (let i = anchorOffset; i < text.length; i++) {
-          if (terminatingChars.includes(text[i])) {
-            terminatingCharAfter = i;
-            break;
-          }
-        }
-        let terminatingCharBefore = -1;
-        for (let i = anchorOffset; i >= 0; i--) {
-          if (terminatingChars.includes(text[i])) {
-            terminatingCharBefore = i + 1;
-            break;
-          }
-        }
-        let phrases = [
-          text.substring(0, terminatingCharBefore),
-          `<${nodeName}>${text.substring(terminatingCharBefore, terminatingCharAfter)}</${nodeName}>`,
-          text.substring(terminatingCharAfter, text.length)
-        ];
-        console.log("phrases:", phrases);
-        let tempNode = document.createElement("div");
-        tempNode.innerHTML = `${text.substring(0, terminatingCharBefore)}<${nodeName}>${text.substring(terminatingCharBefore, terminatingCharAfter)}</${nodeName}>${text.substring(terminatingCharAfter, text.length)}`;
-        console.log(tempNode);
-        while (tempNode.firstChild) {
-          console.log("inserting:", tempNode.firstChild);
-          if (enclosingElement.span) {
-            enclosingElement.span.insertBefore(tempNode.firstChild, anchorNode);
-            tempNode.removeChild(tempNode.firstChild);
-          }
-          else if (enclosingElement.block) {
-            console.log(enclosingElement.block);
-            enclosingElement.block.insertBefore(tempNode.firstChild, anchorNode);
-          }
-          else {
-            console.error("could not find an enclosing element!");
-          }
-        }
-        anchorNode.remove();
-      }
-      else {
-        console.warn("unhandled case!");
-      }
+      console.log("... covering multiple nodes");
+
     }
   }
+  else {
+    // --- single location ---
+    console.log("--- single location ---");
+    let firstElementOfStyle = findFirstElementUpwards(selection.anchorNode, nodeName);
+    console.log("firstElementOfStyle:", firstElementOfStyle);
+    // if we find an enclosing element with the same styling, we turn it off
+    if (firstElementOfStyle) {
+      while (firstElementOfStyle.firstChild) {
+        firstElementOfStyle.parentElement.insertBefore(firstElementOfStyle.firstChild, firstElementOfStyle);
+      }
+      firstElementOfStyle.remove();
+    }
+  }
+
+  // if (selection.type == "Caret") {
+  //   console.log(`... type=${selection.type}: caret at '${anchorOffset}'`);
+  //   // may find either a span or a block
+  //   // ... on a span, we replace, if it is the same, we remove it and finish
+  //   if (enclosingElement.span && enclosingElement.span.nodeName.toLowerCase() == nodeName) {
+  //     // TODO: move up also to find the first span of the same styling (for example, clicked on bold and we have the caret within an <i> which is within a <b>)
+  //     console.log("... removing span!");
+  //     enclosingElement.span.remove();
+  //   }
+  //   else {
+  //     // ... on a word, wrap it in the appropriate tag
+  //     console.log("... enclosing word");
+  //     console.log(anchorNode);
+  //     if (anchorNode.nodeName == "#text") {
+  //       console.log("... we are in #text!");
+  //       let text = anchorNode.textContent;
+  //       console.log("textContent:", text);
+  //       console.log(`current char: ${text[anchorOffset]}`);
+  //       if (!text[anchorOffset]) {
+  //         console.warn("we got caret out of the selected text...");
+  //         // TODO: need to find where we are, or maybe just ignore this case!
+  //         return;
+  //       }
+  //       if (terminatingChars.includes(text[anchorOffset])) {
+  //         console.log("we are at a terminating character, nothing to do!");
+  //         return;
+  //       }
+  //       let terminatingCharAfter = -1;
+  //       for (let i = anchorOffset; i < text.length; i++) {
+  //         if (terminatingChars.includes(text[i])) {
+  //           terminatingCharAfter = i;
+  //           break;
+  //         }
+  //       }
+  //       let terminatingCharBefore = -1;
+  //       for (let i = anchorOffset; i >= 0; i--) {
+  //         if (terminatingChars.includes(text[i])) {
+  //           terminatingCharBefore = i + 1;
+  //           break;
+  //         }
+  //       }
+  //       let phrases = [
+  //         text.substring(0, terminatingCharBefore),
+  //         `<${nodeName}>${text.substring(terminatingCharBefore, terminatingCharAfter)}</${nodeName}>`,
+  //         text.substring(terminatingCharAfter, text.length)
+  //       ];
+  //       console.log("phrases:", phrases);
+  //       let tempNode = document.createElement("div");
+  //       tempNode.innerHTML = `${text.substring(0, terminatingCharBefore)}<${nodeName}>${text.substring(terminatingCharBefore, terminatingCharAfter)}</${nodeName}>${text.substring(terminatingCharAfter, text.length)}`;
+  //       console.log(tempNode);
+  //       while (tempNode.firstChild) {
+  //         console.log("inserting:", tempNode.firstChild);
+  //         if (enclosingElement.span) {
+  //           enclosingElement.span.insertBefore(tempNode.firstChild, anchorNode);
+  //           tempNode.removeChild(tempNode.firstChild);
+  //         }
+  //         else if (enclosingElement.block) {
+  //           console.log(enclosingElement.block);
+  //           enclosingElement.block.insertBefore(tempNode.firstChild, anchorNode);
+  //         }
+  //         else {
+  //           console.error("could not find an enclosing element!");
+  //         }
+  //       }
+  //       anchorNode.remove();
+  //     }
+  //     else {
+  //       console.warn("unhandled case!");
+  //     }
+  //   }
+  // }
   // else {
   //   // https://developer.mozilla.org/en-US/docs/Web/API/Range
   //   console.log("range:", selection.range);
