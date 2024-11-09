@@ -173,10 +173,10 @@ function blockEvent(nodeName) {
  * @param { string } targetNodeName
  * @returns { HTMLElement | null }
  */
-function findFirstElementUpwards(currentNode, targetNodeName) {
-  console.log(`---> findFirstElementUpwards(currentNode, ${targetNodeName})`, currentNode);
+function findFirstParentOfType(currentNode, targetNodeName) {
+  console.log(`---> findFirstParentOfType(currentNode, ${targetNodeName})`, currentNode);
   if (!currentNode || currentNode.id == "editor") return null;
-  return currentNode.nodeName.toLowerCase() == targetNodeName ? currentNode : findFirstElementUpwards(currentNode.parentNode, targetNodeName);
+  return currentNode.nodeName.toLowerCase() == targetNodeName ? currentNode : findFirstParentOfType(currentNode.parentNode, targetNodeName);
 }
 
 /**
@@ -197,6 +197,11 @@ function spanEvent(nodeName) {
     console.log("--- got a selection ---");
     if (selection.anchorNode == selection.focusNode) {
       console.log("... within a single node");
+
+      // check if there is a parent with the same styling and abort if there is...
+      let firstParentOfStyle = findFirstParentOfType(selection.anchorNode, nodeName);
+      if (firstParentOfStyle) return;
+
       const range = selection.getRangeAt(0);
       const selectedContent = range.extractContents();
       let wrapper;
@@ -214,20 +219,33 @@ function spanEvent(nodeName) {
     }
     else {
       console.log("... covering multiple nodes");
-
+      // const range = selection.getRangeAt(0);
+      // const selectedContent = range.extractContents();
+      // let wrapper;
+      // switch(nodeName) {
+      //   case "b":
+      //   case "i":
+      //   case "u":
+      //     wrapper = document.createElement(nodeName);
+      //     break;
+      //   default:
+      //     wrapper = document.createElement("span");
+      // }
+      // wrapper.appendChild(selectedContent);
+      // range.insertNode(wrapper);
     }
   }
   else {
     // --- single location ---
     console.log("--- single location ---");
-    let firstElementOfStyle = findFirstElementUpwards(selection.anchorNode, nodeName);
-    console.log("firstElementOfStyle:", firstElementOfStyle);
+    let firstParentOfStyle = findFirstParentOfType(selection.anchorNode, nodeName);
+    console.log("firstParentOfStyle:", firstParentOfStyle);
     // if we find an enclosing element with the same styling, we turn it off
-    if (firstElementOfStyle) {
-      while (firstElementOfStyle.firstChild) {
-        firstElementOfStyle.parentElement.insertBefore(firstElementOfStyle.firstChild, firstElementOfStyle);
+    if (firstParentOfStyle) {
+      while (firstParentOfStyle.firstChild) {
+        firstParentOfStyle.parentElement.insertBefore(firstParentOfStyle.firstChild, firstParentOfStyle);
       }
-      firstElementOfStyle.remove();
+      firstParentOfStyle.remove();
     }
   }
 
