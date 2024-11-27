@@ -102,11 +102,37 @@ AMyGameMode::AMyGameMode() {
 - A level is a distinct game play entity encompassing gameplay. Each level is loaded when needed.
 - Default maps can be set in _Project Settings -> Maps & Modes -> Default Maps_.
 
-### Changing Levels
+### Persistent Levels
 
-- The **Open Level** node can be used to load another level.
-- **Load Level**
-- **Stream Level**
+- Create a new level and instantiate all objects again (like the player character).
+  - The `Open Level` node loads another level, either by name or reference.
+  - `Load Level`
+  - `Stream Level`
+
+### Streaming Levels
+
+- Streaming levels are usually set under a persistent level (**Window -> Levels**).
+  - Load a level without unloading level-irrelevant classes (music, player character, etc).
+  - Can set loading screens so that the level is loaded fully before gameplay resumes.
+- **World Partition** can be used to streamline and automatically handle streaming levels that are part of a huge world.
+  - For interconnected, but not on the same _level_ levels, streaming needs to be handled manually.
+  - Children level properties:
+    - **Change Streaming Method =**
+      - _Blueprint_: loads the level only when needed; usually triggered through code
+        - Need to also manually trigger the first level to appear as soon as the persistent level parent starts.
+      - _Always Loaded_: keeps the level always loaded
+        - Needed for a _loading volumes (**level streaming volume** actor)_ setup used with world partition.
+        - If no streaming volume is associated to the level, it will always remain loaded.
+  - **Level streaming volumes** can be used to automatically load relevant streaming levels/actors when the player actor is within them.
+    - To associate a streaming level with a volume select the level and then add the appropriate streaming volume(s) to the _Level Details -> Streaming Volumes_ array.
+- Nodes:
+  - `Load Stream Level` starts loading the specified level asynchronously.
+    - _Make visible after load_
+    - _Should block on load_
+  - Immediately before the `Load Stream Level`, we can have a `Create UI Widget` to display the loading screen. After the level has loaded, this can be hidden/destroyed.
+  - Also change/disable the control scheme during this time.
+  - `Set Actor Location` can be used to move the player character to the desired position on the newly loaded level.
+  - `Unload Stream Level` unloads a level from memory asynchronously.
 
 ## Gameplay Loop
 
