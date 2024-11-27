@@ -219,6 +219,10 @@ function spanEvent(nodeName) {
     }
     else {
       console.log("... covering multiple nodes");
+      let startNode = selection.anchorNode;
+      let finishNode = selection.focusNode;
+      let direction = selection.direction;
+
       // const range = selection.getRangeAt(0);
       // const selectedContent = range.extractContents();
       // let wrapper;
