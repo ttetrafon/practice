@@ -291,6 +291,10 @@ void PlayFireEffects()
 
 ## Programming Patterns
 
+### Prefabs
+
+- Level instances (see Assets - Level Instances) can be used as prefabs.
+
 ### Inheritance
 
 - Pattern in which a class (child) inherits from another class (parent).
