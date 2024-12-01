@@ -35,3 +35,12 @@ export async function formDataRequest(url, formData) {
   let response = await fetch(request);
   return await response.json();
 }
+
+export async function fetchJsonData(url) {
+  let res = await fetch(url);
+  console.log(res);
+  if (!(res.ok && res.status == 200)) return null;
+  let jsonData = await res.json();
+  console.log(jsonData);
+  return jsonData;
+}
