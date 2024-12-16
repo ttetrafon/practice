@@ -1,7 +1,8 @@
 package com.ttetrafon.modals;
 
-import android.app.Dialog;
 import android.os.Bundle;
+import android.os.Handler;
+import android.os.Looper;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -11,8 +12,6 @@ import androidx.annotation.NonNull;
 import androidx.fragment.app.Fragment;
 
 import com.ttetrafon.modals.databinding.FragmentFirstBinding;
-
-import java.util.concurrent.atomic.AtomicReference;
 
 public class FirstFragment extends Fragment {
 
@@ -31,10 +30,8 @@ public class FirstFragment extends Fragment {
 
     public void onViewCreated(@NonNull View view, Bundle savedInstanceState) {
         super.onViewCreated(view, savedInstanceState);
-        AtomicReference<Dialog> dialog = null;
-
         binding.buttonFirst.setOnClickListener(v -> {
-            FullScreenDialogue.show(
+            new Handler(Looper.getMainLooper()).postDelayed(() -> FullScreenDialogue.show(
                     getContext(),
                     () -> {
                         System.out.println("Yes...!!!");
@@ -46,11 +43,8 @@ public class FirstFragment extends Fragment {
                         // Handle "No" action
                         Toast.makeText(getContext(), "No clicked!", Toast.LENGTH_SHORT).show();
                     }
-            );
-                }
-//                NavHostFragment.findNavController(FirstFragment.this)
-//                        .navigate(R.id.action_FirstFragment_to_SecondFragment)
-        );
+            ), 100);
+        });
     }
 
     @Override

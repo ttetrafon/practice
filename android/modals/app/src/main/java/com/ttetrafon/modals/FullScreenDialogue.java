@@ -2,6 +2,8 @@ package com.ttetrafon.modals;
 
 import android.app.Dialog;
 import android.content.Context;
+import android.os.Handler;
+import android.os.Looper;
 import android.view.Window;
 import android.view.WindowManager;
 import android.widget.Button;
@@ -30,5 +32,17 @@ public class FullScreenDialogue {
 
         // Show the dialog
         dialog.show();
+        dialog.getWindow().setFlags(WindowManager.LayoutParams.FLAG_NOT_FOCUSABLE, WindowManager.LayoutParams.FLAG_NOT_FOCUSABLE);
+        dialog.getWindow().setFlags(WindowManager.LayoutParams.FLAG_NOT_TOUCH_MODAL, WindowManager.LayoutParams.FLAG_NOT_TOUCH_MODAL);
+        dialog.getWindow().clearFlags(WindowManager.LayoutParams.FLAG_DIM_BEHIND);
+        dialog.getWindow().getDecorView().requestFocus();
+
+        // Automatically close this after 30 sec
+        new Handler(Looper.getMainLooper()).postDelayed(() -> {
+            if (dialog.isShowing()) {
+                if (onNoClicked != null) onNoClicked.run();
+                dialog.dismiss();
+            }
+        }, 30000);
     }
 }
