@@ -81,6 +81,10 @@ docker network create NETWORK_NAME
 - `docker rm RESOURCE_NAME/RESOURCE_ID` deletes the specified resource (image, container, network, etc).
 - All stopped containers can be removed with `docker container prune`.
 
+```bash
+docker stats
+```
+
 ## Docker Files
 
 - A docker file is a set of instructions (docker & bash commands) for creating an image.
