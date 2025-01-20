@@ -176,3 +176,13 @@ KafkaClient {
 ## [Authorisation](https://kafka.apache.org/documentation/#security_authz)
 
 - [Confluence docs on ACLs](https://docs.confluent.io/platform/current/security/authorization/acls/overview.html)
+
+## CLI
+
+### Topics & Messages
+
+#### Remove Messages in Topic
+
+```
+
+```
