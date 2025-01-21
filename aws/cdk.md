@@ -5,3 +5,20 @@
 ```cmd
 npm install -g aws-cdk
 ```
+
+- To start a project, either create a manual setup or use of of the templates available in cdk.
+  - templates:
+    - app: cdk application
+    - lib: cdk construct library
+    - sample-app: cdk application with constructs
+  - A project can be written in different languages, defined with `-l`.
+    - csharp
+    - fsharp
+    - go
+    - java
+    - javascript
+    - typescript
+
+```cmd
+cdk init app -l javascript
+```
