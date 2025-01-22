@@ -19,6 +19,10 @@ npm install -g aws-cdk
     - javascript
     - typescript
 
-```cmd
+```bash
 cdk init app -l javascript
+```
+
+```bash
+cdk bootstrap aws://ACCOUNT-ID/REGION --profile PROFILE-NAME
 ```
