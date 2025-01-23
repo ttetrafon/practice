@@ -5,10 +5,16 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="711edb98-3981-4f10-89f5-90f7d8f87fd0" name="Changes" comment="[java] hacker-rank++">
-      <change afterPath="$PROJECT_DIR$/src/main/java/com/ttetrafon/lists/Cover.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/com/ttetrafon/lists/Main.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/modules.xml" beforeDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/com/ttetrafon/jackson/Child.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/com/ttetrafon/jackson/ChildA.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/com/ttetrafon/jackson/ChildAMixin.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/com/ttetrafon/jackson/ChildB.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/com/ttetrafon/jackson/ChildBMixin.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/com/ttetrafon/jackson/ChildMixin.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/com/ttetrafon/jackson/Parent.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/com/ttetrafon/jackson/ParentMixin.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/ttetrafon/jackson/Main.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/ttetrafon/jackson/Main.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -21,8 +27,9 @@
   <component name="FileTemplateManagerImpl">
     <option name="RECENT_TEMPLATES">
       <list>
-        <option value="Interface" />
         <option value="Class" />
+        <option value="Record" />
+        <option value="Interface" />
       </list>
     </option>
   </component>
@@ -68,6 +75,7 @@
     "Application.com.ttetrafon.reflection.Main.executor": "Run",
     "RunOnceActivity.OpenProjectViewOnStart": "true",
     "RunOnceActivity.ShowReadmeOnStart": "true",
+    "RunOnceActivity.git.unshallow": "true",
     "SHARE_PROJECT_CONFIGURATION_FILES": "true",
     "git-widget-placeholder": "master",
     "ignore.virus.scanning.warn.message": "true",
@@ -78,9 +86,9 @@
     "node.js.selected.package.eslint": "(autodetect)",
     "node.js.selected.package.tslint": "(autodetect)",
     "nodejs_package_manager_path": "npm",
-    "project.structure.last.edited": "Modules",
+    "project.structure.last.edited": "Project",
     "project.structure.proportion": "0.0",
-    "project.structure.side.proportion": "0.0",
+    "project.structure.side.proportion": "0.2",
     "settings.editor.selected.configurable": "editor.preferences.import",
     "vue.rearranger.settings.migration": "true"
   }
@@ -169,8 +177,8 @@
   <component name="SharedIndexes">
     <attachedChunks>
       <set>
-        <option value="bundled-jdk-9f38398b9061-18abd8497189-intellij.indexing.shared.core-IU-241.14494.240" />
-        <option value="bundled-js-predefined-1d06a55b98c1-74d2a5396914-JavaScript-IU-241.14494.240" />
+        <option value="bundled-jdk-9823dce3aa75-fdfe4dae3a2d-intellij.indexing.shared.core-IU-243.22562.145" />
+        <option value="bundled-js-predefined-d6986cc7102b-deb605915726-JavaScript-IU-243.22562.145" />
       </set>
     </attachedChunks>
   </component>
@@ -189,6 +197,7 @@
       <workItem from="1732799815064" duration="80000" />
       <workItem from="1734690613945" duration="314000" />
       <workItem from="1736852123177" duration="1227000" />
+      <workItem from="1737616069505" duration="2394000" />
     </task>
     <task id="LOCAL-00001" summary="[java] hacker-rank++">
       <option name="closed" value="true" />
