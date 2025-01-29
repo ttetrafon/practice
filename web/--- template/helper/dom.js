@@ -15,6 +15,21 @@ export async function clearChildrenOfClass(parent, className) {
 }
 
 /**
+ *
+ * @param {HTMLElement} self
+ * @param {HTMLElement} parent
+ */
+export async function findSelfIndexInParent(self, parent) {
+  let element = self;
+  let index = 0;
+  while (element.previousElementSibling) {
+    element = element.previousElementSibling;
+    index++;
+  }
+  return index;
+}
+
+/**
  * Creates options within a select element.
  * @param {HTMLElement} selector
  * @param {Array[Object]} options
@@ -22,6 +37,7 @@ export async function clearChildrenOfClass(parent, className) {
  * @param {string} textKey
  */
 export async function populateSelectorOptions(selector, options, valueKey, textKey) {
+  if (!options) return;
   options.forEach(option => {
     let opt = document.createElement("option");
     opt.value = option[valueKey]
