@@ -1,10 +1,20 @@
 /**
  *
  * @param {Date} date
+ * @returns {String} Format: DD/MM/YYYY
  */
 export function displayDateAsDDMMYYYY(date) {
   let str = date.toISOString();
   return `${str.substring(8,10)}/${str.substring(5,7)}/${str.substring(0,4)}`;
+}
+/**
+ *
+ * @param {Date} date
+ * @returns {String} Format: YYYY-MM-DD
+ */
+export function displayDateAsYYYYMMDD(date) {
+  let str = date.toISOString();
+  return `${str.substring(0,4)}-${str.substring(5,7)}-${str.substring(8,10)}`;
 }
 
 /**
