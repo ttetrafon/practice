@@ -111,13 +111,15 @@ AMyGameMode::AMyGameMode() {
 
 ### Streaming Levels
 
+- Links:
+  - [How to ACTUALLY Load Levels in Unreal and Make Loading Screens](https://www.youtube.com/watch?v=K2A6un2Uf4M)
 - Streaming levels are usually set under a persistent level (**Window -> Levels**).
   - Load a level without unloading level-irrelevant classes (music, player character, etc).
   - Can set loading screens so that the level is loaded fully before gameplay resumes.
 - **World Partition** can be used to streamline and automatically handle streaming levels that are part of a huge world.
   - For interconnected, but not on the same _level_ levels, streaming needs to be handled manually.
   - Children level properties:
-    - **Change Streaming Method =**
+    - **Change Streaming Method:**
       - _Blueprint_: loads the level only when needed; usually triggered through code
         - Need to also manually trigger the first level to appear as soon as the persistent level parent starts.
       - _Always Loaded_: keeps the level always loaded
@@ -127,7 +129,7 @@ AMyGameMode::AMyGameMode() {
     - To associate a streaming level with a volume select the level and then add the appropriate streaming volume(s) to the _Level Details -> Streaming Volumes_ array.
 - Nodes:
   - `Load Stream Level` starts loading the specified level asynchronously.
-    - _Make visible after load_
+    - _Make visible after load_: Controls if the level is immediately shown.
     - _Should block on load_
   - Immediately before the `Load Stream Level`, we can have a `Create UI Widget` to display the loading screen. After the level has loaded, this can be hidden/destroyed.
   - Also change/disable the control scheme during this time.
