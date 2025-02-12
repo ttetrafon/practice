@@ -85,6 +85,16 @@ docker network create NETWORK_NAME
 docker stats
 ```
 
+### Clean-up
+
+```bash
+docker kill $(docker ps -q)
+docker rm $(docker ps -a -q)
+docker rmi $(docker images -q)
+docker system prune
+docker system prune -af
+```
+
 ## Docker Files
 
 - A docker file is a set of instructions (docker & bash commands) for creating an image.
