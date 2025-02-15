@@ -16,6 +16,10 @@ template.innerHTML = /*html*/`
     width: 100%;
     aspect-ratio: 1;
   }
+
+  .pointer {
+    cursor: pointer;
+  }
 </style>
 
 <div id="svg-container" class="flex-column"></div>
@@ -29,19 +33,21 @@ class Component extends HTMLElement {
 
     this.$svgContainer = this._shadow.querySelector("div");
     this.$svg;
+    this.$path;
   }
 
-  static get observedAttributes() { return ['background', 'colour', 'label', 'image']; }
+  static get observedAttributes() { return ['background', 'colour', 'label', 'image', 'pointer']; }
 
   get background() { return this.getAttribute('background'); }
   get colour() { return this.getAttribute('colour'); }
   get image() { return this.getAttribute('image'); }
   get label() { return this.getAttribute('label'); }
+  get pointer() { return JSON.parse(this.getAttribute('pointer')); }
 
   set background(value) { this.setAttribute('background', value); }
   set colour(value) { this.setAttribute('colour', value); }
   set image(value) { this.setAttribute('image', value); }
-  set label(value) { this.setAttribute('label', value); }
+  set pointer(value) { this.setAttribute('pointer', value); }
 
   // A web component implements the following lifecycle methods.
   attributeChangedCallback(name, oldVal, newVal) {
@@ -59,6 +65,9 @@ class Component extends HTMLElement {
         break;
       case "background":
         this.setBackground();
+        break;
+      case "pointer":
+        this.setPointer();
         break;
     }
   }
@@ -79,14 +88,22 @@ class Component extends HTMLElement {
     let svg = await svgRequest(url);
     this.$svgContainer.innerHTML = svg;
     this.$svg = this._shadow.querySelector("svg");
+    this.$path = this._shadow.querySelector("path");
     this.setColour();
     this.setAlt();
     this.setBackground();
+    this.setPointer();
   }
 
   setAlt() {
     if (this.$svg && this.label) {
       this.$svg.setAttribute("alt", this.label);
+    }
+  }
+
+  setBackground() {
+    if (this.$svgContainer && this.background) {
+      this.$svgContainer.style.backgroundColor = this.background;
     }
   }
 
@@ -96,9 +113,10 @@ class Component extends HTMLElement {
     }
   }
 
-  setBackground() {
-    if (this.$svgContainer && this.background) {
-      this.$svgContainer.style.backgroundColor = this.background;
+  setPointer() {
+    if (this.$svg && this.pointer != null && this.pointer != undefined) {
+      this.$svg.classList.toggle("pointer", this.pointer);
+      this.$path.classList.toggle("pointer", this.pointer);
     }
   }
 }
