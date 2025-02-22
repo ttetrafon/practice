@@ -1,0 +1,69 @@
+:root {
+  font-family: system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
+  font-size: 18px;
+  font-weight: 400;
+  line-height: 1.5;
+
+  --colour-primary: #000000;
+  --colour-primary-a: #00000070;
+  --colour-secondary: #854836;
+  --colour-secondary-a: #85483670;
+  --colour-tertiary: #FFB22C;
+  --colour-tertiary-a: #FFB22C70;
+  --colour-quaternary: #F7F7F7;
+  --colour-quaternary-a: #F7F7F770;
+
+  color-scheme: light dark;
+  color: var(--colour-quaternary);
+  background-color: var(--colour-primary);
+
+  font-synthesis: none;
+  text-rendering: optimizeLegibility;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+body {
+  display: flex;
+  place-items: center;
+  min-width: 320px;
+  min-height: 100vh;
+}
+
+#app {
+  max-width: 1280px;
+  margin: 0 auto;
+  padding: 2rem;
+  text-align: center;
+}
+
+.flex-line {
+  display: flex;
+  flex-flow: row nowrap;
+}
+.flex-multi-line {
+  display: flex;
+  flex-flow: row wrap;
+}
+.flex-column {
+  display: flex;
+  flex-flow: column nowrap;
+}
+.flex-multi-column {
+  display: flex;
+  flex-flow: column wrap;
+}
+
+
+@media (prefers-color-scheme: light) {
+  :root {
+    color: var(--colour-primary);
+    background-color: var(--colour-quaternary);
+  }
+}
