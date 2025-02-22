@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
+  <url>
+    <loc>https://myapp.com/page-one</loc>
+    <lastmod>2023-10-01</lastmod>
+  </url>
+  <url>
+    <loc>https://myapp.com/page-two</loc>
+    <lastmod>2023-10-01</lastmod>
+  </url>
+</urlset>
+<!-- TODO: create this dynamically through from the routes... -->
