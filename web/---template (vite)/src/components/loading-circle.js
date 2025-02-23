@@ -1,8 +1,10 @@
+import styles from '../style.css?inline';
+
 const template = document.createElement('template');
 
 template.innerHTML = /*html*/`
 <style>
-  @import url('./styles.css');
+  ${styles}
 
   .spinner-parent {
     position: fixed;

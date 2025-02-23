@@ -1,10 +1,11 @@
+import styles from '../style.css?inline';
 import { svgRequest } from '../helper/requests.js';
 
 const template = document.createElement('template');
 
 template.innerHTML = /*html*/`
 <style>
-  @import './styles.css';
+  ${styles}
 
   #svg-container {
     width: 100%;
