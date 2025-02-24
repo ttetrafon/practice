@@ -44,9 +44,3 @@ export async function fetchJsonData(url) {
   console.log(jsonData);
   return jsonData;
 }
-
-export async function svgRequest(url) {
-  let response = await fetch(url);
-  let data = await response.text();
-  return data;
-}

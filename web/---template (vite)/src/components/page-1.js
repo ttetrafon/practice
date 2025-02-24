@@ -11,10 +11,17 @@ template.innerHTML = /*html*/`
   :host {
     display: block;
   }
+
+  svg-wrapper {
+    margin-top: 20px;
+  }
 </style>
 
 <h1>Page 1</h1>
 <a href="/page-two" class="nav-link">Go to Page Two</a>
+<svg-wrapper
+  image="home"
+></svg-wrapper>
 `;
 
 class Component extends HTMLElement {

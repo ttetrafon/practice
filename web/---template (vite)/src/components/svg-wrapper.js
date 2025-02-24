@@ -1,11 +1,15 @@
 import styles from '../style.css?inline';
-import { svgRequest } from '../helper/requests.js';
 
 const template = document.createElement('template');
 
 template.innerHTML = /*html*/`
 <style>
   ${styles}
+
+  :host {
+    display: block;
+    width: 3em;
+  }
 
   #svg-container {
     width: 100%;
@@ -18,8 +22,18 @@ template.innerHTML = /*html*/`
     aspect-ratio: 1;
   }
 
+  path {
+    fill: var(--colour-quaternary);
+  }
+
   .pointer {
     cursor: pointer;
+  }
+
+  @media (prefers-color-scheme: light) {
+    path {
+      fill: var(--colour-primary);
+    }
   }
 </style>
 
@@ -86,14 +100,17 @@ class Component extends HTMLElement {
   }
 
   async createSvg(url) {
-    let svg = await svgRequest(url);
-    this.$svgContainer.innerHTML = svg;
+    let svg = await import(`../assets/ui/${this.image}.svg?raw`);
+    this.$svgContainer.innerHTML = svg.default;
     this.$svg = this._shadow.querySelector("svg");
+    this.$svg.removeAttribute("height");
+    this.$svg.removeAttribute("width");
+    this.$svg.removeAttribute("fill");
     this.$path = this._shadow.querySelector("path");
-    this.setColour();
-    this.setAlt();
-    this.setBackground();
-    this.setPointer();
+    // this.setAlt();
+    // this.setColour();
+    // this.setBackground();
+    // this.setPointer();
   }
 
   setAlt() {
