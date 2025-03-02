@@ -1,7 +1,6 @@
 export const eventNames = Object.freeze({
   "INPUT_CONTROL": Symbol("input-control"),
   "NAVIGATE": Symbol("navigate"),
-  "NAVIGATE_SUB_PAGE": Symbol("navigate-sub-page"),
   "SUB_PAGE_CONTAINER": Symbol("sub-page-container"),
   "TOGGLE_SPINNING_CIRCLE": Symbol("toggle-spinning-circle")
 });

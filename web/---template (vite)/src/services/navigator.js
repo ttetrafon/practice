@@ -6,35 +6,6 @@ export class Navigator {
   constructor(containerId) {
     this.container = document.querySelector(containerId);
 
-    // this.routes = {
-    //   '/tab-one': {
-    //     content: '<tab-one></tab-one>',
-    //     title: 'Page 2 - Tab 1',
-    //     description: 'This is page two - tab 1!',
-    //     canonicalUrl: `${ domainRoot }/page-two/tab-one`,
-    //     structuredData: {
-    //       "@context": "https://schema.org",
-    //       "@type": "WebPage",
-    //       "name": "Page Two - Tab one",
-    //       "description": "This is the second page & first tab of my app.",
-    //       "url": `${ domainRoot }/page-two/tab-one`
-    //     }
-    //   },
-    //   '/tab-two': {
-    //     content: '<tab-two></tab-two>',
-    //     title: 'Page 2 - Tab 2',
-    //     description: 'This is page two - tab 2!',
-    //     canonicalUrl: `${ domainRoot }/page-two/tab-two`,
-    //     structuredData: {
-    //       "@context": "https://schema.org",
-    //       "@type": "WebPage",
-    //       "name": "Page Two - Tab Two",
-    //       "description": "This is the second page & second tab of my app.",
-    //       "url": `${ domainRoot }/page-two/tab-two`
-    //     }
-    //   }
-    // };
-
     this.$subPageContainers = {};
 
     this.init();
@@ -59,30 +30,6 @@ export class Navigator {
       // console.log(eventNames.SUB_PAGE_CONTAINER.description, e.detail);
       this.$subPageContainers[e.detail.route] = e.detail.container;
     });
-
-    window.addEventListener(eventNames.NAVIGATE_SUB_PAGE.description, (e) => {
-      console.log(`... received sub-navigation event: ${ JSON.stringify(e.detail) }`);
-      const path = e.detail.path;
-      const elements = path.split("/");
-      const elementsNum = elements.length;
-      console.log(elements, elementsNum);
-
-      const parent = `/${ elements[elementsNum - 2] }`;
-      const parentRoute = this.routes[parent];
-      const child = `/${ elements[elementsNum - 1] }`;
-      const childRoute = this.routes[child];
-      console.log(parentRoute, childRoute);
-      if (!parentRoute || !childRoute) {
-        console.error(`parent[${ e.detail.parent }]/child[${ e.detail.child }] not found...`);
-        return;
-      }
-
-      parentRoute.container.innerHTML = childRoute.content;
-      this.updateMetadata(childRoute);
-      if (e.detail.pushState) {
-        window.history.pushState({}, '', child);
-      }
-    });
   }
 
   createCanonicalUrl(path) {
@@ -94,7 +41,7 @@ export class Navigator {
   }
 
   getRoute(route) {
-    let alias = aliases[route];
+        let alias = aliases[route];
     if (!alias) alias = route;
 
     if (!routes[alias]) alias = "/404";
@@ -106,23 +53,36 @@ export class Navigator {
       description: r.description,
       canonicalUrl: this.createCanonicalUrl(r.path),
       structuredData: {
+        // https://developers.google.com/search/docs/appearance/structured-data/intro-structured-data
+        // https://developers.google.com/search/docs/appearance/structured-data/search-gallery
         "@context": "https://schema.org",
         "@type": r.pathType,
         name: r.title,
         description: r.description,
-        url: this.createCanonicalUrl(r.path)
-      }
+        url: this.createCanonicalUrl(r.path),
+        subroute: r.subroute
+      },
+      subroute: r.subroute
     };
   }
 
   navigateTo(path, pushState = true, stateData = {}) {
     // console.log(`navigateTo(${path}, ${pushState}, ${JSON.stringify(stateData)})`);
+    path = this.normalisePath(path);
     const route = this.getRoute(path);
-    this.container.innerHTML = route.content;
+    this.updateContent(path, route.subroute, route.content);
     this.updateMetadata(route);
     if (pushState) {
       window.history.pushState({}, '', path);
     }
+  }
+
+  normalisePath(path) {
+    console.log(`---> normalisePath(${path})`);
+    if (path == "/") return path;
+    if (path == "") return "/";
+    if (path[path.length - 1] == "/") path = path.slice(0, -1);
+    return path;
   }
 
   updateCanonicalUrl(value) {
@@ -135,6 +95,31 @@ export class Navigator {
     link.setAttribute("href", value);
   }
 
+  updateContent(path, isSubroute, content) {
+    // console.log(`--> updateContent(${path}, ${isSubroute}, ${content})`);
+    if (!isSubroute) {
+      this.container.innerHTML = content;
+      return;
+    }
+
+    const elements = path.split("/");
+    const elementsNum = elements.length;
+    const parentPath = "/" + elements[elementsNum - 2];
+    const parentContainer = this.$subPageContainers[parentPath];
+    // console.log(parentPath, parentContainer);
+
+    if (!parentContainer) {
+      this.navigateTo(parentPath);
+
+      setTimeout(() => {
+        this.navigateTo(path);
+      }, 100);
+    }
+    else {
+      parentContainer.innerHTML = content;
+    }
+  }
+
   updateMetadata(route) {
     document.title = route.title;
     document.querySelector('meta[name="description"]').setAttribute('content', route.description);
@@ -143,8 +128,6 @@ export class Navigator {
   }
 
   updateStructuredData(data) {
-    // https://developers.google.com/search/docs/appearance/structured-data/intro-structured-data
-    // https://developers.google.com/search/docs/appearance/structured-data/search-gallery
     const existingScript = document.querySelector('script[type="application/ld+json"]');
     if (existingScript) {
       existingScript.remove();

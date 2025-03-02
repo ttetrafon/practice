@@ -1,5 +1,3 @@
-import { domainRoot } from "./config.js";
-
 export const routes = {
   '/page-one': {
     content: 'page-one',
@@ -15,6 +13,22 @@ export const routes = {
     path: "/page-two",
     pathType: "WebPage"
   },
+  '/tab-one': {
+    content: "tab-one",
+    title: "Tab 1",
+    description: "This is tab one!",
+    path: "/page-two/tab-one",
+    pathType: "WebPage",
+    subroute: true
+  },
+  '/tab-two': {
+    content: "tab-two",
+    title: "Tab 2",
+    description: "This is tab two!",
+    path: "/page-two/tab-two",
+    pathType: "WebPage",
+    subroute: true
+  },
   '/404': {
     content: "page-404",
     title: "404 - Page not found",
@@ -25,5 +39,7 @@ export const routes = {
 }
 
 export const aliases = {
-  '/': '/page-one'
+  '/': '/page-one',
+  '/page-two/tab-one': '/tab-one',
+  '/page-two/tab-two': '/tab-two'
 }

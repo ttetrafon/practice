@@ -83,14 +83,6 @@ export async function emitNavigationEvent(that, target) {
     target: target
   });
 }
-export async function emitSubNavigationEvent(that, path, pushState = true) {
-  emitCustomEvent(that, eventNames.NAVIGATE_SUB_PAGE.description, {
-    bubbles: true,
-    composed: true,
-    path: path,
-    pushState: pushState
-  });
-}
 /**
  * @param {HTMLElement} that
  * @param {String} route
