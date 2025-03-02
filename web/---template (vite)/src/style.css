@@ -21,6 +21,9 @@
   text-rendering: optimizeLegibility;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
+
+  --border-dark: 1px solid var(--colour-secondary);
+  --border-light: 1px solid var(--colour-tertiary);
 }
 
 * {
@@ -74,5 +77,8 @@ button {
   :root {
     color: var(--colour-primary);
     background-color: var(--colour-quaternary);
+
+    --border-dark: 1px solid var(--colour-tertiary);
+    --border-light: 1px solid var(--colour-secondary);
   }
 }

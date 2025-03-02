@@ -1,4 +1,5 @@
 import { domainRoot } from '../data/config.js';
+import { checkStringForExistence, checkStringForNonExistence } from '../helper/data.js';
 import { eventNames } from '../data/enums.js';
 import { routes, aliases } from '../data/routes.js';
 
@@ -41,7 +42,7 @@ export class Navigator {
   }
 
   getRoute(route) {
-        let alias = aliases[route];
+    let alias = aliases[route];
     if (!alias) alias = route;
 
     if (!routes[alias]) alias = "/404";
@@ -78,7 +79,7 @@ export class Navigator {
   }
 
   normalisePath(path) {
-    console.log(`---> normalisePath(${path})`);
+    console.log(`---> normalisePath(${ path })`);
     if (path == "/") return path;
     if (path == "") return "/";
     if (path[path.length - 1] == "/") path = path.slice(0, -1);
@@ -87,6 +88,8 @@ export class Navigator {
 
   updateCanonicalUrl(value) {
     // https://developer.mozilla.org/en-US/docs/Web/HTML/Attributes/rel
+    if (checkStringForNonExistence(value)) return;
+
     const link = document.querySelector('link[rel="canonical"]');
     if (!link) {
       link = document.createElement('link');
@@ -97,6 +100,8 @@ export class Navigator {
 
   updateContent(path, isSubroute, content) {
     // console.log(`--> updateContent(${path}, ${isSubroute}, ${content})`);
+    if (checkStringForNonExistence(content)) return;
+
     if (!isSubroute) {
       this.container.innerHTML = content;
       return;
@@ -121,13 +126,15 @@ export class Navigator {
   }
 
   updateMetadata(route) {
-    document.title = route.title;
-    document.querySelector('meta[name="description"]').setAttribute('content', route.description);
+    if (checkStringForExistence(route.title)) document.title = route.title;
+    if (checkStringForExistence(route.description)) document.querySelector('meta[name="description"]').setAttribute('content', route.description);
     this.updateCanonicalUrl(route.canonicalUrl);
     this.updateStructuredData(route.structuredData);
   }
 
   updateStructuredData(data) {
+    if (data == null || data == undefined) return;
+
     const existingScript = document.querySelector('script[type="application/ld+json"]');
     if (existingScript) {
       existingScript.remove();
