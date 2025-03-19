@@ -1,6 +1,7 @@
 # AWS-CDK
 
 - [Getting started](https://docs.aws.amazon.com/cdk/v2/guide/getting_started.html)
+- [js api reference](https://docs.aws.amazon.com/cdk/api/v2/docs/aws-construct-library.html)
 
 ```cmd
 npm install -g aws-cdk
@@ -28,6 +29,11 @@ cdk init app -l javascript
 ```bash
 cdk bootstrap aws://ACCOUNT-ID/REGION --profile PROFILE-NAME
 ```
+
+- The profile used needs to have proper permissions to complete work.
+  - AdministratorAccess
+  - AWSCloudFormationFullAccess
+  - IAMFullAccess (???)
 
 ### Context
 
