@@ -4,9 +4,9 @@ function calculatePrice(price, tax, description) {
     tax = tax ?? 0.05;
     description = description ?? "Default item";
     const total = price * (1 + tax);
-    console.log(`${description} with tax: £${total}`);
+    console.log(`${description} with tax [${tax}]: £${total}`);
 }
 
 calculatePrice(100, 0.07, "First item");
-calculatePrice(50, 0, "First item");
+calculatePrice(50, 0, "Second item");
 calculatePrice(100);
