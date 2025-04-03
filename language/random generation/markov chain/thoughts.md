@@ -1,3 +1,5 @@
+# Markov Chain
+
 you could use a markov chain to do this, input giant list of names, and figure out which letter is likely to come after the previous letter
 
 - alex
@@ -18,4 +20,4 @@ Filter out results that are too short, have too few vowels for the length or hav
 
 Try out bigrams and trigrams and see what strikes the balance between creative and normal sounding.
 
-I added a layer of complexity which really helped the results even if I can't figure out why. The program first selected 12 random letters (with a certain amount of vowels) and then the markov chain was restricted to only using those 12 numbers for each name. Worked like magic for some reason.
+I added a layer of complexity which really helped the results even if I can't figure out why. The program first selected 12 random letters (with a certain amount of vowels) and then the markov chain was restricted to only using those 12 letters for each name. Worked like magic for some reason.
