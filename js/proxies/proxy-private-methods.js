@@ -17,13 +17,13 @@ const proxy = new Proxy(aSecret, {
     const value = target[prop];
 
     if (value instanceof Function) {
-      return function (...args) {
+      return function(...args) {
         return value.apply(this === receiver ? target : this, args);
       };
     }
 
     return value;
-  },
+  }
 });
 
 console.log(proxy.x());

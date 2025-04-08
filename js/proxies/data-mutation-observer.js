@@ -1,15 +1,20 @@
 function createObservable(obj, onChange) {
-
   return new Proxy(obj, {
-
     set(target, prop, value, receiver) {
       if (target[prop] !== value) {
         onChange(prop, value);
       }
-
       return Reflect.set(target, prop, value, receiver);
     },
-
+    get(target, prop, receiver) {
+      const value = target[prop];
+      if (value instanceof Function) {
+        return function(...args) {
+          return value.apply(this === receiver ? target : this, args);
+        };
+      }
+      return value;
+    },
     deleteProperty(target, prop) {
       onChange(prop, undefined);
       return Reflect.deleteProperty(target, prop);
