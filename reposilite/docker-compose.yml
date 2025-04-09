@@ -1,0 +1,14 @@
+version: '3.8'
+
+services:
+  reposilite:
+    image: dzikoysk/reposilite:latest
+    container_name: reposilite
+    ports:
+      - "19091:8080"
+    volumes:
+      - reposilite_data:/data
+    restart: unless-stopped
+
+volumes:
+  reposilite_data:
