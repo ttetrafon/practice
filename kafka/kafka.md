@@ -179,10 +179,19 @@ KafkaClient {
 
 ## CLI
 
+### Consumers
+
+```bash
+./kafka-consumer-groups.sh --bootstrap-server localhost:29092 --all-groups --describe
+```
+
+- Reset consumer's offset in topic.
+
+```bash
+./kafka-consumer-groups.sh --bootstrap-server localhost:9092 --group GROUP_NAME --topic TOPIC_NAME --reset-offsets --to-earliest --execute
+./kafka-consumer-groups.sh --bootstrap-server localhost:9092 --group GROUP_NAME --all-topics --reset-offsets --to-earliest --execute
+```
+
 ### Topics & Messages
 
 #### Remove Messages in Topic
-
-```
-
-```
