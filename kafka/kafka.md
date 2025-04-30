@@ -194,4 +194,6 @@ KafkaClient {
 
 ### Topics & Messages
 
+#### Remove Topics
+
 #### Remove Messages in Topic

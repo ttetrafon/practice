@@ -171,3 +171,21 @@ services:
   - `start/stop` starts or stops all services.
   - `--project-name NAME` replaces the default resource prefix (folder name) with the specified one.
 - Images can also be grabbed from private repositories (`image: REGISTRY_NAME/IMAGE_NAME:TAG`), but you need to be logged in appropriate registry to succeed.
+
+- `Volumes` can be used for persisting data.
+  - Can be named or mounted on the machine docker runs.
+
+```yaml
+services:
+  db:
+    ...
+    volumes:
+      - "db:/db_data/" # named volume
+  kafka:
+    ...
+    volumes:
+      - "./kafka_config:/opt/bitnami/kafka/config" # mounted volume
+
+volumes:
+  db:
+```
