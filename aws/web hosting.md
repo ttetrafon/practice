@@ -20,13 +20,15 @@
    2. Origin Access: origin access control settings (buckets can restrict access to only CloudFront)
    3. *Create Control Setting*
    4. Viewer -> Viewer protocol policy: redirect HTTP to HTTPS
-   5. WAF -> Do not enable
-   6. Settings
+   5. Cache key and origin requests -> ???
+   6. WAF -> Do not enable
+   7. Settings
       1. Alternate Domain Names: add the required domain names
       2. Custom SSL Certificate: select the certificate from above
       3. Supported HTTP versions: HTTP/2, HTTP/3 (as needed)
       4. Default root object: index.html (or whatever the entry point is)
 6. **S3** -> domain bucket -> Permissions -> update the policy with the details provided by CloudFront
+   1. `{  }`
 7. **Route 53** -> Hosted Zones -> Domain's Hosted Zone -> *Create Record* (do this for the domain (`my_domain.com`) and all required subdomains (`www.my_domain.com`))
    1. Hit *switch to wizard*
    2. Select *simple routing*
