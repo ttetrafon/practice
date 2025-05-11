@@ -18,9 +18,11 @@ python -m pip install --upgrade pip
 
 1. Create: `python -m venv .venv`
    1. !`.venv` is just a name, it can be anything.
-2. Activate: `.venv/Scripts/Activate.ps1`
-   1. On windows, may need: `Set-ExecutionPolicy Unrestricted -Scope CurrentUser` to run the script.
-   2. Use `Process` instead of `CurrentUser` for a limited effect on the above command.
+2. Activate:
+   1. Windows: `.venv/Scripts/Activate.ps1`
+      1. On windows, may need: `Set-ExecutionPolicy Unrestricted -Scope CurrentUser` to run the script.
+      2. Use `Process` instead of `CurrentUser` for a limited effect on the above command.
+   2. Linux: `source .venv/bin/activate`
 3. Install modules as if globally `pip install <module_name>`
    1. Always install 'wheel' in a new environment (`pip install wheel`) first.
 4. ... work
