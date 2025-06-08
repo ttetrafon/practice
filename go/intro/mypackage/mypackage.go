@@ -2,7 +2,10 @@
 // - only functions defined with a capital letter are exported
 package mypackage
 
-import "strings"
+import (
+	"fmt"
+	"strings"
+)
 
 // `func` can be used to define functions
 
@@ -42,4 +45,13 @@ func ParseName(fullname string) (string, string) {
 	}
 
 	return parts[0], parts[1]
+}
+
+// Function execution can be defered.
+// A deferred statement happens after the enclosing function has finished.
+// Multiple deferred statements are executed in LIFO order.
+func FancyPrint() {
+	defer fmt.Println("[deferred] World")
+	defer fmt.Println("[deferred] Go")
+	fmt.Println("[deferred] Hello")
 }

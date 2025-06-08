@@ -178,6 +178,9 @@ func main() {
 	fmt.Println("IsString?", sss, "OK?", ok)
 	fff, ok := aString.(float64)
 	fmt.Println("IsFloat?", fff, "OK?", ok)
+
+	// Deferred execution
+	mypackage.FancyPrint()
 }
 
 type Person struct {
