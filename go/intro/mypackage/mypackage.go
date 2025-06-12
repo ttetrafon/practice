@@ -47,7 +47,7 @@ func ParseName(fullname string) (string, string) {
 	return parts[0], parts[1]
 }
 
-// Function execution can be defered.
+// Function execution can be deferred.
 // A deferred statement happens after the enclosing function has finished.
 // Multiple deferred statements are executed in LIFO order.
 func FancyPrint() {

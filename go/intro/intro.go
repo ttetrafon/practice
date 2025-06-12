@@ -210,6 +210,7 @@ type Response struct {
 }
 
 // Go does not have classes, but methods can still be defined directly on types.
+// A `(t *Type) function(params) returns {}` defines a method for Type (pointer included if the method needs to modify the type itself).
 type Rectangle struct {
 	length float64
 	width  float64
