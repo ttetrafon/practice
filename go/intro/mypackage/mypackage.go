@@ -4,10 +4,22 @@ package mypackage
 
 import (
 	"fmt"
+	"os"
 	"strings"
 )
 
 // `func` can be used to define functions
+
+// - each .go file can have an initialiser
+var user = os.Getenv("USER")
+
+func init() {
+	if user == "" {
+		fmt.Println("user is not defined")
+	} else {
+		fmt.Println("User:", user)
+	}
+}
 
 func fibonacci(n int) int {
 	if n <= 0 {
