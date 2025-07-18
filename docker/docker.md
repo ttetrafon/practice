@@ -189,3 +189,11 @@ services:
 volumes:
   db:
 ```
+
+## Docker Swarm
+
+```bash
+docker stack ...
+docker service ls/logs/... {stack}
+docker service ps {service}
+```
