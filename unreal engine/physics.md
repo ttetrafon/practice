@@ -54,3 +54,11 @@
 
 - Links:
   - [Physics Control, New UE5 Feature!!!](https://www.youtube.com/watch?v=7rlU2XaR-yo)
+
+### Thruster
+
+- `Thrusters` need to be put in `sockets`.
+
+### Radial Force
+
+- ...

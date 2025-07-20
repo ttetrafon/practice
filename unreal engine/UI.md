@@ -48,6 +48,10 @@
 
 - **Format Text**: Uses {} to create variables in a text line which can then be set from outside. For example, `You scored {number} points during round {roundNumber}!` will create two input nodes named *number* and *roundNumber* which can be used to set their values in the text line.
 
+### Editable Text
+
+- Widget that displays text and allows the user to change it.
+
 ### Progress Bar
 
 - A progress bar is filled from 0 to 100% depending on some variable (e.g.: a health bar).

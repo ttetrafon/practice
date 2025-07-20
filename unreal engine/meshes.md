@@ -4,6 +4,35 @@
 
 - Meshes can be created either in Unreal with the modelling tools (limited functionality) or in separate, dedicated application (like Blender).
 
+### Modelling
+
+#### Basic Principles (Blender)
+
+- Form (general shape)
+  - Block-out the overall shape with basic shapes initially, to use as a template.
+- Details
+  - Start building the actual mesh, by identifying the most defining features of the mesh, and then filling in the gaps.
+  - First add as less detail as possible, by building only the primary (largest) shapes present in the mesh.
+  - Add the secondary shapes present in the mesh.
+  - Add details on the primary features and shapes where needed.
+  - Then add tertiary shapes and detail out the medium parts of the mesh.
+  - Finally add the smallest details.
+  - By making shape and detail passes (large, medium, small), consistency can be achieved.
+- Scale
+  - Try to scale the meshes in real-size, and then adjust as needed within the game engine.
+- Adaptation
+  - Keep the model as easy to modify later as possible.
+  - Can create a basis with non-destructive modelling, and apply stuff only before exporting.
+  - Make sure the mesh can transform as needed by the rig it will be using.
+- Reuse
+  - Create minimal basic meshes and use modifiers to allow for easy duplication/creation of meshes.
+  - Use Al+D to duplicate, so that duplicated meshes remain linked to each other, and changes in their geometry propagate to the duplicated ones.
+- Surface Quality
+  - Make loops to define sharp-edges in a mesh.
+  - Properly align normals.
+  - Keep odd shaped shapes to a minimum.
+  - Lookout for pinches and bumps that negatively affect lighting.
+
 ### Preparing a Mesh for Use
 
 - After building a mesh, assign to its whole a single shiny material to check if there are any reflection or lighting issues.
