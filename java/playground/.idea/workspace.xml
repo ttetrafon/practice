@@ -68,6 +68,7 @@
     "ASKED_ADD_EXTERNAL_FILES": "true",
     "ASKED_SHARE_PROJECT_CONFIGURATION_FILES": "true",
     "Application.Main.executor": "Run",
+    "Application.SystemMetrics.executor": "Run",
     "Application.com.ttetrafon.bytes.Main.executor": "Run",
     "Application.com.ttetrafon.factories.Main.executor": "Run",
     "Application.com.ttetrafon.hackerrank.Main.executor": "Run",
@@ -99,7 +100,7 @@
       <recent name="C:\Users\ttetr\OneDrive\Projects\self-practice\java\playground\src\main\java\com\ttetrafon\hackerrank" />
     </key>
   </component>
-  <component name="RunManager" selected="Application.com.ttetrafon.bytes.Main">
+  <component name="RunManager" selected="Application.SystemMetrics">
     <configuration name="Main" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
       <option name="MAIN_CLASS_NAME" value="com.ttetrafon.jackson.Main" />
       <module name="playground" />
@@ -113,12 +114,12 @@
         <option name="Make" enabled="true" />
       </method>
     </configuration>
-    <configuration name="com.ttetrafon.bytes.Main" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
-      <option name="MAIN_CLASS_NAME" value="com.ttetrafon.bytes.Main" />
+    <configuration name="SystemMetrics" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
+      <option name="MAIN_CLASS_NAME" value="com.ttetrafon.system.info.SystemMetrics" />
       <module name="playground" />
       <extension name="coverage">
         <pattern>
-          <option name="PATTERN" value="com.ttetrafon.bytes.*" />
+          <option name="PATTERN" value="com.ttetrafon.system.info.*" />
           <option name="ENABLED" value="true" />
         </pattern>
       </extension>
@@ -126,12 +127,12 @@
         <option name="Make" enabled="true" />
       </method>
     </configuration>
-    <configuration name="com.ttetrafon.lists.Main" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
-      <option name="MAIN_CLASS_NAME" value="com.ttetrafon.lists.Main" />
+    <configuration name="com.ttetrafon.bytes.Main" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
+      <option name="MAIN_CLASS_NAME" value="com.ttetrafon.bytes.Main" />
       <module name="playground" />
       <extension name="coverage">
         <pattern>
-          <option name="PATTERN" value="com.ttetrafon.lists.*" />
+          <option name="PATTERN" value="com.ttetrafon.bytes.*" />
           <option name="ENABLED" value="true" />
         </pattern>
       </extension>
@@ -167,11 +168,11 @@
     </configuration>
     <recent_temporary>
       <list>
+        <item itemvalue="Application.SystemMetrics" />
         <item itemvalue="Application.com.ttetrafon.bytes.Main" />
         <item itemvalue="Application.Main" />
         <item itemvalue="Application.com.ttetrafon.reflection.Main" />
         <item itemvalue="Application.com.ttetrafon.objects.Main" />
-        <item itemvalue="Application.com.ttetrafon.lists.Main" />
       </list>
     </recent_temporary>
   </component>
@@ -200,6 +201,7 @@
       <workItem from="1736852123177" duration="1227000" />
       <workItem from="1737616069505" duration="2394000" />
       <workItem from="1743077264246" duration="110000" />
+      <workItem from="1753171194938" duration="208000" />
     </task>
     <task id="LOCAL-00001" summary="[java] hacker-rank++">
       <option name="closed" value="true" />
