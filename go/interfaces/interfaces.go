@@ -33,6 +33,17 @@ func main() {
 
 	isSquare, ok := shape.(*Square)
 	fmt.Println("IsSquare?", isSquare, "OK?", ok)
+
+	// -----------------------------
+
+	e := &FireEnemy{}
+	e.Enemy = &Enemy{
+		tileWalker: e,
+	}
+	for range 5 {
+		Update(e)
+	}
+	fmt.Println("Final e.position:", e.position)
 }
 
 // An 'Interface' is a set of method signatures, which can also hold a value that implements these methods.
@@ -72,4 +83,50 @@ func printShapeArea(s Shape) {
 
 func printShapePerimeter(s Shape) {
 	fmt.Println(s.Perimeter())
+}
+
+// ------------------------------------
+// Interfaces & struct Embedding
+
+type Tile struct{}
+
+type TileWalker interface {
+	WalkTile(Tile)
+}
+
+type Updater interface {
+	Update()
+}
+
+func Update(u Updater) {
+	u.Update()
+}
+
+type Transform struct {
+	position int
+}
+
+type Enemy struct {
+	Transform
+	tileWalker TileWalker
+}
+
+func (e *Enemy) checkTileWalkedOn() {
+	// some logic here...
+	fmt.Println("enemy walked on tile...: ", e.position)
+	e.tileWalker.WalkTile(Tile{})
+}
+
+func (e *Enemy) Update() {
+	e.position += 1
+	e.checkTileWalkedOn()
+}
+
+type FireEnemy struct {
+	*Enemy
+}
+
+func (e *FireEnemy) WalkTile(t Tile) {
+	// logic specific to fire-enemy
+	fmt.Println("fire enemy walked on tile: ", t)
 }
