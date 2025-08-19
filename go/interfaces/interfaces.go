@@ -1,6 +1,9 @@
 package main
 
-import "fmt"
+import (
+	"fmt"
+	"reflect"
+)
 
 func main() {
 	square := Square{
@@ -44,6 +47,25 @@ func main() {
 		Update(e)
 	}
 	fmt.Println("Final e.position:", e.position)
+
+	// ------------------------------------
+	// Empty Interfaces
+
+	mystery := interface{}(10)
+	// mystery := interface{}("ttetrafon")
+	describeValue(mystery)
+
+	retrievedInt, ok := mystery.(int)
+	if ok {
+		fmt.Println("Retrieved int:", retrievedInt)
+	} else {
+		fmt.Println("Failed to retrieve int")
+	}
+
+	// ------------------------------------
+	// Interface Composition
+	describeGeometry(square)
+	describeGeometry(circle)
 }
 
 // An 'Interface' is a set of method signatures, which can also hold a value that implements these methods.
@@ -129,4 +151,49 @@ type FireEnemy struct {
 func (e *FireEnemy) WalkTile(t Tile) {
 	// logic specific to fire-enemy
 	fmt.Println("fire enemy walked on tile: ", t)
+}
+
+// ------------------------------------
+// Empty Interfaces
+
+func describeValue(t interface{}) {
+	fmt.Printf("Type: %T, Value: %v\n", t, t)
+}
+
+// ------------------------------------
+// Interface Composition
+
+type Measurable interface {
+	IsMeasurable() bool
+}
+
+func (r Square) IsMeasurable() bool {
+	return true
+}
+
+func (r Circle) IsMeasurable() bool {
+	return false
+}
+
+func measurableShape(m Measurable) bool {
+	return m.IsMeasurable()
+}
+
+type Geometry interface {
+	Shape
+	Measurable
+}
+
+func describeGeometry(g Geometry) {
+	t := reflect.TypeOf(g)
+
+	if t.Kind() == reflect.Ptr {
+		t = t.Elem()
+	}
+
+	if measurableShape(g) {
+		fmt.Println(t.Name(), "is measurable: area=", g.Area(), "; perimeter=", g.Perimeter())
+	} else {
+		fmt.Println(t.Name(), "is not measurable")
+	}
 }
