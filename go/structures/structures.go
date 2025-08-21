@@ -82,4 +82,14 @@ func main() {
 
 	s := newServer(WithTls, WithMaxConn(3), WithId("test"))
 	fmt.Printf("Server %v\n", s)
+
+	// A structure can be declared and initialised in the same line.
+	job := struct {
+		title  string
+		salary int
+	}{
+		title:  "Developer",
+		salary: 100000,
+	}
+	fmt.Println("Job:", job)
 }
