@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>HTMX Server Test</title>
+  <script src="https://cdn.jsdelivr.net/npm/htmx.org@2.0.6/dist/htmx.min.js"
+    integrity="sha384-Akqfrbj/HpNVo8k11SXBb6TlBWmXXlYQrCSqEWmyKJe+hDm3Z/B2WVG4smwBkRVm"
+    crossorigin="anonymous"></script>
+  <script src="https://cdn.jsdelivr.net/npm/htmx-ext-ws@2.0.2" crossorigin="anonymous"></script>
+</head>
+
+<body>
+  <h1>HTMX & Go</h1>
+  <p>{{.Message}}</p>
+
+  <br>
+
+  <button hx-get="/time" hx-target="#time">Get Current Time</button>
+  <p id="time">time?</p>
+
+  <br>
+
+  <div hx-ext="ws" , ws-connect="ws://localhost:8080/ws">
+    <p id="ticking">... waiting for tick!</p>
+  </div>
+</body>
+
+</html>
