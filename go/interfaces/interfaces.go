@@ -66,6 +66,12 @@ func main() {
 	// Interface Composition
 	describeGeometry(square)
 	describeGeometry(circle)
+
+	// -----------------------------
+	// Consumer Interface Pattern
+	bar := &Bar{}
+	foo := NewFoo(bar)
+	foo.Greet()
 }
 
 // An 'Interface' is a set of method signatures, which can also hold a value that implements these methods.
@@ -196,4 +202,41 @@ func describeGeometry(g Geometry) {
 	} else {
 		fmt.Println(t.Name(), "is not measurable")
 	}
+}
+
+// ------------------------------------
+// Consumer Interface Pattern
+// It's usually better to create interfaces for the consumers, and then implement these in the parents instead of the other way around.
+
+type Bar struct{}
+
+func (b *Bar) SayHello() {
+	fmt.Println("Hello!")
+}
+
+func (b *Bar) SayHola() {
+	fmt.Println("Hola!")
+}
+
+func (b *Bar) SayNiHao() {
+	fmt.Println("Ni hao!")
+}
+
+// ... the interface to be used by Foo includes only the SayHello function which Foo actually needs
+type IFoo interface {
+	SayHello()
+}
+
+type Foo struct {
+	iFoo IFoo
+}
+
+func NewFoo(iFoo IFoo) *Foo {
+	return &Foo{
+		iFoo: iFoo,
+	}
+}
+
+func (f *Foo) Greet() {
+	f.iFoo.SayHello()
 }
