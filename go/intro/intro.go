@@ -68,11 +68,13 @@ func main() {
 	fmt.Println("Response:", res)
 
 	// Go uses pointers to pass references, which means reference is explicit and everything (except slices, maps and channels) is passed by value.
-	// - `&` generates a pointer
+	// - `&` generates a pointer (an address)
 	// - `*` gets the underlying value of the pointer (dereferencing)
+	// When a pointer of a structure is used, go automatically assumes that the actual structure is needed and not the address.
 	pPointer := &p
 	fmt.Println("Person value from pointer:", *pPointer)
 	fmt.Println("Person pointer:", pPointer)
+	fmt.Println("Person value from structure:", pPointer)
 
 	// Functions
 	double := mypackage.MakeMultiplier(2)
