@@ -58,6 +58,19 @@ First, a built object needs to be positioned. There are two useful things to do 
     - `Custom Event (SubmitChat; params: PlayerName *text*, ChatMessage *text*; replicates = Run on Server; reliable = true)` -> `For Each Loop (array = Get Game State -> Get Player Array)` -> `Cast to Custom Player Controller (object = For Each Loop array element -> Get Player Controller)` -> `ClientUpdateChat (target = Cast output; player name / message = SubmitChat outputs)`.
     - `Custom Event (ClientUpdateChat; params: PlayerName *text*, ChatMessage *text*; replicates = Run on Owning Client; reliable = true)` -> `Get Chat Panel (validated)` -> `Update Chat event (target = Get Chat Panel's output; player name / message = ClientUpdateChat's outputs)`.
 
+## Selection Outline
+
+### Material with Edge Detection
+
+- [Outline Effect](http://www.michalorzelek.com/blog/tutorial-creating-outline-effect-around-objects/)
+- On the target object, use: `Get Components by Tag` -> `Set Render Custom Depth (value = true)`.
+- Create a material.
+  - ...
+- For the custom depth to work, we need a post-process volume.
+  - Set it as **unbound**, so that it covers the full game area and not only its own geometry.
+  - Add a post-processing material.
+    - Set it to asset reference, and link the previsouly created material.
+
 ## Selection through Click
 
 - Implement a click event.
