@@ -63,38 +63,38 @@
     <option name="hideEmptyMiddlePackages" value="true" />
     <option name="showLibraryContents" value="true" />
   </component>
-  <component name="PropertiesComponent"><![CDATA[{
-  "keyToString": {
-    "ASKED_ADD_EXTERNAL_FILES": "true",
-    "ASKED_SHARE_PROJECT_CONFIGURATION_FILES": "true",
-    "Application.Main.executor": "Run",
-    "Application.SystemMetrics.executor": "Run",
-    "Application.com.ttetrafon.bytes.Main.executor": "Run",
-    "Application.com.ttetrafon.factories.Main.executor": "Run",
-    "Application.com.ttetrafon.hackerrank.Main.executor": "Run",
-    "Application.com.ttetrafon.lists.Main.executor": "Run",
-    "Application.com.ttetrafon.objects.Main.executor": "Run",
-    "Application.com.ttetrafon.reflection.Main.executor": "Run",
-    "RunOnceActivity.OpenProjectViewOnStart": "true",
-    "RunOnceActivity.ShowReadmeOnStart": "true",
-    "RunOnceActivity.git.unshallow": "true",
-    "SHARE_PROJECT_CONFIGURATION_FILES": "true",
-    "git-widget-placeholder": "master",
-    "ignore.virus.scanning.warn.message": "true",
-    "kotlin-language-version-configured": "true",
-    "last_opened_file_path": "/home/titonis@ad.itsaur.com/Projects/practice/java/playground",
-    "node.js.detected.package.eslint": "true",
-    "node.js.detected.package.tslint": "true",
-    "node.js.selected.package.eslint": "(autodetect)",
-    "node.js.selected.package.tslint": "(autodetect)",
-    "nodejs_package_manager_path": "npm",
-    "project.structure.last.edited": "Project",
-    "project.structure.proportion": "0.0",
-    "project.structure.side.proportion": "0.2",
-    "settings.editor.selected.configurable": "editor.preferences.import",
-    "vue.rearranger.settings.migration": "true"
+  <component name="PropertiesComponent">{
+  &quot;keyToString&quot;: {
+    &quot;ASKED_ADD_EXTERNAL_FILES&quot;: &quot;true&quot;,
+    &quot;ASKED_SHARE_PROJECT_CONFIGURATION_FILES&quot;: &quot;true&quot;,
+    &quot;Application.Main.executor&quot;: &quot;Run&quot;,
+    &quot;Application.SystemMetrics.executor&quot;: &quot;Run&quot;,
+    &quot;Application.com.ttetrafon.bytes.Main.executor&quot;: &quot;Run&quot;,
+    &quot;Application.com.ttetrafon.factories.Main.executor&quot;: &quot;Run&quot;,
+    &quot;Application.com.ttetrafon.hackerrank.Main.executor&quot;: &quot;Run&quot;,
+    &quot;Application.com.ttetrafon.lists.Main.executor&quot;: &quot;Run&quot;,
+    &quot;Application.com.ttetrafon.objects.Main.executor&quot;: &quot;Run&quot;,
+    &quot;Application.com.ttetrafon.reflection.Main.executor&quot;: &quot;Run&quot;,
+    &quot;RunOnceActivity.OpenProjectViewOnStart&quot;: &quot;true&quot;,
+    &quot;RunOnceActivity.ShowReadmeOnStart&quot;: &quot;true&quot;,
+    &quot;RunOnceActivity.git.unshallow&quot;: &quot;true&quot;,
+    &quot;SHARE_PROJECT_CONFIGURATION_FILES&quot;: &quot;true&quot;,
+    &quot;git-widget-placeholder&quot;: &quot;master&quot;,
+    &quot;ignore.virus.scanning.warn.message&quot;: &quot;true&quot;,
+    &quot;kotlin-language-version-configured&quot;: &quot;true&quot;,
+    &quot;last_opened_file_path&quot;: &quot;/home/titonis@ad.itsaur.com/Projects/practice/java/playground&quot;,
+    &quot;node.js.detected.package.eslint&quot;: &quot;true&quot;,
+    &quot;node.js.detected.package.tslint&quot;: &quot;true&quot;,
+    &quot;node.js.selected.package.eslint&quot;: &quot;(autodetect)&quot;,
+    &quot;node.js.selected.package.tslint&quot;: &quot;(autodetect)&quot;,
+    &quot;nodejs_package_manager_path&quot;: &quot;npm&quot;,
+    &quot;project.structure.last.edited&quot;: &quot;Project&quot;,
+    &quot;project.structure.proportion&quot;: &quot;0.0&quot;,
+    &quot;project.structure.side.proportion&quot;: &quot;0.2&quot;,
+    &quot;settings.editor.selected.configurable&quot;: &quot;editor.preferences.import&quot;,
+    &quot;vue.rearranger.settings.migration&quot;: &quot;true&quot;
   }
-}]]></component>
+}</component>
   <component name="RecentsManager">
     <key name="MoveFile.RECENT_KEYS">
       <recent name="C:\Users\ttetr\OneDrive\Projects\self-practice\java\playground\src\main\java\com\ttetrafon\hackerrank" />
@@ -202,6 +202,7 @@
       <workItem from="1737616069505" duration="2394000" />
       <workItem from="1743077264246" duration="110000" />
       <workItem from="1753171194938" duration="208000" />
+      <workItem from="1758262012671" duration="227000" />
     </task>
     <task id="LOCAL-00001" summary="[java] hacker-rank++">
       <option name="closed" value="true" />
