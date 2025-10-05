@@ -6,6 +6,13 @@
 ## Textures
 
 - A **normal map** needs _Compression -> Compression Setting -> NormalMap_ and _Texture -> sRGB -> false_.
+  - To increase the intensity of a normal map, we need to multiply the values of its red/green channels:
+    - `Normal map`
+    - `Append`: input G & R from normal map
+    - `Multiply`: input from Append
+    - `Append`:
+      - input from multiply and from normal map's B channel
+      - output to material's normal
 - A **roughness map** requires _Compression -> Compression Setting -> GrayScale_ and _Texture -> sRGB -> false_.
 
 ### Procedural Textures
