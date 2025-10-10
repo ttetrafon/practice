@@ -100,7 +100,7 @@
       <recent name="C:\Users\ttetr\OneDrive\Projects\self-practice\java\playground\src\main\java\com\ttetrafon\hackerrank" />
     </key>
   </component>
-  <component name="RunManager" selected="Application.SystemMetrics">
+  <component name="RunManager" selected="Application.com.ttetrafon.reflection.Main">
     <configuration name="Main" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
       <option name="MAIN_CLASS_NAME" value="com.ttetrafon.jackson.Main" />
       <module name="playground" />
@@ -168,10 +168,10 @@
     </configuration>
     <recent_temporary>
       <list>
+        <item itemvalue="Application.com.ttetrafon.reflection.Main" />
         <item itemvalue="Application.SystemMetrics" />
         <item itemvalue="Application.com.ttetrafon.bytes.Main" />
         <item itemvalue="Application.Main" />
-        <item itemvalue="Application.com.ttetrafon.reflection.Main" />
         <item itemvalue="Application.com.ttetrafon.objects.Main" />
       </list>
     </recent_temporary>
@@ -203,6 +203,7 @@
       <workItem from="1743077264246" duration="110000" />
       <workItem from="1753171194938" duration="208000" />
       <workItem from="1758262012671" duration="227000" />
+      <workItem from="1759753439888" duration="171000" />
     </task>
     <task id="LOCAL-00001" summary="[java] hacker-rank++">
       <option name="closed" value="true" />
