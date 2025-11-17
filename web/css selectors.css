@@ -1,0 +1,21 @@
+/* DESCENDANTS */
+
+.parent .descendant {}
+
+.parent > .child {}
+
+/* SIBLINGS */
+
+.sibling + .next-sibling {}
+
+.sibling ~ .subsequent-sibling {}
+
+/* ATTRIBUTES */
+
+[attribute] {}
+
+[attribute="value"] {}
+
+.selector[attribute] {}
+
+.selector[attribute="value"] {}
