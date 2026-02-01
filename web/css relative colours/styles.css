@@ -1,0 +1,76 @@
+/* GENERAL */
+:root {
+  font-size: 18px;
+}
+
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  font-family: system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
+}
+
+.toast {
+  --base-toast-color: hsl(226, 87%, 56%);
+
+  color: oklch(from var(--toast-color) 25% c h);
+  border: 2px solid var(--toast-color);
+  background: oklch(from var(--toast-color) 90% calc(c / 2) h);
+  box-shadow: 0 12px 12px -8px oklch(from var(--toast-color) l c h / 0.325);
+}
+
+.oklch {
+  [data-toast="info"] {
+    --toast-color: oklch(from var(--base-toast-color) l c 275);
+  }
+
+  [data-toast="warning"] {
+    --toast-color: oklch(from var(--base-toast-color) l c 80);
+  }
+
+  [data-toast="error"] {
+    --toast-color: oklch(from var(--base-toast-color) l c 35);
+  }
+}
+
+.hsl {
+  [data-toast="info"] {
+    --toast-color: hsl(from var(--base-toast-color) 240 s l);
+  }
+
+  [data-toast="warning"] {
+    --toast-color: hsl(from var(--base-toast-color) 35 s l);
+  }
+
+  [data-toast="error"] {
+    --toast-color: hsl(from var(--base-toast-color) 0 s l);
+  }
+}
+
+.toast-grid {
+  display: grid;
+  gap: 2rem;
+  max-inline-size: 400px;
+  margin-inline: auto;
+  padding: 1rem;
+  border: 1px solid #ddd;
+  border-radius: 12px;
+  margin-block-end: 1rem;
+}
+
+.toast {
+  border-radius: 8px;
+  padding: 8px 24px;
+  inline-size: fit-content;
+  margin-inline: auto;
+}
+
+body {
+  font-family: system-ui;
+  text-align: center;
+}
+
+h2 {
+  margin: 0;
+  font-size: 1rem;
+}

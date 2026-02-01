@@ -1,0 +1,10 @@
+{
+  "version": "0.0.1",
+  "scripts": {
+    "bump version": "replace '0.0.1' '0.0.2' ./package.json"
+  },
+  "devDependencies": {
+    "replace": "1.2.2"
+  },
+  "type": "module"
+}
