@@ -17,6 +17,6 @@
 ## Removing a Submodule
 
 - Removing a submodule needs to be done manually.
+  - Remove the path created for the submodule (`git rm --cached path/to/subfolder`).
   - Remove the subfolder it resides.
   - Remove the appropriate lines from **.gitmodules**.
-  - Remove the path created for the submodule (`git rm --cached path/to/subfolder`).
