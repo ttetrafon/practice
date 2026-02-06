@@ -3,7 +3,7 @@
 ## Initialise a project
 
 ```bash
-pnpm install typescript
-pnpm add --save-dev @types/node
+npm init
+pnpm add --save-dev typescript @types/node
 npx tsc --init
 ```
