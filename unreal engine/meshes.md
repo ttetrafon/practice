@@ -18,6 +18,19 @@
   - Then add tertiary shapes and detail out the medium parts of the mesh.
   - Finally add the smallest details.
   - By making shape and detail passes (large, medium, small), consistency can be achieved.
+  - Useful tools (and commands) while editing meshes:
+    - add mesh: `shift+a`
+    - grab: `g`, followed by `x`/`y`/`z` for specific axes
+    - rotate: `r`, followed by `x`/`y`/`z` for specific axes
+    - scale: `s`, followed by `x`/`y`/`z` for specific axes
+    - apply transforms: `ctrl+a` (useful especially for uneven scale which affects editing)
+    - auto-mirror (plugin)
+    - inset: `i`
+    - duplicate: `shift+d`
+    - extrude: `e`/`alt+e`
+    - select similar area: `shift+g`
+    - bevel edges: `ctrl+b`
+    - loop cut: `ctrl+r`
 - Scale
   - Try to scale the meshes in real-size, and then adjust as needed within the game engine.
 - Adaptation
