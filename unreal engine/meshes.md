@@ -24,13 +24,14 @@
     - rotate: `r`, followed by `x`/`y`/`z` for specific axes
     - scale: `s`, followed by `x`/`y`/`z` for specific axes
     - apply transforms: `ctrl+a` (useful especially for uneven scale which affects editing)
-    - auto-mirror (plugin)
+    - mirror (modifier) and/or auto-mirror (plugin)
     - inset: `i`
     - duplicate: `shift+d`
     - extrude: `e`/`alt+e`
     - select similar area: `shift+g`
     - bevel edges: `ctrl+b`
     - loop cut: `ctrl+r`
+    - recalculate normals: `shift+n`
 - Scale
   - Try to scale the meshes in real-size, and then adjust as needed within the game engine.
 - Adaptation
