@@ -9,5 +9,6 @@
   - Does not modify state.
   - Given the same input, always returns the same output.
 
-# C++
+## C++
+
 <!-- https://www.youtube.com/watch?v=6lU11IHfJgo&list=PLiYs34CsHngy6b3f08228a6ADjP_Ovjw0&index=13 -->
