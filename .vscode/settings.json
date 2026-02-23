@@ -18,6 +18,7 @@
     "fastapi",
     "fastapicontainer",
     "finetuned",
+    "godotenv",
     "httpx",
     "Hyperhuman",
     "INITDB",
