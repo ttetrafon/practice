@@ -2,6 +2,8 @@
 
 ## Useful Addons/Extensions
 
+- Extra Curve Objects
+- Extra Mesh Objects
 - Loop tools
 
 ## Basic Principles
