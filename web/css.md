@@ -35,6 +35,15 @@
 }
 ```
 
+## Positioning
+
+### Scrolling
+
+- Scrolling may affect the position of elements, especially when sticky or absolute elements get in the way. This can be mitigated with scrolling margins/paddings:
+  - `scroll-margin: #`
+  - `scroll-padding: #`
+  - `scroll-behaviour: smooth`
+
 ## Sizing
 
 - [Width](https://developer.mozilla.org/en-US/docs/Web/CSS/Reference/Properties/width)

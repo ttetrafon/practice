@@ -1,0 +1,36 @@
+body {
+  color: black;
+  margin-left: auto;
+  padding: 10%;
+  box-sizing: border-box;
+  height: 100vh;
+  width: 100%;
+  background-color: whitesmoke;
+}
+
+.tip {
+  position: relative;
+}
+
+.tip::after {
+  content: attr(data-tip);
+  position: absolute;
+  inset-block-end: calc(100% + 8px);
+  inset-inline-start: 50%;
+  translate: -50% 0;
+  padding: .35em .55em;
+  font-size: .85rem;
+  background: color-mix(in hsl, CanvasText 85%, transparent);
+  color: Canvas;
+  border-radius: .4rem;
+  opacity: 0;
+  pointer-events: none;
+  transition: opacity .15s, translate .15s;
+  white-space: nowrap;
+}
+
+.tip:hover::after,
+.tip:focus-visible::after {
+  opacity: 1;
+  translate: -50% -2px;
+}
