@@ -1,0 +1,1097 @@
+(* Content-type: application/vnd.wolfram.mathematica *)
+
+(*** Wolfram Notebook File ***)
+(* http://www.wolfram.com/nb *)
+
+(* CreatedBy='Wolfram 14.2' *)
+
+(*CacheID: 234*)
+(* Internal cache information:
+NotebookFileLineBreakTest
+NotebookFileLineBreakTest
+NotebookDataPosition[       154,          7]
+NotebookDataLength[     50374,       1087]
+NotebookOptionsPosition[      5612,        158]
+NotebookOutlinePosition[     49647,       1079]
+CellTagsIndexPosition[     49604,       1076]
+WindowTitle->Programming and Development: Table of Contents
+WindowFrame->Normal*)
+
+(* Beginning of Notebook Content *)
+Notebook[{
+
+Cell[CellGroupData[{
+Cell["Table of Contents", "Subtitle",ExpressionUUID->"d0e8f1f1-f9ca-44cc-adc6-0bd932481f0e"],
+
+Cell[TextData[ButtonBox["Notebook 1: Quick Start: Basic Concepts and Syntax",
+ BaseStyle->"Hyperlink",
+ Evaluator->Automatic,
+ Method->"Preemptive",
+ ButtonFunction:>If[FileNameTake[
+     Directory[], {2, 2}] == "wolframcloud", 
+   SystemOpen[
+    URLBuild[{
+     "https://www.wolframcloud.com/obj/online-courses/Published/DEV212", 
+      "DEV212-1-QuickStartBasicConceptsAndSyntax.nb"}]], 
+   SystemOpen[
+    FileNameJoin[{
+      NotebookDirectory[], "DEV212-1-QuickStartBasicConceptsAndSyntax.nb"}]]],
+ 
+ ButtonNote->"DEV212-1-QuickStartBasicConceptsAndSyntax.nb"]], "Item",Expressi\
+onUUID->"896d9221-b864-4068-8103-228d125b9673"],
+
+Cell[TextData[ButtonBox["Notebook 2: Fundamentals of Coding in Wolfram \
+Language",
+ BaseStyle->"Hyperlink",
+ Evaluator->Automatic,
+ Method->"Preemptive",
+ ButtonFunction:>If[FileNameTake[
+     Directory[], {2, 2}] == "wolframcloud", 
+   SystemOpen[
+    URLBuild[{
+     "https://www.wolframcloud.com/obj/online-courses/Published/DEV212", 
+      "DEV212-2-FundamentalsofCodingInWL.nb"}]], 
+   SystemOpen[
+    FileNameJoin[{
+      NotebookDirectory[], "DEV212-2-FundamentalsofCodingInWL.nb"}]]],
+ ButtonNote->"DEV212-2-FundamentalsofCodingInWL.nb"]], "Item",ExpressionUUID->\
+"e91914a8-a7bc-472c-a99f-483245f5395c"],
+
+Cell[TextData[ButtonBox["Notebook 3: Scoping Constructs",
+ BaseStyle->"Hyperlink",
+ Evaluator->Automatic,
+ Method->"Preemptive",
+ ButtonFunction:>If[FileNameTake[
+     Directory[], {2, 2}] == "wolframcloud", 
+   SystemOpen[
+    URLBuild[{
+     "https://www.wolframcloud.com/obj/online-courses/Published/DEV212", 
+      "DEV212-3-ScopingConstructs.nb"}]], 
+   SystemOpen[
+    FileNameJoin[{
+      NotebookDirectory[], "DEV212-3-ScopingConstructs.nb"}]]],
+ ButtonNote->"DEV212-3-ScopingConstructs.nb"]], "Item",ExpressionUUID->\
+"df3633de-1b2d-47bd-bb6a-cf023cdeac9f"],
+
+Cell[TextData[ButtonBox["Notebook 3 Supplement: Evaluation of Expressions",
+ BaseStyle->"Hyperlink",
+ Evaluator->Automatic,
+ Method->"Preemptive",
+ ButtonFunction:>If[FileNameTake[
+     Directory[], {2, 2}] == "wolframcloud", 
+   SystemOpen[
+    URLBuild[{
+     "https://www.wolframcloud.com/obj/online-courses/Published/DEV212", 
+      "DEV212-3s-EvaluationofExpressions.nb"}]], 
+   SystemOpen[
+    FileNameJoin[{
+      NotebookDirectory[], "DEV212-3s-EvaluationofExpressions.nb"}]]],
+ ButtonNote->"DEV212-3s-EvaluationofExpressions.nb"]], "Item",ExpressionUUID->\
+"2dd64447-e905-4dac-ace0-df21ce9b35e4"],
+
+Cell[TextData[ButtonBox["Notebook 4: Data Structures",
+ BaseStyle->"Hyperlink",
+ Evaluator->Automatic,
+ Method->"Preemptive",
+ ButtonFunction:>If[FileNameTake[
+     Directory[], {2, 2}] == "wolframcloud", 
+   SystemOpen[
+    URLBuild[{
+     "https://www.wolframcloud.com/obj/online-courses/Published/DEV212", 
+      "DEV212-4-DataStructures.nb"}]], 
+   SystemOpen[
+    FileNameJoin[{
+      NotebookDirectory[], "DEV212-4-DataStructures.nb"}]]],
+ ButtonNote->"DEV212-4-DataStructures.nb"]], "Item",ExpressionUUID->"cb509aef-\
+d8da-4af4-af55-fda3a47ae9e2"],
+
+Cell[TextData[ButtonBox["Notebook 4 Supplement: Working with Data",
+ BaseStyle->"Hyperlink",
+ Evaluator->Automatic,
+ Method->"Preemptive",
+ ButtonFunction:>If[FileNameTake[
+     Directory[], {2, 2}] == "wolframcloud", 
+   SystemOpen[
+    URLBuild[{
+     "https://www.wolframcloud.com/obj/online-courses/Published/DEV212", 
+      "DEV212-4s-WorkingWithData.nb"}]], 
+   SystemOpen[
+    FileNameJoin[{
+      NotebookDirectory[], "DEV212-4s-WorkingWithData.nb"}]]],
+ ButtonNote->"DEV212-4s-WorkingWithData.nb"]], "Item",ExpressionUUID->\
+"a827d1ab-24ae-46c5-827e-7f7069f98eb4"],
+
+Cell[TextData[ButtonBox["Notebook 5: Developing Packages",
+ BaseStyle->"Hyperlink",
+ Evaluator->Automatic,
+ Method->"Preemptive",
+ ButtonFunction:>If[FileNameTake[
+     Directory[], {2, 2}] == "wolframcloud", 
+   SystemOpen[
+    URLBuild[{
+     "https://www.wolframcloud.com/obj/online-courses/Published/DEV212", 
+      "DEV212-5-DevelopingPackages.nb"}]], 
+   SystemOpen[
+    FileNameJoin[{
+      NotebookDirectory[], "DEV212-5-DevelopingPackages.nb"}]]],
+ ButtonNote->"DEV212-5-DevelopingPackages.nb"]], "Item",ExpressionUUID->\
+"16c5c70c-39c2-4838-8e85-62f9ff3286d3"],
+
+Cell[TextData[ButtonBox["Open handouts folder",
+ BaseStyle->"Hyperlink",
+ Evaluator->Automatic,
+ Method->"Preemptive",
+ ButtonFunction:>Which[FileNameTake[
+     Directory[], {2, 2}] == "wolframcloud", 
+   SystemOpen[
+   "https://www.wolframcloud.com/obj/online-courses/Published/DEV212/DEV212-\
+ProgrammingAndDevelopment-Handout.zip"], FileNameTake[
+     NotebookDirectory[]] == "DEV212-ProgrammingAndDevelopment-Handout", 
+   SystemOpen[
+    NotebookDirectory[]], True, 
+   SystemOpen[
+   "https://www.wolframcloud.com/obj/online-courses/Published/DEV212/DEV212-\
+ProgrammingAndDevelopment-Handout.zip"]],
+ ButtonNote->"DEV212-ProgrammingAndDevelopment-Handout"]], "Item",ExpressionUU\
+ID->"5c746c96-efe0-463c-856a-74e96acaf8c3"]
+}, Open  ]]
+},
+Editable->True,
+Saveable->True,
+ScreenStyleEnvironment->"Working",
+WindowToolbars->{},
+WindowSize->{1024, 768},
+WindowMargins->{{0, Automatic}, {Automatic, 0}},
+WindowTitle->"Programming and Development: Table of Contents",
+DockedCells->Cell[
+  BoxData[
+   TagBox[
+    GridBox[{{
+       Cell[
+        BoxData[
+         ButtonBox[
+         "Programming and Development", Tooltip -> 
+          "Programming and Development in Wolfram Language: Wolfram U \
+Instructor Led Course", 
+          BaseStyle -> {
+           "Hyperlink", "DockedTitle", FontColor -> GrayLevel[1]}, ButtonData -> {
+            URL[
+            "https://www.wolfram.com/wolfram-u/courses/programming-\
+applications/programming-and-development-dev212"], None}, ButtonNote -> 
+          "https://www.wolfram.com/wolfram-u/courses/programming-applications/\
+programming-and-development-dev212"]], "DockedTitle", 
+        CellMargins -> {{0, 0}, {0, 0}}, 
+        StyleKeyMapping -> {"Tab" -> "Subtitle"}, 
+        CellGroupingRules -> {"TitleGrouping", 0}, PageBreakBelow -> False, 
+        CellFrameMargins -> {{20, 20}, {15, 15}}, LineSpacing -> {1, 4}, 
+        LanguageCategory -> "NaturalLanguage", CounterIncrements -> "Title", 
+        CounterAssignments -> {{"Section", 0}, {"Equation", 0}, {
+          "Figure", 0}, {"Subtitle", 0}, {"Subsubtitle", 0}, {"Item", 0}, {
+          "Subitem", 0}, {"Subsubitem", 0}, {"ItemNumbered", 0}, {
+          "SubitemNumbered", 0}, {"SubsubitemNumbered", 0}}, MenuSortingValue -> 
+        1100, MenuCommandKey :> First[{"1"}], FontFamily -> "Source Sans Pro",
+         FontSize -> 34, FontTracking -> -0.5, FontColor -> GrayLevel[1], 
+        Background -> 
+        RGBColor[
+         0.08627450980392157, 0.1568627450980392, 0.24705882352941178`], 
+        Alignment -> {Left, Center}], 
+       PaneBox[
+        TemplateBox[{
+          TagBox[
+           TooltipBox[
+            GraphicsBox[{
+              Thickness[0.0022222222222222222`], {
+               FaceForm[{
+                 RGBColor[1., 1., 1.], 
+                 Opacity[1.]}], 
+               
+               FilledCurveBox[{{{0, 2, 0}, {1, 3, 3}, {1, 3, 3}, {1, 3, 3}, {
+                1, 3, 3}, {0, 1, 0}, {1, 3, 3}, {1, 3, 3}, {1, 3, 3}, {1, 3, 
+                3}, {1, 3, 3}, {1, 3, 3}, {0, 1, 0}, {0, 1, 0}, {0, 1, 0}, {0,
+                 1, 0}, {0, 1, 0}, {1, 3, 3}, {1, 3, 3}, {1, 3, 3}, {1, 3, 
+                3}, {0, 1, 0}, {0, 1, 0}, {0, 1, 0}, {0, 1, 0}, {0, 1, 0}, {0,
+                 1, 0}, {1, 3, 3}, {1, 3, 3}, {1, 3, 3}, {1, 3, 3}, {0, 1, 
+                0}, {0, 1, 0}, {0, 1, 0}, {0, 1, 0}, {0, 1, 0}, {1, 3, 3}, {1,
+                 3, 3}, {1, 3, 3}, {1, 3, 3}, {0, 1, 0}, {1, 3, 3}, {1, 3, 
+                3}, {1, 3, 3}, {1, 3, 3}, {0, 1, 0}, {0, 1, 
+                0}}}, CompressedData["
+1:eJxtlTFo20AUhtUGAoVsgUC3dvEcEBQ8xciOQsAgpZ4sbCHrUpEh0EHQ2ZOh
+kM1LtBkKmrIFAtkEgUBBQ8AQ8ObJEMiWKZAhL/p/YZ2wwZy+e/+9+9+7s/w9
+/P3z15ZhGJ/keyrfz0bxCaKboCXjWTQ5+Rhb5nT0MWb5zhH4X8FB1LDB1wXL
+0yHGjPGog3U511+0Mf9Izi3olyPkMQueJU8Fj5OFhfkXbX2Wv5G7Hei/hPR3
+iPx7IeYX5EZIX/R7R33XQfw+pF+NZT8Hef4znjr0XebTOIhWDuYfyNsu9pvT
+z1eNxVct3qzFbZf9Knjf7GksTzWeubqfexd5b0t/1KfUGyeI/y34Id/heSuN
+xddGlifyk9rEpV581Pimxqliv7g+UVV/cg4K868u5sdc/8x6/jC+YP3nqlq/
+1EP9FfvRZ3zCfK6q9nOWHCv022S8pZDnxcG4W/bvAByPdO4FZN6niV+Ni2JY
+ZTkfD/669H/lYf+Y+8/IU9Yz9dg31j/xoMsYj6mfc33A+JL5u161f/K786r9
+lXtKPfovH+63TV72dc40Fn8b+TJJqA+Gm7jUy+9YYznHQS3foOpXzntQq4/6
+8v43qU80Xp83uOz/Wt8sz5/5Guy3PUB/d7X91vejx/wZ3x8J61nZ4Nsh6+T7
+aM77gPdnlj8PMR93WLePMW1D963gcbSyoDN5v1oW/fn0Y2G/PuNZm3l9+uL7
++YL6mO/L1GddNvvIuHkE/qH9P2j/F++mXnJA
+                "]]}, {
+               FaceForm[{
+                 RGBColor[1., 1., 1.], 
+                 Opacity[1.]}], 
+               
+               FilledCurveBox[{{{1, 4, 3}, {1, 3, 3}, {1, 3, 3}, {1, 3, 3}, {
+                1, 3, 3}, {1, 3, 3}, {1, 3, 3}, {1, 3, 3}, {1, 3, 3}, {1, 3, 
+                3}, {1, 3, 3}, {1, 3, 3}, {1, 3, 3}, {1, 3, 3}, {1, 3, 3}, {1,
+                 3, 3}}, {{1, 4, 3}, {1, 3, 3}, {1, 3, 3}, {1, 3, 3}, {1, 3, 
+                3}, {1, 3, 3}, {1, 3, 3}, {1, 3, 3}, {1, 3, 3}, {1, 3, 3}, {1,
+                 3, 3}, {1, 3, 3}, {1, 3, 3}, {1, 3, 3}, {1, 3, 3}, {1, 3, 
+                3}}}, CompressedData["
+1:eJxtVD1IHFEQfkQIBFLYCjYhIARswlWCmKfn3+np7dnZSXj73hUHEWwtrkqV
+QhCE7bYSAnap0r3K6hVWgp1wIAgphICQzrmdb3LzQhaW4dv5n/lm333+clDO
+GGNe0fsRkp4j7weWZcdm+GFrIuvqsMHGjDYn0rbawHaD9R+AzTr7vR6w3e81
+1t+FiYzpLfD3Bo/8wir7HQe2P7GIFxDP8vexB/7E8S+ARyscdznDxtyXuf5b
+mftvCraQYm9Zf+10fXVVOV1/TEOX99dxun/bajk9n5jmnZ6fMbOO8/B8BVP/
+HY3p2dX+tIeujk917en8NOd9XR/F7+n6aa+F7o/sC4430/R/kxb7iAc87HMd
+Z8BXfbYfN3jgr6G3XmPK9w9+BL7sc32LIY9/HHT+mK6Crk/4I/XX1RvhZw/x
+Brp/4ed0PszfmLpdxBF+7mgs/KdK3P8w7X+bv98CJ9zDGPuKGyyf4H8p9wB+
+xTbbvxf+tTE/YLuGvCXb/VhleV6iftxLbPDIP+Be/og98JLXOKbTDJP02p/u
+xev41GfI87eCrs+YQu6zzfbDoPujyEH3T/cnevwvKtkv7qGW/8O2xtP51+K/
+o/3p6er45L+n89fVnNyD6Ht5/bGn+6O5Ffx9Fvm/Fno+dfWz0PO7Sb8KPV/a
+M/i+lOEj/1xqLPsTf9mvxJf9T/P/5QfshT9c/5RfBv09Od2/8FPmI/yV+Qm/
+Zb4Z/18AiE9a0w==
+                "]]}, {
+               FaceForm[{
+                 RGBColor[1., 1., 1.], 
+                 Opacity[1.]}], 
+               
+               FilledCurveBox[{{{0, 2, 0}, {0, 1, 0}, {1, 3, 3}, {1, 3, 3}, {
+                1, 3, 3}, {1, 3, 3}, {0, 1, 0}, {1, 3, 3}, {1, 3, 3}, {1, 3, 
+                3}, {1, 3, 3}, {0, 1, 0}, {0, 1, 0}, {0, 1, 0}, {0, 1, 0}, {0,
+                 1, 0}, {1, 3, 3}, {1, 3, 3}, {1, 3, 3}, {1, 3, 3}, {0, 1, 
+                0}, {0, 1, 0}, {1, 3, 3}, {1, 3, 3}, {1, 3, 3}, {1, 3, 3}, {0,
+                 1, 0}, {0, 1, 0}, {0, 1, 0}, {0, 1, 0}}}, CompressedData["
+1:eJxtkz1LA0EQhlcFQbAQUqVTAqkPFlIJuUvQemMXsDgEF+8DFAKCYJFKEOxS
+bZcqlV0qweJ+wBWBgGAXEALW16ZwvXkXd4IHy96z887szNzcydXtxfWeEGLH
+rq5du6J+Qrm8Cem1G3o81rPwd5+ab8ZFuWEsxFHicyhbCe1zsExIV4D7pDef
+8Fewi4jiXyJeu+ZYa+iHEenuwAb2excP/o+4X/Z8tvkxXpSHyudYnyuq96Hm
+QI6Uf18gJ7An4Lny812UpeL1rJRfbyArxfshBn6/Yr0Pbrj8BtAxdt/Dsfte
+22yVA4r7kf7Hf/ELxkX5ynhqzBY/p36+tv+pX4/tT+rXa/sD/dr1B/alQt9T
+8nuD/tTlC3sHPIZ/AP2QsRDHjMd6jXl9yXyO9Szj9veM+lZhHhdkN82Izr8y
+Og/BFfQjzNsGPI8or4McOugbYJrHqWnmqKeHvHOKU/ZI18qh61O+7Zx2De4g
+3uiM9gnjWD8hPv+fa/4BI1HiVA==
+                "]]}, {
+               FaceForm[{
+                 RGBColor[1., 1., 1.], 
+                 Opacity[1.]}], 
+               
+               FilledCurveBox[{{{0, 2, 0}, {0, 1, 0}, {0, 1, 0}, {0, 1, 0}, {
+                0, 1, 0}, {1, 3, 3}, {1, 3, 3}, {1, 3, 3}, {1, 3, 3}, {0, 1, 
+                0}, {0, 1, 0}, {0, 1, 0}, {0, 1, 0}, {0, 1, 0}, {1, 3, 3}, {1,
+                 3, 3}, {1, 3, 3}, {1, 3, 3}, {0, 1, 0}, {1, 3, 3}, {1, 3, 
+                3}, {1, 3, 3}, {1, 3, 3}, {0, 1, 0}, {0, 1, 0}, {0, 1, 0}, {0,
+                 1, 0}, {0, 1, 0}, {0, 1, 0}, {1, 3, 3}, {1, 3, 3}, {1, 3, 
+                3}, {1, 3, 3}, {0, 1, 0}}}, CompressedData["
+1:eJxtlL9Lw0AUx68KguAgCEIRhKIIboVMTl7qoiD2qovdgmC2mExCt4Dg5CAI
+4m2BgiA4FJwKHQJOQoaAU8HBP6BDoZObZ9/38F3pwXF88n7ce9/jpXYRn14u
+CiEqZh+YvSCmS3o3V9KcZTFSknGmh0d/ZxCuJ/NYiPSQ+89yGj43OEvPa1D8
+Ldn10Ke4e7D2yf4IbvsU10W+Hfj3cJ+Ycl4MbD5JXMCeg79w/5uk72NbH1jE
+nE1/sWtXc9msfdJlN5rH//7SYemdORyE4QxfR7xeo1fE+zH6ROgT+brwn+C+
+HuXTVZ/q6SNeQs93cAr7h80PfUvkX2lwNv4OZ7qqOJfFsUJdsHcUvy/TGvYB
+uK94vXXvU/F+hPhWvN+6N1Fcj0z/KK6XWS2uZxAutbjelu17WLbvNctPWtv4
+hLMQ55iH9gn8Hc6L7YTOuybFb9n5adJZS6ifNdS/Cfse+t+w+WC389eBXquI
+f1D0fTkh/V/BFcxnDv9xzPU18xBzfc37xBQ/QvyLw87/4Rfi3/f7
+                "]]}, {
+               FaceForm[{
+                 RGBColor[1., 1., 1.], 
+                 Opacity[1.]}], 
+               
+               FilledCurveBox[{{{1, 4, 3}, {1, 3, 3}, {0, 1, 0}, {0, 1, 0}, {
+                 0, 1, 0}, {1, 3, 3}, {1, 3, 3}, {1, 3, 3}, {1, 3, 3}, {0, 1, 
+                 0}, {0, 1, 0}, {0, 1, 0}, {1, 3, 3}, {1, 3, 3}, {1, 3, 3}, {
+                 1, 3, 3}, {0, 1, 0}, {0, 1, 0}, {0, 1, 0}, {0, 1, 0}, {0, 1, 
+                 0}, {1, 3, 3}, {1, 3, 3}, {1, 3, 3}, {1, 3, 3}, {0, 1, 0}, {
+                 1, 3, 3}, {1, 3, 3}, {1, 3, 3}, {1, 3, 3}, {0, 1, 0}, {0, 1, 
+                 0}, {0, 1, 0}, {1, 3, 3}, {1, 3, 3}, {1, 3, 3}, {1, 3, 3}, {
+                 1, 3, 3}, {1, 3, 3}, {0, 1, 0}}, {{0, 2, 0}, {1, 3, 3}, {1, 
+                 3, 3}, {1, 3, 3}, {1, 3, 3}, {1, 3, 3}, {1, 3, 3}, {1, 3, 
+                 3}, {1, 3, 3}, {0, 1, 0}, {0, 1, 0}, {0, 1, 
+                 0}}}, {CompressedData["
+1:eJxtlD9IHEEUxgeLVEcqm2sEmzSBIEyaEPBmr7p/6l4MQSHIonHhmrh7abTT
+xkaxCsHpNgRsLLUJhLCVEFhFCAREi0BADFxx4Sq7jPe+h2/kBpbhNzPvzfe+
+2ZnJ5bVXq2NKqUX33fWuZbbTNa7ftBdVMxxZB5eHHMXbQ86L3YD6j0M2WgfU
+f+F4Q3xEHB8Yij/xOLM/RrJrFcr/zePMfvbY6B3WV5F6ldaIf0d82sL8AtZb
+xDex/3WF9E2DnxiKfw6OUc9T1HsEvZOsJyAuY/5DQPkegwfgTyn8qlH+1kh2
+O1Yl3/s/i/kcfs/zeuR/AzY4n7cp9SWsX8F+A+jvYL4Ap5wfvJH69W6RHpyX
+899j9z947CJGssL5OU5G8X3+Q4/z4tjjKP7+gE8SqTeKzxJZTxT/SmS9eXGV
+SD+M/pPA74DibhLfz14i/Vaqz/nh7wD5S1XJfJ7M7j8JJZ8XrZDG/2F+I5T7
+ZdZi/i/4ayj1TumfoaxHqd+hrHdKD0LpR2ZvQ+mXa23pZxQ/aku/mfk8mPm8
+HvK+tci3l0o2+tLjvBjH/YnapOtFl/zoQd9SV/rh/s8ujR/MSc7sxYzP5Rla
+957vY4s4Rvx108+/2CQ9rzlfg3TVOL5B/Uu8f6UGxT/j96BOPMHrwXz/dR0+
+83tQI+7z/avRvuL9/Q8PwFRN
+                 "], CompressedData["
+1:eJxTTMoPSmViYGCQBWIQDQQJaX6FDmBWgyeIPnCmB4WfkLYMTX4PmL9g5kyo
+/Dmo/AFPCP0AzHcw/gxV/wbKN/aCyP8ohNrjBTGHsQhizjMon7MIQkd6Q8T5
+YPLeEHOEiyB0sQ/EHJEiCM3ji8o/g8bv8YOYKwg1T80fqg9q3mZ/iPs4oPZL
+BkD4DGC+gXFwAET9F6j/KwMg9MtCaDgFQMy5DQsPqPzJQoj+y1DzdkDVP4Oq
+XwzmXzjzBqq+E4V/4IwPVj4ifpDiDwD9RnX7
+                 "]}]}, {
+               FaceForm[{
+                 RGBColor[1., 1., 1.], 
+                 Opacity[1.]}], 
+               
+               FilledCurveBox[{{{0, 2, 0}, {1, 3, 3}, {1, 3, 3}, {1, 3, 3}, {
+                 1, 3, 3}, {0, 1, 0}, {0, 1, 0}, {0, 1, 0}, {0, 1, 0}, {0, 1, 
+                 0}, {1, 3, 3}, {1, 3, 3}, {1, 3, 3}, {1, 3, 3}, {0, 1, 0}, {
+                 0, 1, 0}, {0, 1, 0}, {1, 3, 3}, {1, 3, 3}, {1, 3, 3}, {1, 3, 
+                 3}, {0, 1, 0}, {0, 1, 0}, {0, 1, 0}, {0, 1, 0}, {0, 1, 0}, {
+                 1, 3, 3}, {1, 3, 3}, {1, 3, 3}, {0, 1, 0}, {0, 1, 0}, {0, 1, 
+                 0}}, {{1, 4, 3}, {1, 3, 3}, {1, 3, 3}, {1, 3, 3}, {1, 3, 
+                 3}, {1, 3, 3}, {0, 1, 0}, {0, 1, 0}, {0, 1, 
+                 0}}}, {CompressedData["
+1:eJxtk7FKBDEQhqPdwTU24oIIhyIKIsiCIBYmUbY80EKwWwVTKribQhQ5sbEQ
+wTJd4OB68RDLa4V7AV/AWvAFzO78wWTZwDJ8yT9/JpNN7+zy6HyWMbbnviq6
+wdNhwV20Jsko3tfM03S/irm6q9mNmifTW/BEku6moPknSfnXNQ/MScxqNWI3
+Inb5ItzP7S9I9wj+5aR/8ftzihb+I04+44it+WzlqgsUf67a+F8/08jvNHgO
+9b2hnoWovlwt4XxTTrpl5H9Dv4Z+JYJ0G8jngvy3wAP0Z9v7C/LbhX9XIg/+
+StL8Afy/0O9Oib4dkl+/wfOa8v19JRr5qG8RbFBfT1MdBdZXdFz/ug7Pl6tN
+rDPUn+qwH9bs6LBfTqHjfmY67Lerv8HHEVtz2soM952ri7KN/f3y9CHiXI0i
+ZuyjDM/n2f2vorEuQ3YKSX7v8PP3NS4p0ntydUNP782aV++P/GfouxnND4s2
+rt/3H69t4mk=
+                 "], CompressedData["
+1:eJxTTMoPSmViYGAQA2IQDQQHzriUOIBpHx8Q7WBsDeYvmCnpC+Ebg/kJac+g
+fG2o/Ew/CF8Zpt8fQsuA+UAQAKElwHwD4+AAiDliUPPUAiD6hVHUL5gpWAIR
+3+wPUccHVZ/mDxHnhtrH4w/RxwHVf8APIs4C1V/sBzGPEeYfqPyfYqh6Xwj9
+oxhqvi9E/gtUnsEXIv6uGCLe4wOht0DlG9wh/JoSVD5SeAIAy/FP8g==
+                 "]}]}, {
+               FaceForm[{
+                 RGBColor[1., 1., 1.], 
+                 Opacity[1.]}], 
+               
+               FilledCurveBox[{{{0, 2, 0}, {0, 1, 0}, {1, 3, 3}, {1, 3, 3}, {
+                1, 3, 3}, {1, 3, 3}, {0, 1, 0}, {0, 1, 0}, {0, 1, 0}, {0, 1, 
+                0}, {0, 1, 0}, {1, 3, 3}, {1, 3, 3}, {1, 3, 3}, {1, 3, 3}, {0,
+                 1, 0}, {0, 1, 0}, {0, 1, 0}, {0, 1, 0}, {0, 1, 0}, {1, 3, 
+                3}, {1, 3, 3}, {1, 3, 3}, {1, 3, 3}, {0, 1, 0}, {1, 3, 3}, {1,
+                 3, 3}, {1, 3, 3}, {1, 3, 3}, {0, 1, 0}, {0, 1, 0}, {0, 1, 
+                0}, {0, 1, 0}, {0, 1, 0}, {0, 1, 0}, {0, 1, 0}, {0, 1, 0}, {1,
+                 3, 3}, {1, 3, 3}, {1, 3, 3}, {1, 3, 3}, {0, 1, 0}, {1, 3, 
+                3}, {1, 3, 3}, {1, 3, 3}, {1, 3, 3}, {0, 1, 0}, {0, 1, 0}, {0,
+                 1, 0}}}, CompressedData["
+1:eJxtlLFLHEEUxicKVvkHbARBhECKgwUrwdk7ESSHzHlVSLMILgYEr9m9TXdi
+e12aDFhsJYIiiE1CmgUhCG5xIAhiYyFB8TgUKzvHm++5b5ZbWGZ/8968ee+b
+Nzu9trW6Pi6E+GDeNfOOieEjvYO2tJ8LknEn3JNvYxAeOSzE7xJnJT5r2zgn
+4B7iZ4h3OeQsz6X1u4b/M/xvYP/o2/EW66Vvxztwx7frHig+/Pu0vmr3GyC/
+0OGK91O9jamedupP9VPMOctnhtzLu4pzR+uqw+Es4s/GqM+38T6Bu8jvM7iO
+eiqIN+nb9XMx1yPL5yke9KrFXF/pfYm5/tJrUn7gbw4HYehwqr+P5KL+3WgU
+F+e973Cqjx2W3t8Sn0Zu/ueIn4EvIl5vqq8irofpj4jrZfoD6yX0vgd3qB8o
+PvR+RHzbH8TG3+FUTyrOvbyurH4D2H8ovl+qNez/wX8Uz7fiXShej5lXvN6K
+96y4Hql+UVwv8zS4nkE40eB6E9N5ENN5lfmX1g07b/uh4Kk25mvIr83t5isZ
+xUX8rsPS23HY6OawEK2E12f2TXj9Ziax+veh31fYr6BPE/H+Qf8V+B/Cfxnc
+hX0JvIn1NewvHTb5OUz3/Z1x37N8MbEj3fdlMN33Orju83ypf6meor8Digfe
+gJ3+py3sT/cvofxwX7YdpvMgpvMqsyj9/4f8CjTreeM=
+                "]]}, {
+               FaceForm[{
+                 RGBColor[1., 1., 1.], 
+                 Opacity[1.]}], 
+               
+               FilledCurveBox[{{{1, 4, 3}, {1, 3, 3}, {1, 3, 3}, {1, 3, 3}, {
+                0, 1, 0}, {1, 3, 3}, {1, 3, 3}, {1, 3, 3}, {1, 3, 3}, {0, 1, 
+                0}, {0, 1, 0}, {0, 1, 0}, {0, 1, 0}, {0, 1, 0}, {1, 3, 3}, {1,
+                 3, 3}, {1, 3, 3}, {1, 3, 3}, {0, 1, 0}, {1, 3, 3}, {1, 3, 
+                3}, {1, 3, 3}, {1, 3, 3}, {1, 3, 3}, {1, 3, 3}, {1, 3, 3}, {1,
+                 3, 3}, {0, 1, 0}, {1, 3, 3}, {1, 3, 3}, {1, 3, 3}, {1, 3, 
+                3}, {0, 1, 0}, {0, 1, 0}, {0, 1, 0}, {0, 1, 0}, {0, 1, 0}, {1,
+                 3, 3}, {1, 3, 3}, {1, 3, 3}, {1, 3, 3}, {0, 1, 0}, {1, 3, 
+                3}, {1, 3, 3}, {1, 3, 3}, {1, 3, 3}}}, CompressedData["
+1:eJxtlT9oE1Ecx19VnEoXFwsOunQsgTd1qXeXxCnDRboEOhxSD8RAlYCYu1Aq
+QqcOgosHRQKF4FCEEigtOqQIXbyhkMUgiFAoCBmEQCGL+Gt+3x+8X8hBePm8
+7+/v+3P34Mnm46c3jTFz9Nuk3w0zeaL4V+LRuB3Hq9ejZ78o7uV7zFk2YfoH
+XnzI+obo4Ar8l7zrsZ2tgDsTjuIl0X2Odzdhv9xnfUHiBTx/K+H5uMj2JuG4
+tZLLnm2Utb4YunyeV0KO86/JejPkcQzOoF+BT+D/d8IF24f9nybP/w457wX0
+Efgn/MfgPuxNlfl7k/PcrrLdqWJjjhX38oOZ/CHLqjz/OZnFYu/Z/UTnyxKd
+753iKN5J3Hp7eStx+4niV1jPIdbnBfQB1ucZ4p2F7L8B+wPYR+Bd6OvgOvxr
+yO8ppvqm9bLLtP8lNx79K7r5PWvBdTmPgdsP6QGPb3H+Br67PjQDbkt+n/Mf
+yn3w2f8b4o08tvsh8TzOP1RMfaVav5e6/lG8zDruSzvzYV9DPSH0jo/+Ux7n
+A+wH4jXAL2F/GbD/65Tz8P2K4i3wZZHt36Tov+Qy3eOyywV7J9T6I+z3NvQG
+7kMKfh+6+Qu2G7r1nec57J+nPD+Q8wR9KOcH/iPwGuzH4Arql/tXVEzvJ8Wy
+3tNM9eI+zLdmsdjT09L+Vyoe7f9UPReqXupT9UPvD9kP9JND7+M+niFeD/6n
+sO/A/it4B/qJ7Df8j5B/RTE9iqnPssu0/zgPh9AreD9/Au8GbPcRnMt9wnm0
+eN9vgbs4/3XRwWs47/x9kf2S748x97le211lfQ7nm79f6vv2H6WjrZs=
+                "]]}, {
+               FaceForm[{
+                 RGBColor[1., 1., 1.], 
+                 Opacity[1.]}], 
+               
+               FilledCurveBox[{{{0, 2, 0}, {0, 1, 0}, {0, 1, 0}, {0, 1, 
+                0}}}, {{{37.099998474121094`, 33.400001525878906`}, {42., 
+                25.}, {42., 33.900001525878906`}, {36.900001525878906`, 
+                41.400001525878906`}, {37.099998474121094`, 
+                33.400001525878906`}}}]}, {
+               FaceForm[{
+                 RGBColor[1., 1., 1.], 
+                 Opacity[1.]}], 
+               
+               FilledCurveBox[{{{0, 2, 0}, {0, 1, 0}, {0, 1, 0}, {0, 1, 
+                0}}}, {{{31.899999618530273`, 56.900001525878906`}, {25.5, 
+                48.599998474121094`}, {35.5, 45.599998474121094`}, {41.5, 
+                53.70000076293945}, {31.899999618530273`, 
+                56.900001525878906`}}}]}, {
+               FaceForm[{
+                 RGBColor[1., 1., 1.], 
+                 Opacity[1.]}], 
+               
+               FilledCurveBox[{{{0, 2, 0}, {0, 1, 0}, {0, 1, 0}, {0, 1, 
+                0}}}, {{{26.100000381469727`, 40.400001525878906`}, {
+                24.899999618530273`, 29.300003051757812`}, {35.20000076293945,
+                 33.80000305175781}, {35., 43.29999923706055}, {
+                26.100000381469727`, 40.400001525878906`}}}]}, {
+               FaceForm[{
+                 RGBColor[1., 1., 1.], 
+                 Opacity[1.]}], 
+               
+               FilledCurveBox[{{{0, 2, 0}, {0, 1, 0}, {0, 1, 0}, {0, 1, 
+                0}}}, {{{43., 52.599998474121094`}, {37.099998474121094`, 
+                44.5}, {43., 35.900001525878906`}, {48.900001525878906`, 
+                44.5}, {43., 52.599998474121094`}}}]}, {
+               FaceForm[{
+                 RGBColor[1., 1., 1.], 
+                 Opacity[1.]}], 
+               
+               FilledCurveBox[{{{0, 2, 0}, {0, 1, 0}, {0, 1, 0}, {0, 1, 
+                0}}}, {{{53.79999923706055, 69.20000076293945}, {
+                43.900001525878906`, 65.70000076293945}, {43.900001525878906`,
+                 55.5}, {53.5, 58.70000076293945}, {53.79999923706055, 
+                69.20000076293945}}}]}, {
+               FaceForm[{
+                 RGBColor[1., 1., 1.], 
+                 Opacity[1.]}], 
+               
+               FilledCurveBox[{{{0, 2, 0}, {0, 1, 0}, {0, 1, 0}, {0, 1, 
+                0}}}, {{{51., 43.29999923706055}, {50.79999923706055, 
+                33.80000305175781}, {61., 29.300003051757812`}, {
+                59.900001525878906`, 40.400001525878906`}, {51., 
+                43.29999923706055}}}]}, {
+               FaceForm[{
+                 RGBColor[1., 1., 1.], 
+                 Opacity[1.]}], 
+               
+               FilledCurveBox[{{{0, 2, 0}, {0, 1, 0}, {0, 1, 0}, {0, 1, 
+                0}}}, {{{54.099998474121094`, 56.900001525878906`}, {44.5, 
+                53.70000076293945}, {50.400001525878906`, 
+                45.599998474121094`}, {60.5, 48.599998474121094`}, {
+                54.099998474121094`, 56.900001525878906`}}}]}, {
+               FaceForm[{
+                 RGBColor[1., 1., 1.], 
+                 Opacity[1.]}], 
+               
+               FilledCurveBox[{{{0, 2, 0}, {0, 1, 0}, {0, 1, 0}, {0, 1, 
+                0}}}, {{{42., 55.5}, {42., 65.70000076293945}, {
+                32.20000076293945, 69.20000076293945}, {32.5, 
+                58.70000076293945}, {42., 55.5}}}]}, {
+               FaceForm[{
+                 RGBColor[1., 1., 1.], 
+                 Opacity[1.]}], 
+               
+               FilledCurveBox[{{{0, 2, 0}, {0, 1, 0}, {0, 1, 0}, {0, 1, 
+                0}}}, {{{40.20000076293945, 68.29999923706055}, {
+                35.599998474121094`, 74.29999923706055}, {26.700000762939453`,
+                 78.20000076293945}, {31.799999237060547`, 
+                71.29999923706055}, {40.20000076293945, 
+                68.29999923706055}}}]}, {
+               FaceForm[{
+                 RGBColor[1., 1., 1.], 
+                 Opacity[1.]}], 
+               
+               FilledCurveBox[{{{0, 2, 0}, {0, 1, 0}, {0, 1, 0}, {0, 1, 
+                0}}}, {{{30.5, 61.099998474121094`}, {30.299999237060547`, 
+                70.20000076293945}, {25.100000381469727`, 
+                77.10000038146973}, {26.100000381469727`, 67.4000015258789}, {
+                30.5, 61.099998474121094`}}}]}, {
+               FaceForm[{
+                 RGBColor[1., 1., 1.], 
+                 Opacity[1.]}], 
+               
+               FilledCurveBox[{{{0, 2, 0}, {0, 1, 0}, {0, 1, 0}, {0, 1, 
+                0}}}, {{{28.799999237060547`, 56.}, {21.5, 
+                53.29999923706055}, {15.100000381469727`, 
+                46.099998474121094`}, {23.299999237060547`, 
+                48.900001525878906`}, {28.799999237060547`, 56.}}}]}, {
+               FaceForm[{
+                 RGBColor[1., 1., 1.], 
+                 Opacity[1.]}], 
+               
+               FilledCurveBox[{{{0, 2, 0}, {0, 1, 0}, {0, 1, 0}, {0, 1, 
+                0}}}, {{{30.100000381469727`, 58.5}, {24.799999237060547`, 
+                66.}, {13.800000190734863`, 63.599998474121094`}, {
+                21.299999237060547`, 55.20000076293945}, {30.100000381469727`,
+                 58.5}}}]}, {
+               FaceForm[{
+                 RGBColor[1., 1., 1.], 
+                 Opacity[1.]}], 
+               
+               FilledCurveBox[{{{0, 2, 0}, {0, 1, 0}, {0, 1, 0}, {0, 1, 
+                0}}}, {{{32.70000076293945, 44.5}, {23.899999618530273`, 
+                47.099998474121094`}, {15.5, 44.20000076293945}, {
+                25.100000381469727`, 42.099998474121094`}, {32.70000076293945,
+                 44.5}}}]}, {
+               FaceForm[{
+                 RGBColor[1., 1., 1.], 
+                 Opacity[1.]}], 
+               
+               FilledCurveBox[{{{0, 2, 0}, {0, 1, 0}, {0, 1, 0}, {0, 1, 
+                0}}}, {{{43.900001525878906`, 25.}, {48.900001525878906`, 
+                33.400001525878906`}, {49., 41.400001525878906`}, {
+                43.900001525878906`, 33.900001525878906`}, {
+                43.900001525878906`, 25.}}}]}, {
+               FaceForm[{
+                 RGBColor[1., 1., 1.], 
+                 Opacity[1.]}], 
+               
+               FilledCurveBox[{{{0, 2, 0}, {1, 3, 3}, {1, 3, 3}, {1, 3, 3}, {
+                 1, 3, 3}, {0, 1, 0}, {1, 3, 3}, {1, 3, 3}}, {{0, 2, 0}, {0, 
+                 1, 0}, {0, 1, 0}, {0, 1, 0}, {0, 1, 0}, {0, 1, 0}, {0, 1, 
+                 0}, {0, 1, 0}, {0, 1, 0}, {0, 1, 0}, {0, 1, 0}, {0, 1, 0}, {
+                 0, 1, 0}, {0, 1, 0}, {0, 1, 0}, {0, 1, 0}, {0, 1, 0}, {0, 1, 
+                 0}, {0, 1, 0}, {0, 1, 0}}}, CompressedData["
+1:eJxTTMoPSmVmYGBgAmJRKA0BIg5gKiHUAYnfMHOmHYh2MDbWA4sbG+uD6AUz
+Ix2gfCUQfeAMjyuYn5YmBlXvCjVHDKoewp81UxQiXwzhmxiLQuRnoslvRtN/
+E8V8oHovZPuB6gOR3Qe0PwTN/SHI/lsw8ydEPYNCOIQv6QvhO0RA6AZXZP6B
+M2eskflA83SQ9aOHH9A8TxB94QxPMNS9/lBzwe5ISHvmB6INjD8HQMx/EwTh
+G0P5PQFQc7yR5YHucEXWf+CMjwuy+Q1paVbI9oOciuwfYHgYQ/U7IssDw88M
+zD/rA9NvAfWvC0R9mgqEf8AVqt4YYj+PN7L8hTM6Acj6L5x5E4BiPsL/jhD/
+CgejhrdCGEb4AQAnYISO
+                "]]}, {
+               FaceForm[{
+                 RGBColor[1., 1., 1.], 
+                 Opacity[1.]}], 
+               
+               FilledCurveBox[{{{1, 4, 3}, {1, 3, 3}, {1, 3, 3}, {0, 1, 0}, {
+                 0, 1, 0}, {0, 1, 0}, {1, 3, 3}, {0, 1, 0}, {0, 1, 0}, {1, 3, 
+                 3}, {0, 1, 0}, {0, 1, 0}, {0, 1, 0}, {1, 3, 3}}, {{0, 2, 
+                 0}, {0, 1, 0}, {1, 3, 3}, {1, 3, 3}, {1, 3, 3}, {1, 3, 3}, {
+                 1, 3, 3}, {1, 3, 3}, {0, 1, 0}, {0, 1, 0}, {0, 1, 0}, {0, 1, 
+                 0}, {1, 3, 3}, {1, 3, 3}, {1, 3, 3}, {1, 3, 3}, {0, 1, 
+                 0}}}, {CompressedData["
+1:eJxTTMoPSmViYGCQBmIQDQQOxsIhDkA6I21ZmAOYPzkQRKeluUU4gFU0+IBo
+Y2PjSCjfFZXPYIvMT0hL0wfRZ874gPUfOHNGDNn8BTNnCkLkc8Kg8hwg2sTY
+OAxqHgOInjHzZyjUvG/2YP5NFD7QHbZQ/X/A/LNnbKD6NZHphLRndmA+1B0O
+xsUuyPbA/MNgYPzZHmxejxuavDeyfqCJQcjmHzjDA3YXg/FmG4h9amB+Q1qa
+LTLfxPhyKFQflP85FBIeO0Mg4aETBvVfCHL4oMQPANLHWh4=
+                 "], CompressedData["
+1:eJxTTMoPSmViYGBQA2IQDQYHQhyA5IyZM0MdkPhAYAeiHYw3Q/jGm21B9IKZ
+kkFg/tkz2iA6IU3NG8w/c0YGos/BDcrnIYbvYGyMxv/sCuabGHND7YfwZ8zk
+hPCLXaHqOaD6IfyMNC6ou12hNNS8zS6o5uPnJ6QtQ+EvmDnTHtl/B86c0UL2
+PxBwIIcPjN+Q9gyFb2D8OQSZb2I8ORRFP8OCUIj9aQIOYO/eDIX6TxSiXjgM
+Ki/lAPauWxjEPT4GIDot7Vk4VL0thH8sAmJugysyf8HMSB9kPtC8QGT9C2be
+DHYAe9cHar4ONH1IhkHkK6H+eICSXjLSlqHwwekJADolewo=
+                 "]}]}, {
+               FaceForm[{
+                 RGBColor[1., 1., 1.], 
+                 Opacity[1.]}], 
+               
+               FilledCurveBox[{{{0, 2, 0}, {0, 1, 0}, {0, 1, 0}, {0, 1, 
+                0}}}, {{{48.70000076293945, 75.10000038146973}, {43., 
+                84.79999923706055}, {37.29999923706055, 75.10000038146973}, {
+                43., 67.9000015258789}, {48.70000076293945, 
+                75.10000038146973}}}]}, {
+               FaceForm[{
+                 RGBColor[1., 1., 1.], 
+                 Opacity[1.]}], 
+               
+               FilledCurveBox[{{{0, 2, 0}, {0, 1, 0}, {0, 1, 0}, {0, 1, 
+                0}}}, {{{53.29999923706055, 44.5}, {60.79999923706055, 
+                42.099998474121094`}, {70.5, 44.20000076293945}, {
+                62.099998474121094`, 47.099998474121094`}, {53.29999923706055,
+                 44.5}}}]}, {
+               FaceForm[{
+                 RGBColor[1., 1., 1.], 
+                 Opacity[1.]}], 
+               
+               FilledCurveBox[{{{0, 2, 0}, {0, 1, 0}, {0, 1, 0}, {0, 1, 
+                0}}}, {{{54.20000076293945, 71.29999923706055}, {
+                59.29999923706055, 78.10000038146973}, {50.400001525878906`, 
+                74.29999923706055}, {45.70000076293945, 68.29999923706055}, {
+                54.20000076293945, 71.29999923706055}}}]}, {
+               FaceForm[{
+                 RGBColor[1., 1., 1.], 
+                 Opacity[1.]}], 
+               
+               FilledCurveBox[{{{0, 2, 0}, {0, 1, 0}, {0, 1, 0}, {0, 1, 
+                0}}}, {{{57.20000076293945, 56.}, {62.70000076293945, 
+                48.900001525878906`}, {70.9000015258789, 
+                46.099998474121094`}, {64.5, 53.29999923706055}, {
+                57.20000076293945, 56.}}}]}, {
+               FaceForm[{
+                 RGBColor[1., 1., 1.], 
+                 Opacity[1.]}], 
+               
+               FilledCurveBox[{{{0, 2, 0}, {0, 1, 0}, {0, 1, 0}, {0, 1, 
+                0}}}, {{{64.69999694824219, 55.20000076293945}, {
+                72.19999694824219, 63.599998474121094`}, {61.20000076293945, 
+                66.}, {55.900001525878906`, 58.5}, {64.69999694824219, 
+                55.20000076293945}}}]}, {
+               FaceForm[{
+                 RGBColor[1., 1., 1.], 
+                 Opacity[1.]}], 
+               
+               FilledCurveBox[{{{0, 2, 0}, {0, 1, 0}, {0, 1, 0}, {0, 1, 
+                0}}}, {{{55.5, 61.099998474121094`}, {59.900001525878906`, 
+                67.4000015258789}, {60.900001525878906`, 77.10000038146973}, {
+                55.70000076293945, 70.20000076293945}, {55.5, 
+                61.099998474121094`}}}]}}, {
+             ImageSize -> 170, AspectRatio -> Automatic, 
+              PlotRange -> {{0., 450.}, {0., 102.}}}], 
+            "\"Wolfram U: Learning Resources for the Computational \
+Universe\"", TooltipStyle -> "TextStyling"], 
+           Annotation[#, 
+            "Wolfram U: Learning Resources for the Computational Universe", 
+            "Tooltip"]& ], "https://www.wolfram.com/wolfram-u/"}, 
+         "HyperlinkURL"], ImageSize -> Full, Alignment -> {Right, Center}]}}, 
+     GridBoxAlignment -> {"Columns" -> {Left, Right}, "Rows" -> {{Center}}}, 
+     AutoDelete -> False, GridBoxItemSize -> {"Columns" -> {
+         Scaled[0.75], 
+         Scaled[0.25]}}, 
+     GridBoxSpacings -> {"Columns" -> {{Automatic}}, "Rows" -> {{0}}}], 
+    "Grid"]], "DockedTitle", CellMargins -> {{0, 0}, {0, 0}}, 
+  StyleKeyMapping -> {"Tab" -> "Subtitle"}, 
+  CellGroupingRules -> {"TitleGrouping", 0}, PageBreakBelow -> False, 
+  CellFrameMargins -> {{20, 20}, {15, 15}}, LineSpacing -> {1, 4}, 
+  LanguageCategory -> "NaturalLanguage", CounterIncrements -> "Title", 
+  CounterAssignments -> {{"Section", 0}, {"Equation", 0}, {"Figure", 0}, {
+    "Subtitle", 0}, {"Subsubtitle", 0}, {"Item", 0}, {"Subitem", 0}, {
+    "Subsubitem", 0}, {"ItemNumbered", 0}, {"SubitemNumbered", 0}, {
+    "SubsubitemNumbered", 0}}, MenuSortingValue -> 1100, MenuCommandKey :> 
+  First[{"1"}], FontFamily -> "Source Sans Pro", FontSize -> 34, 
+  FontTracking -> -0.5, FontColor -> GrayLevel[1], Background -> 
+  RGBColor[0.08627450980392157, 0.1568627450980392, 0.24705882352941178`]],
+ShowCellBracket->True,
+ShowCellTags->False,
+TrackCellChangeTimes->False,
+FrontEndVersion->"14.2 for Mac OS X x86 (64-bit) (March 16, 2025)",
+StyleDefinitions->Notebook[{
+   Cell[
+    StyleData[StyleDefinitions -> "Default.nb"]], 
+   Cell[
+    CellGroupData[{
+      Cell["Styles for Title and Section Cells", "Section"], 
+      Cell[
+       StyleData["Title"], CellMargins -> {{27, Inherited}, {10, 30}}, 
+       FontSize -> 40, FontColor -> RGBColor[
+         Rational[64, 255], 
+         Rational[25, 51], 
+         Rational[128, 255]]], 
+      Cell[
+       StyleData["DockedTitle", StyleDefinitions -> StyleData["Title"]], 
+       CellMargins -> {{0, 0}, {0, 0}}, 
+       CellFrameMargins -> {{20, 20}, {15, 15}}, FontSize -> 34, FontColor -> 
+       GrayLevel[1], Background -> RGBColor[
+         Rational[22, 255], 
+         Rational[8, 51], 
+         Rational[21, 85]]], 
+      Cell[
+       StyleData["Subtitle"], CellMargins -> {{27, Inherited}, {0, 20}}, 
+       FontSize -> 34, FontWeight -> 400, FontColor -> RGBColor[
+         Rational[22, 255], 
+         Rational[8, 51], 
+         Rational[21, 85]]], 
+      Cell[
+       StyleData["Subsubtitle"], CellMargins -> {{27, Inherited}, {0, 2}}, 
+       FontSize -> 20, FontWeight -> "Thin", FontSlant -> "Italic", FontColor -> 
+       RGBColor[
+         Rational[64, 255], 
+         Rational[25, 51], 
+         Rational[128, 255]]], 
+      Cell[
+       StyleData["Chapter"], FontSize -> 31, FontColor -> RGBColor[
+         Rational[22, 255], 
+         Rational[8, 51], 
+         Rational[21, 85]]], 
+      Cell[
+       StyleData["Section"], CellMargins -> {{27, Inherited}, {8, 25}}, 
+       CellFrameMargins -> {{7, 7}, {7, 22}}, CellFrameColor -> 
+       GrayLevel[0.8], FontColor -> RGBColor[
+         Rational[22, 255], 
+         Rational[8, 51], 
+         Rational[21, 85]]], 
+      Cell[
+       StyleData["Subsection"], CellMargins -> {{50, 3.}, {5., 10.}}, 
+       FontColor -> RGBColor[
+         Rational[64, 255], 
+         Rational[25, 51], 
+         Rational[128, 255]]], 
+      Cell[
+       StyleData[
+       "EmphasisSection", StyleDefinitions -> StyleData["Subsection"]], 
+       CellFrame -> {{0, 0}, {0, 3}}, CellFrameMargins -> {{8, 8}, {4, 6}}, 
+       CellFrameColor -> RGBColor[
+         Rational[64, 255], 
+         Rational[25, 51], 
+         Rational[128, 255]], FontSlant -> "Italic"], 
+      Cell[
+       StyleData["Subsubsection"], CellMargins -> {{50, 3.}, {8., 12.}}, 
+       CounterAssignments -> {{"Subsubsubsection", 0}, {"Item", 0}, {
+         "Subitem", 0}, {"Subsubitem", 0}, {"ItemNumbered", 0}, {
+         "SubitemNumbered", 0}, {"SubsubitemNumbered", 0}, {
+         "ItemRomanNumbered", 0}}, FontSize -> 15, FontWeight -> "Bold", 
+       FontVariations -> {"CapsType" -> "AllCaps"}, FontColor -> GrayLevel[
+         Rational[4, 15]]], 
+      Cell[
+       StyleData["Subsubsubsection"], CellMargins -> {{50, 3.}, {2., 10.}}, 
+       CounterAssignments -> {{"Subsubsubsubsection", 0}, {"Item", 0}, {
+         "Subitem", 0}, {"Subsubitem", 0}, {"ItemNumbered", 0}, {
+         "SubitemNumbered", 0}, {"SubsubitemNumbered", 0}, {
+         "ItemRomanNumbered", 0}}, FontWeight -> "Bold", FontColor -> RGBColor[
+         Rational[64, 255], 
+         Rational[25, 51], 
+         Rational[128, 255]]], 
+      Cell[
+       StyleData["Subsubsubsubsection"], CellMargins -> {{50, 3.}, {2., 10.}},
+        FontColor -> RGBColor[
+         Rational[64, 255], 
+         Rational[25, 51], 
+         Rational[128, 255]]], 
+      Cell[
+       CellGroupData[{
+         Cell[
+          StyleData["WolframULogo"], CellMargins -> {{27, 0}, {0, 25}}, 
+          CellGroupingRules -> "GraphicsGrouping", PageBreakWithin -> False], 
+         
+         Cell[
+          StyleData[
+          "WolframULogo", "SlideShow", StyleDefinitions -> 
+           StyleData["WolframULogo"]], 
+          CellFrameLabels -> {{None, None}, {None, None}}], 
+         Cell[
+          StyleData[
+          "WolframULogo", "Slideshow Working", StyleDefinitions -> 
+           StyleData["WolframULogo", "SlideShow"]]], 
+         Cell[
+          StyleData[
+          "WolframULogo", "Slideshow Presentation", StyleDefinitions -> 
+           StyleData["WolframULogo", "Slideshow Working"]]], 
+         Cell[
+          StyleData[
+          "WolframULogo", "Scrolling Presentation", StyleDefinitions -> 
+           StyleData["WolframULogo", "Slideshow Working"]], 
+          CellFrameLabels -> {{None, None}, {None, None}}]}, Closed]], 
+      Cell[
+       CellGroupData[{
+         Cell[
+          StyleData[
+          "TitleGraphic", StyleDefinitions -> StyleData["WolframULogo"]], 
+          StyleKeyMapping -> {"Tab" -> "Subtitle"}, 
+          CellGroupingRules -> {"TitleGrouping", 0}, PageBreakBelow -> False, 
+          LineSpacing -> {1, 4}, CounterIncrements -> "Title", 
+          CounterAssignments -> {{"Section", 0}, {"Equation", 0}, {
+            "Figure", 0}, {"Subtitle", 0}, {"Subsubtitle", 0}, {"Item", 0}, {
+            "Subitem", 0}, {"Subsubitem", 0}, {"ItemNumbered", 0}, {
+            "SubitemNumbered", 0}, {"SubsubitemNumbered", 0}}, 
+          FontTracking -> -0.5], 
+         Cell[
+          StyleData[
+          "TitleGraphic", "SlideShow", StyleDefinitions -> 
+           StyleData["TitleGraphic"]]], 
+         Cell[
+          StyleData[
+          "TitleGraphic", "Slideshow Working", StyleDefinitions -> 
+           StyleData["TitleGraphic", "SlideShow"]]], 
+         Cell[
+          StyleData[
+          "TitleGraphic", "Slideshow Presentation", StyleDefinitions -> 
+           StyleData["TitleGraphic", "SlideShow"]]], 
+         Cell[
+          StyleData[
+          "TitleGraphic", "Scrolling Presentation", StyleDefinitions -> 
+           StyleData["TitleGraphic", "SlideShow"]], 
+          CellFrameLabels -> {{None, None}, {None, None}}]}, Closed]]}, 
+     Closed]], 
+   Cell[
+    CellGroupData[{
+      Cell["Styles for Body Content", "Section"], 
+      Cell[
+       StyleData["Author"], CellMargins -> {{27, Inherited}, {0, 2}}, 
+       FontWeight -> "Thin", FontSlant -> "Italic"], 
+      Cell[
+       StyleData["Affiliation"], CellMargins -> {{27, Inherited}, {0, 2}}, 
+       FontWeight -> "Thin", FontSlant -> "Italic"], 
+      Cell[
+       StyleData["Text"], CellMargins -> {{50, 10}, {7, 8}}, FontColor -> 
+       GrayLevel[
+         Rational[83, 255]]], 
+      Cell[
+       StyleData["Reference"], CellMargins -> {{50, 10}, {3, 3}}, FontFamily -> 
+       "Source Sans Pro", FontSize -> 15, FontColor -> GrayLevel[
+         Rational[83, 255]]], 
+      Cell[
+       StyleData["MathCaption"], CellMargins -> {{50, 12}, {2, 24}}, 
+       FontFamily -> "Source Sans Pro", FontSize -> 15, FontColor -> GrayLevel[
+         Rational[83, 255]]], 
+      Cell[
+       StyleData[
+       "OpenCollapsedSection", StyleDefinitions -> StyleData["Text"]], 
+       CellMargins -> {{27, Inherited}, {8, 10}}, MenuSortingValue -> 10000, 
+       FontSize -> 11], 
+      Cell[
+       StyleData["CodeText"], CellMargins -> {{50, 10.}, {3., 15.}}], 
+      Cell[
+       StyleData["Item"], CellDingbat -> 
+       StyleBox["\[FilledSmallCircle]", FontColor -> RGBColor[
+           Rational[64, 255], 
+           Rational[25, 51], 
+           Rational[128, 255]], FontSize -> 12], FontColor -> GrayLevel[
+         Rational[83, 255]]], 
+      Cell[
+       StyleData["Subitem"], CellDingbat -> 
+       StyleBox["\[FilledSmallCircle]", FontColor -> RGBColor[
+           Rational[64, 255], 
+           Rational[25, 51], 
+           Rational[128, 255]], FontSize -> 12], FontColor -> GrayLevel[
+         Rational[83, 255]]], 
+      Cell[
+       StyleData["Subsubitem"], CellDingbat -> 
+       StyleBox["\[FilledSmallCircle]", FontColor -> RGBColor[
+           Rational[64, 255], 
+           Rational[25, 51], 
+           Rational[128, 255]], FontSize -> 12], 
+       StyleKeyMapping -> {
+        "Tab" -> "Subsubsubitem", "*" -> "Subsubsubitem", "Backspace" -> 
+         "Subitem", $CellContext`KeyEvent[
+          "Tab", $CellContext`Modifiers -> {"Shift"}] -> "Subitem"}, 
+       FontColor -> GrayLevel[
+         Rational[83, 255]]], 
+      Cell[
+       StyleData["Subsubsubitem"], CellDingbat -> 
+       StyleBox[
+        "\[FilledSmallCircle]", Alignment -> Baseline, FontColor -> RGBColor[
+           Rational[64, 255], 
+           Rational[25, 51], 
+           Rational[128, 255]], FontSize -> 12], 
+       CellMargins -> {{153, 12}, {4, 4}}, ReturnCreatesNewCell -> True, 
+       StyleKeyMapping -> {
+        "Backspace" -> 
+         "Subsubitem", $CellContext`KeyEvent[
+          "Tab", $CellContext`Modifiers -> {"Shift"}] -> "Subsubitem"}, 
+       CellGroupingRules -> {"ItemGrouping", 100}, CellFrameLabelMargins -> 4,
+        CounterIncrements -> "Subsubsubitem", MenuSortingValue -> 1630, 
+       FontFamily -> "Source Sans Pro", FontSize -> 12, FontColor -> GrayLevel[
+         Rational[83, 255]]], 
+      Cell[
+       StyleData["ItemNumbered"], FontColor -> GrayLevel[
+         Rational[83, 255]]], 
+      Cell[
+       StyleData["SubitemNumbered"], FontColor -> GrayLevel[
+         Rational[83, 255]]], 
+      Cell[
+       StyleData["SubsubitemNumbered"], 
+       StyleKeyMapping -> {
+        "Tab" -> "SubsubsubitemNumbered", "Backspace" -> 
+         "SubitemNumbered", $CellContext`KeyEvent[
+          "Tab", $CellContext`Modifiers -> {"Shift"}] -> "SubitemNumbered"}, 
+       FontColor -> GrayLevel[
+         Rational[83, 255]]], 
+      Cell[
+       StyleData["SubsubsubitemNumbered"], CellDingbat -> Cell[
+         TextData[{
+           CounterBox["ItemNumbered"], ".", 
+           CounterBox["SubitemNumbered"], ".", 
+           CounterBox["SubsubitemNumbered"], ".", 
+           CounterBox["SubsubsubitemNumbered"], "."}], FontWeight -> "Bold"], 
+       CellMargins -> {{153, 12}, {4, 4}}, ReturnCreatesNewCell -> True, 
+       StyleKeyMapping -> {
+        "Backspace" -> 
+         "SubsubitemNumbered", $CellContext`KeyEvent[
+          "Tab", $CellContext`Modifiers -> {"Shift"}] -> 
+         "SubsubitemNumbered"}, CellGroupingRules -> {"ItemGrouping", 100}, 
+       CellFrameLabelMargins -> 4, CounterIncrements -> 
+       "SubsubsubitemNumbered", MenuSortingValue -> 1630, FontFamily -> 
+       "Source Sans Pro", FontSize -> 12], 
+      Cell[
+       StyleData["ItemParagraph"], FontColor -> GrayLevel[
+         Rational[83, 255]]], 
+      Cell[
+       StyleData["SubitemParagraph"], FontColor -> GrayLevel[
+         Rational[83, 255]]], 
+      Cell[
+       StyleData["SubsubitemParagraph"], 
+       StyleKeyMapping -> {
+        "Tab" -> "SubsubsubitemParagraph", "Backspace" -> 
+         "SubitemParagraph", $CellContext`KeyEvent[
+          "Tab", $CellContext`Modifiers -> {"Shift"}] -> "SubitemParagraph"}, 
+       FontColor -> GrayLevel[
+         Rational[83, 255]]], 
+      Cell[
+       StyleData["SubsubsubitemParagraph"], 
+       CellMargins -> {{153, 12}, {4, 4}}, ReturnCreatesNewCell -> True, 
+       StyleKeyMapping -> {
+        "Backspace" -> 
+         "SubsubitemParagraph", $CellContext`KeyEvent[
+          "Tab", $CellContext`Modifiers -> {"Shift"}] -> 
+         "SubsubitemParagraph"}, CellGroupingRules -> {"ItemGrouping", 100}, 
+       CellFrameLabelMargins -> 4, CounterIncrements -> "Subsubsubitem", 
+       MenuSortingValue -> 1630, FontFamily -> "Source Sans Pro", FontSize -> 
+       12, FontColor -> GrayLevel[0.2]], 
+      Cell[
+       StyleData[
+       "ItemRomanNumbered", StyleDefinitions -> StyleData["ItemNumbered"]], 
+       CellDingbat -> Cell[
+         TextData[{
+           CounterBox["ItemRomanNumbered", CounterFunction -> RomanNumeral], 
+           "."}], FontWeight -> Bold], CounterIncrements -> 
+       "ItemRomanNumbered"], 
+      Cell[
+       StyleData["KeyEvent"], CellFrame -> {{1, 1}, {1, 1}}, 
+       CellFrameMargins -> {{2, 2}, {2, 2}}, CellFrameColor -> GrayLevel[0.8],
+        FontFamily -> "Source Sans Pro", FontColor -> GrayLevel[0.360784], 
+       Background -> GrayLevel[0.964706]], 
+      Cell[
+       StyleData["AuthorNote", StyleDefinitions -> StyleData["Text"]], 
+       CellDingbat -> 
+       StyleBox[
+        "Author note:", "Text", FontSlant -> "Italic", FontColor -> RGBColor[
+           Rational[64, 255], 
+           Rational[25, 51], 
+           Rational[128, 255]], Alignment -> Baseline], FontSlant -> "Italic",
+        FontColor -> GrayLevel[0.4]], 
+      Cell[
+       StyleData["HintHeader", StyleDefinitions -> StyleData["Text"]], 
+       ShowGroupOpener -> True, GroupOpenerInsideFrame -> False, 
+       CellGroupingRules -> {"SectionGrouping", 80}, PageBreakBelow -> False, 
+       FontColor -> RGBColor[
+         Rational[64, 255], 
+         Rational[25, 51], 
+         Rational[128, 255]]], 
+      Cell[
+       StyleData["Hint", StyleDefinitions -> StyleData["Text"]], CellFrame -> 
+       True, Background -> RGBColor[
+         Rational[173, 255], 
+         Rational[433, 510], 
+         Rational[421, 510]]], 
+      Cell[
+       StyleData["ExperimentalInput", StyleDefinitions -> StyleData["Input"]],
+        Editable -> True, CellFrame -> True, 
+       StyleKeyMapping -> {"=" -> "WolframAlphaShort", "*" -> "Item"}, 
+       CellFrameColor -> RGBColor[
+         Rational[91, 255], 
+         Rational[178, 255], 
+         Rational[166, 255]], CellFrameLabels -> {{
+          Cell[
+           BoxData[
+            RotationBox["Experimental", BoxRotation -> 1.5708]], "Text", 
+           FontSize -> 10, FontColor -> RGBColor[
+             Rational[91, 255], 
+             Rational[178, 255], 
+             Rational[166, 255]]], None}, {None, None}}], 
+      Cell[
+       StyleData["WolframLanguageLogo"], FontColor -> 
+       RGBColor[0.09, 0.16, 0.25]], 
+      Cell[
+       StyleData["Link"], FontColor -> RGBColor[
+         Rational[64, 255], 
+         Rational[25, 51], 
+         Rational[128, 255]]], 
+      Cell[
+       StyleData["HyperLink"], FontColor -> RGBColor[
+         Rational[64, 255], 
+         Rational[25, 51], 
+         Rational[128, 255]]], 
+      Cell[
+       StyleData["Hyperlink"], FontColor -> RGBColor[
+         Rational[64, 255], 
+         Rational[25, 51], 
+         Rational[128, 255]]], 
+      Cell[
+       StyleData["FunctionLink"], FontColor -> RGBColor[
+         Rational[64, 255], 
+         Rational[25, 51], 
+         Rational[128, 255]]], 
+      Cell[
+       StyleData["HyperlinkActionNew"], FontColor -> RGBColor[
+         Rational[64, 255], 
+         Rational[25, 51], 
+         Rational[128, 255]]], 
+      Cell[
+       StyleData["HyperlinkActive"], FontColor -> RGBColor[
+         Rational[91, 255], 
+         Rational[178, 255], 
+         Rational[166, 255]]], 
+      Cell[
+       StyleData["CYUButton", StyleDefinitions -> StyleData["Text"]], 
+       FontColor -> GrayLevel[1], FrameBoxOptions -> {Background -> RGBColor[
+           Rational[64, 255], 
+           Rational[25, 51], 
+           Rational[128, 255]], 
+         BaseStyle -> {"Text", FontColor -> GrayLevel[1]}, FrameStyle -> 
+         RGBColor[
+           Rational[64, 255], 
+           Rational[25, 51], 
+           Rational[128, 255]]}], 
+      Cell[
+       StyleData["HintButton", StyleDefinitions -> StyleData["Text"]], 
+       FontColor -> GrayLevel[1], FrameBoxOptions -> {Background -> RGBColor[
+           Rational[64, 255], 
+           Rational[25, 51], 
+           Rational[128, 255]], 
+         BaseStyle -> {"Text", FontColor -> GrayLevel[1]}, FrameStyle -> 
+         RGBColor[
+           Rational[64, 255], 
+           Rational[25, 51], 
+           Rational[128, 255]]}], 
+      Cell[
+       StyleData["SolutionButton", StyleDefinitions -> StyleData["Text"]], 
+       FontColor -> GrayLevel[1], FrameBoxOptions -> {Background -> RGBColor[
+           Rational[64, 255], 
+           Rational[25, 51], 
+           Rational[128, 255]], 
+         BaseStyle -> {"Text", FontColor -> GrayLevel[1]}, FrameStyle -> 
+         RGBColor[
+           Rational[64, 255], 
+           Rational[25, 51], 
+           Rational[128, 255]]}], 
+      Cell[
+       StyleData["CYUButtonActive", StyleDefinitions -> StyleData["Text"]], 
+       FontColor -> GrayLevel[1], 
+       FrameBoxOptions -> {
+        Background -> RGBColor[1, 0.4, 0], 
+         BaseStyle -> {"Text", FontColor -> GrayLevel[1]}, FrameStyle -> 
+         RGBColor[1, 0.4, 0]}], 
+      Cell[
+       StyleData["HintButtonActive", StyleDefinitions -> StyleData["Text"]], 
+       FontColor -> GrayLevel[1], 
+       FrameBoxOptions -> {
+        Background -> RGBColor[1, 0.4, 0], 
+         BaseStyle -> {"Text", FontColor -> GrayLevel[1]}, FrameStyle -> 
+         RGBColor[1, 0.4, 0]}], 
+      Cell[
+       StyleData[
+       "SolutionButtonActive", StyleDefinitions -> StyleData["Text"]], 
+       FontColor -> GrayLevel[1], 
+       FrameBoxOptions -> {
+        Background -> RGBColor[1, 0.4, 0], 
+         BaseStyle -> {"Text", FontColor -> GrayLevel[1]}, FrameStyle -> 
+         RGBColor[1, 0.4, 0]}]}, Closed]]}, Visible -> False, FrontEndVersion -> 
+  "14.2 for Mac OS X x86 (64-bit) (March 16, 2025)", StyleDefinitions -> 
+  "PrivateStylesheetFormatting.nb"],
+ExpressionUUID->"78bf99ab-8b62-4e7d-bfd1-c258e26ff6f8"
+]
+(* End of Notebook Content *)
+
+(* Internal cache information *)
+(*CellTagsOutline
+CellTagsIndex->{}
+*)
+(*CellTagsIndex
+CellTagsIndex->{}
+*)
+(*NotebookFileOutline
+Notebook[{
+Cell[CellGroupData[{
+Cell[636, 23, 92, 0, 62, "Subtitle",ExpressionUUID->"d0e8f1f1-f9ca-44cc-adc6-0bd932481f0e"],
+Cell[731, 25, 633, 15, 30, "Item",ExpressionUUID->"896d9221-b864-4068-8103-228d125b9673"],
+Cell[1367, 42, 613, 15, 30, "Item",ExpressionUUID->"e91914a8-a7bc-472c-a99f-483245f5395c"],
+Cell[1983, 59, 566, 14, 30, "Item",ExpressionUUID->"df3633de-1b2d-47bd-bb6a-cf023cdeac9f"],
+Cell[2552, 75, 605, 14, 30, "Item",ExpressionUUID->"2dd64447-e905-4dac-ace0-df21ce9b35e4"],
+Cell[3160, 91, 554, 14, 30, "Item",ExpressionUUID->"cb509aef-d8da-4af4-af55-fda3a47ae9e2"],
+Cell[3717, 107, 573, 14, 30, "Item",ExpressionUUID->"a827d1ab-24ae-46c5-827e-7f7069f98eb4"],
+Cell[4293, 123, 570, 14, 30, "Item",ExpressionUUID->"16c5c70c-39c2-4838-8e85-62f9ff3286d3"],
+Cell[4866, 139, 730, 16, 30, "Item",ExpressionUUID->"5c746c96-efe0-463c-856a-74e96acaf8c3"]
+}, Open  ]]
+}
+]
+*)
+
+(* End of internal cache information *)
+

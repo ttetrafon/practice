@@ -1,0 +1,1780 @@
+(* Content-type: application/vnd.wolfram.mathematica *)
+
+(*** Wolfram Notebook File ***)
+(* http://www.wolfram.com/nb *)
+
+(* CreatedBy='Mathematica 12.0' *)
+
+(*CacheID: 234*)
+(* Internal cache information:
+NotebookFileLineBreakTest
+NotebookFileLineBreakTest
+NotebookDataPosition[       158,          7]
+NotebookDataLength[     79486,       1772]
+NotebookOptionsPosition[     24172,        690]
+NotebookOutlinePosition[     71089,       1668]
+CellTagsIndexPosition[     71046,       1665]
+WindowTitle->Working with Data
+WindowFrame->Normal*)
+
+(* Beginning of Notebook Content *)
+Notebook[{
+
+Cell[CellGroupData[{
+Cell["Supplement: Working with Data", "Subtitle",ExpressionUUID->"6216d3e6-e4ad-41ed-b314-02204666a68a"],
+
+Cell[CellGroupData[{
+
+Cell["Learning Objectives", "Section",ExpressionUUID->"dbea5887-3b33-4dc2-9fcb-f0376e5ee8ad"],
+
+Cell[CellGroupData[{
+
+Cell["Working with Multiple Data Files", "Subsection",ExpressionUUID->"52ff05c7-a1a1-4319-82aa-cb06b604602c"],
+
+Cell["Learn to merge multiple files containing interrelated data", "Item",ExpressionUUID->"6ac6d8a1-d37a-428f-9d91-4ea55987ba51"],
+
+Cell["Query complex datasets with simple commands", "Item",ExpressionUUID->"a6ce294f-bdf0-438d-bc9a-8c951e41c89f"],
+
+Cell["\<\
+Create rich data visualizations and interfaces in a few lines of code\
+\>", "Item",ExpressionUUID->"fb96184e-105a-44bc-9fd9-420aa5b4484e"]
+}, Open  ]]
+}, Open  ]],
+
+Cell[CellGroupData[{
+
+Cell["Merging Multiple CSV Files", "Section",ExpressionUUID->"7dba0038-dc67-49e3-a196-e64ce43b829f"],
+
+Cell["It is quite simple to merge multiple files, e.g. CSVs.", "Text",ExpressionUUID->"6b6a7d90-2374-4d08-8f5a-8fc020eb3172"],
+
+Cell["Get the path to the folder containing the data:", "CodeText",ExpressionUUID->"f52d7797-8ebf-40ac-96c8-93f3aa71e67b"],
+
+Cell[BoxData[
+ RowBox[{"folder", "=", 
+  RowBox[{"FileNameJoin", "[", 
+   RowBox[{"{", 
+    RowBox[{
+     RowBox[{"NotebookDirectory", "[", "]"}], ",", "\"\<data\>\""}], "}"}], 
+   "]"}]}]], "Input",
+ CellLabel->"In[93]:=",ExpressionUUID->"0ea6d4ad-6e02-463b-b0c4-79a31f84c25c"],
+
+Cell["\<\
+Get the file names that start with \"2021-\" and end with \".csv\" from this \
+folder:\
+\>", "CodeText",ExpressionUUID->"59a51fd2-d1b0-4b8d-b5f7-f1eff2b77ef2"],
+
+Cell[BoxData[
+ RowBox[{"names", "=", 
+  RowBox[{"FileNameTake", "/@", 
+   RowBox[{"FileNames", "[", 
+    RowBox[{"\"\<2021-*.csv\>\"", ",", "folder"}], "]"}]}]}]], "Input",
+ CellLabel->"In[94]:=",ExpressionUUID->"11409f76-b17b-4df8-965f-84c6c23d2573"],
+
+Cell["\<\
+Before moving on, it is a good idea to examine one of these files in order to \
+understand its structure.\
+\>", "Text",ExpressionUUID->"bb11d3ea-0ee9-4006-92e1-d1dd8fe9ff5b"],
+
+Cell["Import a random CSV from the list:", "CodeText",ExpressionUUID->"ea48b461-ce46-4640-81ef-eb1fef6844a5"],
+
+Cell[BoxData[
+ RowBox[{"Import", "[", 
+  RowBox[{"FileNameJoin", "[", 
+   RowBox[{"{", 
+    RowBox[{"folder", ",", 
+     RowBox[{"RandomChoice", "[", "names", "]"}]}], "}"}], "]"}], 
+  "]"}]], "Input",
+ CellLabel->
+  "In[111]:=",ExpressionUUID->"c0d0db1c-3782-4621-b334-6ce816757186"],
+
+Cell["\<\
+It looks like this file has three columns described by a header row.\
+\>", "Text",ExpressionUUID->"653a5503-fc75-428a-ba41-04ba37dfdffe"],
+
+Cell["Check that this is the case for all of the files:", "CodeText",ExpressionUUID->"8cba955a-1d9d-4739-8a39-ba35c543c04b"],
+
+Cell[CellGroupData[{
+
+Cell[BoxData[
+ RowBox[{
+  RowBox[{
+   RowBox[{
+    RowBox[{"First", "@", 
+     RowBox[{"Import", "[", 
+      RowBox[{"FileNameJoin", "[", 
+       RowBox[{"{", 
+        RowBox[{"folder", ",", "#"}], "}"}], "]"}], "]"}]}], "&"}], "/@", 
+   "names"}], "//", "Union"}]], "Input",
+ CellLabel->
+  "In[114]:=",ExpressionUUID->"69557ad8-4a4b-47f0-bc0a-6cd17acd2a06"],
+
+Cell[BoxData[
+ RowBox[{"{", 
+  RowBox[{"{", 
+   RowBox[{"\<\"from\"\>", ",", "\<\"to\"\>", ",", "\<\"amount\"\>"}], "}"}], 
+  "}"}]], "Output",
+ CellLabel->
+  "Out[114]=",ExpressionUUID->"2fec85e2-8449-4002-802a-7e1b9b6c0fcd"]
+}, Open  ]],
+
+Cell["\<\
+The next thing to notice is that the amounts given are written using periods \
+for the thousands separators and commas for the decimal \
+separators\[LongDash]this will need to be addressed.\
+\>", "Text",ExpressionUUID->"de117acb-7f64-49d9-9411-caeec3b05c09"],
+
+Cell["\<\
+There are many ways to proceed. One such way is to write a function that will \
+take any given file name and return a list of associations where the headers \
+point to the values, which will also have been reformatted to match the \
+number formatting used in Wolfram Language.\
+\>", "Text",ExpressionUUID->"edac9349-fa2f-48d7-b8b3-3f7344953d35"],
+
+Cell["Write such a function:", "CodeText",ExpressionUUID->"5e0be779-6421-4452-a2b4-07bdbf0c2fc2"],
+
+Cell[BoxData[
+ RowBox[{
+  RowBox[{"dataReshaper", "[", "fileName_String", "]"}], ":=", 
+  RowBox[{"MapAt", "[", "\[IndentingNewLine]", 
+   RowBox[{
+    RowBox[{
+     RowBox[{"ToExpression", "@", 
+      RowBox[{"StringReplace", "[", 
+       RowBox[{"#", ",", 
+        RowBox[{"{", 
+         RowBox[{
+          RowBox[{"\"\<.\>\"", "->", "\"\<\>\""}], ",", 
+          RowBox[{"\"\<,\>\"", "->", "\"\<.\>\""}]}], "}"}]}], "]"}]}], "&"}],
+     ",", "\[IndentingNewLine]", 
+    RowBox[{"With", "[", "\[IndentingNewLine]", 
+     RowBox[{
+      RowBox[{"{", 
+       RowBox[{"csvData", "=", 
+        RowBox[{"Import", "[", 
+         RowBox[{"FileNameJoin", "[", 
+          RowBox[{"{", 
+           RowBox[{"folder", ",", "fileName"}], "}"}], "]"}], "]"}]}], "}"}], 
+      ",", "\[IndentingNewLine]", 
+      RowBox[{
+       RowBox[{
+        RowBox[{"AssociationThread", "[", 
+         RowBox[{
+          RowBox[{"First", "@", "csvData"}], "->", "#"}], "]"}], "&"}], "/@", 
+       
+       RowBox[{"Rest", "@", "csvData"}]}]}], "]"}], ",", 
+    "\[IndentingNewLine]", 
+    RowBox[{"{", 
+     RowBox[{"All", ",", "3"}], "}"}]}], "]"}]}]], "Input",
+ CellLabel->
+  "In[131]:=",ExpressionUUID->"58f41b1c-50b3-4b29-a160-438c8ff0f168"],
+
+Cell["Test it:", "CodeText",ExpressionUUID->"f1de415b-8a3d-4d98-a36a-ae1d0f3a5f55"],
+
+Cell[BoxData[
+ RowBox[{"dataReshaper", "[", 
+  RowBox[{"names", "[", 
+   RowBox[{"[", "1", "]"}], "]"}], "]"}]], "Input",
+ CellLabel->
+  "In[132]:=",ExpressionUUID->"1495a814-6b55-4908-ac4c-4b69bc6b7b1f"],
+
+Cell[TextData[{
+ "There is one more thing that this function could do that would be useful: \
+namely, each of the files corresponds to a different date, but that \
+information currently exists ",
+ StyleBox["only",
+  FontSlant->"Italic"],
+ " in the file name and not in the data itself."
+}], "Text",ExpressionUUID->"c11ee8b7-1f73-4c57-b0ef-2b892c2bac89"],
+
+Cell[TextData[{
+ "Update ",
+ StyleBox["dataReshaper", "Input"],
+ " to convert the file name to a date object and include it with each data \
+point:"
+}], "CodeText",ExpressionUUID->"dbe2cd85-f4d3-4e79-8095-6740ea6b5efc"],
+
+Cell[BoxData[
+ RowBox[{
+  RowBox[{"dataReshaperDated", "[", "fileName_String", "]"}], ":=", 
+  RowBox[{"MapAt", "[", "\[IndentingNewLine]", 
+   RowBox[{
+    RowBox[{
+     RowBox[{"ToExpression", "@", 
+      RowBox[{"StringReplace", "[", 
+       RowBox[{"#", ",", 
+        RowBox[{"{", 
+         RowBox[{
+          RowBox[{"\"\<.\>\"", "->", "\"\<\>\""}], ",", 
+          RowBox[{"\"\<,\>\"", "->", "\"\<.\>\""}]}], "}"}]}], "]"}]}], "&"}],
+     ",", "\[IndentingNewLine]", 
+    RowBox[{"With", "[", "\[IndentingNewLine]", 
+     RowBox[{
+      RowBox[{"{", 
+       RowBox[{"csvData", "=", 
+        RowBox[{"Import", "[", 
+         RowBox[{"FileNameJoin", "[", 
+          RowBox[{"{", 
+           RowBox[{"folder", ",", "fileName"}], "}"}], "]"}], "]"}]}], "}"}], 
+      ",", "\[IndentingNewLine]", 
+      RowBox[{
+       RowBox[{
+        RowBox[{"Append", "[", "\[IndentingNewLine]", 
+         RowBox[{
+          RowBox[{"AssociationThread", "[", 
+           RowBox[{
+            RowBox[{"First", "@", "csvData"}], "->", "#"}], "]"}], ",", 
+          "\[IndentingNewLine]", 
+          RowBox[{"\"\<date\>\"", "->", 
+           RowBox[{"DateObject", "[", 
+            RowBox[{"FileBaseName", "@", "fileName"}], "]"}]}]}], "]"}], 
+        "&"}], "\[IndentingNewLine]", "/@", 
+       RowBox[{"Rest", "@", "csvData"}]}]}], "]"}], ",", 
+    "\[IndentingNewLine]", 
+    RowBox[{"{", 
+     RowBox[{"All", ",", "3"}], "}"}]}], "]"}]}]], "Input",
+ CellLabel->
+  "In[133]:=",ExpressionUUID->"4de0a581-03a0-4b54-9116-73fed9990d74"],
+
+Cell["Test:", "CodeText",ExpressionUUID->"454d8ddc-9279-4a1d-999a-4f1de9007fdb"],
+
+Cell[BoxData[
+ RowBox[{"dataReshaperDated", "[", 
+  RowBox[{"names", "[", 
+   RowBox[{"[", "1", "]"}], "]"}], "]"}]], "Input",
+ CellLabel->
+  "In[134]:=",ExpressionUUID->"0da67d26-1697-471f-822c-36c2b657a3c3"],
+
+Cell["\<\
+Everything is now in good shape and the data from all of the CSVs can be \
+safely merged.\
+\>", "Text",ExpressionUUID->"f9a5f1ba-307b-4bf9-9391-0d17e7d71666"],
+
+Cell[TextData[{
+ "Map ",
+ Cell[BoxData[
+ "dataReshaperDated"], "Input",ExpressionUUID->
+  "4b0d5c1d-563e-4528-a5a5-344c60b21a4b"],
+ " across all of the file names, then apply ",
+ ButtonBox["Flatten",
+  BaseStyle->"Hyperlink",
+  ButtonData->{
+    URL["https://reference.wolfram.com/language/ref/Flatten.html"], None},
+  ButtonNote->"https://reference.wolfram.com/language/ref/Flatten.html"],
+ " to the result to create one list of associations:"
+}], "CodeText",ExpressionUUID->"f9afee6a-7db7-4212-b58b-6ecf6202babd"],
+
+Cell[BoxData[
+ RowBox[{"transactions", "=", 
+  RowBox[{"Flatten", "[", 
+   RowBox[{"dataReshaperDated", "/@", "names"}], "]"}]}]], "Input",
+ CellLabel->
+  "In[296]:=",ExpressionUUID->"076225a8-79cf-4cea-9ddf-dcab55412904"]
+}, Open  ]],
+
+Cell[CellGroupData[{
+
+Cell["Merging All Data", "Section",ExpressionUUID->"1d9f636f-913b-4315-a565-1ae21642ead2"],
+
+Cell["\<\
+With all of the transactions merged together, you can do a few basic things.\
+\>", "Text",ExpressionUUID->"e38d34dc-27e6-4bbb-913e-5144b40db8c4"],
+
+Cell["See who initiated the most outgoing transfers:", "CodeText",ExpressionUUID->"d625e988-242c-497a-944a-ed5a65a6e4d3"],
+
+Cell[BoxData[
+ RowBox[{"ReverseSort", "@", 
+  RowBox[{"Counts", "@", 
+   RowBox[{"transactions", "[", 
+    RowBox[{"[", 
+     RowBox[{"All", ",", "\"\<from\>\""}], "]"}], "]"}]}]}]], "Input",
+ CellLabel->
+  "In[148]:=",ExpressionUUID->"8a777cb3-88b8-4801-ae5c-995b2c01dd8d"],
+
+Cell["Compute the total amount transferred by date:", "CodeText",ExpressionUUID->"2b8ea784-300c-4719-8c78-054388b10bf8"],
+
+Cell[BoxData[
+ RowBox[{"DateListPlot", "[", 
+  RowBox[{"Total", "/@", 
+   RowBox[{
+    RowBox[{"GroupBy", "[", 
+     RowBox[{"transactions", ",", 
+      RowBox[{"#date", "&"}]}], "]"}], "[", 
+    RowBox[{"[", 
+     RowBox[{"All", ",", "All", ",", "\"\<amount\>\""}], "]"}], "]"}]}], 
+  "]"}]], "Input",
+ CellLabel->
+  "In[153]:=",ExpressionUUID->"c65498b7-bf15-4722-8441-b17abaff0c7b"],
+
+Cell["Create a graph structure of who transferred money to whom:", "CodeText",ExpressionUUID->"731a3260-8f5c-4874-af2f-9ad7e02fb3be"],
+
+Cell[BoxData[
+ RowBox[{"Graph", "[", 
+  RowBox[{"Rule", "@@@", 
+   RowBox[{"Values", "@", 
+    RowBox[{"transactions", "[", 
+     RowBox[{"[", 
+      RowBox[{"All", ",", 
+       RowBox[{"{", 
+        RowBox[{"\"\<from\>\"", ",", "\"\<to\>\""}], "}"}]}], "]"}], 
+     "]"}]}]}], "]"}]], "Input",
+ CellLabel->
+  "In[157]:=",ExpressionUUID->"04c0aaa0-c61c-480f-ba3d-68c29007f586"],
+
+Cell["\<\
+This is rather neat! However, there is another CSV in the data folder that \
+has not yet been used.\
+\>", "Text",ExpressionUUID->"d4843e38-eeff-44b1-b535-c331b8fbf3a8"],
+
+Cell["Find this file:", "CodeText",ExpressionUUID->"7b5974b5-f20e-4cac-bb2f-ae104197aa38"],
+
+Cell[CellGroupData[{
+
+Cell[BoxData[
+ RowBox[{"Complement", "[", 
+  RowBox[{
+   RowBox[{"FileNameTake", "/@", 
+    RowBox[{"FileNames", "[", 
+     RowBox[{"\"\<*.csv\>\"", ",", "folder"}], "]"}]}], ",", "names"}], 
+  "]"}]], "Input",
+ CellLabel->
+  "In[163]:=",ExpressionUUID->"8fdbcb7a-8c99-42a0-920b-8728e8902b0f"],
+
+Cell[BoxData[
+ RowBox[{"{", "\<\"persons.csv\"\>", "}"}]], "Output",
+ CellLabel->
+  "Out[163]=",ExpressionUUID->"ec5abd65-0e40-44b1-a9ad-d8e956f1ed0d"]
+}, Open  ]],
+
+Cell["Check what is in this CSV:", "CodeText",ExpressionUUID->"77cde1bf-f526-45cf-bca4-b908b8166fbd"],
+
+Cell[BoxData[
+ RowBox[{"Import", "[", 
+  RowBox[{"FileNameJoin", "[", 
+   RowBox[{"{", 
+    RowBox[{"folder", ",", " ", "\"\<persons.csv\>\""}], "}"}], "]"}], 
+  "]"}]], "Input",
+ CellLabel->
+  "In[164]:=",ExpressionUUID->"81d19f2e-e853-486c-bd21-26e91b610b9d"],
+
+Cell["\<\
+This file contains information about the people represented by the integers \
+in the \"from\" and \"to\" fields of the transaction CSVs. You can now \
+combine the full list of transactions with the information from this file to \
+get a more detailed picture of the data.\
+\>", "Text",ExpressionUUID->"52399757-cfdb-4be3-9b04-1ef24cb488e1"],
+
+Cell["\<\
+Before doing this combining, you should reshape this nested list as a list of \
+associations using the base code that was used on the prior CSVs:\
+\>", "Text",ExpressionUUID->"8afc3e21-d6ce-4d02-a4d4-624a3b7197f1"],
+
+Cell[BoxData[
+ RowBox[{"personData", "=", 
+  RowBox[{"With", "[", "\[IndentingNewLine]", 
+   RowBox[{
+    RowBox[{"{", 
+     RowBox[{"csvData", "=", 
+      RowBox[{"Import", "[", 
+       RowBox[{"FileNameJoin", "[", 
+        RowBox[{"{", 
+         RowBox[{"folder", ",", "\"\<persons.csv\>\""}], "}"}], "]"}], 
+       "]"}]}], "}"}], ",", "\[IndentingNewLine]", 
+    RowBox[{
+     RowBox[{
+      RowBox[{"AssociationThread", "[", 
+       RowBox[{
+        RowBox[{"First", "@", "csvData"}], "->", "#"}], "]"}], "&"}], "/@", 
+     RowBox[{"Rest", "@", "csvData"}]}]}], "]"}]}]], "Input",
+ CellLabel->
+  "In[297]:=",ExpressionUUID->"b0e49ca4-9995-4570-943e-b5eac6f1cae0"],
+
+Cell["\<\
+This will let you associate each transaction with the relevant parties. It \
+would be nice to add extra fields that specify each person's incoming and \
+outgoing transactions, now that you know who's who.\
+\>", "Text",ExpressionUUID->"85846a3c-2b67-4038-8292-84c11566020c"],
+
+Cell["\<\
+Write a function that will get the transactions associated with (\"to\" or \
+\"from\") a particular ID number:\
+\>", "CodeText",ExpressionUUID->"f3ced27c-f563-4dd7-a51a-48c6375dcb75"],
+
+Cell[BoxData[
+ RowBox[{
+  RowBox[{"getTransactions", "[", 
+   RowBox[{"id_", ",", "key_"}], "]"}], ":=", 
+  RowBox[{"Select", "[", 
+   RowBox[{"transactions", ",", 
+    RowBox[{
+     RowBox[{"id", "\[Equal]", 
+      RowBox[{"#", "[", "key", "]"}]}], "&"}]}], "]"}]}]], "Input",
+ CellLabel->
+  "In[298]:=",ExpressionUUID->"0ab0fabf-1019-4add-a413-385aa2ff817d"],
+
+Cell["Test:", "CodeText",ExpressionUUID->"cdc68cf6-5743-4e01-9f30-489afa440612"],
+
+Cell[BoxData[
+ RowBox[{"getTransactions", "[", 
+  RowBox[{"3", ",", "\"\<from\>\""}], "]"}]], "Input",
+ CellLabel->
+  "In[196]:=",ExpressionUUID->"8cd8cc89-8223-407f-bc20-3b1615883002"],
+
+Cell[TextData[{
+ "Go to each entry in ",
+ Cell[BoxData[
+ "personData"], "Input",ExpressionUUID->
+  "6c0d5558-5d7c-4f0d-b234-d5d683d0a7d6"],
+ " and add an \"outgoing\" and \"incoming\" field for the relevant \
+transactions:"
+}], "CodeText",ExpressionUUID->"977e312e-9db3-4d19-8cc3-2dbe35b345db"],
+
+Cell[BoxData[
+ RowBox[{"transactionsFull", "=", 
+  RowBox[{
+   RowBox[{
+    RowBox[{"Append", "[", 
+     RowBox[{"#", ",", 
+      RowBox[{"{", "\[IndentingNewLine]", 
+       RowBox[{
+        RowBox[{"\"\<outgoing\>\"", "->", 
+         RowBox[{"getTransactions", "[", 
+          RowBox[{"#id", ",", "\"\<from\>\""}], "]"}]}], ",", 
+        "\[IndentingNewLine]", 
+        RowBox[{"\"\<incoming\>\"", "->", 
+         RowBox[{"getTransactions", "[", 
+          RowBox[{"#id", ",", "\"\<to\>\""}], "]"}]}]}], 
+       "\[IndentingNewLine]", "}"}]}], "]"}], "&"}], "/@", 
+   "personData"}]}]], "Input",
+ CellLabel->
+  "In[299]:=",ExpressionUUID->"bb1ba0ab-ebca-44a3-9772-6506db4c85d6"],
+
+Cell["\<\
+One final step might be to replace the ID numbers with the names in these new \
+\"outgoing\" and \"incoming\" transaction fields.\
+\>", "Text",ExpressionUUID->"9973a5b7-54df-402f-ae7d-fd2d533e4c30"],
+
+Cell["\<\
+This can be done by first creating a mapping between ID numbers and names:\
+\>", "CodeText",ExpressionUUID->"64473b6b-ecc6-497c-a6c9-1232c5c685b6"],
+
+Cell[BoxData[
+ RowBox[{"idToName", "=", 
+  RowBox[{
+   RowBox[{
+    RowBox[{"#id", "->", "#fullname"}], "&"}], "/@", 
+   "personData"}]}]], "Input",
+ CellLabel->
+  "In[300]:=",ExpressionUUID->"752c80b1-3ed5-4edb-872b-0f12369b4520"],
+
+Cell["\<\
+This mapping can then be applied in the step where you append the \
+\"outgoing\" and \"incoming\" fields:\
+\>", "CodeText",ExpressionUUID->"d92ef16a-4ddf-471c-ab42-19407cd8a9b2"],
+
+Cell[BoxData[
+ RowBox[{"transactionsFullNamed", "=", 
+  RowBox[{
+   RowBox[{
+    RowBox[{"Append", "[", 
+     RowBox[{"#", ",", 
+      RowBox[{"{", "\[IndentingNewLine]", 
+       RowBox[{
+        RowBox[{"\"\<outgoing\>\"", " ", "->", 
+         RowBox[{"ReplaceAt", "[", 
+          RowBox[{
+           RowBox[{"getTransactions", "[", 
+            RowBox[{"#id", ",", "\"\<from\>\""}], "]"}], ",", "idToName", ",", 
+           RowBox[{"{", 
+            RowBox[{"All", ",", 
+             RowBox[{"1", ";;", "2"}]}], "}"}]}], "]"}]}], ",", 
+        "\[IndentingNewLine]", 
+        RowBox[{"\"\<incoming\>\"", " ", "->", " ", 
+         RowBox[{"ReplaceAt", "[", 
+          RowBox[{
+           RowBox[{"getTransactions", "[", 
+            RowBox[{"#id", ",", "\"\<to\>\""}], "]"}], ",", "idToName", ",", 
+           RowBox[{"{", 
+            RowBox[{"All", ",", 
+             RowBox[{"1", ";;", "2"}]}], "}"}]}], "]"}]}]}], 
+       "\[IndentingNewLine]", "}"}]}], "]"}], "&"}], "/@", 
+   "personData"}]}]], "Input",
+ CellLabel->
+  "In[301]:=",ExpressionUUID->"df39a828-7944-4e82-9980-04d009dc0c28"],
+
+Cell["Check your final dataset:", "Text",ExpressionUUID->"0818a197-ba32-462a-94c8-19626c98ee54"],
+
+Cell[BoxData[
+ RowBox[{"Dataset", "[", "transactionsFullNamed", "]"}]], "Input",
+ CellLabel->
+  "In[195]:=",ExpressionUUID->"1b4b0fe5-ebe4-433c-b182-1cd3b7c90fbd"]
+}, Open  ]],
+
+Cell[CellGroupData[{
+
+Cell["Querying the Data", "Section",ExpressionUUID->"050a96df-a82e-4503-827f-dd8d6128fc74"],
+
+Cell["\<\
+With the dataset fully now fully fleshed out, you can query it in more \
+meaningful ways.\
+\>", "Text",ExpressionUUID->"334b0572-e00d-4466-b8d3-217713f7c3f8"],
+
+Cell["Check all of the information for ID number 1:", "CodeText",ExpressionUUID->"f7d0390f-a1c1-4f81-b611-be846c444e46"],
+
+Cell[BoxData[
+ RowBox[{
+  RowBox[{"Dataset", "[", "transactionsFullNamed", "]"}], "[", 
+  RowBox[{"[", "1", "]"}], "]"}]], "Input",
+ CellLabel->
+  "In[199]:=",ExpressionUUID->"8b68fae2-6e21-4cad-88f6-d61b9459db9f"],
+
+Cell["Check all of Deanna's outgoing transaction amounts:", "CodeText",ExpressionUUID->"5f3543fd-7bab-469e-8679-aa045f9a0038"],
+
+Cell[BoxData[
+ RowBox[{
+  RowBox[{"Dataset", "[", "transactionsFullNamed", "]"}], "[", 
+  RowBox[{"[", 
+   RowBox[{"1", ",", "\"\<outgoing\>\"", ",", "All", ",", "\"\<amount\>\""}], 
+   "]"}], "]"}]], "Input",ExpressionUUID->"51317a53-3a5f-4160-80a6-\
+87b9d5d136ea"],
+
+Cell["See all of Megan Campbell's information:", "CodeText",ExpressionUUID->"70f2b0a3-f2a7-4727-bb5a-347318ddc199"],
+
+Cell[BoxData[
+ RowBox[{"Dataset", "@", 
+  RowBox[{"Select", "[", 
+   RowBox[{"transactionsFullNamed", ",", 
+    RowBox[{
+     RowBox[{"#fullname", "==", "\"\<Megan Campbell\>\""}], "&"}]}], 
+   "]"}]}]], "Input",
+ CellLabel->
+  "In[208]:=",ExpressionUUID->"ae6d9fff-95ec-46ab-8918-c39d9d44f8d6"],
+
+Cell["Count the number of transactions by date:", "CodeText",ExpressionUUID->"8ea8e1be-c7a4-4caa-9128-019d9421eea2"],
+
+Cell[BoxData[
+ RowBox[{"ReverseSort", "@", 
+  RowBox[{"CountsBy", "[", 
+   RowBox[{
+    RowBox[{"Flatten", "@", 
+     RowBox[{"transactionsFullNamed", "[", 
+      RowBox[{"[", 
+       RowBox[{"All", ",", "\"\<incoming\>\""}], "]"}], "]"}]}], ",", 
+    RowBox[{"#date", "&"}]}], "]"}]}]], "Input",
+ CellLabel->
+  "In[342]:=",ExpressionUUID->"948b9450-ab15-4152-a3ff-3e84fd4de78c"]
+}, Open  ]],
+
+Cell[CellGroupData[{
+
+Cell["Visualizing Data", "Section",ExpressionUUID->"36a539ff-d018-4414-af0b-ca32c6ff87ce"],
+
+Cell["Visualizations are fairly simple to make as well.", "Text",ExpressionUUID->"751325cf-7bb4-4ca9-aa43-701e76fe6406"],
+
+Cell["\<\
+Make a chart of the total outgoing transaction amounts labeled by name:\
+\>", "CodeText",ExpressionUUID->"2b62f38a-b786-4352-aacc-b38eaa41f6d3"],
+
+Cell[BoxData[
+ RowBox[{"PieChart", "[", "\[IndentingNewLine]", 
+  RowBox[{
+   RowBox[{
+    RowBox[{
+     RowBox[{"Total", "[", 
+      RowBox[{"#", "[", 
+       RowBox[{"[", 
+        RowBox[{"\"\<outgoing\>\"", ",", "All", ",", "\"\<amount\>\""}], 
+        "]"}], "]"}], "]"}], "&"}], "/@", "transactionsFullNamed"}], ",", 
+   "\[IndentingNewLine]", 
+   RowBox[{"ChartLabels", "\[Rule]", 
+    RowBox[{"transactionsFullNamed", "[", 
+     RowBox[{"[", 
+      RowBox[{"All", ",", "\"\<fullname\>\""}], "]"}], "]"}]}]}], 
+  "\[IndentingNewLine]", "]"}]], "Input",
+ CellLabel->
+  "In[205]:=",ExpressionUUID->"3d82e5bd-d361-4be9-acbb-2b4d5e19d3ca"],
+
+Cell["Recreate the graph from before, now with appropriate names:", "CodeText",ExpressionUUID->"7ac39927-7886-497d-ab7f-d5dd2661aa32"],
+
+Cell[BoxData[
+ RowBox[{"Graph", "[", 
+  RowBox[{
+   RowBox[{
+    RowBox[{
+     RowBox[{"#from", "->", "#to"}], "&"}], "/@", 
+    RowBox[{"Flatten", "[", 
+     RowBox[{"transactionsFullNamed", "[", 
+      RowBox[{"[", 
+       RowBox[{"All", ",", "\"\<incoming\>\""}], "]"}], "]"}], "]"}]}], ",", 
+   "\[IndentingNewLine]", 
+   RowBox[{"VertexLabels", "->", 
+    RowBox[{"Placed", "[", 
+     RowBox[{"\"\<Name\>\"", ",", "Tooltip"}], "]"}]}]}], "]"}]], "Input",
+ CellLabel->
+  "In[617]:=",ExpressionUUID->"83b86a6b-1ab8-4320-8985-ee0c8686f684"],
+
+Cell["Check graph structures by date:", "CodeText",ExpressionUUID->"26c92fb6-495f-40e3-b886-f87672f1ff88"],
+
+Cell[BoxData[
+ RowBox[{
+  RowBox[{"graphByDate", "[", "date_DateObject", "]"}], ":=", 
+  RowBox[{"Graph", "[", 
+   RowBox[{
+    RowBox[{
+     RowBox[{
+      RowBox[{"#from", "->", "#to"}], "&"}], "/@", 
+     RowBox[{"Select", "[", "\[IndentingNewLine]", 
+      RowBox[{
+       RowBox[{"Flatten", "[", 
+        RowBox[{"transactionsFullNamed", "[", 
+         RowBox[{"[", 
+          RowBox[{"All", ",", "\"\<incoming\>\""}], "]"}], "]"}], "]"}], ",", 
+       "\[IndentingNewLine]", 
+       RowBox[{
+        RowBox[{"#date", "==", "date"}], "&"}]}], "]"}]}], ",", 
+    "\[IndentingNewLine]", 
+    RowBox[{"VertexLabels", "->", 
+     RowBox[{"Placed", "[", 
+      RowBox[{"\"\<Name\>\"", ",", "Tooltip"}], "]"}]}]}], "]"}]}]], "Input",
+ CellLabel->
+  "In[618]:=",ExpressionUUID->"4fe32274-219d-41f9-86af-0eee09aeb1d3"],
+
+Cell[BoxData[
+ RowBox[{"Manipulate", "[", 
+  RowBox[{
+   RowBox[{"graphByDate", "[", "date", "]"}], ",", 
+   RowBox[{"{", 
+    RowBox[{"date", ",", 
+     RowBox[{"Sort", "[", 
+      RowBox[{
+       RowBox[{"DateObject", "@*", "FileBaseName"}], "/@", "names"}], "]"}]}],
+     "}"}]}], "]"}]], "Input",
+ CellLabel->
+  "In[619]:=",ExpressionUUID->"5616ccbe-052f-40a7-bfc2-0f2b79efa3e8"]
+}, Open  ]],
+
+Cell[CellGroupData[{
+
+Cell["References", "Section",ExpressionUUID->"612ae408-edd7-4212-94ac-b54c5c9ef74b"],
+
+Cell[TextData[ButtonBox["Computation with Structured Datasets",
+ BaseStyle->"Hyperlink",
+ ButtonData->{
+   URL["https://reference.wolfram.com/language/guide/\
+ComputationWithStructuredDatasets.html"], None},
+ ButtonNote->
+  "https://reference.wolfram.com/language/guide/\
+ComputationWithStructuredDatasets.html"]], "Item",ExpressionUUID->"116996ef-\
+9460-48d7-b6b0-b673595ff691"],
+
+Cell[TextData[ButtonBox["Database-Like Operations on Datasets",
+ BaseStyle->"Hyperlink",
+ ButtonData->{
+   URL["https://reference.wolfram.com/language/guide/\
+DatabaseLikeOperationsOnDatasets.html"], None},
+ ButtonNote->
+  "https://reference.wolfram.com/language/guide/\
+DatabaseLikeOperationsOnDatasets.html"]], "Item",ExpressionUUID->"1993583b-\
+30c4-49e1-b1c3-a561a577ac54"],
+
+Cell[TextData[ButtonBox["Mathematical and Counting Operations on Lists",
+ BaseStyle->"Hyperlink",
+ ButtonData->{
+   URL["https://reference.wolfram.com/language/guide/\
+MathematicalAndCountingOperationsOnLists.html"], None},
+ ButtonNote->
+  "https://reference.wolfram.com/language/guide/\
+MathematicalAndCountingOperationsOnLists.html"]], "Item",ExpressionUUID->\
+"04c96442-e78b-4bea-9742-5112087c8071"]
+}, Open  ]]
+}, Open  ]]
+},
+Editable->True,
+Saveable->True,
+ScreenStyleEnvironment->"Working",
+WindowToolbars->{},
+WindowSize->{1024, 768},
+WindowMargins->{{0, Automatic}, {Automatic, 0}},
+WindowTitle->"Working with Data",
+DockedCells->Cell[
+  BoxData[
+   TagBox[
+    GridBox[{{
+       Cell[
+        BoxData[
+         TagBox[
+          GridBox[{{
+             ButtonBox[
+              TagBox[
+               TooltipBox[
+                GraphicsBox[{
+                  Thickness[0.022727272727272728`], {
+                   FaceForm[{
+                    RGBColor[1., 1., 1.], 
+                    Opacity[1.]}], 
+                   
+                   FilledCurveBox[{{{0, 2, 0}, {0, 1, 0}, {0, 1, 0}, {0, 1, 
+                    0}}}, {{{0., 40.099998474121094`}, {44., 
+                    40.099998474121094`}, {44., 31.999998092651367`}, {0., 
+                    31.999998092651367`}, {0., 40.099998474121094`}}}]}, {
+                   FaceForm[{
+                    RGBColor[1., 1., 1.], 
+                    Opacity[1.]}], 
+                   
+                   FilledCurveBox[{{{0, 2, 0}, {0, 1, 0}, {0, 1, 0}, {0, 1, 
+                    0}}}, {{{0., 24.099998474121094`}, {44., 
+                    24.099998474121094`}, {44., 15.999998092651367`}, {0., 
+                    15.999998092651367`}, {0., 24.099998474121094`}}}]}, {
+                   FaceForm[{
+                    RGBColor[1., 1., 1.], 
+                    Opacity[1.]}], 
+                   
+                   FilledCurveBox[{{{0, 2, 0}, {0, 1, 0}, {0, 1, 0}, {0, 1, 
+                    0}}}, {{{0., 8.099998474121094}, {44., 
+                    8.099998474121094}, {44., 0.}, {0., 0.}, {0., 
+                    8.099998474121094}}}]}}, {
+                 ImageSize -> {Automatic, 27}, 
+                  ImagePadding -> {{0, 0}, {3, 3}}, AspectRatio -> Automatic, 
+                  PlotRange -> {{0., 44.}, {0., 40.099998474121094`}}}], 
+                "\"Table of Contents\"", TooltipStyle -> "TextStyling"], 
+               Annotation[#, WolframUTools`Private`tooltip$51759, 
+                "Tooltip"]& ], BaseStyle -> "Hyperlink", Evaluator -> 
+              Automatic, Method -> "Preemptive", ButtonNote -> 
+              "DEV212-ProgrammingAndDevelopment-TableOfContents.nb", 
+              ButtonFunction :> If[FileNameTake[
+                  Directory[], {2, 2}] == "wolframcloud", 
+                SystemOpen[
+                "https://www.wolframcloud.com/obj/online-courses/Published/\
+DEV212/DEV212-ProgrammingAndDevelopment-TableOfContents.nb"], 
+                SystemOpen[
+                 FileNameJoin[{
+                   NotebookDirectory[], 
+                   "DEV212-ProgrammingAndDevelopment-TableOfContents.nb"}]]]], 
+             Cell[
+              BoxData[
+               ButtonBox[
+               "Programming and Development", Tooltip -> 
+                "Programming and Development in Wolfram Language: Wolfram U \
+Instructor Led Course", 
+                BaseStyle -> {
+                 "Hyperlink", "DockedTitle", FontColor -> GrayLevel[1]}, 
+                ButtonData -> {
+                  URL[
+                  "https://www.wolfram.com/wolfram-u/courses/programming-\
+applications/programming-and-development-dev212"], None}, ButtonNote -> 
+                "https://www.wolfram.com/wolfram-u/courses/programming-\
+applications/programming-and-development-dev212"]], "DockedTitle"]}}, 
+           BaseStyle -> "DockedTitle", 
+           GridBoxItemSize -> {
+            "Columns" -> {{Automatic}}, "Rows" -> {{Automatic}}}, 
+           GridBoxSpacings -> {"Columns" -> {{0.75}}, "Rows" -> {{0}}}], 
+          "TextGrid"]], "DockedTitle", CellMargins -> {{0, 0}, {0, 0}}, 
+        StyleKeyMapping -> {"Tab" -> "Subtitle"}, 
+        CellGroupingRules -> {"TitleGrouping", 0}, PageBreakBelow -> False, 
+        CellFrameMargins -> {{20, 20}, {15, 15}}, LineSpacing -> {1, 4}, 
+        LanguageCategory -> "NaturalLanguage", CounterIncrements -> "Title", 
+        CounterAssignments -> {{"Section", 0}, {"Equation", 0}, {
+          "Figure", 0}, {"Subtitle", 0}, {"Subsubtitle", 0}, {"Item", 0}, {
+          "Subitem", 0}, {"Subsubitem", 0}, {"ItemNumbered", 0}, {
+          "SubitemNumbered", 0}, {"SubsubitemNumbered", 0}}, MenuSortingValue -> 
+        1100, MenuCommandKey :> First[{"1"}], FontFamily -> "Source Sans Pro",
+         FontSize -> 34, FontTracking -> -0.5, FontColor -> GrayLevel[1], 
+        Background -> 
+        RGBColor[
+         0.08627450980392157, 0.1568627450980392, 0.24705882352941178`], 
+        Alignment -> {Left, Center}], 
+       PaneBox[
+        TemplateBox[{
+          TagBox[
+           TooltipBox[
+            GraphicsBox[{
+              Thickness[0.0022222222222222222`], {
+               FaceForm[{
+                 RGBColor[1., 1., 1.], 
+                 Opacity[1.]}], 
+               
+               FilledCurveBox[{{{0, 2, 0}, {1, 3, 3}, {1, 3, 3}, {1, 3, 3}, {
+                1, 3, 3}, {0, 1, 0}, {1, 3, 3}, {1, 3, 3}, {1, 3, 3}, {1, 3, 
+                3}, {1, 3, 3}, {1, 3, 3}, {0, 1, 0}, {0, 1, 0}, {0, 1, 0}, {0,
+                 1, 0}, {0, 1, 0}, {1, 3, 3}, {1, 3, 3}, {1, 3, 3}, {1, 3, 
+                3}, {0, 1, 0}, {0, 1, 0}, {0, 1, 0}, {0, 1, 0}, {0, 1, 0}, {0,
+                 1, 0}, {1, 3, 3}, {1, 3, 3}, {1, 3, 3}, {1, 3, 3}, {0, 1, 
+                0}, {0, 1, 0}, {0, 1, 0}, {0, 1, 0}, {0, 1, 0}, {1, 3, 3}, {1,
+                 3, 3}, {1, 3, 3}, {1, 3, 3}, {0, 1, 0}, {1, 3, 3}, {1, 3, 
+                3}, {1, 3, 3}, {1, 3, 3}, {0, 1, 0}, {0, 1, 
+                0}}}, CompressedData["
+1:eJxtlTFo20AUhtUGAoVsgUC3dvEcEBQ8xciOQsAgpZ4sbCHrUpEh0EHQ2ZOh
+kM1LtBkKmrIFAtkEgUBBQ8AQ8ObJEMiWKZAhL/p/YZ2wwZy+e/+9+9+7s/w9
+/P3z15ZhGJ/keyrfz0bxCaKboCXjWTQ5+Rhb5nT0MWb5zhH4X8FB1LDB1wXL
+0yHGjPGog3U511+0Mf9Izi3olyPkMQueJU8Fj5OFhfkXbX2Wv5G7Hei/hPR3
+iPx7IeYX5EZIX/R7R33XQfw+pF+NZT8Hef4znjr0XebTOIhWDuYfyNsu9pvT
+z1eNxVct3qzFbZf9Knjf7GksTzWeubqfexd5b0t/1KfUGyeI/y34Id/heSuN
+xddGlifyk9rEpV581Pimxqliv7g+UVV/cg4K868u5sdc/8x6/jC+YP3nqlq/
+1EP9FfvRZ3zCfK6q9nOWHCv022S8pZDnxcG4W/bvAByPdO4FZN6niV+Ni2JY
+ZTkfD/669H/lYf+Y+8/IU9Yz9dg31j/xoMsYj6mfc33A+JL5u161f/K786r9
+lXtKPfovH+63TV72dc40Fn8b+TJJqA+Gm7jUy+9YYznHQS3foOpXzntQq4/6
+8v43qU80Xp83uOz/Wt8sz5/5Guy3PUB/d7X91vejx/wZ3x8J61nZ4Nsh6+T7
+aM77gPdnlj8PMR93WLePMW1D963gcbSyoDN5v1oW/fn0Y2G/PuNZm3l9+uL7
++YL6mO/L1GddNvvIuHkE/qH9P2j/F++mXnJA
+                "]]}, {
+               FaceForm[{
+                 RGBColor[1., 1., 1.], 
+                 Opacity[1.]}], 
+               
+               FilledCurveBox[{{{1, 4, 3}, {1, 3, 3}, {1, 3, 3}, {1, 3, 3}, {
+                1, 3, 3}, {1, 3, 3}, {1, 3, 3}, {1, 3, 3}, {1, 3, 3}, {1, 3, 
+                3}, {1, 3, 3}, {1, 3, 3}, {1, 3, 3}, {1, 3, 3}, {1, 3, 3}, {1,
+                 3, 3}}, {{1, 4, 3}, {1, 3, 3}, {1, 3, 3}, {1, 3, 3}, {1, 3, 
+                3}, {1, 3, 3}, {1, 3, 3}, {1, 3, 3}, {1, 3, 3}, {1, 3, 3}, {1,
+                 3, 3}, {1, 3, 3}, {1, 3, 3}, {1, 3, 3}, {1, 3, 3}, {1, 3, 
+                3}}}, CompressedData["
+1:eJxtVD1IHFEQfkQIBFLYCjYhIARswlWCmKfn3+np7dnZSXj73hUHEWwtrkqV
+QhCE7bYSAnap0r3K6hVWgp1wIAgphICQzrmdb3LzQhaW4dv5n/lm333+clDO
+GGNe0fsRkp4j7weWZcdm+GFrIuvqsMHGjDYn0rbawHaD9R+AzTr7vR6w3e81
+1t+FiYzpLfD3Bo/8wir7HQe2P7GIFxDP8vexB/7E8S+ARyscdznDxtyXuf5b
+mftvCraQYm9Zf+10fXVVOV1/TEOX99dxun/bajk9n5jmnZ6fMbOO8/B8BVP/
+HY3p2dX+tIeujk917en8NOd9XR/F7+n6aa+F7o/sC4430/R/kxb7iAc87HMd
+Z8BXfbYfN3jgr6G3XmPK9w9+BL7sc32LIY9/HHT+mK6Crk/4I/XX1RvhZw/x
+Brp/4ed0PszfmLpdxBF+7mgs/KdK3P8w7X+bv98CJ9zDGPuKGyyf4H8p9wB+
+xTbbvxf+tTE/YLuGvCXb/VhleV6iftxLbPDIP+Be/og98JLXOKbTDJP02p/u
+xev41GfI87eCrs+YQu6zzfbDoPujyEH3T/cnevwvKtkv7qGW/8O2xtP51+K/
+o/3p6er45L+n89fVnNyD6Ht5/bGn+6O5Ffx9Fvm/Fno+dfWz0PO7Sb8KPV/a
+M/i+lOEj/1xqLPsTf9mvxJf9T/P/5QfshT9c/5RfBv09Od2/8FPmI/yV+Qm/
+Zb4Z/18AiE9a0w==
+                "]]}, {
+               FaceForm[{
+                 RGBColor[1., 1., 1.], 
+                 Opacity[1.]}], 
+               
+               FilledCurveBox[{{{0, 2, 0}, {0, 1, 0}, {1, 3, 3}, {1, 3, 3}, {
+                1, 3, 3}, {1, 3, 3}, {0, 1, 0}, {1, 3, 3}, {1, 3, 3}, {1, 3, 
+                3}, {1, 3, 3}, {0, 1, 0}, {0, 1, 0}, {0, 1, 0}, {0, 1, 0}, {0,
+                 1, 0}, {1, 3, 3}, {1, 3, 3}, {1, 3, 3}, {1, 3, 3}, {0, 1, 
+                0}, {0, 1, 0}, {1, 3, 3}, {1, 3, 3}, {1, 3, 3}, {1, 3, 3}, {0,
+                 1, 0}, {0, 1, 0}, {0, 1, 0}, {0, 1, 0}}}, CompressedData["
+1:eJxtkz1LA0EQhlcFQbAQUqVTAqkPFlIJuUvQemMXsDgEF+8DFAKCYJFKEOxS
+bZcqlV0qweJ+wBWBgGAXEALW16ZwvXkXd4IHy96z887szNzcydXtxfWeEGLH
+rq5du6J+Qrm8Cem1G3o81rPwd5+ab8ZFuWEsxFHicyhbCe1zsExIV4D7pDef
+8Fewi4jiXyJeu+ZYa+iHEenuwAb2excP/o+4X/Z8tvkxXpSHyudYnyuq96Hm
+QI6Uf18gJ7An4Lny812UpeL1rJRfbyArxfshBn6/Yr0Pbrj8BtAxdt/Dsfte
+22yVA4r7kf7Hf/ELxkX5ynhqzBY/p36+tv+pX4/tT+rXa/sD/dr1B/alQt9T
+8nuD/tTlC3sHPIZ/AP2QsRDHjMd6jXl9yXyO9Szj9veM+lZhHhdkN82Izr8y
+Og/BFfQjzNsGPI8or4McOugbYJrHqWnmqKeHvHOKU/ZI18qh61O+7Zx2De4g
+3uiM9gnjWD8hPv+fa/4BI1HiVA==
+                "]]}, {
+               FaceForm[{
+                 RGBColor[1., 1., 1.], 
+                 Opacity[1.]}], 
+               
+               FilledCurveBox[{{{0, 2, 0}, {0, 1, 0}, {0, 1, 0}, {0, 1, 0}, {
+                0, 1, 0}, {1, 3, 3}, {1, 3, 3}, {1, 3, 3}, {1, 3, 3}, {0, 1, 
+                0}, {0, 1, 0}, {0, 1, 0}, {0, 1, 0}, {0, 1, 0}, {1, 3, 3}, {1,
+                 3, 3}, {1, 3, 3}, {1, 3, 3}, {0, 1, 0}, {1, 3, 3}, {1, 3, 
+                3}, {1, 3, 3}, {1, 3, 3}, {0, 1, 0}, {0, 1, 0}, {0, 1, 0}, {0,
+                 1, 0}, {0, 1, 0}, {0, 1, 0}, {1, 3, 3}, {1, 3, 3}, {1, 3, 
+                3}, {1, 3, 3}, {0, 1, 0}}}, CompressedData["
+1:eJxtlL9Lw0AUx68KguAgCEIRhKIIboVMTl7qoiD2qovdgmC2mExCt4Dg5CAI
+4m2BgiA4FJwKHQJOQoaAU8HBP6BDoZObZ9/38F3pwXF88n7ce9/jpXYRn14u
+CiEqZh+YvSCmS3o3V9KcZTFSknGmh0d/ZxCuJ/NYiPSQ+89yGj43OEvPa1D8
+Ldn10Ke4e7D2yf4IbvsU10W+Hfj3cJ+Ycl4MbD5JXMCeg79w/5uk72NbH1jE
+nE1/sWtXc9msfdJlN5rH//7SYemdORyE4QxfR7xeo1fE+zH6ROgT+brwn+C+
+HuXTVZ/q6SNeQs93cAr7h80PfUvkX2lwNv4OZ7qqOJfFsUJdsHcUvy/TGvYB
+uK94vXXvU/F+hPhWvN+6N1Fcj0z/KK6XWS2uZxAutbjelu17WLbvNctPWtv4
+hLMQ55iH9gn8Hc6L7YTOuybFb9n5adJZS6ifNdS/Cfse+t+w+WC389eBXquI
+f1D0fTkh/V/BFcxnDv9xzPU18xBzfc37xBQ/QvyLw87/4Rfi3/f7
+                "]]}, {
+               FaceForm[{
+                 RGBColor[1., 1., 1.], 
+                 Opacity[1.]}], 
+               
+               FilledCurveBox[{{{1, 4, 3}, {1, 3, 3}, {0, 1, 0}, {0, 1, 0}, {
+                 0, 1, 0}, {1, 3, 3}, {1, 3, 3}, {1, 3, 3}, {1, 3, 3}, {0, 1, 
+                 0}, {0, 1, 0}, {0, 1, 0}, {1, 3, 3}, {1, 3, 3}, {1, 3, 3}, {
+                 1, 3, 3}, {0, 1, 0}, {0, 1, 0}, {0, 1, 0}, {0, 1, 0}, {0, 1, 
+                 0}, {1, 3, 3}, {1, 3, 3}, {1, 3, 3}, {1, 3, 3}, {0, 1, 0}, {
+                 1, 3, 3}, {1, 3, 3}, {1, 3, 3}, {1, 3, 3}, {0, 1, 0}, {0, 1, 
+                 0}, {0, 1, 0}, {1, 3, 3}, {1, 3, 3}, {1, 3, 3}, {1, 3, 3}, {
+                 1, 3, 3}, {1, 3, 3}, {0, 1, 0}}, {{0, 2, 0}, {1, 3, 3}, {1, 
+                 3, 3}, {1, 3, 3}, {1, 3, 3}, {1, 3, 3}, {1, 3, 3}, {1, 3, 
+                 3}, {1, 3, 3}, {0, 1, 0}, {0, 1, 0}, {0, 1, 
+                 0}}}, {CompressedData["
+1:eJxtlD9IHEEUxgeLVEcqm2sEmzSBIEyaEPBmr7p/6l4MQSHIonHhmrh7abTT
+xkaxCsHpNgRsLLUJhLCVEFhFCAREi0BADFxx4Sq7jPe+h2/kBpbhNzPvzfe+
+2ZnJ5bVXq2NKqUX33fWuZbbTNa7ftBdVMxxZB5eHHMXbQ86L3YD6j0M2WgfU
+f+F4Q3xEHB8Yij/xOLM/RrJrFcr/zePMfvbY6B3WV5F6ldaIf0d82sL8AtZb
+xDex/3WF9E2DnxiKfw6OUc9T1HsEvZOsJyAuY/5DQPkegwfgTyn8qlH+1kh2
+O1Yl3/s/i/kcfs/zeuR/AzY4n7cp9SWsX8F+A+jvYL4Ap5wfvJH69W6RHpyX
+899j9z947CJGssL5OU5G8X3+Q4/z4tjjKP7+gE8SqTeKzxJZTxT/SmS9eXGV
+SD+M/pPA74DibhLfz14i/Vaqz/nh7wD5S1XJfJ7M7j8JJZ8XrZDG/2F+I5T7
+ZdZi/i/4ayj1TumfoaxHqd+hrHdKD0LpR2ZvQ+mXa23pZxQ/aku/mfk8mPm8
+HvK+tci3l0o2+tLjvBjH/YnapOtFl/zoQd9SV/rh/s8ujR/MSc7sxYzP5Rla
+957vY4s4Rvx108+/2CQ9rzlfg3TVOL5B/Uu8f6UGxT/j96BOPMHrwXz/dR0+
+83tQI+7z/avRvuL9/Q8PwFRN
+                 "], CompressedData["
+1:eJxTTMoPSmViYGCQBWIQDQQJaX6FDmBWgyeIPnCmB4WfkLYMTX4PmL9g5kyo
+/Dmo/AFPCP0AzHcw/gxV/wbKN/aCyP8ohNrjBTGHsQhizjMon7MIQkd6Q8T5
+YPLeEHOEiyB0sQ/EHJEiCM3ji8o/g8bv8YOYKwg1T80fqg9q3mZ/iPs4oPZL
+BkD4DGC+gXFwAET9F6j/KwMg9MtCaDgFQMy5DQsPqPzJQoj+y1DzdkDVP4Oq
+XwzmXzjzBqq+E4V/4IwPVj4ifpDiDwD9RnX7
+                 "]}]}, {
+               FaceForm[{
+                 RGBColor[1., 1., 1.], 
+                 Opacity[1.]}], 
+               
+               FilledCurveBox[{{{0, 2, 0}, {1, 3, 3}, {1, 3, 3}, {1, 3, 3}, {
+                 1, 3, 3}, {0, 1, 0}, {0, 1, 0}, {0, 1, 0}, {0, 1, 0}, {0, 1, 
+                 0}, {1, 3, 3}, {1, 3, 3}, {1, 3, 3}, {1, 3, 3}, {0, 1, 0}, {
+                 0, 1, 0}, {0, 1, 0}, {1, 3, 3}, {1, 3, 3}, {1, 3, 3}, {1, 3, 
+                 3}, {0, 1, 0}, {0, 1, 0}, {0, 1, 0}, {0, 1, 0}, {0, 1, 0}, {
+                 1, 3, 3}, {1, 3, 3}, {1, 3, 3}, {0, 1, 0}, {0, 1, 0}, {0, 1, 
+                 0}}, {{1, 4, 3}, {1, 3, 3}, {1, 3, 3}, {1, 3, 3}, {1, 3, 
+                 3}, {1, 3, 3}, {0, 1, 0}, {0, 1, 0}, {0, 1, 
+                 0}}}, {CompressedData["
+1:eJxtk7FKBDEQhqPdwTU24oIIhyIKIsiCIBYmUbY80EKwWwVTKribQhQ5sbEQ
+wTJd4OB68RDLa4V7AV/AWvAFzO78wWTZwDJ8yT9/JpNN7+zy6HyWMbbnviq6
+wdNhwV20Jsko3tfM03S/irm6q9mNmifTW/BEku6moPknSfnXNQ/MScxqNWI3
+Inb5ItzP7S9I9wj+5aR/8ftzihb+I04+44it+WzlqgsUf67a+F8/08jvNHgO
+9b2hnoWovlwt4XxTTrpl5H9Dv4Z+JYJ0G8jngvy3wAP0Z9v7C/LbhX9XIg/+
+StL8Afy/0O9Oib4dkl+/wfOa8v19JRr5qG8RbFBfT1MdBdZXdFz/ug7Pl6tN
+rDPUn+qwH9bs6LBfTqHjfmY67Lerv8HHEVtz2soM952ri7KN/f3y9CHiXI0i
+ZuyjDM/n2f2vorEuQ3YKSX7v8PP3NS4p0ntydUNP782aV++P/GfouxnND4s2
+rt/3H69t4mk=
+                 "], CompressedData["
+1:eJxTTMoPSmViYGAQA2IQDQQHzriUOIBpHx8Q7WBsDeYvmCnpC+Ebg/kJac+g
+fG2o/Ew/CF8Zpt8fQsuA+UAQAKElwHwD4+AAiDliUPPUAiD6hVHUL5gpWAIR
+3+wPUccHVZ/mDxHnhtrH4w/RxwHVf8APIs4C1V/sBzGPEeYfqPyfYqh6Xwj9
+oxhqvi9E/gtUnsEXIv6uGCLe4wOht0DlG9wh/JoSVD5SeAIAy/FP8g==
+                 "]}]}, {
+               FaceForm[{
+                 RGBColor[1., 1., 1.], 
+                 Opacity[1.]}], 
+               
+               FilledCurveBox[{{{0, 2, 0}, {0, 1, 0}, {1, 3, 3}, {1, 3, 3}, {
+                1, 3, 3}, {1, 3, 3}, {0, 1, 0}, {0, 1, 0}, {0, 1, 0}, {0, 1, 
+                0}, {0, 1, 0}, {1, 3, 3}, {1, 3, 3}, {1, 3, 3}, {1, 3, 3}, {0,
+                 1, 0}, {0, 1, 0}, {0, 1, 0}, {0, 1, 0}, {0, 1, 0}, {1, 3, 
+                3}, {1, 3, 3}, {1, 3, 3}, {1, 3, 3}, {0, 1, 0}, {1, 3, 3}, {1,
+                 3, 3}, {1, 3, 3}, {1, 3, 3}, {0, 1, 0}, {0, 1, 0}, {0, 1, 
+                0}, {0, 1, 0}, {0, 1, 0}, {0, 1, 0}, {0, 1, 0}, {0, 1, 0}, {1,
+                 3, 3}, {1, 3, 3}, {1, 3, 3}, {1, 3, 3}, {0, 1, 0}, {1, 3, 
+                3}, {1, 3, 3}, {1, 3, 3}, {1, 3, 3}, {0, 1, 0}, {0, 1, 0}, {0,
+                 1, 0}}}, CompressedData["
+1:eJxtlLFLHEEUxicKVvkHbARBhECKgwUrwdk7ESSHzHlVSLMILgYEr9m9TXdi
+e12aDFhsJYIiiE1CmgUhCG5xIAhiYyFB8TgUKzvHm++5b5ZbWGZ/8968ee+b
+Nzu9trW6Pi6E+GDeNfOOieEjvYO2tJ8LknEn3JNvYxAeOSzE7xJnJT5r2zgn
+4B7iZ4h3OeQsz6X1u4b/M/xvYP/o2/EW66Vvxztwx7frHig+/Pu0vmr3GyC/
+0OGK91O9jamedupP9VPMOctnhtzLu4pzR+uqw+Es4s/GqM+38T6Bu8jvM7iO
+eiqIN+nb9XMx1yPL5yke9KrFXF/pfYm5/tJrUn7gbw4HYehwqr+P5KL+3WgU
+F+e973Cqjx2W3t8Sn0Zu/ueIn4EvIl5vqq8irofpj4jrZfoD6yX0vgd3qB8o
+PvR+RHzbH8TG3+FUTyrOvbyurH4D2H8ovl+qNez/wX8Uz7fiXShej5lXvN6K
+96y4Hql+UVwv8zS4nkE40eB6E9N5ENN5lfmX1g07b/uh4Kk25mvIr83t5isZ
+xUX8rsPS23HY6OawEK2E12f2TXj9Ziax+veh31fYr6BPE/H+Qf8V+B/Cfxnc
+hX0JvIn1NewvHTb5OUz3/Z1x37N8MbEj3fdlMN33Orju83ypf6meor8Digfe
+gJ3+py3sT/cvofxwX7YdpvMgpvMqsyj9/4f8CjTreeM=
+                "]]}, {
+               FaceForm[{
+                 RGBColor[1., 1., 1.], 
+                 Opacity[1.]}], 
+               
+               FilledCurveBox[{{{1, 4, 3}, {1, 3, 3}, {1, 3, 3}, {1, 3, 3}, {
+                0, 1, 0}, {1, 3, 3}, {1, 3, 3}, {1, 3, 3}, {1, 3, 3}, {0, 1, 
+                0}, {0, 1, 0}, {0, 1, 0}, {0, 1, 0}, {0, 1, 0}, {1, 3, 3}, {1,
+                 3, 3}, {1, 3, 3}, {1, 3, 3}, {0, 1, 0}, {1, 3, 3}, {1, 3, 
+                3}, {1, 3, 3}, {1, 3, 3}, {1, 3, 3}, {1, 3, 3}, {1, 3, 3}, {1,
+                 3, 3}, {0, 1, 0}, {1, 3, 3}, {1, 3, 3}, {1, 3, 3}, {1, 3, 
+                3}, {0, 1, 0}, {0, 1, 0}, {0, 1, 0}, {0, 1, 0}, {0, 1, 0}, {1,
+                 3, 3}, {1, 3, 3}, {1, 3, 3}, {1, 3, 3}, {0, 1, 0}, {1, 3, 
+                3}, {1, 3, 3}, {1, 3, 3}, {1, 3, 3}}}, CompressedData["
+1:eJxtlT9oE1Ecx19VnEoXFwsOunQsgTd1qXeXxCnDRboEOhxSD8RAlYCYu1Aq
+QqcOgosHRQKF4FCEEigtOqQIXbyhkMUgiFAoCBmEQCGL+Gt+3x+8X8hBePm8
+7+/v+3P34Mnm46c3jTFz9Nuk3w0zeaL4V+LRuB3Hq9ejZ78o7uV7zFk2YfoH
+XnzI+obo4Ar8l7zrsZ2tgDsTjuIl0X2Odzdhv9xnfUHiBTx/K+H5uMj2JuG4
+tZLLnm2Utb4YunyeV0KO86/JejPkcQzOoF+BT+D/d8IF24f9nybP/w457wX0
+Efgn/MfgPuxNlfl7k/PcrrLdqWJjjhX38oOZ/CHLqjz/OZnFYu/Z/UTnyxKd
+753iKN5J3Hp7eStx+4niV1jPIdbnBfQB1ucZ4p2F7L8B+wPYR+Bd6OvgOvxr
+yO8ppvqm9bLLtP8lNx79K7r5PWvBdTmPgdsP6QGPb3H+Br67PjQDbkt+n/Mf
+yn3w2f8b4o08tvsh8TzOP1RMfaVav5e6/lG8zDruSzvzYV9DPSH0jo/+Ux7n
+A+wH4jXAL2F/GbD/65Tz8P2K4i3wZZHt36Tov+Qy3eOyywV7J9T6I+z3NvQG
+7kMKfh+6+Qu2G7r1nec57J+nPD+Q8wR9KOcH/iPwGuzH4Arql/tXVEzvJ8Wy
+3tNM9eI+zLdmsdjT09L+Vyoe7f9UPReqXupT9UPvD9kP9JND7+M+niFeD/6n
+sO/A/it4B/qJ7Df8j5B/RTE9iqnPssu0/zgPh9AreD9/Au8GbPcRnMt9wnm0
+eN9vgbs4/3XRwWs47/x9kf2S748x97le211lfQ7nm79f6vv2H6WjrZs=
+                "]]}, {
+               FaceForm[{
+                 RGBColor[1., 1., 1.], 
+                 Opacity[1.]}], 
+               
+               FilledCurveBox[{{{0, 2, 0}, {0, 1, 0}, {0, 1, 0}, {0, 1, 
+                0}}}, {{{37.099998474121094`, 33.400001525878906`}, {42., 
+                25.}, {42., 33.900001525878906`}, {36.900001525878906`, 
+                41.400001525878906`}, {37.099998474121094`, 
+                33.400001525878906`}}}]}, {
+               FaceForm[{
+                 RGBColor[1., 1., 1.], 
+                 Opacity[1.]}], 
+               FilledCurveBox[{{{0, 2, 0}, {0, 1, 0}, {0, 1, 0}, {0, 1, 
+                0}}}, {{{31.899999618530273`, 56.900001525878906`}, {25.5, 
+                48.599998474121094`}, {35.5, 45.599998474121094`}, {41.5, 
+                53.70000076293945}, {31.899999618530273`, 
+                56.900001525878906`}}}]}, {
+               FaceForm[{
+                 RGBColor[1., 1., 1.], 
+                 Opacity[1.]}], 
+               
+               FilledCurveBox[{{{0, 2, 0}, {0, 1, 0}, {0, 1, 0}, {0, 1, 
+                0}}}, {{{26.100000381469727`, 40.400001525878906`}, {
+                24.899999618530273`, 29.300003051757812`}, {35.20000076293945,
+                 33.80000305175781}, {35., 43.29999923706055}, {
+                26.100000381469727`, 40.400001525878906`}}}]}, {
+               FaceForm[{
+                 RGBColor[1., 1., 1.], 
+                 Opacity[1.]}], 
+               
+               FilledCurveBox[{{{0, 2, 0}, {0, 1, 0}, {0, 1, 0}, {0, 1, 
+                0}}}, {{{43., 52.599998474121094`}, {37.099998474121094`, 
+                44.5}, {43., 35.900001525878906`}, {48.900001525878906`, 
+                44.5}, {43., 52.599998474121094`}}}]}, {
+               FaceForm[{
+                 RGBColor[1., 1., 1.], 
+                 Opacity[1.]}], 
+               
+               FilledCurveBox[{{{0, 2, 0}, {0, 1, 0}, {0, 1, 0}, {0, 1, 
+                0}}}, {{{53.79999923706055, 69.20000076293945}, {
+                43.900001525878906`, 65.70000076293945}, {43.900001525878906`,
+                 55.5}, {53.5, 58.70000076293945}, {53.79999923706055, 
+                69.20000076293945}}}]}, {
+               FaceForm[{
+                 RGBColor[1., 1., 1.], 
+                 Opacity[1.]}], 
+               
+               FilledCurveBox[{{{0, 2, 0}, {0, 1, 0}, {0, 1, 0}, {0, 1, 
+                0}}}, {{{51., 43.29999923706055}, {50.79999923706055, 
+                33.80000305175781}, {61., 29.300003051757812`}, {
+                59.900001525878906`, 40.400001525878906`}, {51., 
+                43.29999923706055}}}]}, {
+               FaceForm[{
+                 RGBColor[1., 1., 1.], 
+                 Opacity[1.]}], 
+               
+               FilledCurveBox[{{{0, 2, 0}, {0, 1, 0}, {0, 1, 0}, {0, 1, 
+                0}}}, {{{54.099998474121094`, 56.900001525878906`}, {44.5, 
+                53.70000076293945}, {50.400001525878906`, 
+                45.599998474121094`}, {60.5, 48.599998474121094`}, {
+                54.099998474121094`, 56.900001525878906`}}}]}, {
+               FaceForm[{
+                 RGBColor[1., 1., 1.], 
+                 Opacity[1.]}], 
+               
+               FilledCurveBox[{{{0, 2, 0}, {0, 1, 0}, {0, 1, 0}, {0, 1, 
+                0}}}, {{{42., 55.5}, {42., 65.70000076293945}, {
+                32.20000076293945, 69.20000076293945}, {32.5, 
+                58.70000076293945}, {42., 55.5}}}]}, {
+               FaceForm[{
+                 RGBColor[1., 1., 1.], 
+                 Opacity[1.]}], 
+               
+               FilledCurveBox[{{{0, 2, 0}, {0, 1, 0}, {0, 1, 0}, {0, 1, 
+                0}}}, {{{40.20000076293945, 68.29999923706055}, {
+                35.599998474121094`, 74.29999923706055}, {26.700000762939453`,
+                 78.20000076293945}, {31.799999237060547`, 
+                71.29999923706055}, {40.20000076293945, 
+                68.29999923706055}}}]}, {
+               FaceForm[{
+                 RGBColor[1., 1., 1.], 
+                 Opacity[1.]}], 
+               
+               FilledCurveBox[{{{0, 2, 0}, {0, 1, 0}, {0, 1, 0}, {0, 1, 
+                0}}}, {{{30.5, 61.099998474121094`}, {30.299999237060547`, 
+                70.20000076293945}, {25.100000381469727`, 
+                77.10000038146973}, {26.100000381469727`, 67.4000015258789}, {
+                30.5, 61.099998474121094`}}}]}, {
+               FaceForm[{
+                 RGBColor[1., 1., 1.], 
+                 Opacity[1.]}], 
+               
+               FilledCurveBox[{{{0, 2, 0}, {0, 1, 0}, {0, 1, 0}, {0, 1, 
+                0}}}, {{{28.799999237060547`, 56.}, {21.5, 
+                53.29999923706055}, {15.100000381469727`, 
+                46.099998474121094`}, {23.299999237060547`, 
+                48.900001525878906`}, {28.799999237060547`, 56.}}}]}, {
+               FaceForm[{
+                 RGBColor[1., 1., 1.], 
+                 Opacity[1.]}], 
+               
+               FilledCurveBox[{{{0, 2, 0}, {0, 1, 0}, {0, 1, 0}, {0, 1, 
+                0}}}, {{{30.100000381469727`, 58.5}, {24.799999237060547`, 
+                66.}, {13.800000190734863`, 63.599998474121094`}, {
+                21.299999237060547`, 55.20000076293945}, {30.100000381469727`,
+                 58.5}}}]}, {
+               FaceForm[{
+                 RGBColor[1., 1., 1.], 
+                 Opacity[1.]}], 
+               
+               FilledCurveBox[{{{0, 2, 0}, {0, 1, 0}, {0, 1, 0}, {0, 1, 
+                0}}}, {{{32.70000076293945, 44.5}, {23.899999618530273`, 
+                47.099998474121094`}, {15.5, 44.20000076293945}, {
+                25.100000381469727`, 42.099998474121094`}, {32.70000076293945,
+                 44.5}}}]}, {
+               FaceForm[{
+                 RGBColor[1., 1., 1.], 
+                 Opacity[1.]}], 
+               
+               FilledCurveBox[{{{0, 2, 0}, {0, 1, 0}, {0, 1, 0}, {0, 1, 
+                0}}}, {{{43.900001525878906`, 25.}, {48.900001525878906`, 
+                33.400001525878906`}, {49., 41.400001525878906`}, {
+                43.900001525878906`, 33.900001525878906`}, {
+                43.900001525878906`, 25.}}}]}, {
+               FaceForm[{
+                 RGBColor[1., 1., 1.], 
+                 Opacity[1.]}], 
+               
+               FilledCurveBox[{{{0, 2, 0}, {1, 3, 3}, {1, 3, 3}, {1, 3, 3}, {
+                 1, 3, 3}, {0, 1, 0}, {1, 3, 3}, {1, 3, 3}}, {{0, 2, 0}, {0, 
+                 1, 0}, {0, 1, 0}, {0, 1, 0}, {0, 1, 0}, {0, 1, 0}, {0, 1, 
+                 0}, {0, 1, 0}, {0, 1, 0}, {0, 1, 0}, {0, 1, 0}, {0, 1, 0}, {
+                 0, 1, 0}, {0, 1, 0}, {0, 1, 0}, {0, 1, 0}, {0, 1, 0}, {0, 1, 
+                 0}, {0, 1, 0}, {0, 1, 0}}}, CompressedData["
+1:eJxTTMoPSmVmYGBgAmJRKA0BIg5gKiHUAYnfMHOmHYh2MDbWA4sbG+uD6AUz
+Ix2gfCUQfeAMjyuYn5YmBlXvCjVHDKoewp81UxQiXwzhmxiLQuRnoslvRtN/
+E8V8oHovZPuB6gOR3Qe0PwTN/SHI/lsw8ydEPYNCOIQv6QvhO0RA6AZXZP6B
+M2eskflA83SQ9aOHH9A8TxB94QxPMNS9/lBzwe5ISHvmB6INjD8HQMx/EwTh
+G0P5PQFQc7yR5YHucEXWf+CMjwuy+Q1paVbI9oOciuwfYHgYQ/U7IssDw88M
+zD/rA9NvAfWvC0R9mgqEf8AVqt4YYj+PN7L8hTM6Acj6L5x5E4BiPsL/jhD/
+CgejhrdCGEb4AQAnYISO
+                "]]}, {
+               FaceForm[{
+                 RGBColor[1., 1., 1.], 
+                 Opacity[1.]}], 
+               
+               FilledCurveBox[{{{1, 4, 3}, {1, 3, 3}, {1, 3, 3}, {0, 1, 0}, {
+                 0, 1, 0}, {0, 1, 0}, {1, 3, 3}, {0, 1, 0}, {0, 1, 0}, {1, 3, 
+                 3}, {0, 1, 0}, {0, 1, 0}, {0, 1, 0}, {1, 3, 3}}, {{0, 2, 
+                 0}, {0, 1, 0}, {1, 3, 3}, {1, 3, 3}, {1, 3, 3}, {1, 3, 3}, {
+                 1, 3, 3}, {1, 3, 3}, {0, 1, 0}, {0, 1, 0}, {0, 1, 0}, {0, 1, 
+                 0}, {1, 3, 3}, {1, 3, 3}, {1, 3, 3}, {1, 3, 3}, {0, 1, 
+                 0}}}, {CompressedData["
+1:eJxTTMoPSmViYGCQBmIQDQQOxsIhDkA6I21ZmAOYPzkQRKeluUU4gFU0+IBo
+Y2PjSCjfFZXPYIvMT0hL0wfRZ874gPUfOHNGDNn8BTNnCkLkc8Kg8hwg2sTY
+OAxqHgOInjHzZyjUvG/2YP5NFD7QHbZQ/X/A/LNnbKD6NZHphLRndmA+1B0O
+xsUuyPbA/MNgYPzZHmxejxuavDeyfqCJQcjmHzjDA3YXg/FmG4h9amB+Q1qa
+LTLfxPhyKFQflP85FBIeO0Mg4aETBvVfCHL4oMQPANLHWh4=
+                 "], CompressedData["
+1:eJxTTMoPSmViYGBQA2IQDQYHQhyA5IyZM0MdkPhAYAeiHYw3Q/jGm21B9IKZ
+kkFg/tkz2iA6IU3NG8w/c0YGos/BDcrnIYbvYGyMxv/sCuabGHND7YfwZ8zk
+hPCLXaHqOaD6IfyMNC6ou12hNNS8zS6o5uPnJ6QtQ+EvmDnTHtl/B86c0UL2
+PxBwIIcPjN+Q9gyFb2D8OQSZb2I8ORRFP8OCUIj9aQIOYO/eDIX6TxSiXjgM
+Ki/lAPauWxjEPT4GIDot7Vk4VL0thH8sAmJugysyf8HMSB9kPtC8QGT9C2be
+DHYAe9cHar4ONH1IhkHkK6H+eICSXjLSlqHwwekJADolewo=
+                 "]}]}, {
+               FaceForm[{
+                 RGBColor[1., 1., 1.], 
+                 Opacity[1.]}], 
+               
+               FilledCurveBox[{{{0, 2, 0}, {0, 1, 0}, {0, 1, 0}, {0, 1, 
+                0}}}, {{{48.70000076293945, 75.10000038146973}, {43., 
+                84.79999923706055}, {37.29999923706055, 75.10000038146973}, {
+                43., 67.9000015258789}, {48.70000076293945, 
+                75.10000038146973}}}]}, {
+               FaceForm[{
+                 RGBColor[1., 1., 1.], 
+                 Opacity[1.]}], 
+               
+               FilledCurveBox[{{{0, 2, 0}, {0, 1, 0}, {0, 1, 0}, {0, 1, 
+                0}}}, {{{53.29999923706055, 44.5}, {60.79999923706055, 
+                42.099998474121094`}, {70.5, 44.20000076293945}, {
+                62.099998474121094`, 47.099998474121094`}, {53.29999923706055,
+                 44.5}}}]}, {
+               FaceForm[{
+                 RGBColor[1., 1., 1.], 
+                 Opacity[1.]}], 
+               
+               FilledCurveBox[{{{0, 2, 0}, {0, 1, 0}, {0, 1, 0}, {0, 1, 
+                0}}}, {{{54.20000076293945, 71.29999923706055}, {
+                59.29999923706055, 78.10000038146973}, {50.400001525878906`, 
+                74.29999923706055}, {45.70000076293945, 68.29999923706055}, {
+                54.20000076293945, 71.29999923706055}}}]}, {
+               FaceForm[{
+                 RGBColor[1., 1., 1.], 
+                 Opacity[1.]}], 
+               
+               FilledCurveBox[{{{0, 2, 0}, {0, 1, 0}, {0, 1, 0}, {0, 1, 
+                0}}}, {{{57.20000076293945, 56.}, {62.70000076293945, 
+                48.900001525878906`}, {70.9000015258789, 
+                46.099998474121094`}, {64.5, 53.29999923706055}, {
+                57.20000076293945, 56.}}}]}, {
+               FaceForm[{
+                 RGBColor[1., 1., 1.], 
+                 Opacity[1.]}], 
+               
+               FilledCurveBox[{{{0, 2, 0}, {0, 1, 0}, {0, 1, 0}, {0, 1, 
+                0}}}, {{{64.69999694824219, 55.20000076293945}, {
+                72.19999694824219, 63.599998474121094`}, {61.20000076293945, 
+                66.}, {55.900001525878906`, 58.5}, {64.69999694824219, 
+                55.20000076293945}}}]}, {
+               FaceForm[{
+                 RGBColor[1., 1., 1.], 
+                 Opacity[1.]}], 
+               
+               FilledCurveBox[{{{0, 2, 0}, {0, 1, 0}, {0, 1, 0}, {0, 1, 
+                0}}}, {{{55.5, 61.099998474121094`}, {59.900001525878906`, 
+                67.4000015258789}, {60.900001525878906`, 77.10000038146973}, {
+                55.70000076293945, 70.20000076293945}, {55.5, 
+                61.099998474121094`}}}]}}, {
+             ImageSize -> 170, AspectRatio -> Automatic, 
+              PlotRange -> {{0., 450.}, {0., 102.}}}], 
+            "\"Wolfram U: Learning Resources for the Computational \
+Universe\"", TooltipStyle -> "TextStyling"], 
+           Annotation[#, 
+            "Wolfram U: Learning Resources for the Computational Universe", 
+            "Tooltip"]& ], "https://www.wolfram.com/wolfram-u/"}, 
+         "HyperlinkURL"], ImageSize -> Full, Alignment -> {Right, Center}]}}, 
+     GridBoxAlignment -> {"Columns" -> {Left, Right}, "Rows" -> {{Center}}}, 
+     AutoDelete -> False, GridBoxItemSize -> {"Columns" -> {
+         Scaled[0.75], 
+         Scaled[0.25]}}, 
+     GridBoxSpacings -> {"Columns" -> {{Automatic}}, "Rows" -> {{0}}}], 
+    "Grid"]], "DockedTitle", CellMargins -> {{0, 0}, {0, 0}}, 
+  StyleKeyMapping -> {"Tab" -> "Subtitle"}, 
+  CellGroupingRules -> {"TitleGrouping", 0}, PageBreakBelow -> False, 
+  CellFrameMargins -> {{20, 20}, {15, 15}}, LineSpacing -> {1, 4}, 
+  LanguageCategory -> "NaturalLanguage", CounterIncrements -> "Title", 
+  CounterAssignments -> {{"Section", 0}, {"Equation", 0}, {"Figure", 0}, {
+    "Subtitle", 0}, {"Subsubtitle", 0}, {"Item", 0}, {"Subitem", 0}, {
+    "Subsubitem", 0}, {"ItemNumbered", 0}, {"SubitemNumbered", 0}, {
+    "SubsubitemNumbered", 0}}, MenuSortingValue -> 1100, MenuCommandKey :> 
+  First[{"1"}], FontFamily -> "Source Sans Pro", FontSize -> 34, 
+  FontTracking -> -0.5, FontColor -> GrayLevel[1], Background -> 
+  RGBColor[0.08627450980392157, 0.1568627450980392, 0.24705882352941178`]],
+ShowCellBracket->True,
+TaggingRules->{
+ "WolframUNotebook" -> True, "TryRealOnly" -> False, "ShowNavigationBar" -> 
+  True, "PresenterSettings" -> {"ShowNavigationBar" -> True}},
+ShowCellTags->False,
+TrackCellChangeTimes->False,
+FrontEndVersion->"14.2 for Mac OS X x86 (64-bit) (March 16, 2025)",
+StyleDefinitions->Notebook[{
+   Cell[
+    StyleData[StyleDefinitions -> "Default.nb"]], 
+   Cell[
+    CellGroupData[{
+      Cell["Styles for Title and Section Cells", "Section"], 
+      Cell[
+       StyleData["Title"], CellMargins -> {{27, Inherited}, {10, 30}}, 
+       FontSize -> 40, FontColor -> RGBColor[
+         Rational[64, 255], 
+         Rational[25, 51], 
+         Rational[128, 255]]], 
+      Cell[
+       StyleData["DockedTitle", StyleDefinitions -> StyleData["Title"]], 
+       CellMargins -> {{0, 0}, {0, 0}}, 
+       CellFrameMargins -> {{20, 20}, {15, 15}}, FontSize -> 34, FontColor -> 
+       GrayLevel[1], Background -> RGBColor[
+         Rational[22, 255], 
+         Rational[8, 51], 
+         Rational[21, 85]]], 
+      Cell[
+       StyleData["Subtitle"], CellMargins -> {{27, Inherited}, {0, 20}}, 
+       FontSize -> 34, FontWeight -> 400, FontColor -> RGBColor[
+         Rational[22, 255], 
+         Rational[8, 51], 
+         Rational[21, 85]]], 
+      Cell[
+       StyleData["Subsubtitle"], CellMargins -> {{27, Inherited}, {0, 2}}, 
+       FontSize -> 20, FontWeight -> "Thin", FontSlant -> "Italic", FontColor -> 
+       RGBColor[
+         Rational[64, 255], 
+         Rational[25, 51], 
+         Rational[128, 255]]], 
+      Cell[
+       StyleData["Chapter"], FontSize -> 31, FontColor -> RGBColor[
+         Rational[22, 255], 
+         Rational[8, 51], 
+         Rational[21, 85]]], 
+      Cell[
+       StyleData["Section"], CellMargins -> {{27, Inherited}, {8, 25}}, 
+       CellFrameMargins -> {{7, 7}, {7, 22}}, CellFrameColor -> 
+       GrayLevel[0.8], FontColor -> RGBColor[
+         Rational[22, 255], 
+         Rational[8, 51], 
+         Rational[21, 85]]], 
+      Cell[
+       StyleData["Subsection"], CellMargins -> {{50, 3.}, {5., 10.}}, 
+       FontColor -> RGBColor[
+         Rational[64, 255], 
+         Rational[25, 51], 
+         Rational[128, 255]]], 
+      Cell[
+       StyleData[
+       "EmphasisSection", StyleDefinitions -> StyleData["Subsection"]], 
+       CellFrame -> {{0, 0}, {0, 3}}, CellFrameMargins -> {{8, 8}, {4, 6}}, 
+       CellFrameColor -> RGBColor[
+         Rational[64, 255], 
+         Rational[25, 51], 
+         Rational[128, 255]], FontSlant -> "Italic"], 
+      Cell[
+       StyleData["Subsubsection"], CellMargins -> {{50, 3.}, {8., 12.}}, 
+       CounterAssignments -> {{"Subsubsubsection", 0}, {"Item", 0}, {
+         "Subitem", 0}, {"Subsubitem", 0}, {"ItemNumbered", 0}, {
+         "SubitemNumbered", 0}, {"SubsubitemNumbered", 0}, {
+         "ItemRomanNumbered", 0}}, FontSize -> 15, FontWeight -> "Bold", 
+       FontVariations -> {"CapsType" -> "AllCaps"}, FontColor -> GrayLevel[
+         Rational[4, 15]]], 
+      Cell[
+       StyleData["Subsubsubsection"], CellMargins -> {{50, 3.}, {2., 10.}}, 
+       CounterAssignments -> {{"Subsubsubsubsection", 0}, {"Item", 0}, {
+         "Subitem", 0}, {"Subsubitem", 0}, {"ItemNumbered", 0}, {
+         "SubitemNumbered", 0}, {"SubsubitemNumbered", 0}, {
+         "ItemRomanNumbered", 0}}, FontWeight -> "Bold", FontColor -> RGBColor[
+         Rational[64, 255], 
+         Rational[25, 51], 
+         Rational[128, 255]]], 
+      Cell[
+       StyleData["Subsubsubsubsection"], CellMargins -> {{50, 3.}, {2., 10.}},
+        FontColor -> RGBColor[
+         Rational[64, 255], 
+         Rational[25, 51], 
+         Rational[128, 255]]], 
+      Cell[
+       CellGroupData[{
+         Cell[
+          StyleData["WolframULogo"], CellMargins -> {{27, 0}, {0, 25}}, 
+          CellGroupingRules -> "GraphicsGrouping", PageBreakWithin -> False], 
+         
+         Cell[
+          StyleData[
+          "WolframULogo", "SlideShow", StyleDefinitions -> 
+           StyleData["WolframULogo"]], 
+          CellFrameLabels -> {{None, None}, {None, None}}], 
+         Cell[
+          StyleData[
+          "WolframULogo", "Slideshow Working", StyleDefinitions -> 
+           StyleData["WolframULogo", "SlideShow"]]], 
+         Cell[
+          StyleData[
+          "WolframULogo", "Slideshow Presentation", StyleDefinitions -> 
+           StyleData["WolframULogo", "Slideshow Working"]]], 
+         Cell[
+          StyleData[
+          "WolframULogo", "Scrolling Presentation", StyleDefinitions -> 
+           StyleData["WolframULogo", "Slideshow Working"]], 
+          CellFrameLabels -> {{None, None}, {None, None}}]}, Closed]], 
+      Cell[
+       CellGroupData[{
+         Cell[
+          StyleData[
+          "TitleGraphic", StyleDefinitions -> StyleData["WolframULogo"]], 
+          StyleKeyMapping -> {"Tab" -> "Subtitle"}, 
+          CellGroupingRules -> {"TitleGrouping", 0}, PageBreakBelow -> False, 
+          LineSpacing -> {1, 4}, CounterIncrements -> "Title", 
+          CounterAssignments -> {{"Section", 0}, {"Equation", 0}, {
+            "Figure", 0}, {"Subtitle", 0}, {"Subsubtitle", 0}, {"Item", 0}, {
+            "Subitem", 0}, {"Subsubitem", 0}, {"ItemNumbered", 0}, {
+            "SubitemNumbered", 0}, {"SubsubitemNumbered", 0}}, 
+          FontTracking -> -0.5], 
+         Cell[
+          StyleData[
+          "TitleGraphic", "SlideShow", StyleDefinitions -> 
+           StyleData["TitleGraphic"]]], 
+         Cell[
+          StyleData[
+          "TitleGraphic", "Slideshow Working", StyleDefinitions -> 
+           StyleData["TitleGraphic", "SlideShow"]]], 
+         Cell[
+          StyleData[
+          "TitleGraphic", "Slideshow Presentation", StyleDefinitions -> 
+           StyleData["TitleGraphic", "SlideShow"]]], 
+         Cell[
+          StyleData[
+          "TitleGraphic", "Scrolling Presentation", StyleDefinitions -> 
+           StyleData["TitleGraphic", "SlideShow"]], 
+          CellFrameLabels -> {{None, None}, {None, None}}]}, Closed]]}, 
+     Closed]], 
+   Cell[
+    CellGroupData[{
+      Cell["Styles for Body Content", "Section"], 
+      Cell[
+       StyleData["Author"], CellMargins -> {{27, Inherited}, {0, 2}}, 
+       FontWeight -> "Thin", FontSlant -> "Italic"], 
+      Cell[
+       StyleData["Affiliation"], CellMargins -> {{27, Inherited}, {0, 2}}, 
+       FontWeight -> "Thin", FontSlant -> "Italic"], 
+      Cell[
+       StyleData["Text"], CellMargins -> {{50, 10}, {7, 8}}, FontColor -> 
+       GrayLevel[
+         Rational[83, 255]]], 
+      Cell[
+       StyleData["Reference"], CellMargins -> {{50, 10}, {3, 3}}, FontFamily -> 
+       "Source Sans Pro", FontSize -> 15, FontColor -> GrayLevel[
+         Rational[83, 255]]], 
+      Cell[
+       StyleData["MathCaption"], CellMargins -> {{50, 12}, {2, 24}}, 
+       FontFamily -> "Source Sans Pro", FontSize -> 15, FontColor -> GrayLevel[
+         Rational[83, 255]]], 
+      Cell[
+       StyleData[
+       "OpenCollapsedSection", StyleDefinitions -> StyleData["Text"]], 
+       CellMargins -> {{27, Inherited}, {8, 10}}, MenuSortingValue -> 10000, 
+       FontSize -> 11], 
+      Cell[
+       StyleData["CodeText"], CellMargins -> {{50, 10.}, {3., 15.}}], 
+      Cell[
+       StyleData["Item"], CellDingbat -> 
+       StyleBox["\[FilledSmallCircle]", FontColor -> RGBColor[
+           Rational[64, 255], 
+           Rational[25, 51], 
+           Rational[128, 255]], FontSize -> 12], FontColor -> GrayLevel[
+         Rational[83, 255]]], 
+      Cell[
+       StyleData["Subitem"], CellDingbat -> 
+       StyleBox["\[FilledSmallCircle]", FontColor -> RGBColor[
+           Rational[64, 255], 
+           Rational[25, 51], 
+           Rational[128, 255]], FontSize -> 12], FontColor -> GrayLevel[
+         Rational[83, 255]]], 
+      Cell[
+       StyleData["Subsubitem"], CellDingbat -> 
+       StyleBox["\[FilledSmallCircle]", FontColor -> RGBColor[
+           Rational[64, 255], 
+           Rational[25, 51], 
+           Rational[128, 255]], FontSize -> 12], 
+       StyleKeyMapping -> {
+        "Tab" -> "Subsubsubitem", "*" -> "Subsubsubitem", "Backspace" -> 
+         "Subitem", $CellContext`KeyEvent[
+          "Tab", $CellContext`Modifiers -> {"Shift"}] -> "Subitem"}, 
+       FontColor -> GrayLevel[
+         Rational[83, 255]]], 
+      Cell[
+       StyleData["Subsubsubitem"], CellDingbat -> 
+       StyleBox[
+        "\[FilledSmallCircle]", Alignment -> Baseline, FontColor -> RGBColor[
+           Rational[64, 255], 
+           Rational[25, 51], 
+           Rational[128, 255]], FontSize -> 12], 
+       CellMargins -> {{153, 12}, {4, 4}}, ReturnCreatesNewCell -> True, 
+       StyleKeyMapping -> {
+        "Backspace" -> 
+         "Subsubitem", $CellContext`KeyEvent[
+          "Tab", $CellContext`Modifiers -> {"Shift"}] -> "Subsubitem"}, 
+       CellGroupingRules -> {"ItemGrouping", 100}, CellFrameLabelMargins -> 4,
+        CounterIncrements -> "Subsubsubitem", MenuSortingValue -> 1630, 
+       FontFamily -> "Source Sans Pro", FontSize -> 12, FontColor -> GrayLevel[
+         Rational[83, 255]]], 
+      Cell[
+       StyleData["ItemNumbered"], FontColor -> GrayLevel[
+         Rational[83, 255]]], 
+      Cell[
+       StyleData["SubitemNumbered"], FontColor -> GrayLevel[
+         Rational[83, 255]]], 
+      Cell[
+       StyleData["SubsubitemNumbered"], 
+       StyleKeyMapping -> {
+        "Tab" -> "SubsubsubitemNumbered", "Backspace" -> 
+         "SubitemNumbered", $CellContext`KeyEvent[
+          "Tab", $CellContext`Modifiers -> {"Shift"}] -> "SubitemNumbered"}, 
+       FontColor -> GrayLevel[
+         Rational[83, 255]]], 
+      Cell[
+       StyleData["SubsubsubitemNumbered"], CellDingbat -> Cell[
+         TextData[{
+           CounterBox["ItemNumbered"], ".", 
+           CounterBox["SubitemNumbered"], ".", 
+           CounterBox["SubsubitemNumbered"], ".", 
+           CounterBox["SubsubsubitemNumbered"], "."}], FontWeight -> "Bold"], 
+       CellMargins -> {{153, 12}, {4, 4}}, ReturnCreatesNewCell -> True, 
+       StyleKeyMapping -> {
+        "Backspace" -> 
+         "SubsubitemNumbered", $CellContext`KeyEvent[
+          "Tab", $CellContext`Modifiers -> {"Shift"}] -> 
+         "SubsubitemNumbered"}, CellGroupingRules -> {"ItemGrouping", 100}, 
+       CellFrameLabelMargins -> 4, CounterIncrements -> 
+       "SubsubsubitemNumbered", MenuSortingValue -> 1630, FontFamily -> 
+       "Source Sans Pro", FontSize -> 12], 
+      Cell[
+       StyleData["ItemParagraph"], FontColor -> GrayLevel[
+         Rational[83, 255]]], 
+      Cell[
+       StyleData["SubitemParagraph"], FontColor -> GrayLevel[
+         Rational[83, 255]]], 
+      Cell[
+       StyleData["SubsubitemParagraph"], 
+       StyleKeyMapping -> {
+        "Tab" -> "SubsubsubitemParagraph", "Backspace" -> 
+         "SubitemParagraph", $CellContext`KeyEvent[
+          "Tab", $CellContext`Modifiers -> {"Shift"}] -> "SubitemParagraph"}, 
+       FontColor -> GrayLevel[
+         Rational[83, 255]]], 
+      Cell[
+       StyleData["SubsubsubitemParagraph"], 
+       CellMargins -> {{153, 12}, {4, 4}}, ReturnCreatesNewCell -> True, 
+       StyleKeyMapping -> {
+        "Backspace" -> 
+         "SubsubitemParagraph", $CellContext`KeyEvent[
+          "Tab", $CellContext`Modifiers -> {"Shift"}] -> 
+         "SubsubitemParagraph"}, CellGroupingRules -> {"ItemGrouping", 100}, 
+       CellFrameLabelMargins -> 4, CounterIncrements -> "Subsubsubitem", 
+       MenuSortingValue -> 1630, FontFamily -> "Source Sans Pro", FontSize -> 
+       12, FontColor -> GrayLevel[0.2]], 
+      Cell[
+       StyleData[
+       "ItemRomanNumbered", StyleDefinitions -> StyleData["ItemNumbered"]], 
+       CellDingbat -> Cell[
+         TextData[{
+           CounterBox["ItemRomanNumbered", CounterFunction -> RomanNumeral], 
+           "."}], FontWeight -> Bold], CounterIncrements -> 
+       "ItemRomanNumbered"], 
+      Cell[
+       StyleData["KeyEvent"], CellFrame -> {{1, 1}, {1, 1}}, 
+       CellFrameMargins -> {{2, 2}, {2, 2}}, CellFrameColor -> GrayLevel[0.8],
+        FontFamily -> "Source Sans Pro", FontColor -> GrayLevel[0.360784], 
+       Background -> GrayLevel[0.964706]], 
+      Cell[
+       StyleData["AuthorNote", StyleDefinitions -> StyleData["Text"]], 
+       CellDingbat -> 
+       StyleBox[
+        "Author note:", "Text", FontSlant -> "Italic", FontColor -> RGBColor[
+           Rational[64, 255], 
+           Rational[25, 51], 
+           Rational[128, 255]], Alignment -> Baseline], FontSlant -> "Italic",
+        FontColor -> GrayLevel[0.4]], 
+      Cell[
+       StyleData["HintHeader", StyleDefinitions -> StyleData["Text"]], 
+       ShowGroupOpener -> True, GroupOpenerInsideFrame -> False, 
+       CellGroupingRules -> {"SectionGrouping", 80}, PageBreakBelow -> False, 
+       FontColor -> RGBColor[
+         Rational[64, 255], 
+         Rational[25, 51], 
+         Rational[128, 255]]], 
+      Cell[
+       StyleData["Hint", StyleDefinitions -> StyleData["Text"]], CellFrame -> 
+       True, Background -> RGBColor[
+         Rational[173, 255], 
+         Rational[433, 510], 
+         Rational[421, 510]]], 
+      Cell[
+       StyleData["ExperimentalInput", StyleDefinitions -> StyleData["Input"]],
+        Editable -> True, CellFrame -> True, 
+       StyleKeyMapping -> {"=" -> "WolframAlphaShort", "*" -> "Item"}, 
+       CellFrameColor -> RGBColor[
+         Rational[91, 255], 
+         Rational[178, 255], 
+         Rational[166, 255]], CellFrameLabels -> {{
+          Cell[
+           BoxData[
+            RotationBox["Experimental", BoxRotation -> 1.5708]], "Text", 
+           FontSize -> 10, FontColor -> RGBColor[
+             Rational[91, 255], 
+             Rational[178, 255], 
+             Rational[166, 255]]], None}, {None, None}}], 
+      Cell[
+       StyleData["WolframLanguageLogo"], FontColor -> 
+       RGBColor[0.09, 0.16, 0.25]], 
+      Cell[
+       StyleData["Link"], FontColor -> RGBColor[
+         Rational[64, 255], 
+         Rational[25, 51], 
+         Rational[128, 255]]], 
+      Cell[
+       StyleData["HyperLink"], FontColor -> RGBColor[
+         Rational[64, 255], 
+         Rational[25, 51], 
+         Rational[128, 255]]], 
+      Cell[
+       StyleData["Hyperlink"], FontColor -> RGBColor[
+         Rational[64, 255], 
+         Rational[25, 51], 
+         Rational[128, 255]]], 
+      Cell[
+       StyleData["FunctionLink"], FontColor -> RGBColor[
+         Rational[64, 255], 
+         Rational[25, 51], 
+         Rational[128, 255]]], 
+      Cell[
+       StyleData["HyperlinkActionNew"], FontColor -> RGBColor[
+         Rational[64, 255], 
+         Rational[25, 51], 
+         Rational[128, 255]]], 
+      Cell[
+       StyleData["HyperlinkActive"], FontColor -> RGBColor[
+         Rational[91, 255], 
+         Rational[178, 255], 
+         Rational[166, 255]]], 
+      Cell[
+       StyleData["CYUButton", StyleDefinitions -> StyleData["Text"]], 
+       FontColor -> GrayLevel[1], FrameBoxOptions -> {Background -> RGBColor[
+           Rational[64, 255], 
+           Rational[25, 51], 
+           Rational[128, 255]], 
+         BaseStyle -> {"Text", FontColor -> GrayLevel[1]}, FrameStyle -> 
+         RGBColor[
+           Rational[64, 255], 
+           Rational[25, 51], 
+           Rational[128, 255]]}], 
+      Cell[
+       StyleData["HintButton", StyleDefinitions -> StyleData["Text"]], 
+       FontColor -> GrayLevel[1], FrameBoxOptions -> {Background -> RGBColor[
+           Rational[64, 255], 
+           Rational[25, 51], 
+           Rational[128, 255]], 
+         BaseStyle -> {"Text", FontColor -> GrayLevel[1]}, FrameStyle -> 
+         RGBColor[
+           Rational[64, 255], 
+           Rational[25, 51], 
+           Rational[128, 255]]}], 
+      Cell[
+       StyleData["SolutionButton", StyleDefinitions -> StyleData["Text"]], 
+       FontColor -> GrayLevel[1], FrameBoxOptions -> {Background -> RGBColor[
+           Rational[64, 255], 
+           Rational[25, 51], 
+           Rational[128, 255]], 
+         BaseStyle -> {"Text", FontColor -> GrayLevel[1]}, FrameStyle -> 
+         RGBColor[
+           Rational[64, 255], 
+           Rational[25, 51], 
+           Rational[128, 255]]}], 
+      Cell[
+       StyleData["CYUButtonActive", StyleDefinitions -> StyleData["Text"]], 
+       FontColor -> GrayLevel[1], 
+       FrameBoxOptions -> {
+        Background -> RGBColor[1, 0.4, 0], 
+         BaseStyle -> {"Text", FontColor -> GrayLevel[1]}, FrameStyle -> 
+         RGBColor[1, 0.4, 0]}], 
+      Cell[
+       StyleData["HintButtonActive", StyleDefinitions -> StyleData["Text"]], 
+       FontColor -> GrayLevel[1], 
+       FrameBoxOptions -> {
+        Background -> RGBColor[1, 0.4, 0], 
+         BaseStyle -> {"Text", FontColor -> GrayLevel[1]}, FrameStyle -> 
+         RGBColor[1, 0.4, 0]}], 
+      Cell[
+       StyleData[
+       "SolutionButtonActive", StyleDefinitions -> StyleData["Text"]], 
+       FontColor -> GrayLevel[1], 
+       FrameBoxOptions -> {
+        Background -> RGBColor[1, 0.4, 0], 
+         BaseStyle -> {"Text", FontColor -> GrayLevel[1]}, FrameStyle -> 
+         RGBColor[1, 0.4, 0]}]}, Closed]]}, Visible -> False, FrontEndVersion -> 
+  "14.2 for Mac OS X x86 (64-bit) (March 16, 2025)", StyleDefinitions -> 
+  "PrivateStylesheetFormatting.nb"],
+ExpressionUUID->"5923c64b-fa9c-4299-bd77-cdb5dba01f8b"
+]
+(* End of Notebook Content *)
+
+(* Internal cache information *)
+(*CellTagsOutline
+CellTagsIndex->{}
+*)
+(*CellTagsIndex
+CellTagsIndex->{}
+*)
+(*NotebookFileOutline
+Notebook[{
+Cell[CellGroupData[{
+Cell[611, 23, 104, 0, 62, "Subtitle",ExpressionUUID->"6216d3e6-e4ad-41ed-b314-02204666a68a"],
+Cell[CellGroupData[{
+Cell[740, 27, 93, 0, 91, "Section",ExpressionUUID->"dbea5887-3b33-4dc2-9fcb-f0376e5ee8ad"],
+Cell[CellGroupData[{
+Cell[858, 31, 109, 0, 40, "Subsection",ExpressionUUID->"52ff05c7-a1a1-4319-82aa-cb06b604602c"],
+Cell[970, 33, 129, 0, 30, "Item",ExpressionUUID->"6ac6d8a1-d37a-428f-9d91-4ea55987ba51"],
+Cell[1102, 35, 114, 0, 30, "Item",ExpressionUUID->"a6ce294f-bdf0-438d-bc9a-8c951e41c89f"],
+Cell[1219, 37, 148, 2, 30, "Item",ExpressionUUID->"fb96184e-105a-44bc-9fd9-420aa5b4484e"]
+}, Open  ]]
+}, Open  ]],
+Cell[CellGroupData[{
+Cell[1416, 45, 100, 0, 91, "Section",ExpressionUUID->"7dba0038-dc67-49e3-a196-e64ce43b829f"],
+Cell[1519, 47, 125, 0, 33, "Text",ExpressionUUID->"6b6a7d90-2374-4d08-8f5a-8fc020eb3172"],
+Cell[1647, 49, 122, 0, 36, "CodeText",ExpressionUUID->"f52d7797-8ebf-40ac-96c8-93f3aa71e67b"],
+Cell[1772, 51, 278, 7, 29, "Input",ExpressionUUID->"0ea6d4ad-6e02-463b-b0c4-79a31f84c25c"],
+Cell[2053, 60, 169, 3, 36, "CodeText",ExpressionUUID->"59a51fd2-d1b0-4b8d-b5f7-f1eff2b77ef2"],
+Cell[2225, 65, 251, 5, 29, "Input",ExpressionUUID->"11409f76-b17b-4df8-965f-84c6c23d2573"],
+Cell[2479, 72, 184, 3, 33, "Text",ExpressionUUID->"bb11d3ea-0ee9-4006-92e1-d1dd8fe9ff5b"],
+Cell[2666, 77, 109, 0, 36, "CodeText",ExpressionUUID->"ea48b461-ce46-4640-81ef-eb1fef6844a5"],
+Cell[2778, 79, 284, 8, 29, "Input",ExpressionUUID->"c0d0db1c-3782-4621-b334-6ce816757186"],
+Cell[3065, 89, 147, 2, 33, "Text",ExpressionUUID->"653a5503-fc75-428a-ba41-04ba37dfdffe"],
+Cell[3215, 93, 124, 0, 36, "CodeText",ExpressionUUID->"8cba955a-1d9d-4739-8a39-ba35c543c04b"],
+Cell[CellGroupData[{
+Cell[3364, 97, 358, 11, 29, "Input",ExpressionUUID->"69557ad8-4a4b-47f0-bc0a-6cd17acd2a06"],
+Cell[3725, 110, 226, 6, 33, "Output",ExpressionUUID->"2fec85e2-8449-4002-802a-7e1b9b6c0fcd"]
+}, Open  ]],
+Cell[3966, 119, 268, 4, 55, "Text",ExpressionUUID->"de117acb-7f64-49d9-9411-caeec3b05c09"],
+Cell[4237, 125, 355, 5, 70, "Text",ExpressionUUID->"edac9349-fa2f-48d7-b8b3-3f7344953d35"],
+Cell[4595, 132, 97, 0, 70, "CodeText",ExpressionUUID->"5e0be779-6421-4452-a2b4-07bdbf0c2fc2"],
+Cell[4695, 134, 1218, 34, 70, "Input",ExpressionUUID->"58f41b1c-50b3-4b29-a160-438c8ff0f168"],
+Cell[5916, 170, 83, 0, 70, "CodeText",ExpressionUUID->"f1de415b-8a3d-4d98-a36a-ae1d0f3a5f55"],
+Cell[6002, 172, 204, 5, 70, "Input",ExpressionUUID->"1495a814-6b55-4908-ac4c-4b69bc6b7b1f"],
+Cell[6209, 179, 353, 7, 70, "Text",ExpressionUUID->"c11ee8b7-1f73-4c57-b0ef-2b892c2bac89"],
+Cell[6565, 188, 219, 5, 70, "CodeText",ExpressionUUID->"dbe2cd85-f4d3-4e79-8095-6740ea6b5efc"],
+Cell[6787, 195, 1519, 40, 70, "Input",ExpressionUUID->"4de0a581-03a0-4b54-9116-73fed9990d74"],
+Cell[8309, 237, 80, 0, 70, "CodeText",ExpressionUUID->"454d8ddc-9279-4a1d-999a-4f1de9007fdb"],
+Cell[8392, 239, 209, 5, 70, "Input",ExpressionUUID->"0da67d26-1697-471f-822c-36c2b657a3c3"],
+Cell[8604, 246, 168, 3, 70, "Text",ExpressionUUID->"f9a5f1ba-307b-4bf9-9391-0d17e7d71666"],
+Cell[8775, 251, 515, 12, 70, "CodeText",ExpressionUUID->"f9afee6a-7db7-4212-b58b-6ecf6202babd"],
+Cell[9293, 265, 222, 5, 70, "Input",ExpressionUUID->"076225a8-79cf-4cea-9ddf-dcab55412904"]
+}, Open  ]],
+Cell[CellGroupData[{
+Cell[9552, 275, 90, 0, 70, "Section",ExpressionUUID->"1d9f636f-913b-4315-a565-1ae21642ead2"],
+Cell[9645, 277, 155, 2, 70, "Text",ExpressionUUID->"e38d34dc-27e6-4bbb-913e-5144b40db8c4"],
+Cell[9803, 281, 121, 0, 70, "CodeText",ExpressionUUID->"d625e988-242c-497a-944a-ed5a65a6e4d3"],
+Cell[9927, 283, 274, 7, 70, "Input",ExpressionUUID->"8a777cb3-88b8-4801-ae5c-995b2c01dd8d"],
+Cell[10204, 292, 120, 0, 70, "CodeText",ExpressionUUID->"2b8ea784-300c-4719-8c78-054388b10bf8"],
+Cell[10327, 294, 385, 11, 70, "Input",ExpressionUUID->"c65498b7-bf15-4722-8441-b17abaff0c7b"],
+Cell[10715, 307, 133, 0, 70, "CodeText",ExpressionUUID->"731a3260-8f5c-4874-af2f-9ad7e02fb3be"],
+Cell[10851, 309, 377, 11, 70, "Input",ExpressionUUID->"04c0aaa0-c61c-480f-ba3d-68c29007f586"],
+Cell[11231, 322, 178, 3, 70, "Text",ExpressionUUID->"d4843e38-eeff-44b1-b535-c331b8fbf3a8"],
+Cell[11412, 327, 90, 0, 70, "CodeText",ExpressionUUID->"7b5974b5-f20e-4cac-bb2f-ae104197aa38"],
+Cell[CellGroupData[{
+Cell[11527, 331, 293, 8, 70, "Input",ExpressionUUID->"8fdbcb7a-8c99-42a0-920b-8728e8902b0f"],
+Cell[11823, 341, 151, 3, 70, "Output",ExpressionUUID->"ec5abd65-0e40-44b1-a9ad-d8e956f1ed0d"]
+}, Open  ]],
+Cell[11989, 347, 101, 0, 70, "CodeText",ExpressionUUID->"77cde1bf-f526-45cf-bca4-b908b8166fbd"],
+Cell[12093, 349, 261, 7, 70, "Input",ExpressionUUID->"81d19f2e-e853-486c-bd21-26e91b610b9d"],
+Cell[12357, 358, 349, 5, 70, "Text",ExpressionUUID->"52399757-cfdb-4be3-9b04-1ef24cb488e1"],
+Cell[12709, 365, 224, 3, 70, "Text",ExpressionUUID->"8afc3e21-d6ce-4d02-a4d4-624a3b7197f1"],
+Cell[12936, 370, 668, 18, 70, "Input",ExpressionUUID->"b0e49ca4-9995-4570-943e-b5eac6f1cae0"],
+Cell[13607, 390, 283, 4, 70, "Text",ExpressionUUID->"85846a3c-2b67-4038-8292-84c11566020c"],
+Cell[13893, 396, 193, 3, 70, "CodeText",ExpressionUUID->"f3ced27c-f563-4dd7-a51a-48c6375dcb75"],
+Cell[14089, 401, 360, 10, 70, "Input",ExpressionUUID->"0ab0fabf-1019-4add-a413-385aa2ff817d"],
+Cell[14452, 413, 80, 0, 70, "CodeText",ExpressionUUID->"cdc68cf6-5743-4e01-9f30-489afa440612"],
+Cell[14535, 415, 185, 4, 70, "Input",ExpressionUUID->"8cd8cc89-8223-407f-bc20-3b1615883002"],
+Cell[14723, 421, 294, 7, 70, "CodeText",ExpressionUUID->"977e312e-9db3-4d19-8cc3-2dbe35b345db"],
+Cell[15020, 430, 679, 18, 70, "Input",ExpressionUUID->"bb1ba0ab-ebca-44a3-9772-6506db4c85d6"],
+Cell[15702, 450, 208, 3, 70, "Text",ExpressionUUID->"9973a5b7-54df-402f-ae7d-fd2d533e4c30"],
+Cell[15913, 455, 157, 2, 70, "CodeText",ExpressionUUID->"64473b6b-ecc6-497c-a6c9-1232c5c685b6"],
+Cell[16073, 459, 231, 7, 70, "Input",ExpressionUUID->"752c80b1-3ed5-4edb-872b-0f12369b4520"],
+Cell[16307, 468, 188, 3, 70, "CodeText",ExpressionUUID->"d92ef16a-4ddf-471c-ab42-19407cd8a9b2"],
+Cell[16498, 473, 1093, 28, 70, "Input",ExpressionUUID->"df39a828-7944-4e82-9980-04d009dc0c28"],
+Cell[17594, 503, 96, 0, 70, "Text",ExpressionUUID->"0818a197-ba32-462a-94c8-19626c98ee54"],
+Cell[17693, 505, 163, 3, 70, "Input",ExpressionUUID->"1b4b0fe5-ebe4-433c-b182-1cd3b7c90fbd"]
+}, Open  ]],
+Cell[CellGroupData[{
+Cell[17893, 513, 91, 0, 70, "Section",ExpressionUUID->"050a96df-a82e-4503-827f-dd8d6128fc74"],
+Cell[17987, 515, 168, 3, 70, "Text",ExpressionUUID->"334b0572-e00d-4466-b8d3-217713f7c3f8"],
+Cell[18158, 520, 120, 0, 70, "CodeText",ExpressionUUID->"f7d0390f-a1c1-4f81-b611-be846c444e46"],
+Cell[18281, 522, 214, 5, 70, "Input",ExpressionUUID->"8b68fae2-6e21-4cad-88f6-d61b9459db9f"],
+Cell[18498, 529, 126, 0, 70, "CodeText",ExpressionUUID->"5f3543fd-7bab-469e-8679-aa045f9a0038"],
+Cell[18627, 531, 266, 6, 70, "Input",ExpressionUUID->"51317a53-3a5f-4160-80a6-87b9d5d136ea"],
+Cell[18896, 539, 115, 0, 70, "CodeText",ExpressionUUID->"70f2b0a3-f2a7-4727-bb5a-347318ddc199"],
+Cell[19014, 541, 295, 8, 70, "Input",ExpressionUUID->"ae6d9fff-95ec-46ab-8918-c39d9d44f8d6"],
+Cell[19312, 551, 116, 0, 70, "CodeText",ExpressionUUID->"8ea8e1be-c7a4-4caa-9128-019d9421eea2"],
+Cell[19431, 553, 379, 10, 70, "Input",ExpressionUUID->"948b9450-ab15-4152-a3ff-3e84fd4de78c"]
+}, Open  ]],
+Cell[CellGroupData[{
+Cell[19847, 568, 90, 0, 137, "Section",ExpressionUUID->"36a539ff-d018-4414-af0b-ca32c6ff87ce"],
+Cell[19940, 570, 120, 0, 33, "Text",ExpressionUUID->"751325cf-7bb4-4ca9-aa43-701e76fe6406"],
+Cell[20063, 572, 154, 2, 33, "CodeText",ExpressionUUID->"2b62f38a-b786-4352-aacc-b38eaa41f6d3"],
+Cell[20220, 576, 641, 17, 102, "Input",ExpressionUUID->"3d82e5bd-d361-4be9-acbb-2b4d5e19d3ca"],
+Cell[20864, 595, 134, 0, 33, "CodeText",ExpressionUUID->"7ac39927-7886-497d-ab7f-d5dd2661aa32"],
+Cell[21001, 597, 542, 15, 61, "Input",ExpressionUUID->"83b86a6b-1ab8-4320-8985-ee0c8686f684"],
+Cell[21546, 614, 106, 0, 33, "CodeText",ExpressionUUID->"26c92fb6-495f-40e3-b886-f87672f1ff88"],
+Cell[21655, 616, 815, 22, 102, "Input",ExpressionUUID->"4fe32274-219d-41f9-86af-0eee09aeb1d3"],
+Cell[22473, 640, 383, 11, 41, "Input",ExpressionUUID->"5616ccbe-052f-40a7-bfc2-0f2b79efa3e8"]
+}, Open  ]],
+Cell[CellGroupData[{
+Cell[22893, 656, 84, 0, 137, "Section",ExpressionUUID->"612ae408-edd7-4212-94ac-b54c5c9ef74b"],
+Cell[22980, 658, 379, 8, 33, "Item",ExpressionUUID->"116996ef-9460-48d7-b6b0-b673595ff691"],
+Cell[23362, 668, 377, 8, 33, "Item",ExpressionUUID->"1993583b-30c4-49e1-b1c3-a561a577ac54"],
+Cell[23742, 678, 402, 8, 33, "Item",ExpressionUUID->"04c96442-e78b-4bea-9742-5112087c8071"]
+}, Open  ]]
+}, Open  ]]
+}
+]
+*)
+
