@@ -5,6 +5,7 @@
 - Extra Curve Objects
 - Extra Mesh Objects
 - Loop tools
+- Bool Tool
 
 ## Basic Principles
 
