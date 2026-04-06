@@ -140,6 +140,7 @@ UFUNCTION(BlueprintCallable)
   - In the parent, we create functions/events that will be shared between all children.
   - In a child blueprint, we can override the parent's events & functions if needed.
   - To extend functionality of a parent's function, use the **add call parent function** (from the context menu of the overridden item).
+    - A parent's method can have variables needed to be defined by the child for this call, which can be used to accommodate variability in the base functionality.
 
 ## Communication
 
