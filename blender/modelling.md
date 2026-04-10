@@ -7,9 +7,7 @@
 - Loop tools
 - Bool Tool
 
-## Basic Principles
-
-### Creating Meshes
+## Creating Meshes
 
 - Form (general shape)
   - Block-out the overall shape with basic shapes initially, to use as a template.
@@ -36,7 +34,6 @@
     - loop cut: `ctrl+r`
     - recalculate normals: `shift+n`
     - select similar: `shift+g`
-    - create edge/vertex crease: `shift+e/v`
 - Scale
   - Try to scale the meshes in real-size, and then adjust as needed within the game engine.
 - Adaptation
@@ -52,9 +49,16 @@
   - Keep odd shaped shapes to a minimum.
   - Lookout for pinches and bumps that negatively affect lighting.
 
-#### Easy Shapes
+### Easy Shapes
 
 - **Cables** (or similar) can be created by adding (`shift+a`) a bezier curve, and then *curve data -> geometry -> bevel -> depth > 0*.
+
+### Tips & Tricks
+
+- When building smooth-shaded, curved models, loop cuts used to smooth the shape should be done perpendicular to the curvature of the model.
+- Keep density of lines in both directions similar, and enough to define the required details.
+- Use separate meshes to define smaller much smaller details or more detailed objects, and join them afterwards in a single object; do not join the meshes though.
+- To create creases, do not use Blender crease tools, as these are not exported - instead, use bevels when needed.
 
 ### Preparing a Mesh for Use
 
