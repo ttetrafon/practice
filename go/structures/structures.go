@@ -3,6 +3,8 @@ package main
 import (
 	"encoding/json"
 	"fmt"
+	"time"
+	"unsafe"
 )
 
 type Animal struct {
@@ -28,6 +30,19 @@ func (d Dog) Bark() {
 func (a Animal) PrintAnimal() {
 	fmt.Printf("Animal: %s\n", a.Name)
 }
+
+////////////////////////
+///   EMPTY STRUCT   ///
+////////////////////////
+
+// - an empty struct does not consume any memory when declared
+// - usually, an empty structure will be stored in the 'zero-base', an address where all zero byte objects point to
+// - use cases:
+//		- channel signals
+//		- implementing a set from scratch
+//		- method receiver
+
+type EmptyStruct struct{}
 
 ///////////////////
 ///   BUILDER   ///
@@ -107,6 +122,11 @@ type Address struct {
 // ----------------------------------------
 
 func main() {
+	var someEmptyStruct struct{} // declared an empty struct
+	var someOtherEmptyStruct struct{}
+	fmt.Printf("Size of empty struct: %d\n", unsafe.Sizeof(someEmptyStruct))
+	fmt.Printf("Pointers to empty structs: %p <> %p\n", &someEmptyStruct, &someOtherEmptyStruct)
+
 	dog := Dog{
 		Animal: Animal{Name: "Buddy"},
 		Breed:  "Golden Retriever",
@@ -152,4 +172,14 @@ func main() {
 	decoded := Employee{}
 	json.Unmarshal(jsonData, &decoded)
 	fmt.Println("Decoded:", decoded)
+
+	// define a quit channel for the following routine
+	quit := make(chan struct{}) // an empty structure here removes any additional memory overhead
+	go func() {
+		fmt.Println("working...")
+		time.Sleep(3 * time.Second)
+		close(quit)
+	}()
+
+	<-quit // block until it receives the signal
 }
