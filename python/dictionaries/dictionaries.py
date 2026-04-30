@@ -4,7 +4,7 @@ myself: dict[str, str | int] = {
     "occupation": "student"
 }
 
-# .get(key, default)
+# .get(key, default) -> returns `None` if the key does not exist and no default is given
 print(myself.get("name", "unnamed"))
 print(myself.get("age_oops", 50))
 
@@ -18,8 +18,20 @@ print(scores.setdefault("Bob", 0))
 print(scores.setdefault("Anna", 0))
 print(scores)
 
-# | combines dictionaries together
-# |= updates the first dictionary with the second's values
+# To access data groups in a dictionary:
+# - dict.keys()
+# - dict.values()
+# - dict.items()
+
+# Can use the above with `for ... in ...` to loop through the keys/values/items of a dictionary.
+
+# To remove items form a dictionary:
+# - del dict[key]: removes a key from the dictionary
+# - dict.pop(key): removes the key and returns the value
+# - dict.clear(): removes all keys from the dictionary
+
+# `|`: combines dictionaries together
+# `|=` (`dict.update()`): updates the first dictionary with the second's values
 a: dict[str, int] = {'a': 1, 'b': 5, 'c': 7}
 b: dict[str, int] = {'c': 3, 'd': 2}
 c = b | a
