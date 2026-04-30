@@ -12,7 +12,9 @@
     hsl(var(--clr-blue))
   );
   position: relative;
-  isolation: isolate /* will fix the blur being hidden because the ::before & ::after selectors are behind on the stack, even when there is no position defined on the element */
+  isolation: isolate
+  /* will fix the blur being hidden because the ::before & ::after selectors
+  are behind on the stack, even when there is no position defined on the element */
   /* `isolation` can also be applied to the elements with the negative z-index directly */
 }
 
@@ -64,3 +66,28 @@ img.profile-pic {
 - [Text Wrap](https://developer.mozilla.org/en-US/docs/Web/CSS/Reference/Properties/text-wrap)
   - **balance**: distributes the text among available lines - useful for headers and/or annotations
   - **pretty**: avoids typographic [runt](https://en.wikipedia.org/wiki/Widows_and_orphans)
+
+## Decoration
+
+### Borders
+
+#### [Corner Shape](https://developer.mozilla.org/en-US/docs/Web/CSS/Reference/Properties/corner-shape)
+
+- **values**:
+  - round,
+  - scoop,
+  - square,
+  - notch
+  - superellipse(#)
+    - #: (-infinity, infinity)
+
+```css
+.box {
+  width: 200px;
+  height: 200px;
+  background-colour: red;
+  border: 10px solid black;
+  border-radius: 50px;
+  corner-shape: scoop
+}
+```
