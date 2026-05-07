@@ -173,6 +173,8 @@ func main() {
 	json.Unmarshal(jsonData, &decoded)
 	fmt.Println("Decoded:", decoded)
 
+	Performance()
+
 	// define a quit channel for the following routine
 	quit := make(chan struct{}) // an empty structure here removes any additional memory overhead
 	go func() {
