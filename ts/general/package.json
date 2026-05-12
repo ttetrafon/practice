@@ -4,6 +4,14 @@
     "dev": "tsc --watch",
     "start": "pnpm build && node dist/index.js"
   },
+  "engines": {
+    "node": ">=22",
+    "pnpm": ">=10"
+  },
+  "type": "module",
+  "dependencies": {
+    "argon2": "^0.44.0"
+  },
   "devDependencies": {
     "@types/node": "^25.7.0",
     "typescript": "^6.0.3"
