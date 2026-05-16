@@ -184,7 +184,7 @@ UFUNCTION(BlueprintCallable)
   - The function always requires an actor input, which is the object on which the interface function will be triggered. This input can be generic (like an actor from a hit trace) and do not need to be cast to the specific target of the interface.
     - Despite this fact, interfaces do not need a specific type of class to be sent to, instead the target can be anything. For example, a hit target from a trace does not need to be cast to a specific actor/class to be used as the target of an interface function.
   - `Does Implement Interface` can be used to check if the target indeed implements the interface in question, but this may be relevant only rarely, as the target will handle the event if they implement the interface, or ignore it if not.
-- Sometimes it may be useful to have an input reference to the initiator of an action. For example, a pawn interacting with a pickable item can be referenced to the item is added immediately to their inventory.
+- Sometimes it may be useful to have an input reference to the initiator of an action. For example, a pawn interacting with a pick-able item can be referenced to the item is added immediately to their inventory.
 
 - In C++, to create an interface go to _tools -> new c++ class -> common classes -> unreal interface_.
 - An interface contains only function definitions (usually `virtual`), like in blueprints.
