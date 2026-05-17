@@ -81,6 +81,7 @@ On the left panel, under the **usage** section, select the cases in which the ma
 - In shader graph:
   - Select property to expose as parameter.
   - _Mouse1 -> Convert to Parameter_.
+- Always use instances for gameplay objects, since they are optimised for real time use.
 
 - Material instances can also be created at runtime, so that material properties are changed programmatically during gameplay ([example](https://youtu.be/VX98R3zNKxU?t=2341)).
   - The `Create Dynamic Material Instance` creates a material instance from a static mesh (will need a loop for multiple materials on the same mesh).
