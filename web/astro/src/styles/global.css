@@ -1,1 +1,7 @@
 @import "tailwindcss";
+
+@layer base {
+  body {
+    @apply my-10 mx-auto max-w-2/3;
+  }
+}
