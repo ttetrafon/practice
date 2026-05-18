@@ -22,7 +22,7 @@
 
 ## Shader Graph
 
-### Controls
+Useful controls:
 
 - **Alt+Mouse0** on a link breaks it.
 - **Ctrl+Mouse0** drags a link to another slot.
@@ -35,7 +35,7 @@
   - Default value is 0.
 - **Roughness** accepts a Scalar value.
   - Value must be between 0 and 1.
-- **Emmisive Colour** accepts a Constant (1 or 3) value.
+- **Emissive Colour** accepts a Constant (1 or 3) value.
   - Must be greater than 1 to have any effect, so usually need to multiply a colour texture with a scalar.
 
 #### Properties
@@ -46,6 +46,20 @@ _Select the output node to display the material's properties._
   - **Material Domain** controls where the material will be applied.
     - **Surface** defines a material that will be applied to a mesh's surface.
     - **Volume** defines a material that will be applied to a mesh's whole volume.
+- **Shading Model**: The shader type determines how light interacts with the material.
+  - **_Unlit_**: Ignores all lights and renders at full brightness always.
+  - **_Default Lit_**: Interacts with all lights equally.
+  - **_Subsurface_**: Simulates subsurface scattering of light.
+  - **_Preintegrated Skin_**: Realistic skin for human characters.
+  - **_Clear Coat_**: Adds a second, specular layer on top of the material, creating a transparent coat over the surface (e.g.: car paint, nail polish, wood polish, carbon fibre, coated metals).
+  - **_Subsurface Profile_**: Subsurface scattering for photorealistic skin.
+  - **_Two Sided Foliage_**: Photorealistic leafs, grass, etc.
+  - **_Hair_**: Allows for scattering of the light that hits hair for a photorealistic effect.
+  - **_Cloth_**: Simulates light on fabric, unlike the default lit shader.
+  - **_Eye_**: Simulates light hitting an eye.
+  - **_Single Layer Water_**: Handles absorption and refraction of light on water.
+  - **_Thin Translucent_**: Accurately simulates refraction and reflection for thin translucent materials (e.g.: glass, soap bubbles, etc).
+  - **_From Material Expression_**: Allows complex materials using all of the other shading models.
 
 ### Shader Usage
 
