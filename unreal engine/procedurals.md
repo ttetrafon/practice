@@ -1,5 +1,32 @@
 # Procedural Generation
 
+## General
+
+### Sphere / Planet
+
+- Cube-face parametrisation can solve distortion (UV stretching towards the poles), seaming, and performance.
+  - Split the sphere in 6 flat grids (sides of a cube).
+    - Can also use a bigger polyhedron.
+  - Each grid behaves like normal, flat terrain.
+  - At runtime, each vertex is projected onto a sphere by normalising the cube point and scaling by planet radius.
+
+```math
+Normal = (1, 0, 0)
+U-axis = (0, 1, 0)
+V-axis = (0, 0, 1)
+U,V: [-1, +1]
+
+% Sphere Projection
+CubePoint = Normal + U*u + V*v
+SphereDir = normalise(CubePoint)
+VertexPos = Centre + SphereDir*R
+
+% Height Variation
+Height = Noise->SampleHeight(pos)
+Height = Clamp(Height, -500m, +500m)
+FinalPos = Center + Dir*(R + Height)
+```
+
 ## Procedural Content Generation (PCG)
 
 - Links:
