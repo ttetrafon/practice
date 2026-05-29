@@ -181,3 +181,8 @@ bool TestServerRPC_CPP_Validate() {
 - `Input Events`: executes only on local character
 - `OnPossess`/`Possess`/etc: executes only on server
 - `Overlap Events`: executes on all instances where the component exists
+
+## Actors in Multiplayer
+
+- Generally turn **replicates** only for actors that actually need to be continuously replicated.
+  - For stuff that only require very updates rarely (e.g.: deleting an actor), or for cosmetic stuff (e.g.: VFX), use multicast events so that bandwidth is preserved as much as possible.
