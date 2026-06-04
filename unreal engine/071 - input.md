@@ -36,6 +36,9 @@ PublicIncludePaths.AddRange(new String[] { ..., "EnhancedInput/Public"});
 A collection of mappings for input actions.
 
 - **Mappings**: A map that connects _input actions_ with specific keys.
+  - **Modifiers**: Each mapping may be affected by one or more modifiers:
+    - _Negate_: Multiplies the value by -1.
+    - _Swizzle Input Axis Values_: Used to map 1D axis inputs to a different axis in a 2D/3D vector.
 
 ## Declare the Use of an Input Mapping Context
 
