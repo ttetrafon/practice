@@ -17,28 +17,52 @@ name: Local Config
 version: 1.0.0
 schema: v1
 models:
-- name: Deepseek R1 14B
+- name: Qwen 3 (8B) - Best for Agents
   provider: ollama
-  model: deepseek-r1:14b
+  model: qwen3:8b
   roles:
   - chat
   - edit
   - apply
   capabilities:
   - tool_use
-  - image_input
   defaultCompletionOptions:
-    contextLength: 16384
-    temperature: 0.7
-    keepAlive: 600
-- name: Qwen2.5-Coder 7B
+    contextLength: 32768
+    temperature: 0.0
+    keepAlive: 300
+  requestOptions:
+    extraBodyProperties:
+      num_gpu: 99
+- name: Llama 3.3 (8B) - Deep Context
+  provider: ollama
+  model: llama3.3:8b
+  roles:
+  - chat
+  - edit
+  - apply
+  capabilities:
+  - tool_use
+  defaultCompletionOptions:
+    contextLength: 49152
+    temperature: 0.2
+    keepAlive: 300
+  requestOptions:
+    extraBodyProperties:
+      num_gpu: 99
+- name: Qwen 2.5 Coder (7B) - Autocomplete & Edit
   provider: ollama
   model: qwen2.5-coder:7b
   roles:
   - autocomplete
+  - edit
+  - apply
   defaultCompletionOptions:
-    contextLength: 4096
-    keepAlive: 3600
+    contextLength: 16384
+    temperature: 0.0
+    keepAlive: 300
+  requestOptions:
+    extraBodyProperties:
+      num_gpu: 99
 - name: Nomic Embed
   provider: ollama
   model: nomic-embed-text:latest
