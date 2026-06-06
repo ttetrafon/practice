@@ -1,6 +1,6 @@
 # Animation
 
-- Animations are usually applied to skeletal meshes.
+- Animations are usually applied to skeletal meshes and/or vertex keys.
 - Animation logic is defined in animation blueprints.
 
 ## Creating Animations
@@ -31,3 +31,5 @@
 
 - Animation can be achieved within a material graph. This way it is all done in the GPU.
 - A way to do this is to create macros that can be used in the material graph to cause specific effects.
+
+## Blending Animations

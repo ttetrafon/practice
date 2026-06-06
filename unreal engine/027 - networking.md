@@ -68,6 +68,7 @@ Multiple instances of the game can be run automatically in the same editor.
   - **Net Cull Distance**, **Net Update Frequency** (has a real-life max of 60???), and **Min Net Update Frequency** are useful to control how much effort the server has to do for these specific variables.
   - **C++** variables can be replicated with the use of `UPROPERTY(Replicated)`.
     - In addition, must add the following function inside the class employing the replicated variable.
+  - Variables that can be updated on a client, should first be updated locally and then (through `Is Server`) call a custom event that runs on the server, so that their values are then replicated to all other clients.
 
 ```c++
 UPROPERTY(Replicated)
@@ -178,6 +179,7 @@ bool TestServerRPC_CPP_Validate() {
 ## Events in Multiplayer
 
 - `BeginPlay`: executes on all clients; as **multicast**
+- `Tick`: executes on all clients; as **multicast**
 - `Input Events`: executes only on local character
 - `OnPossess`/`Possess`/etc: executes only on server
 - `Overlap Events`: executes on all instances where the component exists
@@ -186,3 +188,5 @@ bool TestServerRPC_CPP_Validate() {
 
 - Generally turn **replicates** only for actors that actually need to be continuously replicated.
   - For stuff that only require very updates rarely (e.g.: deleting an actor), or for cosmetic stuff (e.g.: VFX), use multicast events so that bandwidth is preserved as much as possible.
+- When requesting a local controller, always use a delay on a _cast failed_ and repeat the request, because a client controller may not be immediately available.
+  - `Get Controller [target=self] -> Cast to CustomPlayerController [cast failed] -> Delay -> Cast to CustomPlayerController`
