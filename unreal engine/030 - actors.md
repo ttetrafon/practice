@@ -33,7 +33,7 @@ class AMyActor : public AActor {}
 - `Attach Actor to Component`: Attaches an actor to the referenced component in the _parent_ input.
   - Optionally, a _socket name_ can be used to identify the place where the actor will be attached.
 
-### Constructor Script
+#### Constructor Script
 
 - The constructor script is run at spawn time, or in the editor any time an actor is placed or updated.
   - _Class Settings -> Blueprint Options -> Run Constructor Script ..._.
