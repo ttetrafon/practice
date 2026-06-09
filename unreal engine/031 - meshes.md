@@ -43,6 +43,12 @@
 - Meshes with movable components that physics can be applied to them.
 - Support animations.
 
+## Mesh Combinations
+
+### [Mesh Sockets](https://dev.epicgames.com/documentation/unreal-engine/setting-up-and-using-sockets-with-static-meshes?application_version=4.27)
+
+- A mesh can be attached to other meshes through a mesh socket.
+
 ## Modelling Tools
 
 - Plugins: **Modelling Tools Editor Mode**, **Static Mesh Modelling Tools**
