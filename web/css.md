@@ -1,5 +1,29 @@
 # CSS
 
+## Variables
+
+- A variable is defined with `--var_name: var_value;`.
+  - Usually done in `:root`, but can be put anywhere.
+  - Note that where the variable is defined defines its scope.
+- Access a variable's value with `var(--var_name, fallback_value)`.
+  - The actual variable declaration may be omitted though, and then defined only within any context it is needed.
+
+```css
+.stack {
+  display: flex;
+  flex-direction: column;
+  gap: var(--stack-gap, 1rem);
+}
+
+.card {
+  --stack-gap: 1.5rem;
+}
+
+.tile {
+  --stack-gap: 0.5rem;
+}
+```
+
 ## [Stacking Context](https://developer.mozilla.org/en-US/docs/Glossary/Stacking_context)
 
 - [Isolation](https://developer.mozilla.org/en-US/docs/Web/CSS/Reference/Properties/isolation)
@@ -66,6 +90,15 @@ img.profile-pic {
 - [Text Wrap](https://developer.mozilla.org/en-US/docs/Web/CSS/Reference/Properties/text-wrap)
   - **balance**: distributes the text among available lines - useful for headers and/or annotations
   - **pretty**: avoids typographic [runt](https://en.wikipedia.org/wiki/Widows_and_orphans)
+- **_Prose_ spacing**: It is generally good to adapt spacings based on the size of the text.
+
+```css
+.prose > * + * {
+  margin-block-start: var(--prose-flow, 1em);
+}
+```
+
+- In tailwind: [Tailwind typography plugin](https://v1.tailwindcss.com/docs/typography-plugin).
 
 ## Decoration
 
