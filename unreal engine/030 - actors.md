@@ -121,3 +121,7 @@ class UActorComponent {}
   - Simple movement can be added through the **Floating Pawn Movement**.
   - `Add Movement Input`, with a direction (`Get Actor Forward/Up/Right Direction`), can be used to move the actor based on input events.
 - Rotation ...
+
+#### Navigation Mesh
+
+- A NavMesh is required for the built-in pathfinding to work.
