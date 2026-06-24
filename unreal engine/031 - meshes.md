@@ -37,6 +37,7 @@
 
 - In the mesh's details, change **Collision -> Collision Preset & Complexity** to what is required for the specific mesh.
 - Can also replace the collision, either the simple or the complex one, with custom volumes as needed.
+- Can create custom channels (**Project Settings -> Engine -> Collision -> Object/Trace Channels**) for more control.
 
 ## Skeletal Meshes
 
