@@ -1,15 +1,14 @@
 from concurrent.futures import ThreadPoolExecutor
-
 from time import perf_counter
+import requests # type: ignore
+
 
 start = perf_counter()
-
-import requests
 
 urls = range(1, 25000)
 
 
-def get_data(url):
+def get_data(url: str):
     r = requests.get(f'http://127.0.0.1:8000/items/{url}')
     print(r.json())
 

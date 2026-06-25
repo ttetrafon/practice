@@ -1,9 +1,8 @@
-from itertools import permutations, combinations, combinations_with_replacement
+from itertools import permutations, combinations #, combinations_with_replacement
 
 l: list[str] = ['A', 'B', 'C', 'D', 'F']
 
-
-perms: permutations = permutations(l)
+perms: permutations[tuple[str, ...]] = permutations(l)
 # print(tuple(perms))
 count: int = 0
 for perm in perms:
@@ -12,8 +11,8 @@ for perm in perms:
 print(f'... got {count} permutations\n')
 
 
-combs: combinations = combinations(l, 2)
-# combs: combinations_with_replacement = combinations_with_replacement(l, 2)
+combs: combinations[tuple[str, ...]] = combinations(l, 2)
+# combs: combinations_with_replacement[tuple[str, ...]] = combinations_with_replacement(l, 2)
 count = 0
 for comb in combs:
   count += 1

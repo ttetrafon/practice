@@ -1,6 +1,7 @@
+from typing import NoReturn
 import traceback
 
-def raiser():
+def raiser() -> NoReturn:
     raise Exception("user raised exception")
 
 with open("out.log", "w") as log:

@@ -22,11 +22,15 @@ else:
 
 
 # Can also be used for inline assignment.
-def get_info(text: str) -> dict:
+def get_info(text: str) -> dict: # type: ignore
     return {
         'words': (words := text.split()),
         'word_count': len(words),
         'character_count': len(''.join(words))
-    }
+    } # type: ignore
 
-print(get_info("This is some text..."))
+print(get_info("This is some text...")) # type: ignore
+
+# ... useful too in some odd situations
+while user_input := input('>>> '): # An empty input here will evaluate to false and terminate the loop!
+    print(f'Input: {user_input}')

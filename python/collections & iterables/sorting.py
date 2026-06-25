@@ -1,4 +1,6 @@
-l = [
+from typing import List
+
+l: List[List[float]] = [
     [
         0,
         2.86,
@@ -51,5 +53,5 @@ l = [
     ]
 ]
 
-sorted_list = sorted(l, key=lambda e: e[0])
+sorted_list: List[List[float]] = sorted(l, key=lambda e: e[0])
 print(sorted_list)

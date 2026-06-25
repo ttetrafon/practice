@@ -1,8 +1,8 @@
 from functools import cache, lru_cache
 
-# @cache
+@cache
 @lru_cache(maxsize=10)
-def fib(n):
+def fib(n: int) -> int:
     if n <=1:
         return n
     return fib(n-1) + fib(n-2)
