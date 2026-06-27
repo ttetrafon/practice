@@ -142,6 +142,11 @@ UFUNCTION(BlueprintCallable)
   - To extend functionality of a parent's function, use the **add call parent function** (from the context menu of the overridden item).
     - A parent's method can have variables needed to be defined by the child for this call, which can be used to accommodate variability in the base functionality.
 
+### Debugging Blueprints
+
+- **Debug (menu) -> Blueprint Debugger**
+- On any execution node: **Right Click -> Add Breakpoint**.
+
 ## Communication
 
 - Blueprints/classes can access information from and call functions and events of other blueprints/classes.
