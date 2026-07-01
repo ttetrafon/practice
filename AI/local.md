@@ -1,5 +1,10 @@
 # Local AI
 
+- Useful Links:
+  - Continue extension:
+    - [Model Setup](https://docs.continue.dev/ide-extensions/agent/model-setup)
+    - [Model Capabilities](https://docs.continue.dev/customize/deep-dives/model-capabilities)
+
 ## Preparation
 
 - Install [Ollama](https://ollama.com/)
@@ -26,38 +31,9 @@ models:
   - apply
   capabilities:
   - tool_use
+  - image_input
   defaultCompletionOptions:
     contextLength: 32768
-    temperature: 0.0
-    keepAlive: 300
-  requestOptions:
-    extraBodyProperties:
-      num_gpu: 99
-- name: Llama 3.3 (8B) - Deep Context
-  provider: ollama
-  model: llama3.3:8b
-  roles:
-  - chat
-  - edit
-  - apply
-  capabilities:
-  - tool_use
-  defaultCompletionOptions:
-    contextLength: 49152
-    temperature: 0.2
-    keepAlive: 300
-  requestOptions:
-    extraBodyProperties:
-      num_gpu: 99
-- name: Qwen 2.5 Coder (7B) - Autocomplete & Edit
-  provider: ollama
-  model: qwen2.5-coder:7b
-  roles:
-  - autocomplete
-  - edit
-  - apply
-  defaultCompletionOptions:
-    contextLength: 16384
     temperature: 0.0
     keepAlive: 300
   requestOptions:
