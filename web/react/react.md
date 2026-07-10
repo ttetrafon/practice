@@ -2,10 +2,11 @@
 
 ## Hooks
 
-- Important notes:
-  - Hooks can only be used within functional components.
-  - Hooks must always run in the same order when the component is invoked.
-    - This means that hooks usually need to exist in the top level.
+- Hooks can only be used within functional components.
+- Hooks must always run in the same order when the component is invoked.
+  - This means that hooks usually need to exist in the top level.
+
+### Specific Hooks
 
 - `useState`: Sets a value in state to be used.
   - Always returns an array of two objects, the value itself and its setter.
