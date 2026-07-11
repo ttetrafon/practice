@@ -82,6 +82,12 @@ class UActorComponent {}
     - Common outputs:
       - _Hit Info_ is a structure with the ray-tracing information used to trigger the damage event on the target actor.
 
+#### [Damage Types](https://dev.epicgames.com/documentation/unreal-engine/API/Runtime/Engine/UDamageType)
+
+- A damage type is used directly with the damage system to control how specific damage interacts with actors.
+- **ClassDetails**:
+  - ...
+
 ## Hierarchies
 
 - Actors can be attached to other actors directly (**Attach Actor to Actor** node).
