@@ -49,9 +49,35 @@
   - Keep odd shaped shapes to a minimum.
   - Lookout for pinches and bumps that negatively affect lighting.
 
-### Easy Shapes
+### Tools
+
+#### Easy Shapes
 
 - **Cables** (or similar) can be created by adding (`shift+a`) a bezier curve, and then *curve data -> geometry -> bevel -> depth > 0*.
+
+#### Modifiers
+
+- `Properties panel -> Modifiers`
+- Modifiers can be applied to a (whole) mesh.
+- Order:
+  - The order the modifiers are applied to the mesh.
+  - Modifiers are additive, so each one is applied to the result of all previous ones.
+- **BEVEL**
+  - Adds a bevel to all vertices or edges (as selected).
+  - **Width type**:
+  - **Segments**: The number of segments the bevel is composed of.
+  - **Limit method**:
+  - **Profile**:
+    - ...
+  - **Geometry**:
+    - **Milter Outer**:
+      - **Sharp**:
+      - **Patch**:
+      - **Arc**: Usually results in better geometry.
+- **BOOLEAN**
+- **SMOOTH BY ANGLE**
+- **WEIGHTED NORMALS**
+  - Useful to add after multiple bevel, or similar geometry affecting, modifiers to recalculate the normals properly.
 
 ### Tips & Tricks
 
@@ -59,6 +85,7 @@
 - Keep density of lines in both directions similar, and enough to define the required details.
 - Use separate meshes to define smaller much smaller details or more detailed objects, and join them afterwards in a single object; do not join the meshes though.
 - To create creases, do not use Blender crease tools, as these are not exported - instead, use bevels when needed.
+- Remove faces from places the camera will never see them.
 
 ### Preparing a Mesh for Use
 
