@@ -1,5 +1,63 @@
 # React
 
+## Context
+
+- A context class is used to supply context values to all enclosed elements.
+
+```ts
+import { createContext, useContext, type ReactNode } from "react";
+
+interface AppContextType {
+};
+
+const AppContext = createContext<AppContextType | undefined>(undefined);
+
+export const AppProvider = ({ children }: { children: ReactNode }) => {
+  const [loading, setLoading] = useState(false);
+
+  return (
+    <AppContext.Provider value={{ /* context methods & values */ loading, setLoading }}>
+      {children}
+    </AppContext.Provider>
+  );
+}
+
+export const useAppContext = () => {
+  const context = useContext(AppContext);
+  if (context === undefined) {
+    throw new Error('useAppContext must be used within an AppProvider');
+  }
+  return context;
+};
+```
+
+- A context can be called within any child element so its methods and values can be called.
+
+```ts
+import { useAppContext } from "~/context/AppContext";
+
+export default function Loader() {
+  const { loading } = useLoading();
+
+  return (
+    <>
+      {loading && <div id='loader-parent'>
+        <span id='loader'></span>
+      </div>}
+    </>
+  );
+}
+```
+
+```html
+<AppProvider>
+  <body>
+    <!-- ... -->
+    <loader />
+  </body>
+</AppProvider>
+```
+
 ## Hooks
 
 - Hooks can only be used within functional components.
@@ -63,7 +121,13 @@ useEffect(() => {
 }, []);
 ```
 
-- `useContext`:
+- `useContext`: Used to call any enclosing context directly for values and/or methods.
+  - If using a provider, useContext is instead called within a custom hook and the custom hook is called in the element(s).
+
+```ts
+const darkThem = useContext(ThemeContext);
+```
+
 - `useRef`
 - `useMemo`:
 - `useCallback`:
