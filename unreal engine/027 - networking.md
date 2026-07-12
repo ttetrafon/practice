@@ -176,6 +176,10 @@ bool TestServerRPC_CPP_Validate() {
 }
 ```
 
+- In general, it is a good practice, to reduce lag, to always execute function locally and then call the server side staff for replication.
+  - _For example, when the player character takes damage, change their health locally, then call the change health on the server, which will then replicate the health change to the other clients.*
+  - Note that in this case, for variables that change quickly, some guard needs to be set so that the local state is not updated back-and-forth between local and server changes.
+
 ## Events in Multiplayer
 
 - `BeginPlay`: executes on all clients; as **multicast**
