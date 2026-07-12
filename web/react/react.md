@@ -96,6 +96,7 @@ function changeCount(mod: int) -> Void {
 - `useEffect`: The most general side-effect handler for when some data changes.
   - A function within the hook can `return` some cleanup code.
     - Due to that, event listeners set within the hook should be unset in the hook's return function.
+  - If a useEffect is not given a list of observables, it will be triggered only when the element is (re)rendered.
 
 ```ts
 // basic usage
@@ -128,9 +129,49 @@ useEffect(() => {
 const darkThem = useContext(ThemeContext);
 ```
 
-- `useRef`
-- `useMemo`:
-- `useCallback`:
+- `useRef`: Holds a value, which persist between component rerenders.
+  - Creates an object holding the given value (e.g.: `useRef(0)` results in `{ current: 0 }`).
+    - Changing its value does not trigger a state update, so it does not trigger a component rerender.
+    - Because of this, it's useful as a tool to store previous some previous state.
+  - Can also be used to hold references to html elements and react components.
+    - All html elements have a `ref` property defined for this.
+
+```ts
+const count = useRef(0);
+const incrementCount = () => {
+  count.current = count.current + 1;
+}
+
+// Element reference
+const inputRef = useRef();
+
+return (
+  <input ref={inputRef} ...>
+);
+```
+
+- `useMemo`: Used to cache the value so it is not recomputed each time the component rerenders.
+  - Creates a map of `input(s) -> value` and stores it for later.
+  - `useMemo` has a time and memory overhead, so it should not be used in place of `useEffect` everywhere.
+
+```ts
+const [number, setNumber] = useState(0);
+
+const memoisedResult = useMemo(() => {
+  return someSlowFunction(number);
+}, [number]);
+```
+
+- `useCallback`: Similar to `useMemo`, but used with functions (usually with inputs), as it returns the function itself, not just its returned value like `useMemo` does.
+
+```ts
+const [number, setNumber] = useState(0);
+
+const getItems = useCallback((increment, multiplier) => {
+  return [number, number + increment, number * multiplier];
+}, [number]);
+```
+
 - `useReducer`:
 - `useTransition`:
 - `useDeferredValue`:
