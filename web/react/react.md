@@ -172,8 +172,51 @@ const getItems = useCallback((increment, multiplier) => {
 }, [number]);
 ```
 
-- `useReducer`:
-- `useTransition`:
+- `useReducer`: Useful for taking actions on complex state objects.
+
+```ts
+const [state, dispatch] = useReducer(reducer, { count: 0 });
+
+function reducer(state: obj, action: obj) {
+  switch (action.type) {
+    case 'increment':
+      return { count: state.count + action.num };
+    case 'decrement':
+      return { count: state.count - action.num };
+    case 'multiply':
+      return { count: state.count * action.num };
+    case 'divide':
+      return { count: state.count / action.num };
+    default:
+      return state;
+  }
+}
+
+function adjustCount(type: string, num: number) {
+  dispatch(type);
+}
+```
+
+- `useTransition`: Used for low-priority state changes, especially
+  - when:
+    - _a state change is slow_
+    - _a state change happens very often, and can be deferred_
+  - In such cases, `useTransition` updates the state when processing finishes without blocking the component's rerender.
+
+```ts
+const [isPending, startTransition] = useTransition();
+// `isPending` keeps track of when `startTransition` is still processing.
+
+function handleChange() {
+  // ... some high priority processing
+
+  // whatever is within startTransition stops is deferred if handleChange is called again or a rerender is triggered elsewhere
+  startTransition(() => {
+    // ... some processing
+  });
+}
+```
+
 - `useDeferredValue`:
 - `useLayoutEffect`:
 - `useDebugValue`:
