@@ -86,6 +86,13 @@
 - Use separate meshes to define smaller much smaller details or more detailed objects, and join them afterwards in a single object; do not join the meshes though.
 - To create creases, do not use Blender crease tools, as these are not exported - instead, use bevels when needed.
 - Remove faces from places the camera will never see them.
+- To create a belt (or something similar, like a tank's caterpillars), create a small component mesh to be replicated and add a curve modifier to it (e.g.: a bezier curve).
+
+#### Hollow Objects
+
+- Model the object normally.
+- Add a solidify modifier, which should go to the outside.
+- Use a boolean to split the mesh in any way required (for example, to split a crate's lid).
 
 ### Preparing a Mesh for Use
 
