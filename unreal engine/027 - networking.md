@@ -192,5 +192,5 @@ bool TestServerRPC_CPP_Validate() {
 
 - Generally turn **replicates** only for actors that actually need to be continuously replicated.
   - For stuff that only require very updates rarely (e.g.: deleting an actor), or for cosmetic stuff (e.g.: VFX), use multicast events so that bandwidth is preserved as much as possible.
-- When requesting a local controller, always use a delay on a _cast failed_ and repeat the request, because a client controller may not be immediately available.
+- When requesting a local controller, always use a delay on a _cast failed* and repeat the request, because a client controller may not be immediately available.
   - `Get Controller [target=self] -> Cast to CustomPlayerController [cast failed] -> Delay -> Cast to CustomPlayerController`
