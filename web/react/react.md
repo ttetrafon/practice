@@ -1,5 +1,61 @@
 # React
 
+## Components
+
+### References
+
+- All react components feature a `ref={}` property, which can be used with `const elementRef = useRef()` to access them in the code.
+- Custom components can be assigned a ref through `React.forwardRef`.
+
+```ts
+import React from "react";
+
+function CustomInput({ style, ...props }, ref) {
+  return (
+    <input
+      ref={ref}
+      {... props}
+      style=({
+        border: 'none',
+        backgroundColor: 'lightpink',
+        padding: '0.25em',
+        ...style,
+      })
+    />
+  );
+};
+
+export default React.forwardRef(CustomInput);
+```
+
+- For advanced control, `React.useImperativeHandle` can be used instead.
+  - A function within the `useImperativeHandle's` return value will be exported and be available to be called where the element is referenced - like exposing methods in web-components.
+  - The list of observables is used like in 'useEffect' to call the methods when any dependency changes.
+
+```ts
+import React, { useImperativeHandle } from "react";
+
+function CustomInput({ style, ...props }, ref) {
+  useImperativeHandle(ref, () => {
+    return { alertHi: () => alert(`Hi ${props.value}!`) }
+  }, [props.value]);
+
+  return (
+    <input
+      {... props}
+      style=({
+        border: 'none',
+        backgroundColor: 'lightpink',
+        padding: '0.25em',
+        ...style,
+      })
+    />
+  );
+};
+
+export default React.forwardRef(CustomInput);
+```
+
 ## Context
 
 - A context class is used to supply context values to all enclosed elements.
@@ -217,11 +273,43 @@ function handleChange() {
 }
 ```
 
-- `useDeferredValue`:
-- `useLayoutEffect`:
-- `useDebugValue`:
-- `useImperativeValue`:
-- `useId`:
+- `useDeferredValue`: Keeps the deferred value static until the application has time to update its value.
+  - It's like debouncing with the delay calculated dynamically by React.
+
+```ts
+const deferredInputValue = useDeferredValue(input);
+const res = useMemo(() => {
+  // ... non-critical functionality depending on the deferred input
+}, [deferredInput]);
+```
+
+- `useLayoutEffect`: synchronous `useEffect`
+  - Useful when:
+    - we need updates to happen synchronously with any changes the user performs.
+    - changes affect the dom directly/indirectly and we need details from the dom to continue (e.g.: get a bounding box, an element's size, etc).
+- `useImperativeHandle`: Used for better handling of references for custom components (see above).
+- `useId`: Can be used to create unique element ids.
+  - Note that:
+    - an id will be random but always the same when created in the same rendered page.
+    - these ids are invalid for `document.querySelector()` on purpose.
+  - Tip: if multiple unique ids are needed within the same page, use `useId()` once and append some value to it each time it is used for an element.
+
+```ts
+default function EmailForm() {
+  const id = useId();
+
+  return (
+    <>
+      <label htmlFor={`{id}:email`}>Email</label>
+      <input id={`{id}:email`} type="email" />
+
+      <label htmlFor={`{id}:name`}>Name</label>
+      <input id={`{id}:name`} type="text" />
+    </>
+  );
+}
+```
+
 - `useSyncExternalStore`: Hooks into an external store (like the browser's `navigator`). Generally, very useful when interfacing with the browser's features.
 
 ```ts
@@ -262,3 +350,4 @@ function subscribe(cb: () => void) {
 - `useEffectActionState` (experimental):
 - `useEffectOptimistic` (experimental):
 - Custom Hooks:
+- `useDebugValue`: Used with custom hooks to display any value next to its state in the console.
