@@ -1,5 +1,7 @@
 # React
 
+- [React developer reference](https://react.dev/reference/react)
+
 ## Components
 
 ### References
@@ -120,9 +122,9 @@ export default function Loader() {
 - Hooks must always run in the same order when the component is invoked.
   - This means that hooks usually need to exist in the top level.
 
-### Specific Hooks
+### Built-in Hooks
 
-- `useState`: Sets a value in state to be used.
+- [useState](https://react.dev/reference/react/useState): Sets a value in state to be used.
   - Always returns an array of two objects, the value itself and its setter.
   - The initial value is given as a param to useState's constructor. It can be a value or an anonymous function.
     - The initial value is called every time the state is called, so avoid using calculations or functions in the useState constructor.
@@ -149,7 +151,7 @@ function changeCount(mod: int) -> Void {
 }
 ```
 
-- `useEffect`: The most general side-effect handler for when some data changes.
+- [useEffect](https://react.dev/reference/react/useEffect): The most general side-effect handler for when some data changes.
   - A function within the hook can `return` some cleanup code.
     - Due to that, event listeners set within the hook should be unset in the hook's return function.
   - If a useEffect is not given a list of observables, it will be triggered only when the element is (re)rendered.
@@ -178,14 +180,14 @@ useEffect(() => {
 }, []);
 ```
 
-- `useContext`: Used to call any enclosing context directly for values and/or methods.
+- [useContext](https://react.dev/reference/react/useContext): Used to call any enclosing context directly for values and/or methods.
   - If using a provider, useContext is instead called within a custom hook and the custom hook is called in the element(s).
 
 ```ts
 const darkThem = useContext(ThemeContext);
 ```
 
-- `useRef`: Holds a value, which persist between component rerenders.
+- [useRef](https://react.dev/reference/react/useRef): Holds a value, which persist between component rerenders.
   - Creates an object holding the given value (e.g.: `useRef(0)` results in `{ current: 0 }`).
     - Changing its value does not trigger a state update, so it does not trigger a component rerender.
     - Because of this, it's useful as a tool to store previous some previous state.
@@ -206,7 +208,7 @@ return (
 );
 ```
 
-- `useMemo`: Used to cache the value so it is not recomputed each time the component rerenders.
+- [useMemo](https://react.dev/reference/react/useMemo): Used to cache the value so it is not recomputed each time the component rerenders.
   - Creates a map of `input(s) -> value` and stores it for later.
   - `useMemo` has a time and memory overhead, so it should not be used in place of `useEffect` everywhere.
 
@@ -218,7 +220,7 @@ const memoisedResult = useMemo(() => {
 }, [number]);
 ```
 
-- `useCallback`: Similar to `useMemo`, but used with functions (usually with inputs), as it returns the function itself, not just its returned value like `useMemo` does.
+- [useCallback](https://react.dev/reference/react/useCallback): Similar to `useMemo`, but used with functions (usually with inputs), as it returns the function itself, not just its returned value like `useMemo` does.
 
 ```ts
 const [number, setNumber] = useState(0);
@@ -228,7 +230,7 @@ const getItems = useCallback((increment, multiplier) => {
 }, [number]);
 ```
 
-- `useReducer`: Useful for taking actions on complex state objects.
+- [useReducer](https://react.dev/reference/react/useReducer): Useful for taking actions on complex state objects.
 
 ```ts
 const [state, dispatch] = useReducer(reducer, { count: 0 });
@@ -253,7 +255,7 @@ function adjustCount(type: string, num: number) {
 }
 ```
 
-- `useTransition`: Used for low-priority state changes, especially
+- [useTransition](https://react.dev/reference/react/useTransition): Used for low-priority state changes, especially
   - when:
     - _a state change is slow_
     - _a state change happens very often, and can be deferred_
@@ -273,7 +275,7 @@ function handleChange() {
 }
 ```
 
-- `useDeferredValue`: Keeps the deferred value static until the application has time to update its value.
+- [useDeferredValue](https://react.dev/reference/react/useDeferredValue): Keeps the deferred value static until the application has time to update its value.
   - It's like debouncing with the delay calculated dynamically by React.
 
 ```ts
@@ -283,12 +285,12 @@ const res = useMemo(() => {
 }, [deferredInput]);
 ```
 
-- `useLayoutEffect`: synchronous `useEffect`
+- [useLayoutEffect](https://react.dev/reference/react/useLayoutEffect): synchronous `useEffect`
   - Useful when:
     - we need updates to happen synchronously with any changes the user performs.
     - changes affect the dom directly/indirectly and we need details from the dom to continue (e.g.: get a bounding box, an element's size, etc).
-- `useImperativeHandle`: Used for better handling of references for custom components (see above).
-- `useId`: Can be used to create unique element ids.
+- [useImperativeHandle](https://react.dev/reference/react/useImperativeHandle): Used for better handling of references for custom components (see above).
+- [useId](https://react.dev/reference/react/useId): Can be used to create unique element ids.
   - Note that:
     - an id will be random but always the same when created in the same rendered page.
     - these ids are invalid for `document.querySelector()` on purpose.
@@ -310,7 +312,7 @@ default function EmailForm() {
 }
 ```
 
-- `useSyncExternalStore`: Hooks into an external store (like the browser's `navigator`). Generally, very useful when interfacing with the browser's features.
+- [useSyncExternalStore](https://react.dev/reference/react/useSyncExternalStore): Hooks into an external store (like the browser's `navigator`). Generally, very useful when interfacing with the browser's features.
 
 ```ts
 const isOnline = useSyncExternalStore(subscribe, () => navigator.online);
@@ -346,8 +348,56 @@ function subscribe(cb: () => void) {
 }
 ```
 
-- `useEffectEvent` (experimental):
-- `useEffectActionState` (experimental):
-- `useEffectOptimistic` (experimental):
+- [useEffectEvent](https://react.dev/reference/react/useEffectEvent): Used within `useEffect` (or other hooks) to separate some logic/functionality/value that must not be part of the effect dependencies.
+  - `useEffectEvent` always reads the latest render state and the logic within is not _reactive_, it instead functions more like an event listener.
+
+```ts
+function ChatRoom({ roomId, theme }) {
+  const onConnected = useEffectEvent(() => { // This decouples the theme variable from the useEffect below, limiting the triggering of the connection when the theme changes.
+    showNotification('Connected!', theme);
+  });
+
+  useEffect(() => {
+    const connection = createConnection(serverUrl, roomId);
+    connection.on('connected', () => {
+      onConnected();
+    });
+    connection.connect();
+    return () => connection.disconnect();
+  }, [roomId]);
+}
+```
+
+- [useInsertionEffect](https://react.dev/reference/react/useInsertionEffect):
+- [useOptimistic](https://react.dev/reference/react/useOptimistic): Updates the UI immediately.
+  - The set function returned by useOptimistic lets you update the state for the duration of an Action. You can pass the next state directly, or a function that calculates it from the previous state.
+
+```ts
+const [optimisticLike, setOptimisticLike] = useOptimistic(false);
+const [optimisticSubs, setOptimisticSubs] = useOptimistic(subs);
+
+function handleClick() {
+  startTransition(async () => {
+    setOptimisticLike(true);
+    setOptimisticSubs(a => a + 1);
+    await saveChanges();
+  });
+}
+```
+
+- [useActionState](https://react.dev/reference/react/useActionState): Allows to update the state with side-effects using actions (i.e.: functions called within `startTransition`).
+
+```ts
+function reducerAction(previousState, actionPayload) {
+  // ...
+}
+
+function MyCart({initialState}) {
+  const [state, dispatchAction, isPending] = useActionState(reducerAction, initialState);
+  // ...
+}
+```
+
+- [useDebugValue](https://react.dev/reference/react/useDebugValue): Used with custom hooks to display any value next to its state in the console.
+- [useFormStatus](https://react.dev/reference/react-dom/hooks/useFormStatus):
 - Custom Hooks:
-- `useDebugValue`: Used with custom hooks to display any value next to its state in the console.
