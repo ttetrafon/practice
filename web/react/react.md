@@ -401,3 +401,5 @@ function MyCart({initialState}) {
 - [useDebugValue](https://react.dev/reference/react/useDebugValue): Used with custom hooks to display any value next to its state in the console.
 - [useFormStatus](https://react.dev/reference/react-dom/hooks/useFormStatus):
 - Custom Hooks:
+  - name should be `use*` so Reacts create the appropriate hook setup behind the scenes
+  - other hooks can be used normally within the custom hook
