@@ -1,3 +1,3 @@
 [submodule "ts/general/lib"]
-	path = ts/general/lib
+	path = coding/general/ts/general/lib
 	url = git@github.com:ttetrafon/typescript-lib.git
