@@ -9,6 +9,8 @@
 
 ## Creating Meshes
 
+### Mesh Editing
+
 - Form (general shape)
   - Block-out the overall shape with basic shapes initially, to use as a template.
 - Details
@@ -49,13 +51,13 @@
   - Keep odd shaped shapes to a minimum.
   - Lookout for pinches and bumps that negatively affect lighting.
 
-### Tools
+#### Tools
 
-#### Easy Shapes
+##### Easy Shapes
 
 - **Cables** (or similar) can be created by adding (`shift+a`) a bezier curve, and then *curve data -> geometry -> bevel -> depth > 0*.
 
-#### Modifiers
+##### Modifiers
 
 - `Properties panel -> Modifiers`
 - Modifiers can be applied to a (whole) mesh.
@@ -78,6 +80,10 @@
 - **SMOOTH BY ANGLE**
 - **WEIGHTED NORMALS**
   - Useful to add after multiple bevel, or similar geometry affecting, modifiers to recalculate the normals properly.
+
+### Sculpting
+
+- ...
 
 ### Tips & Tricks
 
