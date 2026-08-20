@@ -24,6 +24,40 @@
 }
 ```
 
+### _Private Properties_
+
+- We can define variables with fallbacks in a way that each selector can have either define its own or use the fallback.
+- When modifying the theme through data-classes we can then define the base variable so that applies instead of the default.
+
+```css
+:root {
+  --primary: yellow;
+  --accent: blue;
+}
+
+button {
+  --_button-colour: var(--button-colour, white);
+  --_button-colour-hover: var(--button-colour-hover, firebrick);
+
+  background-color: var(--_button-colour);
+  color: contrast-color(var(--_button-colour));
+
+  &:hover, &:focus {
+    background-color: var(--_button-colour-hover);
+    color: contrast-color(var(--_button-colour-hover));
+  }
+
+  &[data-theme="primary"] {
+    --button-surface: var(--primary);
+  }
+
+  &[data-theme="accent"] {
+    --button-surface: var(--accent);
+  }
+}
+
+```
+
 ## [Stacking Context](https://developer.mozilla.org/en-US/docs/Glossary/Stacking_context)
 
 - [Isolation](https://developer.mozilla.org/en-US/docs/Web/CSS/Reference/Properties/isolation)
@@ -124,3 +158,14 @@ img.profile-pic {
   corner-shape: scoop
 }
 ```
+
+## Design
+
+### Colours
+
+- Use variables for base colours, and derive other colours from them.
+  - `contrast-colour(#colour)`: returns a colour that has the best contrast with '#colour'.
+    - e.g.: useful for making text show correctly due to changes in the background.
+  - `oklch(from var(#base-color) #l #c #h)`: stars from the base colour and modifies any of its value(s).
+    - To get the same value, use `l`, `c`, and/or `h` instead of defining a new value.
+  - `hsl(from var(--base-toast-color) #h #s #l)`: same as above, but worst in general due to calculations.
