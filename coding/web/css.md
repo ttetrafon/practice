@@ -1,6 +1,8 @@
 # CSS
 
-## Variables
+## Programming
+
+### Variables
 
 - A variable is defined with `--var_name: var_value;`.
   - Usually done in `:root`, but can be put anywhere.
@@ -24,7 +26,7 @@
 }
 ```
 
-### _Private Properties_
+#### _Private Properties_
 
 - We can define variables with fallbacks in a way that each selector can have either define its own or use the fallback.
 - When modifying the theme through data-classes we can then define the base variable so that applies instead of the default.
@@ -58,7 +60,7 @@ button {
 
 ```
 
-## [Stacking Context](https://developer.mozilla.org/en-US/docs/Glossary/Stacking_context)
+### [Stacking Context](https://developer.mozilla.org/en-US/docs/Glossary/Stacking_context)
 
 - [Isolation](https://developer.mozilla.org/en-US/docs/Web/CSS/Reference/Properties/isolation)
 
@@ -95,16 +97,49 @@ button {
 }
 ```
 
-## Positioning
+### CSS Reset
 
-### Scrolling
+- Generally it is good practice to add a CSS Reset file (or include its contents) in a website, with the purpose of controlling properly any browser defaults that vary from browser to browser.
+
+```css
+:root {
+  /*  */
+  interpolate-size: allow-keywords;
+}
+
+html {
+  /* Reserver the space for the scrollbar, so its appearance does not cause sideways movement. */
+  scrollbar-gutter: stable;
+}
+
+body {
+  margin: 0;
+
+  /* For a body split into header, main, and footer */
+  min-block-size: 100svh;
+  display: grid;
+  grid-template-rows: auto 1fr auto;
+
+  font-family: var(--ff-base);
+  background: var(--ff-background);
+  color: var(--text-primary);
+  font-size: var(-fs-0);
+  line-height: 1.6;
+}
+```
+
+## Styling
+
+### Positioning
+
+#### Scrolling
 
 - Scrolling may affect the position of elements, especially when sticky or absolute elements get in the way. This can be mitigated with scrolling margins/paddings:
   - `scroll-margin: #`
   - `scroll-padding: #`
   - `scroll-behaviour: smooth`
 
-## Sizing
+### Sizing
 
 - [Width](https://developer.mozilla.org/en-US/docs/Web/CSS/Reference/Properties/width)
 - [Inline Size](https://developer.mozilla.org/en-US/docs/Web/CSS/Reference/Properties/inline-size)
@@ -119,7 +154,7 @@ img.profile-pic {
 }
 ```
 
-## Typography
+### Typography
 
 - [Text Wrap](https://developer.mozilla.org/en-US/docs/Web/CSS/Reference/Properties/text-wrap)
   - **balance**: distributes the text among available lines - useful for headers and/or annotations
@@ -134,11 +169,11 @@ img.profile-pic {
 
 - In tailwind: [Tailwind typography plugin](https://v1.tailwindcss.com/docs/typography-plugin).
 
-## Decoration
+### Decoration
 
-### Borders
+#### Borders
 
-#### [Corner Shape](https://developer.mozilla.org/en-US/docs/Web/CSS/Reference/Properties/corner-shape)
+##### [Corner Shape](https://developer.mozilla.org/en-US/docs/Web/CSS/Reference/Properties/corner-shape)
 
 - **values**:
   - round,
