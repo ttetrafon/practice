@@ -97,6 +97,13 @@ button {
 }
 ```
 
+### Methods
+
+- Colours can be defined by predetermined functions:
+  - `rgb(#red #green #blue)`/`rgba(#red #green #blue / #alpha)` (legacy):
+  - `hsl(#hue #saturation #light)`/`hsla(#hue #saturation #light / #alpha)` (legacy):
+  - `oklch()`:
+
 ### CSS Reset
 
 - Generally it is good practice to add a CSS Reset file (or include its contents) in a website, with the purpose of controlling properly any browser defaults that vary from browser to browser.
@@ -202,5 +209,5 @@ img.profile-pic {
   - `contrast-colour(#colour)`: returns a colour that has the best contrast with '#colour'.
     - e.g.: useful for making text show correctly due to changes in the background.
   - `oklch(from var(#base-color) #l #c #h)`: stars from the base colour and modifies any of its value(s).
-    - To get the same value, use `l`, `c`, and/or `h` instead of defining a new value.
-  - `hsl(from var(--base-toast-color) #h #s #l)`: same as above, but worst in general due to calculations.
+    - To get the same value, use `h`, `s`, and/or `h` instead of defining a new value.
+  - `hsl(from var(--base-toast-color) #h #s #l / #a)`: same as above, but worst in general due to calculations.
