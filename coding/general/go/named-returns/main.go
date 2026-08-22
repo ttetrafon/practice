@@ -15,7 +15,11 @@ func firstLine(path string) (line string, length int, err error) {
 	}
 
 	defer func() {
-		f.Close()
+		cerr := f.Close()
+		if err == nil && cerr != nil {
+			// This assigns the err to the named return, so it will be automatically returned from the function
+			err = cerr
+		}
 	}()
 
 	r := bufio.NewReader(f)
@@ -29,7 +33,8 @@ func firstLine(path string) (line string, length int, err error) {
 	}
 
 	length = len(line)
-	return line, length, err
+	// Name returns can also be used to return natively already defined variables, so we don't need to return the variables explicitly here
+	return
 }
 
 func main() {
