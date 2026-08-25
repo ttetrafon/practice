@@ -201,6 +201,34 @@ img.profile-pic {
 }
 ```
 
+##### Adjustable Border Radius
+
+- A border-radius that gets smaller when it reaches the edge of the screen, but stays on when it is displayed with margins on the outside.
+
+```css
+html {
+  overflow-y: scroll;
+  scrollbar-gutter: stable;
+}
+
+.card {
+  border-radius: clamp(0px, 100vw - 100%, 50px);
+}
+```
+
+- If we need this relative to a parent, we make the parent a container and switch using container units.
+
+```css
+.parent {
+  container-type: inline-size;
+}
+
+.card {
+  border-radius: clamp(0px, 100cqi - 100%, 50px);
+}
+```
+
+
 ## Design
 
 ### Colours
