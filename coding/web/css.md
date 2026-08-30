@@ -2,6 +2,67 @@
 
 ## Programming
 
+### Selectors
+
+- **Universal Selector [`*`]**: selects everything; if used in a combination, selects everything based on the defined pattern
+- **Type Selectors [`element-name`]**: match an html element (e.g.: h1, p, span, section, etc).
+- **Class Selectors [`.class-name`]**: a dot followed by the class name.
+- **ID Selectors [`#id`]**: a sharp followed by the element's ID
+- **Attribute Selectors**: match based on attributes and defined patterns
+
+```css
+
+/* UNIVERSAL */
+
+/* everything */
+* {}
+
+/* everything under a div */
+div * {}
+
+/* any first child element within a section - equivalent to 'section :first-sibling' */
+section *:first-sibling {}
+
+/* DESCENDANTS */
+
+.parent .descendant {}
+
+.parent > .child {}
+
+/* SIBLINGS */
+
+.sibling + .next-sibling {}
+
+.sibling ~ .subsequent-sibling {}
+
+/* ATTRIBUTES */
+
+/* existence of attribute */
+[attribute] {}
+
+/* attribute's exact value */
+[attribute="value"] {}
+
+/* exact value or exact query included in list of values */
+[attribute~="query"] {}
+
+/* exact value or starts with query followed by - */
+[attribute|="query"] {}
+
+/* string value starts with query */
+[attribute^="query"] {}
+
+/* string value ends with query */
+[attribute&="query"] {}
+
+/* string value contains query */
+[attribute*&*="query"] {}
+
+.selector[attribute] {}
+
+.selector[attribute="value"] {}
+```
+
 ### Variables
 
 - A variable is defined with `--var_name: var_value;`.
