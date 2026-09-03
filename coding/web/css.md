@@ -118,7 +118,26 @@ button {
     --button-surface: var(--accent);
   }
 }
+```
 
+```css
+button.flat {
+  --color-initial: black;
+  border: .1em solid var(--color, var(--color-initial));
+  background: transparent;
+  color: var(--color, var(--color-initial));
+  transition: 1s;
+}
+
+button.flat:hover {
+  box-shadow: 0 0 0 1em var(--color, var(--color-initial)) inset;
+  color: white;
+}
+
+/* The .danger button will define the --color red, thus it will appear red instead of black (which is taken from --color-initial) */
+button.flat.danger {
+  --color: red;
+}
 ```
 
 ### [Stacking Context](https://developer.mozilla.org/en-US/docs/Glossary/Stacking_context)
