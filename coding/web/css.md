@@ -318,3 +318,27 @@ html {
   - `oklch(from var(#base-color) #l #c #h)`: stars from the base colour and modifies any of its value(s).
     - To get the same value, use `h`, `s`, and/or `h` instead of defining a new value.
   - `hsl(from var(--base-toast-color) #h #s #l / #a)`: same as above, but worst in general due to calculations.
+
+### Theming
+
+- Can be done through css variables and a global variable (usually applied as an attribute) that is applied to all components.
+
+```css
+:root {
+  /* Define the defaults */
+  --primary-color: #302AE6;
+  --secondary-color: #536390;
+  --font-color: #424242;
+  --bg-color: #fff;
+  --heading-color: #292922;
+}
+
+[data-theme="dark"] {
+  /* Apply this when the 'data-theme' attribute is set to 'dark' */
+  --primary-color: #9A97F3;
+  --secondary-color: #818cab;
+  --font-color: #e1e1ff;
+  --bg-color: #161625;
+  --heading-color: #818cab;
+}
+```
