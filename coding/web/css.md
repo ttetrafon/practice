@@ -2,6 +2,35 @@
 
 ## Programming
 
+### Constructible Stylesheets
+
+- Prepare shared styles and apply those to the document and/or multiple shadow-roots without duplication.
+- Stylesheets are created through `new CSSStyleSheet()` and can be updated during runtime without triggering a flash of unstyled content (FOUC).
+
+```js
+const sheet = new CSSStyleSheet();
+sheet.replace('a { color: blue; }')
+  .then(() => {
+    console.log('Styles replaced');
+  })
+  .catch(err => {
+    console.error('Failed to replace styles:', err);
+  });
+```
+
+- Note that _import_ rules are not allowed during programmatic stylesheet creation.
+
+```js
+// The following will through a warning that 'import is not allowed here'.
+sheet.replaceSync('@import url("styles.css"); a { color: red; }');
+```
+
+- A document (or shadowroot) can then use the stylesheet.
+
+```js
+document.adoptedStyleSheets.push(sheet);
+```
+
 ### Selectors
 
 - **Universal Selector [`*`]**: selects everything; if used in a combination, selects everything based on the defined pattern
