@@ -38,7 +38,17 @@ new Event('my-event', {
 
 ### Styling Web Components
 
-- ...
+- Inherited properties go past the shadow-dom boundary.
+  - This is the default, and needs to be stopped if required otherwise.
+
+```css
+:host {
+  /* This blocks inherited properties within the web-component */
+  all: initial;
+}
+```
+
+- Variables defined in `:root{}` are accessible within the shadow-dom.
 - Style hooks through CSS custom properties
   - Variables can be called within a web-component, if they have been defined in the document outside.
 
@@ -57,3 +67,32 @@ custom-component {
   padding: 10px;
 }
 ```
+
+- Elements within the shadow-dom can use `part="..."` to defer their styling to the outside.
+
+```html
+<!-- Within a web-component named 'my-element' -->
+<p part="intro">...</p>
+```
+
+```css
+/* In the document's stylesheet */
+my-element::part(intro) {
+  color: red;
+}
+```
+
+- A stylesheet can be imported within a web-component.
+  - As expected, the stylesheet won't leak to the outside.
+
+```js
+template.innerHTML = /*html*/`
+<style>
+  @import './styles.css';
+</style>
+
+<div id="an-id" title="">...</div>
+`;
+```
+
+- **slots** within a web-component are considered light-dom, so they are styled directly by the document's stylesheet.
