@@ -32,6 +32,42 @@ new Event('my-event', {
 });
 ```
 
+## States
+
+- Elements can be in different states (`disabled`, `hover`, `active`, etc), which define how they operate at the moment.
+  - States can also be used for styling.
+
+### Custom States
+
+- Custom states can be implemented for web-components.
+  - [The Hidden Power of Custom States For Web Components](https://www.dannymoerkerke.com/blog/the-hidden-power-of-custom-states-for-web-components/)
+
+```js
+// attach the internals
+this.#internals = this.attachInternals(); // The # makes the internals private, not allowing consumers of the web-component to access them at all.
+
+// add states
+this.internals.states.add('playing');
+
+// iterate over states
+this.internals.states.forEach(state => {
+ console.log(state); // playing
+});
+
+// remove states
+this.internals.states.delete('playing');
+
+// check for existence of states
+this.internals.states.has('playing'); // true
+```
+
+- Note that the old syntax required `--` before the state name, and some browsers only support the old syntax still.
+  - Adding a custom state without `--` will result in an error in such cases.
+  - To use custom states in all browsers, one could wrap the methods in a `try-catch` to add the `--` when needed and/or keep track of what is supported.
+
+- Custom states can be used in css with `:state('custom-state-name')`.
+  - The old syntax was `:--custom-state-name`.
+
 ## Shadow DOM
 
 - [What is the Shadow DOM?](https://web.dev/articles/shadowdom-v1#what_is_shadow_dom)
