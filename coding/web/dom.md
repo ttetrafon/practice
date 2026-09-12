@@ -4,6 +4,29 @@
 
 ### Semantic Elements
 
+- Useful links:
+  - [Semantic HTML](https://developer.mozilla.org/en-US/curriculum/core/semantic-html/)
+
+- `header`: a container for introductory content or a set of navigation links within the document or a section
+  - multiple headers may exist within a document
+- `footer`: a footer for the document or a section
+- `nav`: grouping the document's major navigation links
+- `main`: defines the main content of the document
+- `section`: a thematic grouping of content, usually with a header
+- `article`: independent, self-contained content
+- `aside`: a sidebar, usually indirectly related to the surrounding content
+- `ul`/`ol`
+  - `li`
+- `table`
+- `figure`: self-contained contents, like illustrations, diagrams, photos, code listings, etc
+  - `figcation`: defines a caption for a figure element; placed as the first or last child of the figure
+- `details`
+  - `summary`
+- `mark`
+- `i`
+- `b`
+- `time`
+
 ### Web Components (Custom Elements)
 
 - [What is the Shadow DOM?](https://web.dev/articles/shadowdom-v1#what_is_shadow_dom)
