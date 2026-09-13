@@ -31,6 +31,10 @@
 
 - [What is the Shadow DOM?](https://web.dev/articles/shadowdom-v1#what_is_shadow_dom)
 
+#### Shadow-Dom Interactions
+
+- `focus` can be delegated within the shadow-dom, by applying `.delegateFocus` to its shadow.
+
 #### Form-Associated Elements
 
 - An element can be associated with a form by:
@@ -73,7 +77,7 @@ class MyCounter extends HTMLElement {
 
   // ...
 }
-customElements.define('my-counter', MyCounter);
+customElementents.define('my-counter', MyCounter);
 ```
 
 - Such an element can have multiple values associated with it, and all of them submitted with the form.
