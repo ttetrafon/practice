@@ -3,3 +3,30 @@ body {
   padding: 10%;
   box-sizing: border-box;
 }
+
+.pop-container {
+  padding: 1rem;
+  border-radius: 8px;
+  inline-size: min(80vw, 25rem);
+  position-area: bottom span-right;
+  margin-block-start: 0.5rem;
+  transition: opacity 2000ms, translate 2000ms;
+  transition-behavior: allow-discrete;
+  translate: 0 10px;
+  opacity: 0;
+
+  &:popover-open {
+    translate: 0 0;
+    opacity: 1;
+
+    @starting-style {
+      translate: 0 -10px;
+      opacity: 0;
+    }
+  }
+}
+
+.pop-content {
+  display: grid;
+  gap: 0.5rem;
+}

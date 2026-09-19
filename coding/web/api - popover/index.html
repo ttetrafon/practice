@@ -5,16 +5,22 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>CSS Glass</title>
+  <title>Popover Widget</title>
   <script src="script.js" type="module" defer></script>
   <link rel="stylesheet" href="styles.css">
 </head>
 
 <body>
+  <!-- A popover's controller is a button that target's the specific popover id. -->
   <button popovertarget="info">Details</button>
-  <div id="info" popover>
-    <strong>Heads up:</strong> Beta feature
-    <button popovertarget="info" popovertargetaction="hide">Close</button>
+
+  <!-- A popover element requires an id, which will be referenced elsewhere. -->
+  <div id="info" class="pop-container" popover>
+    <!-- The popover element switches between `display: none` and `display: fixed`, so we need an internal wrapper if we want to style the full of it. -->
+    <div class="pop-content">
+      <p><strong>Heads up:</strong> I just popped!</p>
+      <button popovertarget="info" popovertargetaction="hide">Close</button>
+    </div>
   </div>
 </body>
 
