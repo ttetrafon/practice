@@ -77,7 +77,7 @@ class MyCounter extends HTMLElement {
 
   // ...
 }
-customElementents.define('my-counter', MyCounter);
+customElements.define('my-counter', MyCounter);
 ```
 
 - Such an element can have multiple values associated with it, and all of them submitted with the form.
