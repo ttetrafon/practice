@@ -5,16 +5,8 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="711edb98-3981-4f10-89f5-90f7d8f87fd0" name="Changes" comment="[java] hacker-rank++">
-      <change afterPath="$PROJECT_DIR$/src/main/java/com/ttetrafon/jackson/Child.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/com/ttetrafon/jackson/ChildA.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/com/ttetrafon/jackson/ChildAMixin.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/com/ttetrafon/jackson/ChildB.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/com/ttetrafon/jackson/ChildBMixin.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/com/ttetrafon/jackson/ChildMixin.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/com/ttetrafon/jackson/Parent.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/com/ttetrafon/jackson/ParentMixin.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/vcs.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/vcs.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/ttetrafon/jackson/Main.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/ttetrafon/jackson/Main.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -23,6 +15,9 @@
   </component>
   <component name="CodeInsightWorkspaceSettings">
     <option name="optimizeImportsOnTheFly" value="true" />
+  </component>
+  <component name="EmbeddingIndexingInfo">
+    <option name="cachedIndexableFilesCount" value="60" />
   </component>
   <component name="FileTemplateManagerImpl">
     <option name="RECENT_TEMPLATES">
@@ -34,7 +29,7 @@
     </option>
   </component>
   <component name="Git.Settings">
-    <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$/../.." />
+    <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$/../../../.." />
   </component>
   <component name="GitHubPullRequestSearchHistory">{
   &quot;lastFilter&quot;: {
@@ -51,6 +46,10 @@
   <component name="MarkdownSettingsMigration">
     <option name="stateVersion" value="1" />
   </component>
+  <component name="McpProjectServerCommands">
+    <commands />
+    <urls />
+  </component>
   <component name="ProjectColorInfo">{
   &quot;associatedIndex&quot;: 1
 }</component>
@@ -63,38 +62,41 @@
     <option name="hideEmptyMiddlePackages" value="true" />
     <option name="showLibraryContents" value="true" />
   </component>
-  <component name="PropertiesComponent">{
-  &quot;keyToString&quot;: {
-    &quot;ASKED_ADD_EXTERNAL_FILES&quot;: &quot;true&quot;,
-    &quot;ASKED_SHARE_PROJECT_CONFIGURATION_FILES&quot;: &quot;true&quot;,
-    &quot;Application.Main.executor&quot;: &quot;Run&quot;,
-    &quot;Application.SystemMetrics.executor&quot;: &quot;Run&quot;,
-    &quot;Application.com.ttetrafon.bytes.Main.executor&quot;: &quot;Run&quot;,
-    &quot;Application.com.ttetrafon.factories.Main.executor&quot;: &quot;Run&quot;,
-    &quot;Application.com.ttetrafon.hackerrank.Main.executor&quot;: &quot;Run&quot;,
-    &quot;Application.com.ttetrafon.lists.Main.executor&quot;: &quot;Run&quot;,
-    &quot;Application.com.ttetrafon.objects.Main.executor&quot;: &quot;Run&quot;,
-    &quot;Application.com.ttetrafon.reflection.Main.executor&quot;: &quot;Run&quot;,
-    &quot;RunOnceActivity.OpenProjectViewOnStart&quot;: &quot;true&quot;,
-    &quot;RunOnceActivity.ShowReadmeOnStart&quot;: &quot;true&quot;,
-    &quot;RunOnceActivity.git.unshallow&quot;: &quot;true&quot;,
-    &quot;SHARE_PROJECT_CONFIGURATION_FILES&quot;: &quot;true&quot;,
-    &quot;git-widget-placeholder&quot;: &quot;master&quot;,
-    &quot;ignore.virus.scanning.warn.message&quot;: &quot;true&quot;,
-    &quot;kotlin-language-version-configured&quot;: &quot;true&quot;,
-    &quot;last_opened_file_path&quot;: &quot;/home/titonis@ad.itsaur.com/Projects/practice/java/playground&quot;,
-    &quot;node.js.detected.package.eslint&quot;: &quot;true&quot;,
-    &quot;node.js.detected.package.tslint&quot;: &quot;true&quot;,
-    &quot;node.js.selected.package.eslint&quot;: &quot;(autodetect)&quot;,
-    &quot;node.js.selected.package.tslint&quot;: &quot;(autodetect)&quot;,
-    &quot;nodejs_package_manager_path&quot;: &quot;npm&quot;,
-    &quot;project.structure.last.edited&quot;: &quot;Project&quot;,
-    &quot;project.structure.proportion&quot;: &quot;0.0&quot;,
-    &quot;project.structure.side.proportion&quot;: &quot;0.2&quot;,
-    &quot;settings.editor.selected.configurable&quot;: &quot;editor.preferences.import&quot;,
-    &quot;vue.rearranger.settings.migration&quot;: &quot;true&quot;
+  <component name="PropertiesComponent"><![CDATA[{
+  "keyToString": {
+    "ASKED_ADD_EXTERNAL_FILES": "true",
+    "ASKED_SHARE_PROJECT_CONFIGURATION_FILES": "true",
+    "Application.Main.executor": "Run",
+    "Application.SystemMetrics.executor": "Run",
+    "Application.com.ttetrafon.bytes.Main.executor": "Run",
+    "Application.com.ttetrafon.factories.Main.executor": "Run",
+    "Application.com.ttetrafon.hackerrank.Main.executor": "Run",
+    "Application.com.ttetrafon.lists.Main.executor": "Run",
+    "Application.com.ttetrafon.objects.Main.executor": "Run",
+    "Application.com.ttetrafon.reflection.Main.executor": "Run",
+    "RunOnceActivity.MCP Project settings loaded": "true",
+    "RunOnceActivity.OpenProjectViewOnStart": "true",
+    "RunOnceActivity.ShowReadmeOnStart": "true",
+    "RunOnceActivity.git.unshallow": "true",
+    "RunOnceActivity.typescript.service.memoryLimit.init": "true",
+    "SHARE_PROJECT_CONFIGURATION_FILES": "true",
+    "codeWithMe.voiceChat.enabledByDefault": "false",
+    "git-widget-placeholder": "master",
+    "ignore.virus.scanning.warn.message": "true",
+    "kotlin-language-version-configured": "true",
+    "last_opened_file_path": "D:/Projects/practice/self-practice/coding/general/java/playground",
+    "node.js.detected.package.eslint": "true",
+    "node.js.detected.package.tslint": "true",
+    "node.js.selected.package.eslint": "(autodetect)",
+    "node.js.selected.package.tslint": "(autodetect)",
+    "nodejs_package_manager_path": "npm",
+    "project.structure.last.edited": "Project",
+    "project.structure.proportion": "0.0",
+    "project.structure.side.proportion": "0.2",
+    "settings.editor.selected.configurable": "ml.llm.LLMThirdPartyAiProvidersConfigurable",
+    "vue.rearranger.settings.migration": "true"
   }
-}</component>
+}]]></component>
   <component name="RecentsManager">
     <key name="MoveFile.RECENT_KEYS">
       <recent name="C:\Users\ttetr\OneDrive\Projects\self-practice\java\playground\src\main\java\com\ttetrafon\hackerrank" />
@@ -169,18 +171,18 @@
     <recent_temporary>
       <list>
         <item itemvalue="Application.com.ttetrafon.reflection.Main" />
-        <item itemvalue="Application.SystemMetrics" />
-        <item itemvalue="Application.com.ttetrafon.bytes.Main" />
-        <item itemvalue="Application.Main" />
         <item itemvalue="Application.com.ttetrafon.objects.Main" />
+        <item itemvalue="Application.com.ttetrafon.bytes.Main" />
+        <item itemvalue="Application.SystemMetrics" />
+        <item itemvalue="Application.Main" />
       </list>
     </recent_temporary>
   </component>
   <component name="SharedIndexes">
     <attachedChunks>
       <set>
-        <option value="bundled-jdk-9823dce3aa75-fdfe4dae3a2d-intellij.indexing.shared.core-IU-243.22562.145" />
-        <option value="bundled-js-predefined-d6986cc7102b-deb605915726-JavaScript-IU-243.22562.145" />
+        <option value="bundled-jdk-30f59d01ecdd-a203e0a19954-intellij.indexing.shared.core-IU-262.10968.63" />
+        <option value="bundled-js-predefined-d6986cc7102b-4abd2a77f808-JavaScript-IU-262.10968.63" />
       </set>
     </attachedChunks>
   </component>
@@ -248,7 +250,14 @@
   </component>
   <component name="VcsManagerConfiguration">
     <option name="ADD_EXTERNAL_FILES_SILENTLY" value="true" />
+    <ignored-roots>
+      <path value="$PROJECT_DIR$/../.." />
+    </ignored-roots>
     <MESSAGE value="[java] hacker-rank++" />
     <option name="LAST_COMMIT_MESSAGE" value="[java] hacker-rank++" />
+  </component>
+  <component name="XSLT-Support.FileAssociations.UIState">
+    <expand />
+    <select />
   </component>
 </project>
