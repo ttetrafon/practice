@@ -248,6 +248,32 @@ body {
 
 ### Positioning
 
+#### Anchors
+
+- Elements can be used as **anchors** for other elements to position related to them.
+  - An anchor requires a designator (`anchor-name`).
+- Secondary elements require:
+  - an absolute/fixed position to consider the anchor,
+  - to designate that they are positioned related to the anchor (`position-anchor`),
+  - and to designate the relative area they will occupy (`position-area`).
+    - The position can also use a `span-{right/left/top/bottom}`, which translates the element towards that direction.
+  - Use of `margin-block` can help with distancing the element from the anchor; which maintains the margins regardless of positioning changes.
+  - When a secondary element falls out of screen, `position-area-fallbacks` can be used to switch the current positioning until a valid one is found.
+    - Note that fallbacks need `position: fixed`
+
+```css
+.anchor {
+  anchor-name: --btn-anchor;
+}
+
+.target {
+  position: absolute;
+  position-anchor: --btn-anchor;
+  position-area: bottom;
+  position-area-fallbacks: flip-block;
+}
+```
+
 #### Scrolling
 
 - Scrolling may affect the position of elements, especially when sticky or absolute elements get in the way. This can be mitigated with scrolling margins/paddings:
