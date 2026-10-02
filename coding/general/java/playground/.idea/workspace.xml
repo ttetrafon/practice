@@ -5,8 +5,11 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="711edb98-3981-4f10-89f5-90f7d8f87fd0" name="Changes" comment="[java] hacker-rank++">
-      <change beforePath="$PROJECT_DIR$/.idea/vcs.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/vcs.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/.idea/j2kLlmSettings.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/com/ttetrafon/vectors/Vectors.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/misc.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/misc.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/ttetrafon/Main.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/ttetrafon/Main.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -17,7 +20,7 @@
     <option name="optimizeImportsOnTheFly" value="true" />
   </component>
   <component name="EmbeddingIndexingInfo">
-    <option name="cachedIndexableFilesCount" value="60" />
+    <option name="cachedIndexableFilesCount" value="62" />
   </component>
   <component name="FileTemplateManagerImpl">
     <option name="RECENT_TEMPLATES">
@@ -50,6 +53,65 @@
     <commands />
     <urls />
   </component>
+  <component name="NextEditCompletionFeaturesState">
+    <decayedCancelled>
+      <entry key="MS100" value="1.0000000000000187" />
+      <entry key="MS500" value="1.0017972415051266" />
+      <entry key="S2" value="1.2058977543168932" />
+      <entry key="S5" value="1.5314478374316298" />
+      <entry key="S10" value="1.7290321276011462" />
+      <entry key="S30" value="1.9777196999231652" />
+      <entry key="S60" value="3.227511284225512" />
+      <entry key="M2" value="10.461261211455408" />
+      <entry key="M5" value="32.84138641100932" />
+      <entry key="M10" value="50.49284326829017" />
+      <entry key="M15" value="58.51364187769736" />
+      <entry key="M30" value="67.93167264395372" />
+      <entry key="H1" value="73.24198533269038" />
+      <entry key="H2" value="76.06266639491989" />
+      <entry key="H4" value="77.51644498549044" />
+      <entry key="D1" value="78.75064645802021" />
+      <entry key="W1" value="78.96432642456436" />
+    </decayedCancelled>
+    <decayedSelected>
+      <entry key="MS100" value="1.2787247105724136E-18" />
+      <entry key="MS500" value="2.638489751072635E-4" />
+      <entry key="S2" value="0.12744971037477382" />
+      <entry key="S5" value="0.43866758251084775" />
+      <entry key="S10" value="0.662330796682486" />
+      <entry key="S30" value="0.8954148992656027" />
+      <entry key="S60" value="1.1490157709497788" />
+      <entry key="M2" value="1.7961067103724089" />
+      <entry key="M5" value="3.064845121258442" />
+      <entry key="M10" value="3.8652077594179524" />
+      <entry key="M15" value="4.2000796309921915" />
+      <entry key="M30" value="4.576529885696623" />
+      <entry key="H1" value="4.78201992076246" />
+      <entry key="H2" value="4.889400188341975" />
+      <entry key="H4" value="4.944291417908663" />
+      <entry key="D1" value="4.990657938630901" />
+      <entry key="W1" value="4.998664009537289" />
+    </decayedSelected>
+    <decayedShown>
+      <entry key="MS100" value="2.239996789027296E-7" />
+      <entry key="MS500" value="0.04705260235800966" />
+      <entry key="S2" value="0.6154825007050267" />
+      <entry key="S5" value="1.3929912115134624" />
+      <entry key="S10" value="1.9869021112602907" />
+      <entry key="S30" value="2.6967735519718175" />
+      <entry key="S60" value="4.270832224305928" />
+      <entry key="M2" value="12.174949360628974" />
+      <entry key="M5" value="35.83993787225485" />
+      <entry key="M10" value="54.311894973059474" />
+      <entry key="M15" value="62.679006628890555" />
+      <entry key="M30" value="72.48852651874112" />
+      <entry key="H1" value="78.01351278689083" />
+      <entry key="H2" value="80.9466464104311" />
+      <entry key="H4" value="82.4579814756271" />
+      <entry key="D1" value="83.74083889572401" />
+      <entry key="W1" value="83.96292377698457" />
+    </decayedShown>
+  </component>
   <component name="ProjectColorInfo">{
   &quot;associatedIndex&quot;: 1
 }</component>
@@ -68,6 +130,7 @@
     "ASKED_SHARE_PROJECT_CONFIGURATION_FILES": "true",
     "Application.Main.executor": "Run",
     "Application.SystemMetrics.executor": "Run",
+    "Application.com.ttetrafon.Main.executor": "Run",
     "Application.com.ttetrafon.bytes.Main.executor": "Run",
     "Application.com.ttetrafon.factories.Main.executor": "Run",
     "Application.com.ttetrafon.hackerrank.Main.executor": "Run",
@@ -91,9 +154,9 @@
     "node.js.selected.package.tslint": "(autodetect)",
     "nodejs_package_manager_path": "npm",
     "project.structure.last.edited": "Project",
-    "project.structure.proportion": "0.0",
+    "project.structure.proportion": "0.15",
     "project.structure.side.proportion": "0.2",
-    "settings.editor.selected.configurable": "ml.llm.LLMThirdPartyAiProvidersConfigurable",
+    "settings.editor.selected.configurable": "reference.settings.project.maven.repository.indices",
     "vue.rearranger.settings.migration": "true"
   }
 }]]></component>
@@ -102,13 +165,13 @@
       <recent name="C:\Users\ttetr\OneDrive\Projects\self-practice\java\playground\src\main\java\com\ttetrafon\hackerrank" />
     </key>
   </component>
-  <component name="RunManager" selected="Application.com.ttetrafon.reflection.Main">
-    <configuration name="Main" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
-      <option name="MAIN_CLASS_NAME" value="com.ttetrafon.jackson.Main" />
+  <component name="RunManager" selected="Application.com.ttetrafon.Main">
+    <configuration name="SystemMetrics" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
+      <option name="MAIN_CLASS_NAME" value="com.ttetrafon.system.info.SystemMetrics" />
       <module name="playground" />
       <extension name="coverage">
         <pattern>
-          <option name="PATTERN" value="com.ttetrafon.jackson.*" />
+          <option name="PATTERN" value="com.ttetrafon.system.info.*" />
           <option name="ENABLED" value="true" />
         </pattern>
       </extension>
@@ -116,12 +179,12 @@
         <option name="Make" enabled="true" />
       </method>
     </configuration>
-    <configuration name="SystemMetrics" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
-      <option name="MAIN_CLASS_NAME" value="com.ttetrafon.system.info.SystemMetrics" />
+    <configuration name="com.ttetrafon.Main" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
+      <option name="MAIN_CLASS_NAME" value="com.ttetrafon.Main" />
       <module name="playground" />
       <extension name="coverage">
         <pattern>
-          <option name="PATTERN" value="com.ttetrafon.system.info.*" />
+          <option name="PATTERN" value="com.ttetrafon.jackson.*" />
           <option name="ENABLED" value="true" />
         </pattern>
       </extension>
@@ -168,13 +231,20 @@
         <option name="Make" enabled="true" />
       </method>
     </configuration>
+    <list>
+      <item itemvalue="Application.com.ttetrafon.bytes.Main" />
+      <item itemvalue="Application.com.ttetrafon.objects.Main" />
+      <item itemvalue="Application.com.ttetrafon.reflection.Main" />
+      <item itemvalue="Application.com.ttetrafon.Main" />
+      <item itemvalue="Application.SystemMetrics" />
+    </list>
     <recent_temporary>
       <list>
+        <item itemvalue="Application.com.ttetrafon.Main" />
         <item itemvalue="Application.com.ttetrafon.reflection.Main" />
         <item itemvalue="Application.com.ttetrafon.objects.Main" />
         <item itemvalue="Application.com.ttetrafon.bytes.Main" />
         <item itemvalue="Application.SystemMetrics" />
-        <item itemvalue="Application.Main" />
       </list>
     </recent_temporary>
   </component>
