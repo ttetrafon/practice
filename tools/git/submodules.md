@@ -5,6 +5,12 @@
 
 ## Use
 
+- `git submodule status` provides information about current submodule state
+
+### Initialising
+
+- If a repository includes submodules, run `git submodule update --init --recursive` to initialise them.
+
 ### Adding a Submodule
 
 - `git submodule add git@host:repository path/to/subfolder`
@@ -20,7 +26,9 @@
 
 - Removing a submodule needs to be done manually.
   - Remove the path created for the submodule (`git rm --cached path/to/subfolder`).
+  - Remove the path from within the .git directory (`.git/modules/...`), if it has not been removed by the previous step.
   - Remove the subfolder it resides.
+  - Run `git config --unset-all "submodule.path/to/subfolder"`
   - Remove the appropriate lines from **.gitmodules**.
 
 ## Local Setup
