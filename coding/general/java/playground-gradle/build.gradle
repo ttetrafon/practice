@@ -1,0 +1,35 @@
+plugins {
+    id 'java'
+}
+
+group = 'com.ttetrafon'
+version = '1.0-SNAPSHOT'
+
+repositories {
+    mavenCentral()
+}
+
+dependencies {
+    implementation 'org.jetbrains:annotations:24.0.0'
+}
+
+// Configure the module path for Java 27
+java {
+    toolchain {
+        languageVersion = JavaLanguageVersion.of(27)
+    }
+}
+
+// Add the incubator module to the module path
+tasks.withType(JavaCompile).configureEach {
+    options.compilerArgs.addAll([
+        '--add-modules', 'jdk.incubator.vector'
+    ])
+}
+
+// Configure the runtime to include the module
+tasks.withType(JavaExec).configureEach {
+    jvmArgs = [
+        '--add-modules', 'jdk.incubator.vector'
+    ]
+}
