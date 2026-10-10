@@ -6,13 +6,16 @@
 
 ## Lighting
 
-- Lighting can be achieved through lights or emmisive materials.
+- Lighting can be achieved through lights or emissive materials.
 - For real time lighting, use Lumen.
   - Project Settings:
     - **Dynamic Global Illumination: Lumen**
     - Reflection Method: Lumen
     - Software Tracing Mode: Global
     - Generate Mesh Distance Fields: True
+- [UE 6] In addition, **LumenRef** supports real time illumination from emissive lights without the need to add
+  - In the current v6 build:
+    - In **/config/DefaultEngine.ini** add `r.LumenRef.Supported=True` in the `[RenderSettings]` section.
 
 ### Light Sources
 
