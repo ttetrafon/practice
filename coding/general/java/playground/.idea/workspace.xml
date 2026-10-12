@@ -40,12 +40,12 @@
     &quot;assignee&quot;: &quot;ttetrafon&quot;
   }
 }</component>
-  <component name="GithubPullRequestsUISettings">{
-  &quot;selectedUrlAndAccountId&quot;: {
-    &quot;url&quot;: &quot;https://github.com/ttetrafon/practice.git&quot;,
-    &quot;accountId&quot;: &quot;11740eaf-3978-4981-bed3-06b3b6dd5bf8&quot;
+  <component name="GithubPullRequestsUISettings"><![CDATA[{
+  "selectedUrlAndAccountId": {
+    "url": "https://github.com/ttetrafon/practice.git",
+    "accountId": "58231b1e-c582-4b4e-9776-c02b2042c437"
   }
-}</component>
+}]]></component>
   <component name="MarkdownSettingsMigration">
     <option name="stateVersion" value="1" />
   </component>
