@@ -22,20 +22,35 @@
   - Finally add the smallest details.
   - By making shape and detail passes (large, medium, small), consistency can be achieved.
   - Useful tools (and commands) while editing meshes:
-    - add mesh: `shift+a`
-    - grab: `g`, followed by `x`/`y`/`z` for specific axes
-    - rotate: `r`, followed by `x`/`y`/`z` for specific axes
-    - scale: `s`, followed by `x`/`y`/`z` for specific axes
-    - apply transforms: `ctrl+a` (useful especially for uneven scale which affects editing)
-    - mirror (modifier) and/or auto-mirror (plugin)
-    - inset: `i`
-    - duplicate: `shift+d`
-    - extrude: `e`/`alt+e`
-    - select similar area: `shift+g`
-    - bevel edges: `ctrl+b`
-    - loop cut: `ctrl+r`
-    - recalculate normals: `shift+n`
-    - select similar: `shift+g`
+    - meshes:
+      - add mesh: `shift a`
+      - move the cursor to the selected option: `shift s`
+    - selection:
+      - grab: `g`, followed by `x`/`y`/`z` for specific axes
+      - grab and slide: `g g`
+      - select similar area: `shift g`
+      - select similar: `shift g`
+      - expand selection outwards: `ctrl +`
+      - switch target (object) while keeping the working mode: `alt q`
+    - transforms:
+      - rotate: `r`, followed by `x`/`y`/`z` for specific axes
+      - scale: `s`, followed by `x`/`y`/`z` for specific axes
+      - apply transforms: `ctrl a` (useful especially for uneven scale which affects editing)
+    - modelling:
+      - mirror (modifier) and/or auto-mirror (plugin)
+      - inset: `i`
+      - duplicate: `shift d`
+      - extrude: `e`/`alt e`
+      - bevel edges: `ctrl b`
+      - loop cut: `ctrl r`
+      - fill missing faces by connecting opposites: `Bridge Edge Loop` command
+      - fill missing faces with a grid: `Grid Fill` command
+      - with any selection, the command `To Sphere` will try to make the selection circular or spherical
+    - normals:
+      - recalculate normals: `shift n`
+  - Modifiers can help with the modelling and the final appearance, but they need to be applied on export.
+    - **Bevel**
+      - `Normals: auto smooth (angle)`: any angles greater than the selected ones are considered sharp by the `shade: autosmooth` command
 - Scale
   - Try to scale the meshes in real-size, and then adjust as needed within the game engine.
 - Adaptation
